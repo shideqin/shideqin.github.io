@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="php,php会话,session,使用入门," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="阿德的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="对比起 Cookie，Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制，本文简单介绍 Session 的使用。 　　由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP会话(Session)使用入门">
+<meta property="og:url" content="http://phpkoo.com/2010/01/11/php-session-php%E4%BC%9A%E8%AF%9D-%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="阿德的博客">
+<meta property="og:description" content="对比起 Cookie，Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制，本文简单介绍 Session 的使用。 　　由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所">
+<meta property="article:published_time" content="2010-01-11T06:15:04.000Z">
+<meta property="article:modified_time" content="2020-01-15T01:36:28.642Z">
+<meta property="article:author" content="shideqin">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="php会话">
+<meta property="article:tag" content="session">
+<meta property="article:tag" content="使用入门">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://phpkoo.com/2010/01/11/php-session-php会话-使用入门/"/>
+
+
+
+
+
+  <title>PHP会话(Session)使用入门 | 阿德的博客</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿德的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/11/php-session-php%E4%BC%9A%E8%AF%9D-%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shideqin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP会话(Session)使用入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:04+08:00">
+                2010-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>对比起 Cookie，Session 是存储在服务器端的会话，相对安全，并且不像 Cookie 那样有存储长度限制，本文简单介绍 Session 的使用。 　　由于 Session 是以文本文件形式存储在服务器端的，所以不怕客户端修改 Session 内容。实际上在服务器端的 Session 文件，PHP 自动修改 Session 文件的权限，只保留了系统读和写权限，而且不能通过 ftp 修改，所以安全得多。 对于 Cookie 来说，假设我们要验证用户是否登陆，就必须在 Cookie 中保存用户名和密码（可能是 md5 加密后字符串），并在每次请求页面的时候进行验证。如果用户名和密码存储在数据库，每次都要执行一次数据库查询，给数据库造成多余的负担。因为我们并不能只做一次验证。为什么呢？因为客户端 Cookie 中的信息是有可能被修改的。假如你存储 $admin 变量来表示用户是否登陆，$admin 为 true 的时候表示登陆，为 false 的时候表示未登录，在第一次通过验证后将 $admin 等于 true 存储在 Cookie，下次就不用验证了，这样对么？错了，假如有人伪造一个值为 true 的 $admin 变量那不是就立即取的了管理权限么？非常的不安全。 　　而 Session 就不同了，Session 是存储在服务器端的，远程用户没办法修改 Session 文件的内容，因此我们可以单纯存储一个 $admin 变量来判断是否登陆，首次验证通过后设置 $admin 值为 true，以后判断该值是否为 true，假如不是，转入登陆界面，这样就可以减少很多数据库操作了。而且可以减少每次为了验证 Cookie 而传递密码的不安全性了（Session 验证只需要传递一次，假如你没有使用 SSL 安全协议的话）。即使密码进行了 md5 加密，也是很容易被截获的。 　　当然使用 Session 还有很多优点，比如控制容易，可以按照用户自定义存储等（存储于数据库）。我这里就不多说了。 　　Session 在 php.ini 是否需要设置呢？一般不需要的，因为并不是每个人都有修改 php.ini 的权限，默认 Session 的存放路径是服务器的系统临时文件夹，我们可以自定义存放在自己的文件夹里，这个稍后我会介绍。 　　开始介绍如何创建 Session。非常简单，真的。 　　启动 Session 会话，并创建一个 $admin 变量： 如果你使用了 Seesion，或者该 PHP 文件要调用 Session 变量，那么就必须在调用 Session 之前启动它，使用 session_start() 函数。其它都不需要你设置了，PHP 自动完成 Session 文件的创建。 　　执行完这个程序后，我们可以到系统临时文件夹找到这个 Session 文件，一般文件名形如：sess_4c83638b3b0dbf65583181c2f89168ec，后面是 32 位编码后的随机字符串。用编辑器打开它，看一下它的内容： <code>admin|N;</code> 一般该内容是这样的结构： <code>变量名|类型:长度:值;</code> 　　并用分号隔开每个变量。有些是可以省略的，比如长度和类型。 　　我们来看一下验证程序，假设数据库存储的是用户名和 md5 加密后的密码： <strong>login.php</strong> <code>$value) { $posts[$key] = trim($value); } $password = md5($posts[&quot;password&quot;]); $username = $posts[&quot;username&quot;]; $query = &quot;SELECT `username` FROM `user` WHERE `password` = &#39;$password&#39; AND `username` = &#39;$username&#39;&quot;; // 取得查询结果 $userInfo = $DB-&gt;getRow($query); if (!emptyempty($userInfo)) { // 当验证通过后，启动 Session session_start(); // 注册登陆成功的 admin 变量，并赋值 true $_SESSION[&quot;admin&quot;] = true; } else { die(&quot;用户名密码错误&quot;); } ?&gt;</code> 　　我们在需要用户验证的页面启动 Session，判断是否登陆： 是不是很简单呢？将 $_SESSION 看成是存储在服务器端的数组即可，我们注册的每一个变量都是数组的键，跟使用数组没有什么分别。 　　如果要登出系统怎么办？销毁 Session 即可。 Session 能否像 Cookie 那样设置生存周期呢？有了 Session 是否就完全抛弃 Cookie 呢？我想说，结合 Cookie 来使用 Session 才是最方便的。 　　Session 是如何来判断客户端用户的呢？它是通过 Session ID 来判断的，什么是 Session ID，就是那个 Session 文件的文件名，Session ID 是随机生成的，因此能保证唯一性和随机性，确保 Session 的安全。一般如果没有设置 Session 的生存周期，则 Session ID 存储在内存中，关闭浏览器后该 ID 自动注销，重新请求该页面后，重新注册一个 Session ID。 　　如果客户端没有禁用 Cookie，则 Cookie 在启动 Session 会话的时候扮演的是存储 Session ID 和 Session 生存期的角色。 　　我们来手动设置 Session 的生存期： 其实 Session 还提供了一个函数 session_set_cookie_params(); 来设置 Session 的生存期的，该函数必须在 session_start() 函数调用之前调用： 如果客户端使用 IE 6.0 ， session_set_cookie_params(); 函数设置 Cookie 会有些问题，所以我们还是手动调用 setcookie 函数来创建 cookie。 　　假设客户端禁用 Cookie 怎么办？没办法，所有生存周期都是浏览器进程了，只要关闭浏览器，再次请求页面又得重新注册 Session。那么怎么传递 Session ID 呢？通过 URL 或者通过隐藏表单来传递，PHP 会自动将 Session ID 发送到 URL 上，URL 形如：<a href="http://www.openphp.cn/index.php?PHPSESSID=bba5b2a240a77e5b44cfa01d49cf9669，其中" target="_blank" rel="noopener">http://www.openphp.cn/index.php?PHPSESSID=bba5b2a240a77e5b44cfa01d49cf9669，其中</a> URL 中的参数 PHPSESSID 就是 Session ID了，我们可以使用 $_GET 来获取该值，从而实现 Session ID 页面间传递。 　　对于虚拟主机来说，如果所有用户的 Session 都保存在系统临时文件夹里，将给维护造成困难，而且降低了安全性，我们可以手动设置 Session 文件的保存路径，session_save_path() 就提供了这样一个功能。我们可以将 Session 存放目录指向一个不能通过 Web 方式访问的文件夹，当然，该文件夹必须具备可读写属性。 同 session_set_cookie_params(); 函数一样，session_save_path() 函数也必须在 session_start() 函数调用之前调用。 　　我们还可以将数组，对象存储在 Session 中。操作数组和操作一般变量没有什么区别，而保存对象的话，PHP 会自动对对象进行序列化（也叫串行化），然后保存于 Session 中。下面例子说明了这一点： <strong>person.php</strong> <code>age; } function setAge($age) { $this-&gt;age = $age; } } ?&gt;</code> <strong>setage.php</strong> <code>setAge(21); $_SESSION[&#39;person&#39;] = $person; echo &#39;[check here to output age](output.php)&#39;; ?&gt;</code> <strong>output.php</strong> <code>output(); ?&gt;</code> 当我们执行 setage.php 文件的时候，调用了 setage() 方法，设置了年龄为 21，并将该状态序列化后保存在 Session 中（PHP 将自动完成这一转换），当转到 output.php 后，要输出这个值，就必须反序列化刚才保存的对象，又因为在解序列化的时候需要实例化一个未定义类，所以我们定义了以后回调函数，自动包含 person.php 这个类文件，因此对象被重构，并取得当前 age 的值为 21，然后调用 output() 方法输出该值。 　　另外，我们还可以使用 session_set_save_handler 函数来自定义 Session 的调用方式。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+            <a href="/tags/php%E4%BC%9A%E8%AF%9D/" rel="tag"># php会话</a>
+          
+            <a href="/tags/session/" rel="tag"># session</a>
+          
+            <a href="/tags/%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/" rel="tag"># 使用入门</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2010/01/11/js-xhtml-xml-cdata/" rel="next" title="浅谈XHTML（可扩展HTML）标准中CDATA">
+                <i class="fa fa-chevron-left"></i> 浅谈XHTML（可扩展HTML）标准中CDATA
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2010/01/11/js-javascript-%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="prev" title="JS-获取浏览器窗口的大小">
+                JS-获取浏览器窗口的大小 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">shideqin</p>
+              <p class="site-description motion-element" itemprop="description">关注小众语言，记录、分享技术点滴！</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">192</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shideqin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
