@@ -1,130 +1,72 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-  
-
-
-  <link rel="alternate" href="/atom.xml" title="阿德的博客" type="application/atom+xml" />
-
-
-
-
-
-
-<meta name="description" content="关注小众语言，记录、分享技术点滴！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="阿德的博客">
-<meta property="og:url" content="http://phpkoo.com/page/11/index.html">
-<meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="关注小众语言，记录、分享技术点滴！">
-<meta property="article:author" content="shideqin">
-<meta name="twitter:card" content="summary">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    hostname: new URL('https://phpkoo.com').hostname,
     root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
   };
 </script>
 
+  <meta name="description" content="关注小众语言，记录、分享技术点滴！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="阿德的博客">
+<meta property="og:url" content="https://phpkoo.com/page/11/">
+<meta property="og:site_name" content="阿德的博客">
+<meta property="og:description" content="关注小众语言，记录、分享技术点滴！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="阿德">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://phpkoo.com/page/11/">
 
 
-  <link rel="canonical" href="http://phpkoo.com/page/11/"/>
-
-
-
-
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
 
   <title>阿德的博客</title>
   
@@ -134,382 +76,193 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<link rel="alternate" href="/atom.xml" title="阿德的博客" type="application/atom+xml">
+</head>
 
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+    <div>
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">阿德的博客</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
         <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
-      
   </div>
 
   <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 
+
 <nav class="site-nav">
   
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
         <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml%20" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
-            站点地图
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
 
-  
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
 
+</div>
+<div class="search-pop-overlay"></div>
 
-
- </div>
+  </div>
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <div class="posts-expand">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/22/47/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/38.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shideqin">
-      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="阿德的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2010/01/22/47/" itemprop="url">如何将广告始终定位到网页右下角</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/38.html" class="post-title-link" itemprop="url">网站开发流程(图文版)</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-22T12:09:01+08:00">
-                2010-01-22
-              </time>
-            
+              <span class="post-meta-item-text">发表于</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
-                </span>
-
-                
-                
-              
+              <time title="创建时间：2010-01-21 17:07:26" itemprop="dateCreated datePublished" datetime="2010-01-21T17:07:26+08:00">2010-01-21</time>
             </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>互联网提供了很多种“将广告始终定位到网页右下角”的解决方案，大多会用到javascript，其实仅调用样式表就可以实现该效果。 以下万恶的代码主要是写给IE6的，在IE7和FF浏览器中，只需要position:fixed就可以将图层定义到网页的任意位置。 <code>body{margin:0;border:0;height:100%;overflow-y:auto;} #test{display:block; bottom:3px; right:3px; width:130px; position:fixed;} /* 以下是写给IE6的 */ * html #test{position:absolute;right:18px} * html{overflow-x:auto; overflow-y:hidden;}</code> 全部源码 `  body{margin:0;border:0; height:100%;overflow-y:auto;} #test {display:block; bottom:3px; right:3px; position:fixed;} * html #test {position:absolute; right:18px} * html{overflow-x:auto; overflow-y:hidden;}  Fixed layer in MSIE.position:fixed;</p>
-<h1 id="Fixed-layer-in-MSIE"><a href="#Fixed-layer-in-MSIE" class="headerlink" title="Fixed layer in MSIE"></a>Fixed layer in MSIE</h1><p>This is a simulation of CSS “position: fixed” for MSIE. The main text on this page is contained in a 100% high, scrollable <div>. The scrollbar belongs to the <div>, not to the <body>. The ordinary <body> content is found in the fixed green box. All HTML and CSS on this page should follow the W3C spec except overflow-y: hidden, which is used for cosmetical purposes in earlier IE versions.</p>
-<h2 id="Browser-support"><a href="#Browser-support" class="headerlink" title="Browser support"></a>Browser support</h2><p>The browsers listed below are those I have tested in so far. I don’t know how other browsers will behave. Because of the <strong>problems in Opera 7.10</strong> I recommend using Conditional Comments (section 3, example A), which hides CSS from all browsers except MSIE 5+. Other browsers like Mozilla and Opera may use CSS position: fixed instead (that’s how I’ve done it on this page).</p>
-<p>Note that if you hide parts of the CSS from non-MSIE browsers (like on this page) the details about non-MSIE browsers below do not apply.</p>
-<h3 id="Supporting-browsers"><a href="#Supporting-browsers" class="headerlink" title="Supporting browsers"></a>Supporting browsers</h3><ul>
-<li>MSIE 4.72/win</li>
-<li>MSIE 5.0/win</li>
-<li>MSIE 6.0</li>
-<li>Netscape 6.1+</li>
-<li>Mozilla</li>
-<li>Opera 7.0</li>
-<li>Opera 7.11 (<strong>not 7.10</strong>)</li>
-</ul>
-<h3 id="Non-supporting-browsers"><a href="#Non-supporting-browsers" class="headerlink" title="Non-supporting browsers"></a>Non-supporting browsers</h3><ul>
-<li>Netscape 4.x (degrades gracefully)</li>
-<li>MSIE 4/mac</li>
-<li>MSIE 5/mac (not sure about the details)</li>
-<li>Opera 6.0 (degrades gracefully)</li>
-<li><strong>Opera 7.10 (freezes)</strong></li>
-</ul>
-<h3 id="General-problems"><a href="#General-problems" class="headerlink" title="General problems"></a>General problems</h3><ul>
-<li>In IE5 and IE6/quirk mode double scrollbars will appear unless one adds the non-standard CSS overflow-y: hidden property.</li>
-<li>Content must be contained in either the scrollable or the fixed <div>, not outside any of them.</li>
-<li>If you apply margin or padding to div#fixedcontent, Mozilla adds this to the 100% height and width which results in double scrollbars. Because of that I have nested a div#innerbox and apply the padding to that instead. This does not seem necessary for MSIE 6.</li>
-<li>The scrolling content must be absolutely positioned for Opera 7.</li>
-<li>The fixed content can obscure other content, and can itself easily become obscured in small browser windows.</li>
-</ul>
-<h2 id="‘position-fixed’-in-IE"><a href="#‘position-fixed’-in-IE" class="headerlink" title="‘position:fixed’ in IE"></a>‘position:fixed’ in IE</h2><p>Since the project I was working on for Q42 together with Sjoerd had to wait a little we thought it would be a good idea to update the site of their WYSIWYG XML Editor, Xopus. There are still a few minor mistakes on the site (validating and all that), but those do not make the site inaccessible or so. We also could not use UTF-8 (learn about UTF-8, leer over UTF-8) because the current httpd.conf file did not allow specifying a .htaccess and modyfying the server configuration file was not considered to be a good idea (and nobody who was around was sure if we were just allowed to read it, or if we could overwrite as well) just before the weekend. I guess those things will be fixed eventually. (Obviously, the same is true for putting mod_negotation to work.)</p>
-<p>Anyway, the cool thing of the original site was the fixed top and bottom. It was done with some scripting that did not work cross browser. In Mozilla you could not scroll and in Safari the content was not shown. Although Xopus is a product just for Internet Explorer thanks to not supporting of (for example) contentEditable=”true” in others the website could at least be made accessible so people using other browser then Internet Explorer could check what the product is about.</p>
-<p>However, emulating position:fixed was rather tricky. I first thought of using some fixed positioning technique I developed ages ago, but did not quite emulate the intented effect. (In Internet Explorer it looks like you are using frames, which is not what we wanted.) There are some examples on the internet but most made the fixed element “flicker”. You can see that here. Of course, you want better; position:fixed in IE. Although there are workarounds for Internet Explorer 6.0 in standards mode, just use quirks. It is so much easier, especially if you have to cope with Internet Explorer 5.5 (and even 5.0) as well.</p>
-<p>The difference between the two files is background:url(foo) fixed. Although the existence of the file foo is not really needed, make sure ‘foo’ is some zero byte file to prevent stupid 404 requests. You might think the reference to foo is not needed at all and you can just write background-attachment:fixed. Unfortunately, that is incorrect. Internet Explorer probably runs a bit different when this setting is set.</p>
-<p>All other things are pretty clear, I hope. Have fun.</p>
-<p><img src="http://www.zzlabs.com.cn/images/logo.gif" alt=""></p>
-<p>`必要元素： DOCTYPE声明 、 html标签 、body标签 、 一个ID为test的div。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/21/38/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shideqin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2010/01/21/38/" itemprop="url">网站开发流程(图文版)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-21T17:07:26+08:00">
-                2010-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%9C%AC%E4%BA%BA%E5%94%A0%E5%8F%A8/" itemprop="url" rel="index">
                     <span itemprop="name">本人唠叨</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -517,141 +270,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>网站开发流程(图文版) 开发过程中三个角色：程序员，设计师和客户 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165229862.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165229862.jpg" alt="20061129165229862"></a> 步骤1：项目讨论 在接到项目后首先需要开项目开发讨论会，讨论网站的栏目，开发方向，文字内容和图片等等。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232536.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232536.jpg" alt="20061129165232536"></a>  步骤2：激发灵感 考虑网站结构，认识客户中心思想要体现的内容，按客户需求展开创意的灵感。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232228.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232228.jpg" alt="20061129165232228"></a> 步骤3：框架导航 程序员和设计师具体讨论网站整体制作 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232135.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232135.jpg" alt="20061129165232135"></a> 步骤4：项目计划 项目大概工作量和所需的时间，写成项目计划书给客户看 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233424.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233424.jpg" alt="20061129165233424"></a> 步骤5：设计初稿 设计师作最基本的设计工作，主页和主要分页。设计师作最基本的设计工作，主页和主要分页。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233604.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233604.jpg" alt="20061129165233604"></a> 步骤6：客户反馈 客户对设计初稿提出建议。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233395.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233395.jpg" alt="20061129165233395"></a> 步骤7：重新设计 跟据客户对设计初稿建议和项目需求，进行修改设计或重新设计。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233743.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233743.jpg" alt="20061129165233743"></a> 步骤8：客户满意 经过：设计初稿-客户反馈-重新设计的过程，最后得到了客户的满意。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233108.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233108.jpg" alt="20061129165233108"></a> 步骤9：其它页设计 最基本的设计同意, 您就能开始制作站点每个页的布局和设计。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233206.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233206.jpg" alt="20061129165233206"></a> 步骤10：客户确认 再一次让客户反馈，得到最后确认。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233210.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233210.jpg" alt="20061129165233210"></a> 步骤11：制作HTML 程序员将设计师制作出的页面，作成HTML页。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233592.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233592.jpg" alt="20061129165233592"></a> 步骤12：…和CSS 对网站完成CSS和其它工作。 <a href="http://www.phpkoo.com/attachment/43/" target="_blank" rel="noopener" title="image013.jpg"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/2573762484.jpg" alt="image013.jpg"></a> 步骤13：交给客户 程序员，设计师完成的工作，交给客户反馈，直到站点完成。 <a href="http://www.phpkoo.com/attachment/44/" target="_blank" rel="noopener" title="image014.jpg"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/4142243317.jpg" alt="image014.jpg"></a> 步骤14：测试 项目最后阶段是测试。站点需要进行跨平台测试，解决所技术问题和错误。 <a href="http://www.phpkoo.com/attachment/45/" target="_blank" rel="noopener" title="image015.jpg"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/3461040768.jpg" alt="image015.jpg"></a> 步骤15：发布 最后收款，完成项目。 <a href="http://www.phpkoo.com/attachment/46/" target="_blank" rel="noopener" title="image016.jpg"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/3825264992.jpg" alt="image016.jpg"></a></p>
 
-      
-        
-          
-            <p>网站开发流程(图文版) 开发过程中三个角色：程序员，设计师和客户 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165229862.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165229862.jpg" alt="20061129165229862"></a> 步骤1：项目讨论 在接到项目后首先需要开项目开发讨论会，讨论网站的栏目，开发方向，文字内容和图片等等。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232536.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232536.jpg" alt="20061129165232536"></a>  步骤2：激发灵感 考虑网站结构，认识客户中心思想要体现的内容，按客户需求展开创意的灵感。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232228.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232228.jpg" alt="20061129165232228"></a> 步骤3：框架导航 程序员和设计师具体讨论网站整体制作 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232135.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165232135.jpg" alt="20061129165232135"></a> 步骤4：项目计划 项目大概工作量和所需的时间，写成项目计划书给客户看 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233424.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233424.jpg" alt="20061129165233424"></a> 步骤5：设计初稿 设计师作最基本的设计工作，主页和主要分页。设计师作最基本的设计工作，主页和主要分页。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233604.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233604.jpg" alt="20061129165233604"></a> 步骤6：客户反馈 客户对设计初稿提出建议。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233395.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233395.jpg" alt="20061129165233395"></a> 步骤7：重新设计 跟据客户对设计初稿建议和项目需求，进行修改设计或重新设计。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233743.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233743.jpg" alt="20061129165233743"></a> 步骤8：客户满意 经过：设计初稿-客户反馈-重新设计的过程，最后得到了客户的满意。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233108.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233108.jpg" alt="20061129165233108"></a> 步骤9：其它页设计 最基本的设计同意, 您就能开始制作站点每个页的布局和设计。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233206.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233206.jpg" alt="20061129165233206"></a> 步骤10：客户确认 再一次让客户反馈，得到最后确认。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233210.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233210.jpg" alt="20061129165233210"></a> 步骤11：制作HTML 程序员将设计师制作出的页面，作成HTML页。 <a href="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233592.jpg" target="_blank" rel="noopener"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/20061129165233592.jpg" alt="20061129165233592"></a> 步骤12：…和CSS 对网站完成CSS和其它工作。 <a href="http://www.phpkoo.com/attachment/43/" target="_blank" rel="noopener" title="image013.jpg"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/2573762484.jpg" alt="image013.jpg"></a> 步骤13：交给客户 程序员，设计师完成的工作，交给客户反馈，直到站点完成。 <a href="http://www.phpkoo.com/attachment/44/" target="_blank" rel="noopener" title="image014.jpg"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/4142243317.jpg" alt="image014.jpg"></a> 步骤14：测试 项目最后阶段是测试。站点需要进行跨平台测试，解决所技术问题和错误。 <a href="http://www.phpkoo.com/attachment/45/" target="_blank" rel="noopener" title="image015.jpg"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/3461040768.jpg" alt="image015.jpg"></a> 步骤15：发布 最后收款，完成项目。 <a href="http://www.phpkoo.com/attachment/46/" target="_blank" rel="noopener" title="image016.jpg"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/3825264992.jpg" alt="image016.jpg"></a></p>
-
-          
-        
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/21/29/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/29.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shideqin">
-      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="阿德的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2010/01/21/29/" itemprop="url">PHP简单批量生成不重复的虚拟充值卡号密码</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/29.html" class="post-title-link" itemprop="url">PHP简单批量生成不重复的虚拟充值卡号密码</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-21T12:04:31+08:00">
-                2010-01-21
-              </time>
-            
+              <span class="post-meta-item-text">发表于</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="创建时间：2010-01-21 12:04:31" itemprop="dateCreated datePublished" datetime="2010-01-21T12:04:31+08:00">2010-01-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/PHP/" itemprop="url" rel="index">
                     <span itemprop="name">PHP</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -659,141 +346,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>在很多时候我们需要一些虚拟充值卡或优惠卡等信息，现提供PHP下实现此功能的代码。</p>
 
-      
-        
-          
-            <p>在很多时候我们需要一些虚拟充值卡或优惠卡等信息，现提供PHP下实现此功能的代码。</p>
-
-          
-        
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/21/28/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/28.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shideqin">
-      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="阿德的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2010/01/21/28/" itemprop="url">md5 结合 crypt ＝无敌密码</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/28.html" class="post-title-link" itemprop="url">md5 结合 crypt ＝无敌密码</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-21T11:59:38+08:00">
-                2010-01-21
-              </time>
-            
+              <span class="post-meta-item-text">发表于</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="创建时间：2010-01-21 11:59:38" itemprop="dateCreated datePublished" datetime="2010-01-21T11:59:38+08:00">2010-01-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/PHP/" itemprop="url" rel="index">
                     <span itemprop="name">PHP</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -801,144 +422,78 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>PHP的内置函数crypt 很不错 配合MD5 更天下无敌 <code>&quot;; //不安全 echo &quot;crypt加密后&quot;.crypt($pass).&quot;  
+          <p>PHP的内置函数crypt 很不错 配合MD5 更天下无敌 <code>&quot;; //不安全 echo &quot;crypt加密后&quot;.crypt($pass).&quot;  
 &quot;; // 比较乱的密码 刷新后还会变 echo &quot;crypt复杂加密后&quot;.crypt($pass,substr($pass,0,2)).&quot;  
 &quot;; //还是不爽 echo &quot;无敌加密后&quot;.md5(crypt($pass,substr($pass,0,2))).&quot;  
 &quot;; // 现在让黑客如何破这个密码？ ?&gt;</code> 最后的密码 还是32位 初看 都以为是 MD5加密 可无论对方MD5的HASH值多么庞大 几个T的数据 都无法破解出来</p>
 
-          
-        
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/16/27/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/27.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shideqin">
-      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="阿德的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2010/01/16/27/" itemprop="url">一个必须得改的毛病</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/27.html" class="post-title-link" itemprop="url">一个必须得改的毛病</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-16T23:37:22+08:00">
-                2010-01-16
-              </time>
-            
+              <span class="post-meta-item-text">发表于</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="创建时间：2010-01-16 23:37:22" itemprop="dateCreated datePublished" datetime="2010-01-16T23:37:22+08:00">2010-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%9C%AC%E4%BA%BA%E5%94%A0%E5%8F%A8/" itemprop="url" rel="index">
                     <span itemprop="name">本人唠叨</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -946,141 +501,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>最近在公司，做一个数据库更新的事，由于当时条件没有考虑周全，把部分VIP用户的标识给恢复了，当初购买时的会员标识，因为只有一小部分用户有此问题，所有公司没有及时发现，后来用户通知我们了，我们才发现，还是影响的数据量不大，发了大概半小时时间把它处理完，幸好有“历史数据”处理机制在，要不然完完了，，不知道数据从哪来恢复。 仔细想想自己的一些问题都出在真的太粗心了，以后真的得改掉这个毛病。记住这个教训。 ps:真的记得得改。</p>
 
-      
-        
-          
-            <p>最近在公司，做一个数据库更新的事，由于当时条件没有考虑周全，把部分VIP用户的标识给恢复了，当初购买时的会员标识，因为只有一小部分用户有此问题，所有公司没有及时发现，后来用户通知我们了，我们才发现，还是影响的数据量不大，发了大概半小时时间把它处理完，幸好有“历史数据”处理机制在，要不然完完了，，不知道数据从哪来恢复。 仔细想想自己的一些问题都出在真的太粗心了，以后真的得改掉这个毛病。记住这个教训。 ps:真的记得得改。</p>
-
-          
-        
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/16/%E5%88%86%E4%BA%AB%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/24.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shideqin">
-      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="阿德的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2010/01/16/%E5%88%86%E4%BA%AB%E6%8B%9B%E8%81%98%E4%BF%A1%E6%81%AF/" itemprop="url">分享招聘信息</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/24.html" class="post-title-link" itemprop="url">分享招聘信息</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-16T14:20:28+08:00">
-                2010-01-16
-              </time>
-            
+              <span class="post-meta-item-text">发表于</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="创建时间：2010-01-16 14:20:28" itemprop="dateCreated datePublished" datetime="2010-01-16T14:20:28+08:00">2010-01-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%9C%AC%E4%BA%BA%E5%94%A0%E5%8F%A8/" itemprop="url" rel="index">
                     <span itemprop="name">本人唠叨</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1088,141 +577,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>无意中，发现一网友博文中的图片，觉得挺搞，特引来分享分享，图如下：<a href="http://www.phpkoo.com/attachment/26/" target="_blank" rel="noopener" title="2510408727.jpg"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/810639164.jpg" alt="2510408727.jpg"></a></p>
 
-      
-        
-          
-            <p>无意中，发现一网友博文中的图片，觉得挺搞，特引来分享分享，图如下：<a href="http://www.phpkoo.com/attachment/26/" target="_blank" rel="noopener" title="2510408727.jpg"><img src="http://www.phpkoo.com/wp-content/uploads/2010/01/810639164.jpg" alt="2510408727.jpg"></a></p>
-
-          
-        
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/14/%E7%AB%99%E9%95%BF%E5%AE%9E%E9%AA%8C%E5%AE%A4%E8%BF%81%E7%A7%BB/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/21.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shideqin">
-      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="阿德的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2010/01/14/%E7%AB%99%E9%95%BF%E5%AE%9E%E9%AA%8C%E5%AE%A4%E8%BF%81%E7%A7%BB/" itemprop="url">博客再次迁移</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/21.html" class="post-title-link" itemprop="url">博客再次迁移</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-14T09:54:02+08:00">
-                2010-01-14
-              </time>
-            
+              <span class="post-meta-item-text">发表于</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="创建时间：2010-01-14 09:54:02" itemprop="dateCreated datePublished" datetime="2010-01-14T09:54:02+08:00">2010-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%9C%AC%E4%BA%BA%E5%94%A0%E5%8F%A8/" itemprop="url" rel="index">
                     <span itemprop="name">本人唠叨</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1230,283 +653,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>在国内架个个人博客真难，由于国内互联内“反黄”事件，全国各大机房都接连被封机房，本站之前放于广州地界的机房，也同样被封长于半个月的时间，机房也没有相应的补尝，由于主机也将至到期，心想干脆换个机房，换程序移到了杭州机房，本以为此次风波已经过去，没想到经过一周多时间，问题同上的发生，还好，最新数据本地都已存在（经上次的教训），在本地都已经备案了最新的数据和程序。CNNIC 真是太暴力了也没有点时间，直接说封就封。听说1月底还要对CN域名下手，今年刚续完费，不知道能不能撑不撑的过去。一直也想把之前一直用的SABLOG给换了，借此机会，就干脆把它也换成TYPECHO算了，个人认为TYPECHO比较适合做博客程序，较WORDPRESS相比没有其臃肿，在皮肤上跟WORDPRESS较接近，同时在插件的使用和开发都是相对比较简单，最重要的一点同时也是开源程序，而且就连数据库的注释也是非常的清楚，这点各大大博客包括WORDPRESS好像都没做到，TYPECHO还可以直接在GOOGLE的开源项目上直接获取其源码。SABLOG也是比较优秀但更新比较慢，皮肤也少,UI也做的不好。其综合比较个人还是觉得TYPECHO比较好，希望有越来越多的人会去使用它。 发布于，<a href="http://www.phpkoo.com" target="_blank" rel="noopener" title="站长实验室">站长实验室</a></p>
 
-      
-        
-          
-            <p>在国内架个个人博客真难，由于国内互联内“反黄”事件，全国各大机房都接连被封机房，本站之前放于广州地界的机房，也同样被封长于半个月的时间，机房也没有相应的补尝，由于主机也将至到期，心想干脆换个机房，换程序移到了杭州机房，本以为此次风波已经过去，没想到经过一周多时间，问题同上的发生，还好，最新数据本地都已存在（经上次的教训），在本地都已经备案了最新的数据和程序。CNNIC 真是太暴力了也没有点时间，直接说封就封。听说1月底还要对CN域名下手，今年刚续完费，不知道能不能撑不撑的过去。一直也想把之前一直用的SABLOG给换了，借此机会，就干脆把它也换成TYPECHO算了，个人认为TYPECHO比较适合做博客程序，较WORDPRESS相比没有其臃肿，在皮肤上跟WORDPRESS较接近，同时在插件的使用和开发都是相对比较简单，最重要的一点同时也是开源程序，而且就连数据库的注释也是非常的清楚，这点各大大博客包括WORDPRESS好像都没做到，TYPECHO还可以直接在GOOGLE的开源项目上直接获取其源码。SABLOG也是比较优秀但更新比较慢，皮肤也少,UI也做的不好。其综合比较个人还是觉得TYPECHO比较好，希望有越来越多的人会去使用它。 发布于，<a href="http://www.phpkoo.com" target="_blank" rel="noopener" title="站长实验室">站长实验室</a></p>
-
-          
-        
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/11/15/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/9.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shideqin">
-      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="阿德的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2010/01/11/15/" itemprop="url">css实现背景透明</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/9.html" class="post-title-link" itemprop="url">网站架构策划方案</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-11T15:12:17+08:00">
-                2010-01-11
-              </time>
-            
+              <span class="post-meta-item-text">发表于</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
-                  </a>
+              <time title="创建时间：2010-01-11 14:15:59" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:59+08:00">2010-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
                 </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>之前做网站的时候遇到一个问题,就是用css实现背景透明,记得以前都是用filter:alpha(opacity=?)来解决,后来发现这个参数只在IE下有作用,在firefox下就不起作用. 在网上查询到了这个问题的解决办法,自己实验了一下,果然解决了浏览器的兼容问题. 代码如下: ` 无标题文档 <!-- .transparent{ width:450px; height:50px; color:red; font:14px 700 "宋体"; filter:alpha(opacity=35); -moz-opacity:0.35; opacity:0.35; background-color:#000; } --> </p>
-<p>CSS实现背景透明效果</p>
-<p>`<img src="http://www.phpkoo.com/wp-content/uploads/2010/01/2667806539.jpg" alt="css-背景透明.jpg"> 解释: filter:alpha(opacity=12); 支持 IE 浏览器 -moz-opacity:0.12; 支持 FireFox 浏览器 opacity:0.12; 支持 Opera，safari 等浏览器 ps:现在困扰我的就是,背景是实现了透明效果,可是这个层里面的所有元素:CSS实现背景透明效果这几个字也跟着透明了.这个以后我还得努力寻求解决办法,有待解决!</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/11/%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84-%E7%AD%96%E5%88%92-%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shideqin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2010/01/11/%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84-%E7%AD%96%E5%88%92-%E6%96%B9%E6%A1%88/" itemprop="url">网站架构策划方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:59+08:00">
-                2010-01-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E6%9C%AC%E4%BA%BA%E5%94%A0%E5%8F%A8/" itemprop="url" rel="index">
                     <span itemprop="name">本人唠叨</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1514,139 +729,75 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>这段时间一直都在为网站架构的事情所烦恼，前端，程序，服务器三个方面应该如何协调才能达到一个较为优化的网站架构呢？根据前辈的经验，我总结了以下文档，特分享。 <strong>1. UIC需要做的</strong> 采用Css Sprite将背景图片，图标图片集成在一张图片内。 优点：减少用户代理对服务器的请求次数；加快用户载入页面时间。 Css &amp;&amp; Js 统一使用YUIcompressor进行代码压缩处理。 优点：加快服务器结束线程的时间；加快用户载入页面时间。 单个数据对象小于25K。 优点：部分用户代理（如iphone），无法载入25K以上的数据对象。 外部广告图片，宣传图片尽量防止在本站图片缓存服务器上。 优点：减少用户的DNS查询，加快页面载入速度。 色彩不超过256色的图片，不采用JPG格式存储。 优点：减少文件大小，加快页面载入速度。 使用PNG8格式的PNG图片代替Gif格式图片。 优点：具备比Gif更高的压缩比，有利于网络传塑，加快页面载入速度。 JPG图片采用interlaced模式存储。 优点：色彩复杂的图片大小更小，可让图片呈渐进状态显示，直至清晰。增强用户体验。 <strong>2. UI 需要做的</strong> 设计稿图片尽量减少一些渐变效果的使用 优点：减少JPG图片的数量，加快用户载入页面时间。 <strong>3. 开发需要做的</strong> 如果出现Ajax 方式，采用Ajax缓存 可考虑 <strong>4. SA 需要做的</strong> 负载均衡 优点：减小Web服务器压力。 Gzip压缩输出 优点：减小输出的用户数据大小，加快页面载入时间。 图片与Web服务器分离 优点：减小Web服务器压力。 增加Squid缓存 优点：避免2次刷新带来的重复请求。减少服务器压力。 架构SVN测试服务器并与公网服务器的同步 优点：避免公网页面出现错误，增强用户体验。</p>
 
-      
-        
-          
-            <p>这段时间一直都在为网站架构的事情所烦恼，前端，程序，服务器三个方面应该如何协调才能达到一个较为优化的网站架构呢？根据前辈的经验，我总结了以下文档，特分享。 <strong>1. UIC需要做的</strong> 采用Css Sprite将背景图片，图标图片集成在一张图片内。 优点：减少用户代理对服务器的请求次数；加快用户载入页面时间。 Css &amp;&amp; Js 统一使用YUIcompressor进行代码压缩处理。 优点：加快服务器结束线程的时间；加快用户载入页面时间。 单个数据对象小于25K。 优点：部分用户代理（如iphone），无法载入25K以上的数据对象。 外部广告图片，宣传图片尽量防止在本站图片缓存服务器上。 优点：减少用户的DNS查询，加快页面载入速度。 色彩不超过256色的图片，不采用JPG格式存储。 优点：减少文件大小，加快页面载入速度。 使用PNG8格式的PNG图片代替Gif格式图片。 优点：具备比Gif更高的压缩比，有利于网络传塑，加快页面载入速度。 JPG图片采用interlaced模式存储。 优点：色彩复杂的图片大小更小，可让图片呈渐进状态显示，直至清晰。增强用户体验。 <strong>2. UI 需要做的</strong> 设计稿图片尽量减少一些渐变效果的使用 优点：减少JPG图片的数量，加快用户载入页面时间。 <strong>3. 开发需要做的</strong> 如果出现Ajax 方式，采用Ajax缓存 可考虑 <strong>4. SA 需要做的</strong> 负载均衡 优点：减小Web服务器压力。 Gzip压缩输出 优点：减小输出的用户数据大小，加快页面载入时间。 图片与Web服务器分离 优点：减小Web服务器压力。 增加Squid缓存 优点：避免2次刷新带来的重复请求。减少服务器压力。 架构SVN测试服务器并与公网服务器的同步 优点：避免公网页面出现错误，增强用户体验。</p>
-
-          
-        
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+        
   
   
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://phpkoo.com/2010/01/11/%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D-apache-%E6%B3%9B%E5%9F%9F%E5%90%8D/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/13.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shideqin">
-      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="阿德的博客">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2010/01/11/%E4%BA%8C%E7%BA%A7%E5%9F%9F%E5%90%8D-apache-%E6%B3%9B%E5%9F%9F%E5%90%8D/" itemprop="url">二级域名的完美实现</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/13.html" class="post-title-link" itemprop="url">二级域名的完美实现</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:39+08:00">
-                2010-01-11
-              </time>
-            
+              <span class="post-meta-item-text">发表于</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="创建时间：2010-01-11 14:15:39" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:39+08:00">2010-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
+              </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Apache/" itemprop="url" rel="index">
                     <span itemprop="name">Apache</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -1654,52 +805,179 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com 其次，在 httpd.conf 中打开 mod_rewrite 之后，在 httpd.conf 的最后，添加以下内容： <code>RewriteEngine on RewriteMap lowercase int:tolower RewriteMap vhost txt:/wp-content/local/etc/apache/vhost.map RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$ RewriteCond ${vhost:%1} ^(/.*)$ RewriteRule ^/(.*)$ %1/$1</code> 其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。 然后，在这个所在路径的目录下创建一个文件： vhost.map 内容为： <code>www.domain.com /wp-content/local/www/data-dist/domain bbs.domain.com /wp-content/local/www/data-dist/bbs anyname.domain.com /wp-content/local/www/data-dist/anyname</code> 以上部分都是：” 域名+空格+绝对路径” 的形式。 最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录： domain , bbs , anyname 等等，理论上可以无限。 这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以 随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
 
-      
-        
-          
-            <p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com 其次，在 httpd.conf 中打开 mod_rewrite 之后，在 httpd.conf 的最后，添加以下内容： <code>RewriteEngine on RewriteMap lowercase int:tolower RewriteMap vhost txt:/wp-content/local/etc/apache/vhost.map RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$ RewriteCond ${vhost:%1} ^(/.*)$ RewriteRule ^/(.*)$ %1/$1</code> 其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。 然后，在这个所在路径的目录下创建一个文件： vhost.map 内容为： <code>www.domain.com /wp-content/local/www/data-dist/domain bbs.domain.com /wp-content/local/www/data-dist/bbs anyname.domain.com /wp-content/local/www/data-dist/anyname</code> 以上部分都是：” 域名+空格+绝对路径” 的形式。 最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录： domain , bbs , anyname 等等，理论上可以无限。 这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以 随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
-
-          
-        
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
+      </footer>
   </article>
+  
+  
+  
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/7.html" class="post-title-link" itemprop="url">PHP各加速利器</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-01-11 14:15:29" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:29+08:00">2010-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
 
     
-  </section>
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在一些较大项目中如牵涉到要整合用PHP开发的OA办公等系统，可以使用以下PHP的资源，特整理以供大家学习参考 加速器/缓存 <strong>afterBurner Cache</strong> 早期的 PHP Cache 之一。缓存编译后（第一次执行以后）的PHP 代码。宣称节省40%的运行时间。但是目前开发进度比较慢,兼容PHP 4.1系列。支持操作系统：Linux。 国家:意大利 网址：<a href="http://afterburner.bware.it/" target="_blank" rel="noopener">http://afterburner.bware.it/</a> 价格：Free <strong>APC</strong> 早期的 PHP Cache 之一。曾经是communityconnect的东西，现在是 PECL 中的一部分。 国家:美国 网址：<a href="http://pecl.php.net/package/APC" target="_blank" rel="noopener">http://pecl.php.net/package/APC</a> 价格：Free <strong>PHP Accelerator</strong> Zend 引擎扩展，由ionCube 公司开发 宣称可将脚本运行速度提高5倍。目前兼容PHP 4.3 系列。Yahoo 采用它作为PHP 缓存。支持操作系统：Linux, OpenBSD, FreeBSD, BSDi。Apache 服务器。不兼容Zend Optimizer。 国家:英国 网址：<a href="http://www.php-accelerator.co.uk/" target="_blank" rel="noopener">http://www.php-accelerator.co.uk/</a> 价格：Free <strong>Zend Performance Suite</strong> 不用我多介绍了 Zend 公司出品。兼容Zend Optimizer。支持最新的PHP和Apache服务器。 服务器吞吐量提高25倍。价格昂贵。众多商业用户包括著名搜索网站alltheweb.com。支持操作系统：Linux，新近推出windows测试版本。 国家：美国 网址：<a href="http://www.zend.com/store/products/zend-performance-suite.php" target="_blank" rel="noopener">http://www.zend.com/store/products/zend-performance-suite.php</a> 价格：$1875起 编码器 <strong>SourceGuardian Pro for PHP</strong> 为PHP脚本提供基于时间, IP and 域名 限制保护，需要一个Loader才能执行。Loader可以免费下载。和Zend Optimizer， PHPAccelerator 加速器兼容。支持虚拟主机甚至PHP 安全模式，无需服务器特殊设定。 国家：美国 网址：<a href="http://sourceguardian.com/products/phppro.htm" target="_blank" rel="noopener">http://sourceguardian.com/products/phppro.htm</a> 价格：$250 <strong>Zend Encoder</strong> Zend 公司出品。将PHP 脚本预编译成中间码格式通过Zend Optimizer运行，速度快，但是价格昂贵。 国家：美国 网址：<a href="http://www.zend.com/store/products/zend-performance-suite.php" target="_blank" rel="noopener">http://www.zend.com/store/products/zend-performance-suite.php</a> 价格：$960 <strong>ionCube Standalone PHP Encoder 3.0</strong> 将PHP 脚本预编译成二进制代码， 并提供通过多种方式保护PHP程序， 通过IP加服务器名保护， 时间过期保护， 甚至MAC地址的保护。 经过编码的PHP 程序需要一个Loader才能执行。Loader可以免费下载。支持多种操作系统：Intel Linux, FreeBSD, Windows 同时还提供在线编码服务。 国家：美国 网址：<a href="http://www.ioncube.com/sa_encoder.php" target="_blank" rel="noopener">http://www.ioncube.com/sa_encoder.php</a> 价格：$199-$348 ========================================================== shukebeita的隆重推荐 <strong>MMCache</strong> 如果想同时拥有加速和编码功能而且免费？没有问题，MMCache 是你唯一的选择。它功能强大甚至击败Zend 公司的Performance suite 而且完全免费。保护php源码。 国家：德国/俄罗斯 网址：<a href="http://turck-mmcache.sourceforge.net/" target="_blank" rel="noopener">http://turck-mmcache.sourceforge.net/</a> 价格：free</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/12.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/12.html" class="post-title-link" itemprop="url">mysql异常</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-01-11 14:15:20" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:20+08:00">2010-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>SQLWARNING是对所有以01开头的SQLSTATE代码的速记。 NOT FOUND是对所有以02开头的SQLSTATE代码的速记。 SQLEXCEPTION是对所有没有被SQLWARNING或NOT FOUND捕获的SQLSTATE代码的速记。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/12/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1707,168 +985,138 @@
           </div>
           
 
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">shideqin</p>
-              <p class="site-description motion-element" itemprop="description">关注小众语言，记录、分享技术点滴！</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/%20%7C%7C%20archive">
-              
-                  <span class="site-state-item-count">123</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                
-                  <span class="site-state-item-count">25</span>
-                  <span class="site-state-item-name">分类</span>
-                
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">192</span>
-                  <span class="site-state-item-name">标签</span>
-                
-              </div>
-            
-
-          </nav>
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">shideqin</span>
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
   }
 </script>
 
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">阿德</p>
+  <div class="site-description" itemprop="description">关注小众语言，记录、分享技术点滴！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿德</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+
+        
 
 
 
 
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -1878,87 +1126,8 @@
 
 
 
-
-
-
-
-
-
-
-
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
+<script src="/js/local-search.js"></script>
 
 
 
@@ -1971,22 +1140,6 @@
 
 
 
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
 
   
 

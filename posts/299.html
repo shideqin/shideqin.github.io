@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://phpkoo.com').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="Docker是一个能够把开发应用程序自动部署到容器的开源引擎。它由Docker公司的团队编写，基于Apache 2.0开源协议授权。它提供了一个简单、轻量的建模方式，使开发生命周期更高效快速，鼓励了面向服务的架构设计。 前提条件 内核 Docker运行对内核要求比较高，因此一般建议直接在Ubuntu这样的平台运行。但作为一个容器标准，Docker也是支持其他如CentOS, Mac OS X, W">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos 6.8下安装docker1.7.1">
+<meta property="og:url" content="https://phpkoo.com/posts/299.html">
+<meta property="og:site_name" content="阿德的博客">
+<meta property="og:description" content="Docker是一个能够把开发应用程序自动部署到容器的开源引擎。它由Docker公司的团队编写，基于Apache 2.0开源协议授权。它提供了一个简单、轻量的建模方式，使开发生命周期更高效快速，鼓励了面向服务的架构设计。 前提条件 内核 Docker运行对内核要求比较高，因此一般建议直接在Ubuntu这样的平台运行。但作为一个容器标准，Docker也是支持其他如CentOS, Mac OS X, W">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-03-11T09:28:59.000Z">
+<meta property="article:modified_time" content="2020-01-15T07:07:22.596Z">
+<meta property="article:author" content="阿德">
+<meta property="article:tag" content="centos6.8">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://phpkoo.com/posts/299.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>centos 6.8下安装docker1.7.1 | 阿德的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="阿德的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿德的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/299.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          centos 6.8下安装docker1.7.1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-03-11 17:28:59" itemprop="dateCreated datePublished" datetime="2017-03-11T17:28:59+08:00">2017-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-15 15:07:22" itemprop="dateModified" datetime="2020-01-15T15:07:22+08:00">2020-01-15</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a>是一个能够把开发应用程序自动部署到容器的开源引擎。它由Docker公司的团队编写，基于Apache 2.0开源协议授权。它提供了一个简单、轻量的建模方式，使开发生命周期更高效快速，鼓励了面向服务的架构设计。 <strong>前提条件</strong> <strong>内核</strong> Docker运行对内核要求比较高，因此一般建议直接在Ubuntu这样的平台运行。但作为一个容器标准，Docker也是支持其他如CentOS, Mac OS X, Windows等平台。目前Docker支持以下版本CentOS: <em>CentOS 7(64位)</em> <em>CentOS 6.5(64位)及以后</em> 在运行CentOS 6.5及以后版本时，需要内核版本&gt;=2.6.32-431，因为这些内核包含了运行Docker的一些特定修改。 [shell] $ uname -r 2.6.32-573.22.1.el6.x86_64 [/shell] <strong>Device Mapper</strong> Docker默认使用AUFS作为存储驱动，但是AUFS并没有被包括在Linux的主线内核中。CentOS中可以使用Device Mapper作为存储驱动，这是在2.6.9内核版本引入的新功能。我们需要先确认是否启用该功能: [shell] $ ls -l /sys/class/misc/device-mapper lrwxrwxrwx 1 root root 0 Mar 11 17:06 /sys/class/misc/device-mapper -&gt; ../../devices/virtual/misc/device-mapper [/shell] 如果没有检测到Device Mapper，需要安装device-mapper软件包: [shell] $ yum install -y device-mapper [/shell] 然后重新加载dm_mod内核模块: [shell] $ modprobe dm_mod [/shell] <strong>第一步 Enable EPEL</strong> 对于CentOS6.8, Docker可以在EPEL源里面找到，所以我们首先需要确保启用EPEL。 [shell] $ yum -y install epel-release-6-8.noarch [/shell] <strong>第二步 Install Docker-IO</strong> 最后需要安装docker-io的RPM包。 [shell] $ yum -y install docker-io [/shell] 这样完成了Docker的安装。 [shell] $ docker -v Docker version 1.7.1, build 786b29d/1.7.1 [/shell] <strong>启动</strong> <strong>第一步 启动服务</strong> 一旦安装好Docker之后，我们需要启动Docker Deamon: [shell] $ service docker start [/shell] <strong>第二步 设置开机启动(可选)</strong> 如果希望Docker Deamon开机运行，还需要做如下操作: [shell] $ chkconfig docker on [/shell] <strong>验证</strong> <strong>验证Docker Deamon</strong> 启动服务后，直接用docker info命令确认docker是否正确安装并运行: [shell] $ docker info Containers: 1 Images: 4 Storage Driver: devicemapper Pool Name: docker-202:1-1835598-pool Pool Blocksize: 65.54 kB Backing Filesystem: extfs Data file: /dev/loop0 Metadata file: /dev/loop1 Data Space Used: 541.8 MB Data Space Total: 107.4 GB Data Space Available: 28.89 GB Metadata Space Used: 983 kB Metadata Space Total: 2.147 GB Metadata Space Available: 2.147 GB Udev Sync Supported: true Deferred Removal Enabled: false Data loop file: /var/lib/docker/devicemapper/devicemapper/data Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata Library Version: 1.02.117-RHEL6 (2016-08-15) Execution Driver: native-0.2 Logging Driver: json-file Kernel Version: 2.6.32-573.22.1.el6.x86_64 Operating System: <unknown> CPUs: 1 Total Memory: 994.6 MiB Name: iZ23l4s2070Z ID: CGIV:KQ7V:LP5I:NF5V:ZMKG:4AK3:RMDZ:QLVL:BY6F:GQF3:V7E5:TDCA [/shell] <strong>验证Docker Client</strong> 现在就让我们验证下Docker是否能正常运行，首先我们来获取centos6.8的镜像: [shell] $ docker pull daocloud.io/centos:6 [/shell] 这里使用的是DaoCloud源，因为官方源在国内不稳定。国内其它源地址：1、<a href="https://c.163.com/hub" target="_blank" rel="noopener">https://c.163.com/hub</a> 2、<a href="http://hub.daocloud.io" target="_blank" rel="noopener">http://hub.daocloud.io</a>，但要求Docker版本&gt;=1.3.2。然后我们检查是否能看到镜像: [shell] $ docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE daocloud.io/centos 6 10611b26a8b9 4 months ago 194.6 MB [/shell] 激动的时刻到了，让我们运行一下: [shell] $ docker run -i -t daocloud.io/centos /bin/bash [/shell] 一切正常的话，你会看到一个终端提示符，然后你就可以像操作任何CentOS机器一样进行你的体验。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/centos6-8/" rel="tag"># centos6.8</a>
+              <a href="/tags/docker/" rel="tag"># docker</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/290.html" rel="prev" title="CentOS6 安装vsftpd">
+      <i class="fa fa-chevron-left"></i> CentOS6 安装vsftpd
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/305.html" rel="next" title="Docker升级至1.9.1版本-Centos6.8">
+      Docker升级至1.9.1版本-Centos6.8 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">阿德</p>
+  <div class="site-description" itemprop="description">关注小众语言，记录、分享技术点滴！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿德</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
