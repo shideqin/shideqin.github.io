@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="关注小众语言，记录、分享技术点滴！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="阿德的博客">
+<meta property="og:url" content="https://phpkoo.com/page/12/">
+<meta property="og:site_name" content="阿德的博客">
+<meta property="og:description" content="关注小众语言，记录、分享技术点滴！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="阿德">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://phpkoo.com/page/12/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>阿德的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="阿德的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿德的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/10.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/10.html" class="post-title-link" itemprop="url">利用 QQWry.Dat 实现 IP 地址高效检索（PHP）</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-01-11 14:15:00" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:00+08:00">2010-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:39:04" itemprop="dateModified" datetime="2020-02-27T09:39:04+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>根据 LumaQQ 开发者文档中的纯真 IP 数据库格式详解，我编写了一个 PHP 的查询 IP 所在地区信息的类。在编写过程中发现纯真 IP 数据库格式详解中关于记录区的描述不是很全面，不过出入也不是很大，所以我没必要再写一份纯真 IP 数据库的格式说明了，大家感兴趣的话，读一读下面的代码应该就能看出来了。代码中加了很详细的注释，应该很容易读懂的。</p>
+<p>在创建这个类的一个实例后，实例中就保存了打开的文件指针和一些查询需要的信息，每次查询时不需要重新打开文件，直到页面执行结束后，打开的文件才会自动关闭。这样。在一个页面内进行多次查询时，效率是很高的。并且此类不仅可以直接查询 IP，还可以自动将域名解析为 IP 进行查询。<br>下面是程序代码： </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * IP 地理位置查询类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.5</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@copyright</span> 2005 phpkoo.com</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IpLocation</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * QQWry.Dat文件指针</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> resource</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> $fp;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 第一条IP记录的偏移地址</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> int</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> $firstip;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 最后一条IP记录的偏移地址</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> int</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> $lastip;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * IP记录的总条数（不包含版本信息记录）</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> int</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">var</span> $totalip;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回读取的长整型数</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@access</span> private</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getlong</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//将读取的little-endian编码的4个字节转化为长整型数</span></span><br><span class="line">        $result = unpack(<span class="string">'Vlong'</span>, fread(<span class="keyword">$this</span>-&gt;fp, <span class="number">4</span>));</span><br><span class="line">        <span class="keyword">return</span> $result[<span class="string">'long'</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回读取的3个字节的长整型数</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@access</span> private</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> int</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getlong3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//将读取的little-endian编码的3个字节转化为长整型数</span></span><br><span class="line">        $result = unpack(<span class="string">'Vlong'</span>, fread(<span class="keyword">$this</span>-&gt;fp, <span class="number">3</span>).chr(<span class="number">0</span>));</span><br><span class="line">        <span class="keyword">return</span> $result[<span class="string">'long'</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回压缩后可进行比较的IP地址</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@access</span> private</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $ip</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">packip</span><span class="params">($ip)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 将IP地址转化为长整型数，如果在PHP5中，IP地址错误，则返回False，</span></span><br><span class="line">        <span class="comment">// 这时intval将Flase转化为整数-1，之后压缩成big-endian编码的字符串</span></span><br><span class="line">        <span class="keyword">return</span> pack(<span class="string">'N'</span>, intval(ip2long($ip)));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回读取的字符串</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@access</span> private</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $data</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getstring</span><span class="params">($data = <span class="string">""</span>)</span> </span>&#123;</span><br><span class="line">        $char = fread(<span class="keyword">$this</span>-&gt;fp, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span> (ord($char) &gt; <span class="number">0</span>) &#123;        <span class="comment">// 字符串按照C格式保存，以�结束</span></span><br><span class="line">            $data .= $char;             <span class="comment">// 将读取的字符连接到给定字符串之后</span></span><br><span class="line">            $char = fread(<span class="keyword">$this</span>-&gt;fp, <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 返回地区信息</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@access</span> private</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> string</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getarea</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        $byte = fread(<span class="keyword">$this</span>-&gt;fp, <span class="number">1</span>);    <span class="comment">// 标志字节</span></span><br><span class="line">        <span class="keyword">switch</span> (ord($byte)) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:                     <span class="comment">// 没有区域信息</span></span><br><span class="line">                $area = <span class="string">""</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:                     <span class="comment">// 标志字节为1或2，表示区域信息被重定向</span></span><br><span class="line">                fseek(<span class="keyword">$this</span>-&gt;fp, <span class="keyword">$this</span>-&gt;getlong3());</span><br><span class="line">                $area = <span class="keyword">$this</span>-&gt;getstring();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:                    <span class="comment">// 否则，表示区域信息没有被重定向</span></span><br><span class="line">                $area = <span class="keyword">$this</span>-&gt;getstring($byte);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $area;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 根据所给 IP 地址或域名返回所在地区信息</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@access</span> public</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $ip</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> array</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getlocation</span><span class="params">($ip)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">$this</span>-&gt;fp) <span class="keyword">return</span> <span class="keyword">null</span>;            <span class="comment">// 如果数据文件没有被正确打开，则直接返回空</span></span><br><span class="line">        $location[<span class="string">'ip'</span>] = gethostbyname($ip);   <span class="comment">// 将输入的域名转化为IP地址</span></span><br><span class="line">        $ip = <span class="keyword">$this</span>-&gt;packip($location[<span class="string">'ip'</span>]);   <span class="comment">// 将输入的IP地址转化为可比较的IP地址</span></span><br><span class="line">                                                <span class="comment">// 不合法的IP地址会被转化为255.255.255.255</span></span><br><span class="line">        <span class="comment">// 对分搜索</span></span><br><span class="line">        $l = <span class="number">0</span>;                         <span class="comment">// 搜索的下边界</span></span><br><span class="line">        $u = <span class="keyword">$this</span>-&gt;totalip;            <span class="comment">// 搜索的上边界</span></span><br><span class="line">        $findip = <span class="keyword">$this</span>-&gt;lastip;        <span class="comment">// 如果没有找到就返回最后一条IP记录（QQWry.Dat的版本信息）</span></span><br><span class="line">        <span class="keyword">while</span> ($l &lt;= $u) &#123;              <span class="comment">// 当上边界小于下边界时，查找失败</span></span><br><span class="line">            $i = floor(($l + $u) / <span class="number">2</span>);  <span class="comment">// 计算近似中间记录</span></span><br><span class="line">            fseek(<span class="keyword">$this</span>-&gt;fp, <span class="keyword">$this</span>-&gt;firstip + $i * <span class="number">7</span>);</span><br><span class="line">            $beginip = strrev(fread(<span class="keyword">$this</span>-&gt;fp, <span class="number">4</span>));     <span class="comment">// 获取中间记录的开始IP地址</span></span><br><span class="line">            <span class="comment">// strrev函数在这里的作用是将little-endian的压缩IP地址转化为big-endian的格式</span></span><br><span class="line">            <span class="comment">// 以便用于比较，后面相同。</span></span><br><span class="line">            <span class="keyword">if</span> ($ip &lt; $beginip) &#123;       <span class="comment">// 用户的IP小于中间记录的开始IP地址时</span></span><br><span class="line">                $u = $i - <span class="number">1</span>;            <span class="comment">// 将搜索的上边界修改为中间记录减一</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                fseek(<span class="keyword">$this</span>-&gt;fp, <span class="keyword">$this</span>-&gt;getlong3());</span><br><span class="line">                $endip = strrev(fread(<span class="keyword">$this</span>-&gt;fp, <span class="number">4</span>));   <span class="comment">// 获取中间记录的结束IP地址</span></span><br><span class="line">                <span class="keyword">if</span> ($ip &gt; $endip) &#123;     <span class="comment">// 用户的IP大于中间记录的结束IP地址时</span></span><br><span class="line">                    $l = $i + <span class="number">1</span>;        <span class="comment">// 将搜索的下边界修改为中间记录加一</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;                  <span class="comment">// 用户的IP在中间记录的IP范围内时</span></span><br><span class="line">                    $findip = <span class="keyword">$this</span>-&gt;firstip + $i * <span class="number">7</span>;</span><br><span class="line">                    <span class="keyword">break</span>;              <span class="comment">// 则表示找到结果，退出循环</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取查找到的IP地理位置信息</span></span><br><span class="line">        fseek(<span class="keyword">$this</span>-&gt;fp, $findip);</span><br><span class="line">        $location[<span class="string">'beginip'</span>] = long2ip(<span class="keyword">$this</span>-&gt;getlong());   <span class="comment">// 用户IP所在范围的开始地址</span></span><br><span class="line">        $offset = <span class="keyword">$this</span>-&gt;getlong3();</span><br><span class="line">        fseek(<span class="keyword">$this</span>-&gt;fp, $offset);</span><br><span class="line">        $location[<span class="string">'endip'</span>] = long2ip(<span class="keyword">$this</span>-&gt;getlong());     <span class="comment">// 用户IP所在范围的结束地址</span></span><br><span class="line">        $byte = fread(<span class="keyword">$this</span>-&gt;fp, <span class="number">1</span>);    <span class="comment">// 标志字节</span></span><br><span class="line">        <span class="keyword">switch</span> (ord($byte)) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:                     <span class="comment">// 标志字节为1，表示国家和区域信息都被同时重定向</span></span><br><span class="line">                $countryOffset = <span class="keyword">$this</span>-&gt;getlong3();         <span class="comment">// 重定向地址</span></span><br><span class="line">                fseek(<span class="keyword">$this</span>-&gt;fp, $countryOffset);</span><br><span class="line">                $byte = fread(<span class="keyword">$this</span>-&gt;fp, <span class="number">1</span>);    <span class="comment">// 标志字节</span></span><br><span class="line">                <span class="keyword">switch</span> (ord($byte)) &#123;</span><br><span class="line">                    <span class="keyword">case</span> <span class="number">2</span>:             <span class="comment">// 标志字节为2，表示国家信息又被重定向</span></span><br><span class="line">                        fseek(<span class="keyword">$this</span>-&gt;fp, <span class="keyword">$this</span>-&gt;getlong3());</span><br><span class="line">                        $location[<span class="string">'country'</span>] = <span class="keyword">$this</span>-&gt;getstring();</span><br><span class="line">                        fseek(<span class="keyword">$this</span>-&gt;fp, $countryOffset + <span class="number">4</span>);</span><br><span class="line">                        $location[<span class="string">'area'</span>] = <span class="keyword">$this</span>-&gt;getarea();</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    <span class="keyword">default</span>:            <span class="comment">// 否则，表示国家信息没有被重定向</span></span><br><span class="line">                        $location[<span class="string">'country'</span>] = <span class="keyword">$this</span>-&gt;getstring($byte);</span><br><span class="line">                        $location[<span class="string">'area'</span>] = <span class="keyword">$this</span>-&gt;getarea();</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:                     <span class="comment">// 标志字节为2，表示国家信息被重定向</span></span><br><span class="line">                fseek(<span class="keyword">$this</span>-&gt;fp, <span class="keyword">$this</span>-&gt;getlong3());</span><br><span class="line">                $location[<span class="string">'country'</span>] = <span class="keyword">$this</span>-&gt;getstring();</span><br><span class="line">                fseek(<span class="keyword">$this</span>-&gt;fp, $offset + <span class="number">8</span>);</span><br><span class="line">                $location[<span class="string">'area'</span>] = <span class="keyword">$this</span>-&gt;getarea();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:                    <span class="comment">// 否则，表示国家信息没有被重定向</span></span><br><span class="line">                $location[<span class="string">'country'</span>] = <span class="keyword">$this</span>-&gt;getstring($byte);</span><br><span class="line">                $location[<span class="string">'area'</span>] = <span class="keyword">$this</span>-&gt;getarea();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($location[<span class="string">'country'</span>] == <span class="string">" CZ88.NET"</span>) &#123;  <span class="comment">// CZ88.NET表示没有有效信息</span></span><br><span class="line">            $location[<span class="string">'country'</span>] = <span class="string">"未知"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> ($location[<span class="string">'area'</span>] == <span class="string">" CZ88.NET"</span>) &#123;</span><br><span class="line">            $location[<span class="string">'area'</span>] = <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> $location;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造函数，打开 QQWry.Dat 文件并初始化类中的信息</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> string $filename</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> IpLocation</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($filename = <span class="string">"QQWry.Dat"</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;fp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> ((<span class="keyword">$this</span>-&gt;fp = @fopen($filename, <span class="string">'rb'</span>)) !== <span class="keyword">false</span>) &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;firstip = <span class="keyword">$this</span>-&gt;getlong();</span><br><span class="line">            <span class="keyword">$this</span>-&gt;lastip = <span class="keyword">$this</span>-&gt;getlong();</span><br><span class="line">            <span class="keyword">$this</span>-&gt;totalip = (<span class="keyword">$this</span>-&gt;lastip - <span class="keyword">$this</span>-&gt;firstip) / <span class="number">7</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 析构函数，用于在页面执行结束后自动关闭打开的文件。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;fp) &#123;</span><br><span class="line">            fclose(<span class="keyword">$this</span>-&gt;fp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;fp = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4.html" class="post-title-link" itemprop="url">Linux 常用命令</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2009-12-11 14:15:38" itemprop="dateCreated datePublished" datetime="2009-12-11T14:15:38+08:00">2009-12-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Linux 系统常用命令格式：<br>command [option] [argument1] [argument2] …</p>
+<p>其中option以“-”开始，多个option可用一个“-”连起来，如“ls -l -a” 与“ls -la”的效果是一样的。根据命令的不同，参数分为可选</p>
+<p>的或必须的；所有的命令从标准输入接受输入，输出结果显示在标准输出，而错误信息则显示在标准错误输出设备。可使用重定向功能对这些设备进行重定向。</p>
+<p>命令在正常执行结果后返回一个0值，如果命令出错可未完全完成，则返回一个非零值(在shell中可用变量$?查看)。 在shell script中可用此</p>
+<p>返回值作为控制逻辑的一部分。</p>
+<p>帮助命令:<br>man 获取相关命令的帮助信息<br>例如：man dir 可以获取关于dir的使用信息。</p>
+<p>info 获取相关命令的详细使用方法<br>例如：info info 可以获取如何使用info的详细信息。</p>
+<p>文件操作：<br>cat 显示文件内容和合并多个文件<br>clear 清屏<br>chattr 改变文件属性<br>chgrp 改变文件组权<br>chmod 改变文件或目录的权限<br>chown 改变文件的属权<br>comm 比较两个已排过序的文件<br>cp 将文件拷贝至另一文件<br>dd 从指定文件读取数据写到指定文件<br>df 报告磁盘空间使用情况<br>diff 比较两个文本文件，列出行不同之处<br>du 统计目录／文件所占磁盘空间的大小<br>file 辨识文件类型<br>emacs 功能强大的编辑环境<br>find 搜索文件并执行指定操作(find2)<br>grep 按给定模式搜索文件内容<br>head 显示指定文件的前若干行<br>less 按页显示文件<br>ln 创建文件链接<br>locate 查找符合条件的文件<br>more 在终端屏幕按帧显示文本文件<br>mv 文件或目录的移动或更名<br>rm/rmdir 删除文件／目录<br>sed 利用script来处理文本文件<br>sort 对指定文件按行进行排序<br>tail 显示指定文件的最后部分<br>touch 创建文件<br>tr 转换字符<br>vi 全屏编辑器<br>wc 显示指定文件中的行数，词数或字符数<br>which 在环境变量 $PATH 设置的目录里查找符合条件的文件</p>
+<p>压缩与备份:<br>bzip2/bunzip2 .bz2文件的压缩/解压缩程序<br>cpio 备份文件<br>dump 备份文件系统<br>gzip/gunzip .gz文件的压缩/解压缩程序<br>gzexe 压缩可执行文件<br>restore 还原由倾倒(Dump)操作所备份下来的文件或整个文件系统(一个分区)<br>tar 将若干文件存档或读取存档文件<br>unarj 解压缩.arj文件<br>zip/unzip 压缩/解压缩 zip文件<br>zipinfo 列出zip压缩文件的详细信息</p>
+<p>磁盘操作:<br>cd/pwd 切换目录/显示当前工作目录<br>df 显示磁盘的相关信息<br>du 显示目录或文件的大小<br>e2fsck 检查ext2/ext3文件系统的正确性<br>fdisk 对硬盘进行分区<br>fsck 检查文件系统并尝试修复错误<br>losetup 设置循环设备<br>ls 列出目录内容<br>mkdir 创建目录<br>mformat 对MS-DOS文件系统的磁盘进行格式化<br>mkbootdisk 建立目前系统的启动盘<br>mke2fs 建立ext2文件系统<br>mkisofs 制作iso光盘映像文件<br>mount/umount 加载文件系统/卸载文件系统<br>quota 显示磁盘已使用的空间与限制<br>sync 将内存缓冲区内的数据写入磁盘<br>tree 以树状图列出目录的内容</p>
+<p>系统操作:<br>alias 设置指令的别名<br>chkconfig 检查，设置系统的各种服务<br>clock 调整 RTC 时间<br>date 显示或设置系统时间与日期<br>dmesg 显示开机信息<br>eval 重新运算求出参数的内容<br>exit 退出目前的shell<br>export 设置或显示环境变量<br>finger 查找并显示用户信息<br>free 显示内存状态<br>hostid 显示主机标识<br>hostname 显示主机名<br>id 显示用户标识<br>kill 删除执行中的程序或工作<br>last 列出目前与过去登入系统的用户相关信息<br>logout 退出系统<br>lsmod 显示已载入系统的模块<br>modprobe 自动处理可载入模块<br>passwd 设置用户密码<br>ps process status 报告程序状况<br>reboot 重启计算机<br>rhwo 查看系统用户<br>rlogin 远程登入<br>rpm 管理Linux各项套件的程序<br>shutdown 关机<br>su switch user 变更用户身份<br>top 显示，管理执行中的程序<br>uname 显示系统信息<br>useradd/userdel 添加用户 / 删除用户<br>userinfo 图形界面的修改工具<br>usermod 修改用户属性，包括用户的shell类型，用户组等，甚至还能改登录名<br>w 显示目前注册的用户及用户正运行的命令<br>whereis 确定一个命令的二进制执行码，源码及帮助所在的位置<br>who 列出正在使用系统的用户<br>whois 查找并显示用户信息</p>
+<p>网络通信:<br>arp 网地址的显示及控制<br>ftp 文件传输<br>lftp 文件传输<br>mail 发送／接收电子邮件<br>mesg 允许或拒绝其他用户向自己所用的终端发送信息<br>mutt E-mail管理程序<br>ncftp 文件传输<br>netstat 显示网络连接、路由表和网络接口信息<br>pine 收发电子邮件，浏览新闻组<br>ping 向网络上的主机发送 icmp echo request 包<br>ssh 安全模式下的远程登录<br>telnet 远程登录<br>talk 与另一用户对话<br>traceroute 显示到达某一主机所经由的路径及所使用的时间<br>wget 从网络上自动下载文件<br>write 向其他用户的终</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/16.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/16.html" class="post-title-link" itemprop="url">PHP中判断空变量empty(),is_null(),isset()的区别</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2009-11-12 21:38:40" itemprop="dateCreated datePublished" datetime="2009-11-12T21:38:40+08:00">2009-11-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="http://www.php.net" target="_blank" rel="noopener" title="php">PHP</a> 中判断变量类型及是否为空主要涉及到的函数有gettype(),isEmpty(),isset(),is_null(),下表详细说</p>
+<p><img src="https://upload.phpkoo.com/uploads/2020/01/20200115222148-1024x677.png" alt=""></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">阿德</p>
+  <div class="site-description" itemprop="description">关注小众语言，记录、分享技术点滴！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">171</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿德</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

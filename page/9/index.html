@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="关注小众语言，记录、分享技术点滴！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="阿德的博客">
+<meta property="og:url" content="https://phpkoo.com/page/9/">
+<meta property="og:site_name" content="阿德的博客">
+<meta property="og:description" content="关注小众语言，记录、分享技术点滴！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="阿德">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://phpkoo.com/page/9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>阿德的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="阿德的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿德的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/68.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/68.html" class="post-title-link" itemprop="url">apache下ab网站压力测试命令参数及输出结果的中文注解</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-04-16 10:26:36" itemprop="dateCreated datePublished" datetime="2010-04-16T10:26:36+08:00">2010-04-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 10:43:28" itemprop="dateModified" datetime="2020-02-27T10:43:28+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Apache/" itemprop="url" rel="index"><span itemprop="name">Apache</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>以前安装好APACHE总是不知道该如何测试APACHE的性能，现在总算找到一个测试工具了。就是APACHE自带的测试工具AB(apache benchmark).在APACHE的bin目录下。<br><code>格式： ./ab [options] [http://]hostname[:port]/path</code><br>参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">-n requests Number of requests to perform  </span><br><span class="line">&#x2F;&#x2F;在测试会话中所执行的请求个数。默认时，仅执行一个请求  </span><br><span class="line">-c concurrency Number of multiple requests to make  </span><br><span class="line">&#x2F;&#x2F;一次产生的请求个数。默认是一次一个。  </span><br><span class="line">-t timelimit Seconds to max. wait for responses  </span><br><span class="line">&#x2F;&#x2F;测试所进行的最大秒数。其内部隐含值是-n 50000。它可以使对服务器的测试限制在一个固定的总时间以内。默认时，没有时间限制。  </span><br><span class="line">-p postfile File containing data to POST  </span><br><span class="line">&#x2F;&#x2F;包含了需要POST的数据的文件.  </span><br><span class="line">-T content-type Content-type header for POSTing  </span><br><span class="line">&#x2F;&#x2F;POST数据所使用的Content-type头信息。  </span><br><span class="line">-v verbosity How much troubleshooting info to print  </span><br><span class="line">&#x2F;&#x2F;设置显示信息的详细程度 – 4或更大值会显示头信息， 3或更大值可以显示响应代码(404, 200等), 2或更大值可以显示警告和其他信息。 -V 显示版本号并退出。  </span><br><span class="line">-w Print out results in HTML tables  </span><br><span class="line">&#x2F;&#x2F;以HTML表的格式输出结果。默认时，它是白色背景的两列宽度的一张表。  </span><br><span class="line">-i Use HEAD instead of GET  </span><br><span class="line">&#x2F;&#x2F; 执行HEAD请求，而不是GET。  </span><br><span class="line">-x attributes String to insert as table attributes  </span><br><span class="line">&#x2F;&#x2F;  </span><br><span class="line">-y attributes String to insert as tr attributes  </span><br><span class="line">&#x2F;&#x2F;  </span><br><span class="line">-z attributes String to insert as td or th attributes  </span><br><span class="line">&#x2F;&#x2F;  </span><br><span class="line">-C attribute Add cookie, eg. ‘Apache&#x3D;1234. (repeatable)  </span><br><span class="line">&#x2F;&#x2F;-C cookie-name&#x3D;value 对请求附加一个Cookie:行。 其典型形式是name&#x3D;value的一个参数对。此参数可以重复。  </span><br><span class="line">-H attribute Add Arbitrary header line, eg. ‘Accept-Encoding: gzip’  </span><br><span class="line">Inserted after all normal header lines. (repeatable)  </span><br><span class="line">-A attribute Add Basic WWW Authentication, the attributes  </span><br><span class="line">are a colon separated username and password.  </span><br><span class="line">-P attribute Add Basic Proxy Authentication, the attributes  </span><br><span class="line">are a colon separated username and password.  </span><br><span class="line">&#x2F;&#x2F;-P proxy-auth-username:password 对一个中转代理提供BASIC认证信任。用户名和密码由一个:隔开，并以base64编码形式发送。无论服务器是否需要(即, 是否发送了401认证需求代码)，此字符串都会被发送。  </span><br><span class="line">-X proxy:port Proxyserver and port number to use  </span><br><span class="line">-V Print version number and exit  </span><br><span class="line">-k Use HTTP KeepAlive feature  </span><br><span class="line">-d Do not show percentiles served table.  </span><br><span class="line">-S Do not show confidence estimators and warnings.  </span><br><span class="line">-g filename Output collected data to gnuplot format file.  </span><br><span class="line">-e filename Output CSV file with percentages served  </span><br><span class="line">-h Display usage information (this message)  </span><br><span class="line">&#x2F;&#x2F;-attributes 设置 属性的字符串. 缺陷程序中有各种静态声明的固定长度的缓冲区。另外，对命令行参数、服务器的响应头和其他外部输入的解析也很简单，这可能会有不良后果。它没有完整地实现 HTTP&#x2F;1.x; 仅接受某些’预想’的响应格式。 strstr(3)的频繁使用可能会带来性能问题，即, 你可能是在测试ab而不是服务器的性能。</span><br></pre></td></tr></table></figure>
+<p>参数很多,一般我们用 -c 和 -n 参数就可以了. 例如:<br><code>./ab -c 1000 -n 1000 http://127.0.0.1/index.php</code></p>
+<p>这个表示同时处理1000个请求并运行1000次index.php文件.  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;wp-content&#x2F;local&#x2F;xiaobai&#x2F;apache2054&#x2F;bin&#x2F;ab -c 1000 -n 1000 http:&#x2F;&#x2F;127.0.0.1&#x2F;index.html.zh-cn.gb2312  </span><br><span class="line">This is ApacheBench, Version 2.0.41-dev &lt;$Revision: 1.121.2.12 $&gt; apache-2.0  </span><br><span class="line">Copyright (c) 1996 Adam Twiss, Zeus Technology Ltd, http:&#x2F;&#x2F;www.zeustech.net&#x2F;  </span><br><span class="line">Copyright (c) 1998-2002 The Apache Software Foundation, http:&#x2F;&#x2F;www.apache.org&#x2F;</span><br><span class="line"></span><br><span class="line">Benchmarking 127.0.0.1 (be patient)  </span><br><span class="line">Completed 100 requests  </span><br><span class="line">Completed 200 requests  </span><br><span class="line">Completed 300 requests  </span><br><span class="line">Completed 400 requests  </span><br><span class="line">Completed 500 requests  </span><br><span class="line">Completed 600 requests  </span><br><span class="line">Completed 700 requests  </span><br><span class="line">Completed 800 requests  </span><br><span class="line">Completed 900 requests  </span><br><span class="line">Finished 1000 requests</span><br><span class="line"></span><br><span class="line">Server Software: Apache&#x2F;2.0.54  </span><br><span class="line">&#x2F;&#x2F;平台apache 版本2.0.54  </span><br><span class="line">Server Hostname: 127.0.0.1  </span><br><span class="line">&#x2F;&#x2F;服务器主机名  </span><br><span class="line">Server Port: 80  </span><br><span class="line">&#x2F;&#x2F;服务器端口</span><br><span class="line"></span><br><span class="line">Document Path: &#x2F;index.html.zh-cn.gb2312  </span><br><span class="line">&#x2F;&#x2F;测试的页面文档  </span><br><span class="line">Document Length: 1018 bytes  </span><br><span class="line">&#x2F;&#x2F;文档大小</span><br><span class="line"></span><br><span class="line">Concurrency Level: 1000  </span><br><span class="line">&#x2F;&#x2F;并发数  </span><br><span class="line">Time taken for tests: 8.188731 seconds  </span><br><span class="line">&#x2F;&#x2F;整个测试持续的时间  </span><br><span class="line">Complete requests: 1000  </span><br><span class="line">&#x2F;&#x2F;完成的请求数量  </span><br><span class="line">Failed requests: 0  </span><br><span class="line">&#x2F;&#x2F;失败的请求数量  </span><br><span class="line">Write errors: 0</span><br><span class="line"></span><br><span class="line">Total transferred: 1361581 bytes  </span><br><span class="line">&#x2F;&#x2F;整个场景中的网络传输量  </span><br><span class="line">HTML transferred: 1055666 bytes  </span><br><span class="line">&#x2F;&#x2F;整个场景中的HTML内容传输量  </span><br><span class="line">Requests per second: 122.12 [#&#x2F;sec] (mean)  </span><br><span class="line">&#x2F;&#x2F;大家最关心的指标之一，相当于 LR 中的 每秒事务数 ，后面括号中的 mean 表示这是一个平均值  </span><br><span class="line">Time per request: 8188.731 [ms] (mean)  </span><br><span class="line">&#x2F;&#x2F;大家最关心的指标之二，相当于 LR 中的 平均事务响应时间 ，后面括号中的 mean 表示这是一个平均值  </span><br><span class="line">Time per request: 8.189 [ms] (mean, across all concurrent requests)  </span><br><span class="line">&#x2F;&#x2F;每个请求实际运行时间的平均值  </span><br><span class="line">Transfer rate: 162.30 [Kbytes&#x2F;sec] received  </span><br><span class="line">&#x2F;&#x2F;平均每秒网络上的流量，可以帮助排除是否存在网络流量过大导致响应时间延长的问题</span><br><span class="line"></span><br><span class="line">Connection Times (ms)  </span><br><span class="line">min mean[+&#x2F;-sd] median max  </span><br><span class="line">Connect: 4 646 1078.7 89 3291  </span><br><span class="line">Processing: 165 992 493.1 938 4712  </span><br><span class="line">Waiting: 118 934 480.6 882 4554  </span><br><span class="line">Total: 813 1638 1338.9 1093 7785  </span><br><span class="line">&#x2F;&#x2F;网络上消耗的时间的分解，各项数据的具体算法还不是很清楚</span><br><span class="line"></span><br><span class="line">Percentage of the requests served within a certain time (ms)  </span><br><span class="line">50% 1093  </span><br><span class="line">66% 1247  </span><br><span class="line">75% 1373  </span><br><span class="line">80% 1493  </span><br><span class="line">90% 4061  </span><br><span class="line">95% 4398  </span><br><span class="line">98% 5608  </span><br><span class="line">99% 7368  </span><br><span class="line">100% 7785 (longest request)</span><br><span class="line">&#x2F;&#x2F;整个场景中所有请求的响应情况。在场景中每个请求都有一个响应时间，其中50％的用户响应时间小于1093 毫秒，60％ 的用户响应时间小于1247 毫秒，最大的响应时间小于7785 毫秒</span><br></pre></td></tr></table></figure>
+<p>由于对于并发请求，cpu实际上并不是同时处理的，而是按照每个请求获得的时间片逐个轮转处理的，所以基本上第一个Time per request时间约等于第二个Time per request时间乘以并发请求数</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/67.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/67.html" class="post-title-link" itemprop="url">php和asp.net的md5差别</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-04-16 10:13:42" itemprop="dateCreated datePublished" datetime="2010-04-16T10:13:42+08:00">2010-04-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 10:09:14" itemprop="dateModified" datetime="2020-02-27T10:09:14+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>asp.net的md5加密貌似是16位的<br>而php的md5加密是32位的<br>这样解决</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> substr(md5(<span class="string">'admin'</span>),<span class="number">8</span>,<span class="number">16</span>); <span class="comment">// 16位MD5加密效果等同于asp.net的md5</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line"><span class="keyword">echo</span> md5(<span class="string">'admin'</span>); <span class="comment">// 32位MD5加密</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/76.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/76.html" class="post-title-link" itemprop="url">给有重复记录的表添加唯一索引</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-04-14 22:10:49" itemprop="dateCreated datePublished" datetime="2010-04-14T22:10:49+08:00">2010-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>不希望数据表中有重复记录的时候我们可以给表添加一个联合唯一索引<br>例如，user表中有user_id,user_name两个字段，如果不希望有两条一摸一样的的user_id和user_name，我们可以给user表添加两个字段的联合唯一索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">user</span> <span class="keyword">add</span> <span class="keyword">unique</span> <span class="keyword">index</span>(user_id,user_name);</span><br></pre></td></tr></table></figure>
+<p>这样当向表中添加相同记录的时候，会返回1062的添加失败信息。<br>但是有一种情况是表中已经有n个重复的记录，这时候我们才想起来要添加唯一索引，再执行上面的操作时，数据库会告诉你已经有重复的记录了，建立索引失败，这时候，我们可以用下面的操作：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">ignore</span> <span class="keyword">table</span> <span class="keyword">user</span> <span class="keyword">add</span> <span class="keyword">unique</span> <span class="keyword">index</span>(user_id,user_name);</span><br></pre></td></tr></table></figure>
+<p>它会删除重复的记录（别怕，会保留一条），然后建立唯一索引，高效而且人性化。<br>尤其是绿色的那条sql,在建立索引的同时删除了重复数据，相当有用。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/65.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/65.html" class="post-title-link" itemprop="url">关闭window.open的子窗口并且刷新父窗口</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-03-23 23:51:14" itemprop="dateCreated datePublished" datetime="2010-03-23T23:51:14+08:00">2010-03-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在我们会在JS中用window.open来打开一个新窗口来处理一些操作，为了有更好的用户友好性，一般在关闭window.open打开的子窗口时，同时刷新父窗口来获取最新数据。代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">closeMeAndReloadParent</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     opener.location.reload();</span><br><span class="line">     <span class="built_in">window</span>.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/77.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/77.html" class="post-title-link" itemprop="url">PHP Token(令牌)设计</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-03-14 22:14:26" itemprop="dateCreated datePublished" datetime="2010-03-14T22:14:26+08:00">2010-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>设计目标:<br>避免重复提交数据.<br>检查来路,是否是外部提交<br>匹配要执行的动作(如果有多个逻辑在同一个页面实现,比如新增,删除,修改放到一个PHP文件里操作)<br>这里所说的token是在页面显示的时候,写到FORM的一个隐藏表单项(type=hidden).<br>token不可明文,如果是明文,那就太危险了,所以要采用一定的加密方式.密文要可逆.俺算法很白痴,所以采用了网上一个现成的方法.</p>
+<p>如何达到目的:<br>怎样避免重复提交?<br>在SESSION里要存一个数组,这个数组存放以经成功提交的token.在后台处理时,先判断这个token是否在这个数组里,如果存在,说明是重复提交.<br>如何检查来路?<br>可选项,这个token在生成的时候,加入了当前的session_id.如果别人copy你的html(token一迸copy),在提交时,理论上token里包含的session_id不等于当前session_id,就可以判断这次提交是外部提交.<br>如何匹配要执行的动作?<br>在token的时候,要把这个token的动作名称写进这个token里,这样,在处理的时候,把这个动作解出来进行比较就行了.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/64.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/64.html" class="post-title-link" itemprop="url">MySQL中同步两个表中的某些字段</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-03-13 17:24:14" itemprop="dateCreated datePublished" datetime="2010-03-13T17:24:14+08:00">2010-03-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>MySQL中同步两个表中的某些字段</p>
+<p>以前我们在写update的时候往往是使用 update tablename set columnname ＝ value这样的简单语法，而今天遇到一个需求，根据一张表中的数据来更新另外一张表中的某些字段值，比如有个A表和B表，A中有字段id，name，email，phone，cno，这里的cno也是唯一的，B表中有id，othercloumn，email，phone，cno，这时候想通过B中的email和phone值来更新A中的email和phone值。我们可以使用一下语句实现这个功能：</p>
+<p>语句1</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> A, B <span class="keyword">set</span> A.email= B.email <span class="keyword">where</span> A.cno=B.cno</span><br></pre></td></tr></table></figure>
+<p>语句2</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">update</span> A <span class="keyword">set</span> A.email= (<span class="keyword">select</span> B.email <span class="keyword">from</span> B <span class="keyword">where</span> A.cno=B.cno)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/63.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/63.html" class="post-title-link" itemprop="url">Javascript trim()函数实现</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-03-03 13:57:55" itemprop="dateCreated datePublished" datetime="2010-03-03T13:57:55+08:00">2010-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 10:14:43" itemprop="dateModified" datetime="2020-02-27T10:14:43+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在JavaScript中我们需要用到trim的地方很多，但是JavaScript又没有独立的trim函数或者方法可以使用，所以我们需要自己写个trim函数来实现我们的目的。<br>方案一： 以原型方式调用，即obj.trim()形式，此方式简单且使用方面广泛，定义方式如下： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** * 删除左右两端的空格 */</span></span><br><span class="line"><span class="built_in">String</span>.prototype.trim=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>, <span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除左边的空格 */</span></span><br><span class="line"><span class="built_in">String</span>.prototype.ltrim=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(^\s*)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除右边的空格 */</span></span><br><span class="line"><span class="built_in">String</span>.prototype.rtrim=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(\s*$)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用示例如下：</span></span><br><span class="line">alert(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value.trim());</span><br><span class="line">alert(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value.ltrim());</span><br><span class="line">alert(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value.rtrim());</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">方案二： 以工具方式调用，即trim(obj)的形式，此方式可以用于特殊处理需要，定义方式如下： </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="comment">/** * 删除左右两端的空格 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>, <span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除左边的空格 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ltrim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除右边的空格 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">rtrim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.replace(<span class="regexp">/(\s*$)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用示例如下：</span></span><br><span class="line">alert(trim(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value));</span><br><span class="line">alert(ltrim(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value));</span><br><span class="line">alert(rtrim(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value));</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/62.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/62.html" class="post-title-link" itemprop="url">黑客声称Windows 7比Linux安全</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-03-03 13:00:58" itemprop="dateCreated datePublished" datetime="2010-03-03T13:00:58+08:00">2010-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%9A%E7%95%8C%E6%96%B0%E9%97%BB/" itemprop="url" rel="index"><span itemprop="name">业界新闻</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Charlie Miller是黑客大赛Pwn2Own连续两年的冠军，最近他在接受访问的时候爆出，微软的Windows 7操作系统比苹果的MacOS更难攻破，当被问及Linux是否更加安全的时候，Charlie说攻击Linux操作系统实际上更加容易，之所以针对Linux的攻击较少，主要是因为其普及规模不如Windows操作系统，看样子开源软件真的并非一定安全。</p>
+<p>Charlie还提到，Flash插件实际上是一个巨大的安全威胁，安装了Flash的浏览器都是不安全的，很容易成为黑客攻击的目标。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/59.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/59.html" class="post-title-link" itemprop="url">人人网的系统架构</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-02-02 13:16:26" itemprop="dateCreated datePublished" datetime="2010-02-02T13:16:26+08:00">2010-02-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">WEB相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><strong>人人网使用的开源软件列表</strong></p>
+<p><strong>MySQL</strong><br>关系型数据库存储系统，我们的DBA团队很强大，每人管理上百台MySQL服务器，其他就不多说了，网上资料太多了</p>
+<p><strong>Tokyo Cabinet</strong><br>一个key-value的存储引擎，日本人开发，国内很多公司也开始使用，我们内部很多地方也用它来代替MySQL来做存储，比如我们的搜索结果页的用户资料，就是用它来做一层MySQL外的冗余存储，目的是加快搜索结果页的显示。在key-value并需要持久存储的场景下，用它比MySQL更有效，Cabinet本身只是一个存储引擎，没有网络处理能力，你可以用它作为自己的某个系统的下层存储引擎，更好的是搭配Tokyo Tyrant使用。</p>
+<p><strong>Tokyo Tyrant</strong><br>一个支持Memcached传输协议的网络接口，由Tokyo Cabinet的作者开发，目的是为Tokyo Cabinet提供网络接入能力，即Tokyo Tyrant处理网络连接，协议解析，然后调用Tokyo Cabinet的API来完成持久化存储。</p>
+<p><strong>ICE</strong><br>一个跨语言的网络通讯框架，框架本身提供了强大的通讯能力，管理工具，负载均衡方案，其跨语言能力也是一个很大的亮点，基于这个框架之上，我们选用合适的语言来提供合适的服务，比如我们使用C++来开发Cache服务，使用Java来开发一些逻辑服务。框架本身可以很重，也可以很轻，具体要看你怎么用：）</p>
+<p><strong>Memcached</strong><br>一个纯内存的key-value的cache系统，高效、稳定，使用广泛，如果你连它都没听说过就太out啦，memcached本身不具备分布式能力，需要依靠Client来实现分布，这里强调一点的是，你应该选择一致性Hash来做key的分布。各种语言的client都有，我们使用spymemcached作为java的Client，spymemcached是一个异步的NIO的memcached client，对网络IO的处理非常的精巧，也更加高效，同时因为提供异步操作方式，可以让你对Memcached的操作有更好的控制能力，Memcached到1.4.0版本之后，开始支持binary protocol，spymemcached对其也支持的比较好，使用binary protocol可以提高对协议的解析效率和网络IO的读写效率。<br>上面说到我们使用ICE自己开发了Cache服务，为什么我们还要用Memcached呢？主要在对Cache的操作粒度不一样，Memcached对Cache对象以binary byte作为一个整体来操作，需要频繁的序列化和反序列化，我们使用ICE提供的Cache服务，可以以Cache对象的一个或者多个字段来操作，比如一个用户对象，我们可以只更新它的姓名，而Memcached</p>
+<p><strong>Nginx</strong><br>高效、稳定的Web Server，我们利用其代理能力，做跨IDC的请求代理，同时也将其和我们的Resin(Java Web 容器)搭配，放在Resin的前面来解决Resin的对网络连接处理能力弱的问题，在一些小地方也用它来做7层的负载均衡</p>
+<p><strong>Resin</strong><br>一个Java Web Server，比Tomcat更高效，是我们主要的Java Web容器</p>
+<p><strong>Squid</strong><br>代理服务器，我们用他来做图片文件的反向代理缓存</p>
+<p><strong>LVS</strong><br>能提供4层的负载均衡，高效、高可用，高并发。我们用他替代了很多硬件的负载均衡设备</p>
+<p><strong>Struts</strong><br>Java web框架，不过这个已经是历史了，我们开发了一套自己的Web框架替代了它，未来我们也会把我们的内部的这套Web框架开源出来</p>
+<p><strong>Lucence</strong><br>基于Java的搜索引擎框架，用它我们构建了一个搜索集群来提供搜人的服务</p>
+<p><strong>Netty</strong><br>一个Java的网络框架，和apache的mina类似，但比mina更高效，我们用来做一些小的服务</p>
+<p><strong>Ganglia</strong><br>一个监控系统，帮组我们了解我们每台Server的资源利用情况</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/58.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/58.html" class="post-title-link" itemprop="url">如何计算域名过期时间？(转)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-01-29 13:44:47" itemprop="dateCreated datePublished" datetime="2010-01-29T13:44:47+08:00">2010-01-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/WEB%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">WEB相关</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>首先我们先来了解一下域名的各种状态及域名注册与删除周期。</p>
+<p><strong>国际域名注册与删除周期</strong></p>
+<p>通常情况下，英文国际域名分为四种状态：活动期、注册商保留期、赎回期以及删除期。  </p>
+<ol>
+<li>Active：国际域名在活动状态，最少注册时长不少于1年，最多注册时长不超过10年。  </li>
+<li>On Hold：注册商保留期，一般为30天（Oray所注册顶级域名的保留期大约为30天），此期间虽然域名过期了，但用户仍然可以通过Oray对域名进行续费。  </li>
+<li>RGP：赎回期，为40天，此期间用户必须付出高昂的费用才能重新获得该域名的拥有权。  </li>
+<li>Soon To Expire：删除期，为5天，此期间域名无法注册和赎回。  </li>
+<li>四种状态过后，域名管理机构释放域名给公众注册。  </li>
+</ol>
+<p><strong>国内域名注册与删除周期</strong></p>
+<p>通常情况下，国内域名分为三种状态  </p>
+<ol>
+<li>Active：国内域名在活动状态，最少注册时长不少于1年，最多注册时长不超过10年。  </li>
+<li>On Hold：注册商保留期，一般为1-45天（Oray所注册顶级域名的保留期大约为30天），此期间虽然域名过期了，但用户仍然可以通过Oray对域名进行续费。  </li>
+<li>RGP：赎回期，为15天，此期间用户必须付出高昂的费用才能重新获得该域名的拥有权。  </li>
+<li>三种状态过后，域名管理机构释放域名给公众注册。<br>可以看到，相比之下，国内域名过期后，释放出来给公众注册的时间比国际域名快，因此要更加注意对域名进行及时的续费。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">阿德</p>
+  <div class="site-description" itemprop="description">关注小众语言，记录、分享技术点滴！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">171</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿德</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>阿德的博客</title>
+  
+  <subtitle>关注小众语言，记录、分享技术点滴！</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://phpkoo.com/"/>
+  <updated>2020-02-27T01:02:52.738Z</updated>
+  <id>https://phpkoo.com/</id>
+  
+  <author>
+    <name>阿德</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Composer 使用记录</title>
+    <link href="https://phpkoo.com/posts/635.html"/>
+    <id>https://phpkoo.com/posts/635.html</id>
+    <published>2019-12-28T00:45:53.000Z</published>
+    <updated>2020-02-27T01:02:52.738Z</updated>
+    
+    <content type="html"><![CDATA[<p>Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。</p><p>运行 Composer 需要 PHP 5.3.2+ 以上版本。一些敏感的 PHP 设置和编译标志也是必须的，但对于任何不兼容项安装程序都会抛出警告。</p><p><strong>全局安装</strong> <strong>（推荐）</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https://getcomposer.org/installer | php</span><br><span class="line"></span><br><span class="line">mv composer.phar /usr/<span class="built_in">local</span>/bin/composer</span><br></pre></td></tr></table></figure><p>局部安装</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sS https://getcomposer.org/installer | php</span><br></pre></td></tr></table></figure><p><strong>全局配置（推荐）</strong></p><p>阿里 Composer 全量镜像</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/</span><br></pre></td></tr></table></figure><p>取消配置</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer config -g --<span class="built_in">unset</span> repos.packagist</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。&lt;/p&gt;
+&lt;p&gt;运行 Composer 需要 PHP 5.3.2+ 以上版本。一些敏感的 PHP 设置和编译标志也是必须的，但对于任何不兼容项安装程序都会抛出警告
+      
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="https://phpkoo.com/categories/PHP/"/>
+    
+    
+      <category term="php" scheme="https://phpkoo.com/tags/php/"/>
+    
+      <category term="composer" scheme="https://phpkoo.com/tags/composer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Xshell6 &amp; Xftp6 和谐大法</title>
+    <link href="https://phpkoo.com/posts/602.html"/>
+    <id>https://phpkoo.com/posts/602.html</id>
+    <published>2019-12-27T01:10:56.000Z</published>
+    <updated>2020-02-27T01:02:52.757Z</updated>
+    
+    <content type="html"><![CDATA[<p>Xshell 是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。<br>　　Xftp是一种灵活且轻量级的SFTP/FTP客户端，用于需要安全地通过网络传输文件的用户。文件传输被简化，使用拖拽、直接编辑和增强的同步，这些特性在直观的标签界面中被封装。</p><h4 id="Xshell-amp-Xftp-显示评估期已过，怎么解决？"><a href="#Xshell-amp-Xftp-显示评估期已过，怎么解决？" class="headerlink" title="Xshell &amp; Xftp 显示评估期已过，怎么解决？"></a>Xshell &amp; Xftp 显示评估期已过，怎么解决？</h4><p><strong>一、 卸载所有版本的Xshell，Xmanager，Xftp，Xldp和Netsarang产品</strong>，并从注册表中删除 NetSarang 目录 (HKEY_CURRENT_USER\Software\NetSarang)。</p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-c7b4ea247f6f3968-1024x645-1.jpg" alt=""></p><p><strong>二、下载 Xshell 6 &amp; Xftp 6</strong></p><p>下载方式</p><blockquote><p>在 <a href="http://www.netsarang.com/download/main.html" target="_blank" rel="noopener">http://www.netsarang.com/download/main.html</a> 选择下载评估版，收到下载地址后将下载地址加上r。<br>例如 <a href="https://cdn.netsarang.net/f8a8d224/XmanagerPowerSuite-6.0.0009.exe" target="_blank" rel="noopener">https://cdn.netsarang.net/f8a8d224/XmanagerPowerSuite-6.0.0009.exe</a> ，<br>改为 <a href="https://cdn.netsarang.net/f8a8d224/XmanagerPowerSuite-6.0.0009r.exe" target="_blank" rel="noopener">https://cdn.netsarang.net/f8a8d224/XmanagerPowerSuite-6.0.0009r.exe</a> 。<br>如果下载不带r的版本，无法输入序列号，注意不要下载到“思杰马克丁”特供版，下载完毕后，对安装包右键，属性，数字签名，如果是官方版则是“NetSarang Computer, Inc.”。</p></blockquote><p><img src="https://upload.phpkoo.com/uploads/2019/12/20191227085840.png" alt=""></p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-a9351873fd98543a-1024x1014-1.jpg" alt=""></p><p><strong>三、 添加路由到 C:\Windows\System32\drivers\etc\hosts</strong></p><blockquote><p>127.0.0.1 transact.netsarang.com<br>127.0.0.1 update.netsarang.com<br>127.0.0.1 <a href="http://www.netsarang.com" target="_blank" rel="noopener">www.netsarang.com</a><br>127.0.0.1 <a href="http://www.netsarang.co.kr" target="_blank" rel="noopener">www.netsarang.co.kr</a><br>127.0.0.1 sales.netsarang.com</p></blockquote><p><strong>四、一定要在前三步骤做完之后再安装带r版本的 Xshell6 &amp; Xftp6</strong></p><blockquote><p>注册码<br>Xshell Plus 6 : 180505-117501-020791<br>Xmanager Power Suite 6 :180429-116253-999126</p></blockquote><p><strong>五、安装完成后，将对应的程序运行一次后，打开注册表，将下列字段设置为当前用户拒绝全部权限，否则会反弹</strong></p><blockquote><p>HKEY_CURRENT_USER\Software\NetSarang\Xftp\6\LiveUpdate<br>HKEY_CURRENT_USER\Software\NetSarang\Xlpd\6\LiveUpdate<br>HKEY_CURRENT_USER\Software\NetSarang\Xmanager\6\LiveUpdate<br>HKEY_CURRENT_USER\Software\NetSarang\Xshell\6\LiveUpdate</p></blockquote><p><strong>打开注册表程序（开始 -&gt; 运行 -&gt; regedit 或 win + R 打开运行输入 regedit 回车进入注册表编辑器）</strong></p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-6a0ab99e9fc7aadd-1024x912-1.jpg" alt=""></p><p><strong>点击 “高级”</strong></p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-ac71a019b4cf2ded-1024x874-1.jpg" alt=""></p><p><strong>禁用继承</strong></p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-c3496cbe0ebbb745-1024x729-1.jpg" alt=""></p><p><strong>权限转换</strong></p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-e3db2968581322d3-1024x874-1.jpg" alt=""></p><p><strong>编辑并取消各用户的所有权限</strong></p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-dceed98e752920b2-1024x750-1.jpg" alt=""></p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-0ea7149d506ac2dd-1024x674-1.jpg" alt=""></p><p><strong>已注册的Xshell6</strong></p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-9a9919fa6d3464a2-1024x716-1.jpg" alt=""></p><p>Xftp同样按照以上步骤操作，把权限去掉即可。</p><p><strong>六、彻底禁用 Xshell &amp; Xftp 更新</strong></p><p>xshell菜单—-工具—选项<br>在选项设置里面，点击更新选项卡，去掉实时更新的勾选</p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-254056398bdbc76d-1024x371-1.jpg" alt=""></p><p>删除更新程序</p><p><img src="https://upload.phpkoo.com/uploads/2019/12/1926763-4f42e18be6398dc7-1024x733-1.jpg" alt=""></p><p>也可以把 LiveUpdate.exe 换成别的一个空文件来替换</p><blockquote><p>注册码可以用这个生成<br><a href="https://github.com/DoubleLabyrinth/Xmanager-keygen" target="_blank" rel="noopener">https://github.com/DoubleLabyrinth/Xmanager-keygen</a><br>需要用Python3.6 执行</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Xshell 是一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。Xshell 通过互联网到远程主机的安全连接以及它创新性的设计和特色帮助用户在复杂的网络环境中享受他们的工作。&lt;br&gt;　　Xftp是一
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
+    
+    
+      <category term="xshell" scheme="https://phpkoo.com/tags/xshell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>怎样增大 Linux 系统的 open file(s) 上限</title>
+    <link href="https://phpkoo.com/posts/596.html"/>
+    <id>https://phpkoo.com/posts/596.html</id>
+    <published>2019-11-18T00:50:23.000Z</published>
+    <updated>2020-02-27T01:02:52.743Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在工作中遇到一个问题，尝试直接将服务运行在高配（40core, 192GB；相比虚拟机来说） 的物理机上，但是发现服务打开的文件句柄达到 80 万左右就不能再开更多了。</p><p>80 万已经是一个不小的值了，通常情况下，Linux 默认的值都很小，例如：Debian 8(jessie) 给普通用户设置的 open file(s) 限制为 65536， 可以通过下面的命令查看当前限制。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n</span><br><span class="line">$ <span class="built_in">ulimit</span> -Sn</span><br><span class="line">$ <span class="built_in">ulimit</span> -Hn</span><br></pre></td></tr></table></figure><p><code>ulimit</code> 是一个 shell（这里使用的是 bash） 内置命令，可以通过 <code>type ulimit</code> 验证。</p><p><code>-n</code> 即表示查看或者设置 open file(s) 的限制，在 ulimit 中，每个限制都有两种类型：</p><ul><li><code>-S</code>, soft limit, 软限制，用户可以上调软限制到硬限制</li><li><code>-H</code>, hard limit, 硬限制，非 root 用户不能修改</li></ul><p>如果没有指明，则同时修改软限制和硬限制。</p><h2 id="修改-ulimit"><a href="#修改-ulimit" class="headerlink" title="修改 ulimit"></a>修改 ulimit</h2><p>修改分为临时修改和永久修改，临时修改只对当前 session 有效，登出和重启后都恢复系统设置。</p><p>临时修改使用 <code>ulimit</code> 命令，以修改 open file(s) 为例。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n 1024000</span><br><span class="line">$ <span class="built_in">ulimit</span> -n</span><br><span class="line">1024000</span><br></pre></td></tr></table></figure><p>永久修改需要修改 <code>/etc/security/limits.conf</code> 或者在 <code>/etc/security/limits.d/</code> 目录下添加一个文件。具体格式参考 <code>/etc/security/limits.conf</code>，里面有详细说明。</p><h2 id="open-file-s-上限"><a href="#open-file-s-上限" class="headerlink" title="open file(s) 上限"></a>open file(s) 上限</h2><p>回到遇到的问题中来：服务打开 80 万个左右的文件句柄就不能再打开了。所以， 尝试将 ulimit 设置为 1000 万，结果提示出错：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n 10000000</span><br><span class="line">-bash: <span class="built_in">ulimit</span>: open files: cannot modify <span class="built_in">limit</span>: Operation not permitted</span><br></pre></td></tr></table></figure><p>注意，使用的可以 root 用户，居然没有权限，然后尝试降低到：</p><ul><li>500 万，依然错误</li><li>300 万，依然错误</li><li>200 万，依然错误</li><li>100 万，成功了</li></ul><p>显然，这里有一个上限，大概在 100-200 万之间。</p><p>所以，解决问题的办法，在于怎样提高这个上限！</p><p>通过一番搜索，发现 open file(s) kernel 级别有 2 个配置，分别是：</p><p>fs.nr_open，进程级别<br>fs.file-max，系统级别</p><p><code>fs.nr_open</code> 默认设置的上限是 1048576，所以用户的 open file(s) 不可能超过这个上限。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sysctl -w fs.nr_open=10000000</span><br><span class="line">$ <span class="built_in">ulimit</span> -n 10000000</span><br><span class="line">$ <span class="built_in">ulimit</span> -n</span><br><span class="line">10000000</span><br></pre></td></tr></table></figure><p>修改后即可设置更大的 open file(s) 了。</p><p>同样，对于 kernel 参数的修改，<code>sysctl</code> 命令修改的是当前运行时，如果需要永久修改， 则将配置添加到 <code>/etc/sysctl.conf</code> 中，例如：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">"fs.nr_open = 10000000"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">"fs.file-max = 11000000"</span> &gt;&gt; /etc/sysctl.conf</span><br></pre></td></tr></table></figure><p>注意：<code>fs.nr_open</code> 总是应该小于等于 <code>fs.file-max</code>。</p><p>如果要查看当前打开的文件数，使用下面的命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sysctl fs.file-nr</span><br><span class="line">$ fs.file-nr = 1760       0       11000000</span><br></pre></td></tr></table></figure><p>不过，增大这些值意味着能够打开更多的文件（在 Linux 中，everything is file，包括 socket），但是同时也意味着消耗更多的资源，所以基本上在物理机上才会遇到这种问题。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近在工作中遇到一个问题，尝试直接将服务运行在高配（40core, 192GB；相比虚拟机来说） 的物理机上，但是发现服务打开的文件句柄达到 80 万左右就不能再开更多了。&lt;/p&gt;
+&lt;p&gt;80 万已经是一个不小的值了，通常情况下，Linux 默认的值都很小，例如：Debia
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
+    
+    
+      <category term="linux" scheme="https://phpkoo.com/tags/linux/"/>
+    
+      <category term="ulimit" scheme="https://phpkoo.com/tags/ulimit/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang mod使用私有仓库相关事项</title>
+    <link href="https://phpkoo.com/posts/580.html"/>
+    <id>https://phpkoo.com/posts/580.html</id>
+    <published>2019-10-12T13:48:57.000Z</published>
+    <updated>2020-02-27T01:02:52.747Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、Go get命令出现terminal prompts disabled解决</p><p>原因go get disable “terminal prompt” by default（Go get 命令默认禁用terminal prompt，即终端提示）</p><p>解决方案</p><p>设置环境变量：<code>GIT_TERMINAL_PROMPT=1</code>， 可以把上面的命令写到 <code>.bashrc</code> 或 <code>.bash_profile</code> 文件当中。</p><p>二、一键解决 go get golang.org/x 包失败</p><p>当我们使用 <code>go get</code>、<code>go install</code>、<code>go mod</code> 等命令时，会自动下载相应的包或依赖包。但由于众所周知的原因，类似于 <code>golang.org/x/...</code> 的包会出现下载失败的情况。如下所示：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ go get -u golang.org/x/sys  </span><br><span class="line">  </span><br><span class="line">go get golang.org/x/sys: unrecognized import path <span class="string">"golang.org/x/sys"</span> (https fetch: Get https://golang.org/x/sys?go-get=1: dial tcp 216.239.37.1:443: i/o timeout)</span><br></pre></td></tr></table></figure><p>我们可以通过设置GOPROXY 环境变量来解决，我们知道从 <code>Go 1.11</code> 版本开始，官方支持了 <code>go module</code> 包依赖管理工具。其实还新增了 <code>GOPROXY</code> 环境变量。</p><p>解决方案</p><p>设置环境变量：<code>GOPROXY=https://goproxy.io</code>， 可以把上面的命令写到 <code>.bashrc</code> 或 <code>.bash_profile</code> 文件当中。</p><p>三、总结</p><p>解决 terminal prompts disabled</p><p><code>export GIT_TERMINAL_PROMPT=1</code></p><p>解决 go get golang.org/x 包失败</p><p><code>export GOPROXY=https://goproxy.io</code></p><p>启用 Go Modules 功能</p><p><code>export GO111MODULE=on</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一、Go get命令出现terminal prompts disabled解决&lt;/p&gt;
+&lt;p&gt;原因go get disable “terminal prompt” by default（Go get 命令默认禁用terminal prompt，即终端提示）&lt;/p&gt;
+&lt;p&gt;解
+      
+    
+    </summary>
+    
+    
+      <category term="GoLang" scheme="https://phpkoo.com/categories/GoLang/"/>
+    
+    
+      <category term="golang" scheme="https://phpkoo.com/tags/golang/"/>
+    
+      <category term="mod" scheme="https://phpkoo.com/tags/mod/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git报错 SSL connect error</title>
+    <link href="https://phpkoo.com/posts/564.html"/>
+    <id>https://phpkoo.com/posts/564.html</id>
+    <published>2019-08-28T08:41:27.000Z</published>
+    <updated>2020-02-27T01:02:52.745Z</updated>
+    
+    <content type="html"><![CDATA[<p>报错信息：  </p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: unable to access <span class="string">'https://github.com/***/***'</span>: SSL connect error</span><br></pre></td></tr></table></figure><p>解决办法：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslversion tlsv1</span><br></pre></td></tr></table></figure><p>或者</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslVerify <span class="literal">false</span>   <span class="comment">#设置跳过SSL证书验证</span></span><br></pre></td></tr></table></figure><p>如果还不行，可能是ssh版本过低需要升级ssh。执行命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum update nss     <span class="comment">#redhat  centos</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;报错信息：  &lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;p
+      
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="https://phpkoo.com/categories/PHP/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>centos下php7安装gmagick扩展</title>
+    <link href="https://phpkoo.com/posts/511.html"/>
+    <id>https://phpkoo.com/posts/511.html</id>
+    <published>2019-01-18T04:13:28.000Z</published>
+    <updated>2020-02-27T01:02:52.729Z</updated>
+    
+    <content type="html"><![CDATA[<p>GraphicsMagick 是 ImageMagick 的另一个分支功能和 ImageMagick 类似。下面我们介绍一下在PHP7下如何安装扩展。</p><p>一、安装 GraphicsMagick 依赖</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install GraphicsMagick-devel</span><br></pre></td></tr></table></figure><p>二、选择手动方式安装gmagick（php扩展）<br>我们这里选择最新稳定版（gmagick-2.0.5RC1）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://pecl.php.net/get/gmagick-2.0.5RC1.tgz  </span><br><span class="line">tar -zxvf gmagick-2.0.5RC1.tgz  </span><br><span class="line"><span class="built_in">cd</span> gmagick-2.0.5RC1  </span><br><span class="line">/usr/<span class="built_in">local</span>/php/bin/phpize  </span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config  </span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure><p>三、选择pecl方式安装gmagick（php扩展）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pecl install gmagick</span><br></pre></td></tr></table></figure><p>四、修改php.ini 增加 extension，同时reload php-fpm 完成。</p><p>ps：<br>安装过程中可能出现以下问题<br>linux ‘….’:is not a valid libtool object”错误<br>解决方法</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make clean</span><br></pre></td></tr></table></figure><p>然后在重新执行命令，原因是编译的时候有问题重新编译一下文件就解决了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;GraphicsMagick 是 ImageMagick 的另一个分支功能和 ImageMagick 类似。下面我们介绍一下在PHP7下如何安装扩展。&lt;/p&gt;
+&lt;p&gt;一、安装 GraphicsMagick 依赖&lt;/p&gt;
+&lt;figure class=&quot;highlight sh
+      
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="https://phpkoo.com/categories/PHP/"/>
+    
+    
+      <category term="php" scheme="https://phpkoo.com/tags/php/"/>
+    
+      <category term="GMAGICK" scheme="https://phpkoo.com/tags/GMAGICK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS下yum安装libmcrypt错误：No package libmcrypt available</title>
+    <link href="https://phpkoo.com/posts/507.html"/>
+    <id>https://phpkoo.com/posts/507.html</id>
+    <published>2019-01-17T09:29:01.000Z</published>
+    <updated>2020-02-27T01:02:52.731Z</updated>
+    
+    <content type="html"><![CDATA[<p>错误描述：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install libmcrypt libmcrypt-devel</span><br><span class="line"></span><br><span class="line">Setting up Install Process</span><br><span class="line">No package libmcrypt available.</span><br><span class="line">No package libmcrypt-devel available.</span><br><span class="line">Error: Nothing to <span class="keyword">do</span></span><br></pre></td></tr></table></figure><p>我们会看到centos yum从仓库中根本找不到这几个包。但我不想使用源码编译就想使用yum安装，怎么办？<br>解决方法：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release  <span class="comment">#扩展包更新包</span></span><br><span class="line">yum update <span class="comment">#更新yum源</span></span><br></pre></td></tr></table></figure><p>然后再重新</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install libmcrypt libmcrypt-devel</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;错误描述：&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
+    
+      <category term="PHP" scheme="https://phpkoo.com/categories/Linux/PHP/"/>
+    
+    
+      <category term="centos7" scheme="https://phpkoo.com/tags/centos7/"/>
+    
+      <category term="yum" scheme="https://phpkoo.com/tags/yum/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>.gitignore 不起作用的解决办法</title>
+    <link href="https://phpkoo.com/posts/504.html"/>
+    <id>https://phpkoo.com/posts/504.html</id>
+    <published>2019-01-01T14:21:11.000Z</published>
+    <updated>2020-02-27T01:02:52.746Z</updated>
+    
+    <content type="html"><![CDATA[<p>把某些目录或文件加入.gitignore规则，发现并未生效，原因是.gitignore只能忽略那些原来没有被追踪的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未被追踪状态），然后再提交：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m 'update .gitignore'</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;把某些目录或文件加入.gitignore规则，发现并未生效，原因是.gitignore只能忽略那些原来没有被追踪的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未被追踪状态），然后再提交：&lt;/p&gt;
+&lt;f
+      
+    
+    </summary>
+    
+    
+      <category term="Git" scheme="https://phpkoo.com/categories/Git/"/>
+    
+    
+      <category term="git" scheme="https://phpkoo.com/tags/git/"/>
+    
+      <category term="gitignore" scheme="https://phpkoo.com/tags/gitignore/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos 7 下安装openvpn</title>
+    <link href="https://phpkoo.com/posts/490.html"/>
+    <id>https://phpkoo.com/posts/490.html</id>
+    <published>2018-10-29T06:00:06.000Z</published>
+    <updated>2020-02-27T01:02:52.722Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、环境版本<br>1、CentOS 7.4<br>2、OpenVPN 2.4.6<br>3、easy-rsa 3.0</p><p>二、安装</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br><span class="line">yum install -y openssl openssl-devel lzo lzo-devel pam pam-devel automake pkgconfig makecache</span><br><span class="line">yum install -y openvpn</span><br><span class="line">yum install -y easy-rsa</span><br></pre></td></tr></table></figure><p>三、添加openvpn配置用户</p><p>#启动openvpn的用户</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd openvpn</span><br><span class="line">useradd -g openvpn -M -s /sbin/nologin openvpn</span><br></pre></td></tr></table></figure><p>四、创建配置文件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/openvpn/</span><br><span class="line">cp -r /usr/share/easy-rsa/ /etc/openvpn/</span><br><span class="line">cp -r /usr/share/doc/easy-rsa-3.0.3/vars.example /etc/openvpn/easy-rsa/3.0/vars</span><br><span class="line">cp -r /usr/share/doc/openvpn-2.4.6/sample/sample-config-files/server.conf /etc/openvpn/server.conf</span><br></pre></td></tr></table></figure><p>五、修改easy-rsa密钥生成配置（修改第45、65、76、84-89、97、105、113、117、134、139、171、180、192行）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/openvpn/easy-rsa/3.0/vars</span><br><span class="line"></span><br><span class="line">set_var EASYRSA <span class="string">"<span class="variable">$PWD</span>"</span></span><br><span class="line">set_var EASYRSA_PKI <span class="string">"<span class="variable">$EASYRSA</span>/pki"</span></span><br><span class="line">set_var EASYRSA_DN <span class="string">"cn_only"</span></span><br><span class="line">set_var EASYRSA_REQ_COUNTRY <span class="string">"CN"</span></span><br><span class="line">set_var EASYRSA_REQ_PROVINCE <span class="string">"BEIJING"</span></span><br><span class="line">set_var EASYRSA_REQ_CITY <span class="string">"BEIJING"</span></span><br><span class="line">set_var EASYRSA_REQ_ORG <span class="string">"OpenVPN CERTIFICATE AUTHORITY"</span></span><br><span class="line">set_var EASYRSA_REQ_EMAIL <span class="string">"110@qq.com"</span></span><br><span class="line">set_var EASYRSA_REQ_OU <span class="string">"OpenVPN EASY CA"</span></span><br><span class="line">set_var EASYRSA_KEY_SIZE 2048</span><br><span class="line">set_var EASYRSA_ALGO rsa</span><br><span class="line">set_var EASYRSA_CA_EXPIRE 7000</span><br><span class="line">set_var EASYRSA_CERT_EXPIRE 3650</span><br><span class="line">set_var EASYRSA_NS_SUPPORT <span class="string">"no"</span></span><br><span class="line">set_var EASYRSA_NS_COMMENT <span class="string">"OpenVPN CERTIFICATE AUTHORITY"</span></span><br><span class="line">set_var EASYRSA_EXT_DIR <span class="string">"<span class="variable">$EASYRSA</span>/x509-types"</span></span><br><span class="line">set_var EASYRSA_SSL_CONF <span class="string">"<span class="variable">$EASYRSA</span>/openssl-1.0.cnf"</span></span><br><span class="line">set_var EASYRSA_DIGEST <span class="string">"sha256"</span></span><br></pre></td></tr></table></figure><p>六、生成ca证书</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/openvpn/easy-rsa/3.0</span><br><span class="line">./easyrsa init-pki</span><br><span class="line">./easyrsa build-ca</span><br><span class="line"><span class="comment">#设置ca密码（输入两次）：</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#生成Diffie Hellman key exchange文件</span></span><br><span class="line">./easyrsa gen-dh</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成tls-auth key文件</span></span><br><span class="line"><span class="built_in">cd</span> /etc/openvpn</span><br><span class="line">openvpn --genkey --secret ta.key</span><br><span class="line"></span><br><span class="line"><span class="comment">#使用gen-req来生成req</span></span><br><span class="line"><span class="built_in">cd</span> /etc/openvpn/easy-rsa/3.0</span><br><span class="line">./easyrsa  gen-req wwwserver</span><br><span class="line"></span><br><span class="line"><span class="comment">#签发服务端证书</span></span><br><span class="line">./easyrsa sign-req server wwwserver</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成客户端用户</span></span><br><span class="line">./easyrsa build-client-full www001</span><br></pre></td></tr></table></figure><p>七、修改openvpn服务端配置</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/openvpn/server.conf</span><br><span class="line"></span><br><span class="line">port 1194</span><br><span class="line">proto udp</span><br><span class="line">dev tun</span><br><span class="line">ca /etc/openvpn/easy-rsa/3.0/pki/ca.crt</span><br><span class="line">cert /etc/openvpn/easy-rsa/3.0/pki/issued/wwwserver.crt</span><br><span class="line">key /etc/openvpn/easy-rsa/3.0/pki/private/wwwserver.key</span><br><span class="line">dh /etc/openvpn/easy-rsa/3.0.3/pki/dh.pem</span><br><span class="line">tls-auth /etc/openvpn/ta.key 0</span><br><span class="line">server 10.8.0.0 255.255.255.0</span><br><span class="line">ifconfig-pool-persist ipp.txt</span><br><span class="line">push <span class="string">"redirect-gateway def1 bypass-dhcp"</span></span><br><span class="line">push <span class="string">"dhcp-option DNS 223.5.5.5"</span></span><br><span class="line">push <span class="string">"dhcp-option DNS 114.114.114.114"</span></span><br><span class="line">keepalive 10 120</span><br><span class="line">cipher AES-256-CBC</span><br><span class="line">comp-lzo</span><br><span class="line">max-clients 50</span><br><span class="line">user openvpn</span><br><span class="line">group openvpn</span><br><span class="line">persist-key</span><br><span class="line">persist-tun</span><br><span class="line">status openvpn-status.log</span><br><span class="line"><span class="built_in">log</span>-append openvpn.log</span><br><span class="line">verb 3</span><br><span class="line">mute 20</span><br></pre></td></tr></table></figure><p>八、服务器防火墙和路由配置</p><p>在iptables中添加一条路由转发规则, 并保存:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -j MASQUERADE</span><br><span class="line">iptables-save</span><br></pre></td></tr></table></figure><p>同时, 我们必须在sysctl中启用ip forward.<br>打开文件vi /etc/sysctl.conf, 并添加以下内容:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.ip_forward = 1</span><br></pre></td></tr></table></figure><p>然后重启网络:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart network.service</span><br></pre></td></tr></table></figure><p>九、启动服务器</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start openvpn@server</span><br><span class="line"><span class="comment">#启动时输入服务端证书密码：</span></span><br></pre></td></tr></table></figure><p>十、客户端配置（下载客户端证书）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /etc/openvpn/client</span><br><span class="line">cp -r /etc/openvpn/easy-rsa/3.0/pki/issued/www001.crt /etc/openvpn/client/</span><br><span class="line">cp -r /etc/openvpn/easy-rsa/3.0/pki/private/www001.key /etc/openvpn/client/</span><br><span class="line">cp -r /etc/openvpn/easy-rsa/3.0/pki/ca.crt /etc/openvpn/client/</span><br><span class="line">cp -r /etc/openvpn/ta.key /etc/openvpn/client/</span><br></pre></td></tr></table></figure><p>十一、修改客户端ovpn文件</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">client</span><br><span class="line">dev tun</span><br><span class="line">proto udp</span><br><span class="line">remote xxx.xxx.xxx.xxx 1194 <span class="comment">#改成外网IP</span></span><br><span class="line">resolv-retry infinite</span><br><span class="line">nobind</span><br><span class="line">persist-key</span><br><span class="line">persist-tun</span><br><span class="line">comp-lzo</span><br><span class="line">ca ca.crt</span><br><span class="line">cert www001.crt</span><br><span class="line">key www001.key</span><br><span class="line">remote-cert-tls server</span><br><span class="line">tls-auth ta.key 1</span><br><span class="line">cipher AES-256-CBC</span><br><span class="line">keepalive 10 120</span><br><span class="line">verb 5</span><br></pre></td></tr></table></figure><p>ps<br>1、如果是阿里云的专用网络，需要配置放行1194端口udp<br>2、如生成证书时输错密码（删除以下文件即可）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /etc/openvpn/easy-rsa/3.0/pki/reqs/www001.req</span><br><span class="line">rm -rf /etc/openvpn/easy-rsa/3.0/pki/private/www001.key</span><br></pre></td></tr></table></figure><p>3、撤销证书</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/openvpn/easy-rsa/3.0</span><br><span class="line">./easyrsa revoke www001</span><br></pre></td></tr></table></figure><p>4、解决服务器每次都要输入Enter PEM pass phrase</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl rsa -<span class="keyword">in</span> server.key -out server.key.unsecure</span><br></pre></td></tr></table></figure><p>服务器改用这个server.key.unsecure就不会每次提示了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一、环境版本&lt;br&gt;1、CentOS 7.4&lt;br&gt;2、OpenVPN 2.4.6&lt;br&gt;3、easy-rsa 3.0&lt;/p&gt;
+&lt;p&gt;二、安装&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;p
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
+    
+    
+      <category term="centos7" scheme="https://phpkoo.com/tags/centos7/"/>
+    
+      <category term="openvpn" scheme="https://phpkoo.com/tags/openvpn/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos下php7安装imagick扩展</title>
+    <link href="https://phpkoo.com/posts/477.html"/>
+    <id>https://phpkoo.com/posts/477.html</id>
+    <published>2018-10-16T03:30:25.000Z</published>
+    <updated>2020-02-27T01:02:52.730Z</updated>
+    
+    <content type="html"><![CDATA[<p>ImageMagick是一个用于查看、编辑位图文件以及进行图像格式转换的开放源代码软件套装。ImageMagick官方提供了多种开发语言的扩展或者类库。下面我们介绍一下在PHP7下如何安装扩展。</p><p>一、安装ImageMagick依赖</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install ImageMagick-devel</span><br></pre></td></tr></table></figure><p>二、选择手动方式安装imagick（php扩展）<br>我们这里选择最新稳定版（imagick-3.4.0）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://pecl.php.net/get/imagick-3.4.0.tgz</span><br><span class="line">tar -zxvf imagick-3.4.0.tgz</span><br><span class="line"><span class="built_in">cd</span> imagick-3.4.0</span><br><span class="line">/usr/<span class="built_in">local</span>/php/bin/phpize</span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure><p>三、选择pecl方式安装imagick（php扩展）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pecl install imagick</span><br></pre></td></tr></table></figure><p>四、修改php.ini 增加 extension，同时reload php-fpm 完成。</p><p>ps：<br>安装过程中可能出现以下问题<br>linux ‘….’:is not a valid libtool object”错误<br>解决方法</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make clean</span><br></pre></td></tr></table></figure><p>然后在重新执行命令，原因是编译的时候有问题重新编译一下文件就解决了</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;ImageMagick是一个用于查看、编辑位图文件以及进行图像格式转换的开放源代码软件套装。ImageMagick官方提供了多种开发语言的扩展或者类库。下面我们介绍一下在PHP7下如何安装扩展。&lt;/p&gt;
+&lt;p&gt;一、安装ImageMagick依赖&lt;/p&gt;
+&lt;figure cl
+      
+    
+    </summary>
+    
+    
+      <category term="PHP" scheme="https://phpkoo.com/categories/PHP/"/>
+    
+    
+      <category term="php" scheme="https://phpkoo.com/tags/php/"/>
+    
+      <category term="imagick" scheme="https://phpkoo.com/tags/imagick/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS 安装 Docker CE</title>
+    <link href="https://phpkoo.com/posts/468.html"/>
+    <id>https://phpkoo.com/posts/468.html</id>
+    <published>2018-06-07T09:41:29.000Z</published>
+    <updated>2020-02-27T01:02:52.733Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>准备工作</strong></p><p><strong>一、系统要求</strong><br>Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功能（如 overlay2 存储层驱动）无法使用，并且部分功能可能不太稳定。</p><p><strong>二、卸载旧版本</strong><br>旧版本的 Docker 称为 docker 或者 docker-engine，使用以下命令卸载旧版本：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker \</span><br><span class="line">           docker-client \</span><br><span class="line">           docker-client-latest \</span><br><span class="line">           docker-common \</span><br><span class="line">           docker-latest \</span><br><span class="line">           docker-latest-logrotate \</span><br><span class="line">           docker-logrotate \</span><br><span class="line">           docker-selinux \</span><br><span class="line">           docker-engine-selinux \</span><br><span class="line">           docker-engine</span><br></pre></td></tr></table></figure><p><strong>三、使用 yum 安装</strong><br>执行以下命令安装依赖包：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils \</span><br><span class="line">           device-mapper-persistent-data \</span><br><span class="line">           lvm2</span><br></pre></td></tr></table></figure><p>鉴于国内网络问题，强烈建议使用国内源，官方源请在注释中查看。<br>执行下面的命令添加 yum 软件源：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 官方源</span></span><br><span class="line">$ yum-config-manager \</span><br><span class="line">     --add-repo \</span><br><span class="line">     https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure><p>如果需要最新版本的 Docker CE 请使用以下命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --<span class="built_in">enable</span> docker-ce-edge</span><br></pre></td></tr></table></figure><p>如果需要测试版本的 Docker CE 请使用以下命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --<span class="built_in">enable</span> docker-ce-test</span><br></pre></td></tr></table></figure><p><strong>安装 Docker CE</strong><br>更新 yum 软件源缓存，并安装 docker-ce。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum makecache fast</span><br><span class="line">yum install docker-ce</span><br></pre></td></tr></table></figure><p>或者</p><p><strong>使用脚本自动安装</strong><br>在测试或开发环境中 Docker 官方为了简化安装流程，提供了一套便捷的安装脚本，CentOS 系统上可以使用这套脚本安装：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">sh get-docker.sh --mirror Aliyun</span><br></pre></td></tr></table></figure><p>执行这个命令后，脚本就会自动的将一切准备工作做好，并且把 Docker CE 的 Edge 版本安装在系统中。</p><p><strong>启动 Docker CE</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker</span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure><p><strong>建立 docker 用户组（如果使用root用户操作 可忽略）</strong><br>默认情况下，docker 命令会使用 Unix socket 与 Docker 引擎通讯。而只有 root 用户和 docker 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 root 用户。因此，更好地做法是将需要使用 docker 的用户加入 docker 用户组。</p><p>建立 docker 组：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd docker</span><br></pre></td></tr></table></figure><p>将当前用户加入 docker 组：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure><p>退出当前终端并重新登录，进行如下测试。</p><p><strong>测试 Docker 是否安装正确</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure><p><strong>添加内核参数</strong><br>默认配置下，如果在 CentOS 使用 Docker CE 看到下面的这些警告信息：</p><p>WARNING: bridge-nf-call-iptables is disabled<br>WARNING: bridge-nf-call-ip6tables is disabled</p><p>请添加内核配置参数以启用这些功能。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tee -a /etc/sysctl.conf &lt;&lt;-EOF</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure><p>然后重新加载 sysctl.conf 即可</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;准备工作&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一、系统要求&lt;/strong&gt;&lt;br&gt;Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功能
+      
+    
+    </summary>
+    
+    
+      <category term="Docker" scheme="https://phpkoo.com/categories/Docker/"/>
+    
+    
+      <category term="docker" scheme="https://phpkoo.com/tags/docker/"/>
+    
+      <category term="centos7" scheme="https://phpkoo.com/tags/centos7/"/>
+    
+      <category term="docker-ce" scheme="https://phpkoo.com/tags/docker-ce/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>HTTPS中证书链不完整的解决方案</title>
+    <link href="https://phpkoo.com/posts/458.html"/>
+    <id>https://phpkoo.com/posts/458.html</id>
+    <published>2018-06-01T09:13:55.000Z</published>
+    <updated>2020-02-27T01:02:52.748Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://upload.phpkoo.com/uploads/2018/06/httpsCertificateChain1.png" target="_blank" rel="noopener"><img src="https://upload.phpkoo.com/uploads/2018/06/httpsCertificateChain1.png" alt=""></a></p><p><a href="https://upload.phpkoo.com/uploads/2018/06/httpsCertificateChain2.png" target="_blank" rel="noopener"><img src="https://upload.phpkoo.com/uploads/2018/06/httpsCertificateChain2.png" alt=""></a></p><p><a href="https://upload.phpkoo.com/uploads/2018/06/httpsCertificateChain3.png" target="_blank" rel="noopener"><img src="https://upload.phpkoo.com/uploads/2018/06/httpsCertificateChain3.png" alt=""></a></p><p>由于我们的部分业务场景是在微信（WebView）中打开https的web页面，在测试过程中却发现了一个问题，在Chrome中测试完全正常的https页面，在iOS的微信（WebView）中表现正常，但在Android中，不论是哪个版本的安卓系统，都不能正常打开页面，要么就是一片白，要么就是直接无法打开，解决这个问题，需要在服务器上配置完整的SSL证书链。<br>之后在Android自带的浏览器中测试，几乎所有的手机都出现下面这样的情况</p><p><strong>证书链</strong><br>看来Andorid的WebView不能打开页面应该是与这有关，造成这个问题的主要原因是我们服务器配置证书的证书链不全造成的。</p><p>证书链其实就是描述证书的签名环节，就比如是 A 颁发证书给 B ，B颁发证书给C，然后我们手里的就是证书C。当证书链不完整的情况下，也就是没有描述我们手中的证书C是由谁办法的，所以导致的浏览器不认为你这个证书是可信的授权证书。</p><p>每个设备中都会存有一些默认的可信的根证书，但很多CA是不使用根证书进行签名的，而是使用中间层证书进行签名，因为这样做能更快的进行替换（这句可能不对，原文是 because these can be rotated more frequently）。</p><p>如果你的服务器上没有中间件证书，这样的结果就是你的服务器上只有你的网站的证书，客户端的浏览器里只有CA的根证书，这样就会导致证书信任链不全，才导致了上面那两个截图中的问题。这种中间层证书不全的问题多出现在移动端的浏览器上（就我目前看，iOS8 iOS9 都没有出现问题，Andorid各个版本都有这个问题）。</p><p>当你服务器上的证书中的信任链不全的情况下，浏览器会认为当前的链接是一个不安全的，会阻止页面的打开。</p><p><strong>解决方案</strong><br>说清楚了原因，解决问题就很简单了，只要把我们的证书链补全就可以了。<br>从SSL证书服务商那里，你获得的crt证书文件大概是这个样子的：</p><p>—–BEGIN CERTIFICATE—–<br>    # 证书内容<br>—–END CERTIFICATE—–</p><p>在你补全中间层证书和根证书后，新的crt证书文件看起来是这样的：</p><p>—–BEGIN CERTIFICATE—–<br>    # 证书内容 1<br>—–END CERTIFICATE—–</p><p>—–BEGIN CERTIFICATE—–<br>    # 证书内容 2<br>—–END CERTIFICATE—–</p><p>—–BEGIN CERTIFICATE—–<br>    # 证书内容 3<br>—–END CERTIFICATE—–</p><p>这里包含了你的证书，以及从你的证书向上递归直至根证书的全部证书，这样就可以向浏览器证明你的链接是安全的。</p><p><strong>补全证书链</strong><br>比较方便的是使用这个在线的工具：<br><a href="https://certificatechain.io" target="_blank" rel="noopener">https://certificatechain.io</a><br>进入这个网站，粘贴进你的证书（只包含你的用户证书），或者上传你的证书，他就会给出补全后的证书文件，你只需要粘贴回你的文件或者下载覆盖就可以了，然后在服务器上重新部署就可以解决问题。<br>由于这里只需要上传证书，所以是安全的，不需要担心不安全的问题。<br>如果不喜欢用在线的工具，可以使用下面这个本地的工具，PHP写的，在命令行中运行：<br><a href="https://github.com/spatie/ssl-certificate-chain-resolver" target="_blank" rel="noopener">Github ssl-certificate-chain-resolver</a></p><p><strong>PS:</strong><br>一般情况下<br>cert.pem 是证书<br>chain.pem 是证书链编码<br>fullchain.pem 是cert.pem和chain.pem的证书集合<br>privkey.pem 是私钥文件</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://upload.phpkoo.com/uploads/2018/06/httpsCertificateChain1.png&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;&lt;img src=&quot;https://upload.ph
+      
+    
+    </summary>
+    
+    
+      <category term="Nginx" scheme="https://phpkoo.com/categories/Nginx/"/>
+    
+    
+      <category term="https" scheme="https://phpkoo.com/tags/https/"/>
+    
+      <category term="证书链" scheme="https://phpkoo.com/tags/%E8%AF%81%E4%B9%A6%E9%93%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL: libmysqlclient.so.20: cannot open shared object file解决方法</title>
+    <link href="https://phpkoo.com/posts/454.html"/>
+    <id>https://phpkoo.com/posts/454.html</id>
+    <published>2018-04-28T09:06:00.000Z</published>
+    <updated>2020-02-27T01:02:52.751Z</updated>
+    
+    <content type="html"><![CDATA[<p>import MySQLdb的时候报错“ImportError: libmysqlclient.so.20: cannot open shared object file: No such file or directory”</p><p>解决方法：<br>找到libmysqlclient.so.20,一般都在mysql安装目录/lib库里，做个软链接即可。</p><p>######64为系统</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/mysql/lib/libmysqlclient.so.20 /usr/lib64/libmysqlclient.so.20</span><br></pre></td></tr></table></figure><p>######32位系统</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/mysql/lib/libmysqlclient.so.20 /usr/lib/libmysqlclient.so.20</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;import MySQLdb的时候报错“ImportError: libmysqlclient.so.20: cannot open shared object file: No such file or directory”&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;br&gt;找到libmy
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
+    
+      <category term="Mysql" scheme="https://phpkoo.com/categories/Linux/Mysql/"/>
+    
+    
+      <category term="mysql" scheme="https://phpkoo.com/tags/mysql/"/>
+    
+      <category term="libmysqlclient" scheme="https://phpkoo.com/tags/libmysqlclient/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx配置ssl及优化</title>
+    <link href="https://phpkoo.com/posts/425.html"/>
+    <id>https://phpkoo.com/posts/425.html</id>
+    <published>2018-04-20T10:41:27.000Z</published>
+    <updated>2020-02-27T01:02:52.752Z</updated>
+    
+    <content type="html"><![CDATA[<p>https是一种超文本传输安全协议，主要是用SSL/TLS来加密数据包，以达到数据加密传输的作用，同时也能一定程度达到防劫持的效果。</p><p><strong>隐藏不必要的信息</strong><br>细心的朋友会发现，请求响应头，有这么一行 server: nginx，说明我用的是 Nginx 服务器，但并没有具体的版本号。由于某些 Nginx 漏洞只存在于特定的版本，隐藏版本号可以提高安全性。这只需要在配置里加上这个就可以了：</p><p><code>server_tokens  off;</code></p><p>另外，一些 WEB 语言或框架默认输出的 x-powered-by 也会泄露网站信息，他们一般都提供了修改或移除的方法，可以自行查看手册。如果部署上用到了 Nginx 的反向代理，也可以通过 proxy_hide_header 指令隐藏它：</p><p><code>proxy_hide_header  X-Powered-By;</code></p><p><strong>禁用非必要的方法</strong><br>一般情况下，只需要处理 GET、POST 两种请求方法，而 HTTP/1 协议还规定了 TRACE 这样的方法用于网络诊断，这也可能会暴露一些信息。所以我针对 GET、POST 以及 HEAD 之外的请求，直接返回了 444 状态码（444 是 Nginx 定义的响应状态码，会立即断开连接，没有响应正文）。具体配置是这样的：</p><p>if ($request_method !~ ^(GET|HEAD|POST)$ ) {<br>    return    444;<br>}</p><p><strong>合理配置响应头</strong></p><p>#####减少点击劫持<br>add_header X-Frame-Options DENY;</p><p>#####禁止服务器自动解析资源类型<br>add_header X-Content-Type-Options nosniff;</p><p>#####防XSS攻击<br>add_header X-XSS-Protection “1; mode=block”;</p><p>#####HSTS策略<br>add_header Strict-Transport-Security “max-age=31536000; includeSubDomains; preload” always;</p><p><code>X-Frame-Options</code> 用来指定此网页是否允许被 iframe 嵌套，deny 就是不允许任何嵌套发生。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/X-Frame-Options" target="_blank" rel="noopener">这部分内容更多信息</a>。<br><code>X-Content-Type-Options</code> 用来指定浏览器对未指定或错误指定 Content-Type 资源真正类型的猜测行为，nosniff 表示不允许任何猜测。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Content-Type-Options" target="_blank" rel="noopener">这部分内容更多信息</a>。<br><code>X-XSS-Protection</code> 这个响应头是用来防范XSS的。最早我是在介绍IE8的文章里看到这个，现在主流浏览器都支持，并且默认都开启了XSS保护，用这个header可以关闭它。它有几种配置：<br>0：禁用XSS保护；<br>1：启用XSS保护；<br>1; mode=block：启用XSS保护，并在检查到XSS攻击时，停止渲染页面（例如IE8中，检查到攻击时，整个页面会被一个#替换）；<br>浏览器提供的XSS保护机制并不完美，但是开启后仍然可以提升攻击难度，总之没有特别的理由，不要关闭它。<br><code>Strict-Transport-Security</code>（简称为 HSTS）可以告诉浏览器，在指定的 max-age 内，始终通过 HTTPS 访问我的博客。即使用户自己输入 HTTP 的地址，或者点击了 HTTP 链接，浏览器也会在本地替换为 HTTPS 再发送请求。另外由于我的证书不支持多域名，我没有加上 includeSubDomains。关于 <a href="https://www.nginx.com/blog/http-strict-transport-security-hsts-and-nginx/" target="_blank" rel="noopener">HSTS</a> 更多信息。</p><p><strong>HTTPS 安全配置</strong><br>启用 HTTPS 并正确配置了证书，意味着数据传输过程中无法被第三者解密或修改。有了 HTTPS，也得合理配置好 Web Server，才能发挥最大价值。关于 HTTPS 这一块有以下配置：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">worker_processes auto;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#配置会话超时时间</span></span><br><span class="line">    ssl_session_timeout  10m;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#配置共享会话缓存大小，视站点访问情况设定</span></span><br><span class="line">    ssl_session_cache shared:SSL:10m;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen      443 ssl;</span><br><span class="line">        server_name www.example.com;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#设置长连接</span></span><br><span class="line">        keepalive_timeout 70;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#开启HTTPS协议（推荐使用listen指令的ssl参数来代替这个指令）</span></span><br><span class="line">        <span class="comment">#ssl on;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#证书文件</span></span><br><span class="line">        ssl_certificate www.example.com.crt;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#私钥文件</span></span><br><span class="line">        ssl_certificate_key www.example.com.key;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#使用DH文件</span></span><br><span class="line">        ssl_dhparam /etc/ssl/certs/dhparam.pem;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#版本选择</span></span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#定义算法</span></span><br><span class="line">        ssl_ciphers EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#优先采取服务器算法</span></span><br><span class="line">        ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#减少点击劫持</span></span><br><span class="line">        add_header X-Frame-Options DENY;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#禁止服务器自动解析资源类型</span></span><br><span class="line">        add_header X-Content-Type-Options nosniff;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#防XSS攻击</span></span><br><span class="line">        add_header X-XSS-Protection <span class="string">"1; mode=block"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#HSTS策略</span></span><br><span class="line">        add_header Strict-Transport-Security <span class="string">"max-age=31536000;"</span> always;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><a href="https://upload.phpkoo.com/uploads/2018/04/ssllabs_20180422092149-1.png" target="_blank" rel="noopener"><img src="https://upload.phpkoo.com/uploads/2018/04/ssllabs_20180422092149-1.png" alt=""></a></p><p>最终效果在 <a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="noopener">ssllabs</a> 中测试结果如下。  </p><p>如何配置 ssl_ciphers 可以参考<a href="https://cipherli.st/" target="_blank" rel="noopener">这个网站</a>。需要注意的是，这个网站默认提供的加密方式安全性较高，一些低版本客户端并不支持，例如 IE9-、Android2.2- 和 Java6-。如果需要支持这些老旧的客户端，需要点一下网站上的「Yes, give me a ciphersuite that works with legacy / old software」链接，同时也可以使用 <a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="noopener">Mozilla 基金会</a> 来生成配置。</p><p><img src="https://upload.phpkoo.com/uploads/2018/04/chacha.png.webp_.jpg" alt=""></p><p>另外 ssl_ciphers 还支持 CHACHA20 加密套件，只要 Nginx 编译时增加了 CHACHA20_POLY1305 加密算法即可，这是由 Google 开发的新一代加密方式，它有两方面优势：更好的安全性和更好的性能（尤其是在移动和可穿戴设备上）。下面有一张移动平台上它与 AES-GCM 的加密速度对比图（via）：  </p><p>启用 CHACHA20_POLY1305 最简单的方法是在编译 Nginx 时，使用 LibreSSL 代替 OpenSSL。用 Chrome 访问网站时，点击地址栏小锁显示的信息，可以看到加密方式使用的是不是 CHACHA20_POLY1305。<br>关于 CHACHA20_POLY1305 安全性和性能的详细介绍可以<a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography/" target="_blank" rel="noopener">查看本文</a>。</p><p>补充：<br>1.使用 CHACHA20_POLY1305 的最佳实践是「仅针对不支持 AES-NI 的终端使用 CHACHA20 算法，否则使用 AES-GCM」。</p><p>2.我们通过 openssl 工具看一下 ssl_ciphers 具体包含哪些 Cipher Suites 例如：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">openssl ciphers -V <span class="string">'EECDH+AES128'</span> | column -t</span><br><span class="line"></span><br><span class="line">0xC0,0x2F  -  ECDHE-RSA-AES128-GCM-SHA256    TLSv1.2  Kx=ECDH  Au=RSA    Enc=AESGCM(128)  Mac=AEAD</span><br><span class="line">0xC0,0x2B  -  ECDHE-ECDSA-AES128-GCM-SHA256  TLSv1.2  Kx=ECDH  Au=ECDSA  Enc=AESGCM(128)  Mac=AEAD</span><br><span class="line">0xC0,0x27  -  ECDHE-RSA-AES128-SHA256        TLSv1.2  Kx=ECDH  Au=RSA    Enc=AES(128)     Mac=SHA256</span><br><span class="line">0xC0,0x23  -  ECDHE-ECDSA-AES128-SHA256      TLSv1.2  Kx=ECDH  Au=ECDSA  Enc=AES(128)     Mac=SHA256</span><br><span class="line">0xC0,0x13  -  ECDHE-RSA-AES128-SHA           SSLv3    Kx=ECDH  Au=RSA    Enc=AES(128)     Mac=SHA1</span><br><span class="line">0xC0,0x09  -  ECDHE-ECDSA-AES128-SHA         SSLv3    Kx=ECDH  Au=ECDSA  Enc=AES(128)     Mac=SHA1</span><br></pre></td></tr></table></figure><p><strong>加强 HTTPS 安全性</strong><br>HTTPS 基础配置采取的默认加密算法是 SHA-1，这个算法非常脆弱，安全性在逐年降低，在 2014 年的时候， Google 官方博客就宣布在 Chrome 浏览器中逐渐降低 SHA-1 证书的安全指示，会从 2015 年起使用 SHA-2 签名的证书，可参阅 <a href="http://www.freebuf.com/author/rabbit_run" target="_blank" rel="noopener">Rabbit_Run</a> 在 2014 年发表的文章：<a href="http://www.freebuf.com/news/topnews/44288.html" target="_blank" rel="noopener">《为什么Google急着杀死加密算法SHA-1》</a></p><p>为此，主流的 HTTPS 配置方案应该避免 SHA-1，可以使用 <a href="https://zh.wikipedia.org/wiki/%E8%BF%AA%E8%8F%B2-%E8%B5%AB%E7%88%BE%E6%9B%BC%E5%AF%86%E9%91%B0%E4%BA%A4%E6%8F%9B" target="_blank" rel="noopener">迪菲-赫尔曼密钥交换（D-H，Diffie–Hellman key exchange）</a>方案。</p><p>首先在目录 /etc/ssl/certs 运行以下代码生成 dhparam.pem 文件：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl dhparam -out dhparam.pem 2048</span><br></pre></td></tr></table></figure><p>关于 ssl_dhparam 的配置，可以参考这篇文章：<a href="https://weakdh.org/sysadmin.html" target="_blank" rel="noopener">Guide to Deploying Diffie-Hellman for TLS</a>。</p><p>SSLv3 已被证实不安全，所以在 ssl_protocols 指令中，我并没有包含它。<br>将 ssl_prefer_server_ciphers 配置为 on，可以确保在 TLSv1 握手时，使用服务端的配置项，以增强安全性。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;https是一种超文本传输安全协议，主要是用SSL/TLS来加密数据包，以达到数据加密传输的作用，同时也能一定程度达到防劫持的效果。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;隐藏不必要的信息&lt;/strong&gt;&lt;br&gt;细心的朋友会发现，请求响应头，有这么一行 server: nginx
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
+    
+      <category term="Nginx" scheme="https://phpkoo.com/categories/Linux/Nginx/"/>
+    
+    
+      <category term="nginx" scheme="https://phpkoo.com/tags/nginx/"/>
+    
+      <category term="https" scheme="https://phpkoo.com/tags/https/"/>
+    
+      <category term="ssl" scheme="https://phpkoo.com/tags/ssl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang 100行代码实现区块链原型</title>
+    <link href="https://phpkoo.com/posts/414.html"/>
+    <id>https://phpkoo.com/posts/414.html</id>
+    <published>2018-04-16T15:00:03.000Z</published>
+    <updated>2020-02-27T01:02:52.697Z</updated>
+    
+    <content type="html"><![CDATA[<p>有人说今年（2018年）是区块链技术元年，作为一种新兴的技术，它不仅弯道超车盖过了人工智能、大数据的风头，而且发展速度更是一日千里。各大厂商都相继推出区块链服务，你可能觉得难以置信。不管你信不信，当你还在熟睡时，有一群人还在挑灯夜战。</p><p>在周未闲来无事，虽然之前网上也有各版本的区块链代码，还是动手用golang写了一下，简单实现了区块链的原型。代码如下：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line"> <span class="string">"crypto/sha256"</span></span><br><span class="line"> <span class="string">"encoding/json"</span></span><br><span class="line"> <span class="string">"fmt"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//Block 结构</span></span><br><span class="line"><span class="keyword">type</span> Block <span class="keyword">struct</span> &#123;</span><br><span class="line"> Index        <span class="keyword">int</span></span><br><span class="line"> Timestamp    <span class="keyword">string</span></span><br><span class="line"> Data         <span class="keyword">string</span></span><br><span class="line"> PreviousHash <span class="keyword">string</span></span><br><span class="line"> Hash         <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//CalculateHash 计算HASH</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(b *Block)</span> <span class="title">CalculateHash</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line"> s := fmt.Sprintf(<span class="string">"%d%s%s%s"</span>, b.Index, b.PreviousHash, b.Timestamp, b.Data)</span><br><span class="line"> sum := sha256.Sum256([]<span class="keyword">byte</span>(s))</span><br><span class="line"> <span class="keyword">return</span> fmt.Sprintf(<span class="string">"%x"</span>, sum)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//BlockChain 结构</span></span><br><span class="line"><span class="keyword">type</span> BlockChain <span class="keyword">struct</span> &#123;</span><br><span class="line"> Chain []*Block</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//NewBlockChain 创建区块链</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewBlockChain</span><span class="params">()</span> *<span class="title">BlockChain</span></span> &#123;</span><br><span class="line"> bc := &amp;BlockChain&#123;&#125;</span><br><span class="line"> bc.Chain = <span class="built_in">append</span>(bc.Chain, bc.CreateGenesisBlock())</span><br><span class="line"> <span class="keyword">return</span> bc</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//CreateGenesisBlock 创建创世块</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bc *BlockChain)</span> <span class="title">CreateGenesisBlock</span><span class="params">()</span> *<span class="title">Block</span></span> &#123;</span><br><span class="line"> b := &amp;Block&#123;</span><br><span class="line"> Index:        <span class="number">0</span>,</span><br><span class="line"> Timestamp:    <span class="string">"2018-01-01"</span>,</span><br><span class="line"> Data:         <span class="string">"Genesis Block"</span>,</span><br><span class="line"> PreviousHash: <span class="string">"0"</span>,</span><br><span class="line"> &#125;</span><br><span class="line"> b.Hash = b.CalculateHash()</span><br><span class="line"> <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//GetLatestBlock 最新区块</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bc *BlockChain)</span> <span class="title">GetLatestBlock</span><span class="params">()</span> *<span class="title">Block</span></span> &#123;</span><br><span class="line"> <span class="keyword">return</span> bc.Chain[<span class="built_in">len</span>(bc.Chain)<span class="number">-1</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//AddBlock 增加区块</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bc *BlockChain)</span> <span class="title">AddBlock</span><span class="params">(newBlock *Block)</span></span> &#123;</span><br><span class="line"> newBlock.Index = bc.GetLatestBlock().Index + <span class="number">1</span></span><br><span class="line"> newBlock.PreviousHash = bc.GetLatestBlock().Hash</span><br><span class="line"> newBlock.Hash = newBlock.CalculateHash()</span><br><span class="line"> bc.Chain = <span class="built_in">append</span>(bc.Chain, newBlock)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//IsChainValid 区块是否有效</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bc *BlockChain)</span> <span class="title">IsChainValid</span><span class="params">()</span> <span class="title">bool</span></span> &#123;</span><br><span class="line"> <span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(bc.Chain); i++ &#123;</span><br><span class="line"> currentBlock := bc.Chain[i]</span><br><span class="line"> previousBlock := bc.Chain[i<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> currentBlock.Hash != currentBlock.CalculateHash() &#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span> currentBlock.PreviousHash != previousBlock.Hash &#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"> bc := NewBlockChain()</span><br><span class="line"> bc.AddBlock(&amp;Block&#123;Timestamp: <span class="string">"2018-02-01"</span>, Data: <span class="string">`&#123;"amout":10&#125;`</span>&#125;)</span><br><span class="line"> bc.AddBlock(&amp;Block&#123;Timestamp: <span class="string">"2018-03-01"</span>, Data: <span class="string">`&#123;"amout":20&#125;`</span>&#125;)</span><br><span class="line"> bc.AddBlock(&amp;Block&#123;Timestamp: <span class="string">"2018-04-01"</span>, Data: <span class="string">`&#123;"amout":30&#125;`</span>&#125;)</span><br><span class="line"></span><br><span class="line"> blockchain, _ := json.MarshalIndent(bc, <span class="string">""</span>, <span class="string">"\t"</span>)</span><br><span class="line"> fmt.Println(<span class="keyword">string</span>(blockchain))</span><br><span class="line"></span><br><span class="line"> fmt.Println(<span class="string">"is BlockChain valid "</span>, bc.IsChainValid())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;有人说今年（2018年）是区块链技术元年，作为一种新兴的技术，它不仅弯道超车盖过了人工智能、大数据的风头，而且发展速度更是一日千里。各大厂商都相继推出区块链服务，你可能觉得难以置信。不管你信不信，当你还在熟睡时，有一群人还在挑灯夜战。&lt;/p&gt;
+&lt;p&gt;在周未闲来无事，虽然之前
+      
+    
+    </summary>
+    
+    
+      <category term="GoLang" scheme="https://phpkoo.com/categories/GoLang/"/>
+    
+    
+      <category term="blockchain" scheme="https://phpkoo.com/tags/blockchain/"/>
+    
+      <category term="golang" scheme="https://phpkoo.com/tags/golang/"/>
+    
+      <category term="区块链" scheme="https://phpkoo.com/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rust-lang环境安装</title>
+    <link href="https://phpkoo.com/posts/396.html"/>
+    <id>https://phpkoo.com/posts/396.html</id>
+    <published>2018-03-25T03:19:55.000Z</published>
+    <updated>2020-02-27T01:02:52.756Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、安装Rust<br>1、如果你之前使用了一个有Windows下GUI安装向导的.msi文件安装了Rust，请到控制面板-&gt;程序与功能(添加/删除程序)里卸载。</p><p>2、设置安装路径。默认它会把Rust装到你的<del>/.rustup 里，依赖库下载到</del>/.cargo 里。需要修改的话，设置环境变量RUSTUP_HOME 和 CARGO_HOME 分别修改这两个值（例如D:.rustup和D:.cargo）。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RUSTUP_HOME&#x3D;D:\.rustup</span><br><span class="line">CARGO_HOME&#x3D;D:\.cargo</span><br></pre></td></tr></table></figure><p>4、配置代理#1：国内有些地区访问Rustup的服务器不太顺畅，可以配置中科大的Rustup镜像：设置环境变量</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RUSTUP_DIST_SERVER&#x3D;http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;rust-static</span><br><span class="line">RUSTUP_UPDATE_ROOT&#x3D;http:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;rust-static&#x2F;rustup</span><br></pre></td></tr></table></figure><p>安装过程中出现以下选项<br>Proceed with installation (default)<br>Customize installation<br>Cancel installation<br>选（Customize installation）进行自定义安装 会一步一步问你<br>1）个问你是否用 default host tripe 我选的是 x86_64-pc-windows-gnu（<a href="https://github.com/rust-lang-nursery/rustup.rs/#other-installation-methods）" target="_blank" rel="noopener">https://github.com/rust-lang-nursery/rustup.rs/#other-installation-methods）</a> 下面有一大堆版本可以选。<br>假设你是Windows环境，打算编译64位程序，你应该用的是：</p><p>x86_64-pc-windows-msvc</p><p>或</p><p>x86_64-pc-windows-gnu</p><p>这两个各有优缺点：<br>x86_64-pc-windows-msvc是基于微软的链接器的，稳定性比较好，缺点是依赖的第三方库比较难弄，而且安装时你还需要再装一个微软的Visual C++ Build Tools(含Windows SDK；如果你机器上有Visual Studio就不用装Build Tools了)；到这里去下载 <a href="http://landinghub.visualstudio.com/visual-cpp-build-tools" target="_blank" rel="noopener">http://landinghub.visualstudio.com/visual-cpp-build-tools</a> ，装2015的。（2017的用起来会有点麻烦，Rust团队会在2017年8月解决。如果你看到这篇文章晚于那个时候了，装2017也可以）<br>x86_64-pc-windows-gnu是基于gnu开发工具的windows移植版本的，潜在的bug会多一些，但是第三方库反而容易弄(MSYS2的问题回头再说)<br>如果需要的话，可以两个都装的，这里你选一个版本就好。<br>2）个会问你 用哪个版本（stable/beta/nightly/none）我输入 stable<br>3）个会问你是否 默认修改环境变量 (这个无所谓了可以后期改) 我选是</p><p>5、在. cargo 文件夹根目录下创建一个 config 文件 没有任何文件后缀, 内容为:</p><p>[registry]<br>index = “<a href="https://mirrors.ustc.edu.cn/crates.io-index/&quot;" target="_blank" rel="noopener">https://mirrors.ustc.edu.cn/crates.io-index/&quot;</a><br>[source.crates-io]<br>registry = “<a href="https://github.com/rust-lang/crates.io-index&quot;" target="_blank" rel="noopener">https://github.com/rust-lang/crates.io-index&quot;</a><br>replace-with = ‘ustc’<br>[source.ustc]<br>registry = “<a href="https://mirrors.ustc.edu.cn/crates.io-index/&quot;" target="_blank" rel="noopener">https://mirrors.ustc.edu.cn/crates.io-index/&quot;</a></p><p>6、将 cargo 加入 path 环境变量:</p><p><code>%CARGO_HOME%\bin</code></p><p>前期工作就可以了 那么打开 cmd 输入<br>检查 rustup 有无安装成功</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rustup -v</span><br><span class="line">cargo -v</span><br></pre></td></tr></table></figure><p>二、安装工具链<br>因为RLS必须使用nightly版本，所以需要同时安装以下两个工具链</p><p>stable-x86_64-pc-windows-gnu<br>nightly-x86_64-pc-windows-gnu</p><p>三、安装相关工具</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cargo install rustfmt</span><br><span class="line">cargo install rustsym</span><br><span class="line">cargo install racer</span><br></pre></td></tr></table></figure><p>四、项目管理<br>Rust中一般使用cargo管理项目，比如：<br>创建项目</p><p><code>cargo new hellorust --bin</code></p><p>编译项目</p><p><code>cargo build --release</code></p><p>运行项目</p><p><code>cargo run --release</code></p><p>清理项目</p><p><code>cargo clean</code></p><p>五、给vscode安装rust插件<br>1、打开vscode，然后按CRTL+P打开面板，然后安装以下两个插件</p><p><code>ext install vscode-rust</code><br><code>ext install rust</code></p><p>然后按提示进行安装即可</p><p>2、vscode-rust安装过程中，提示如下错误（没有报错略过）<br>toolchain ‘nightly-x86_64-pc-windows-gnu’ does not contain component ‘rls’ for target ‘x86_64-pc-windows-gnu’<br>需要添加rustup的工具链如下，打开cmd工具输入以下命令</p><p>rustup component add rls-preview –toolchain nightly</p><p>3、设置vscode其中toolchain必须为nightly版本</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">"rust.mode": "rls",</span><br><span class="line">"rust.rls": &#123;</span><br><span class="line">    "useRustfmt": true</span><br><span class="line">&#125;,</span><br><span class="line">"rust.rustup": &#123;</span><br><span class="line">    "toolchain": "nightly-x86_64-pc-windows-gnu",</span><br><span class="line">    "nightlyToolchain": "nightly-x86_64-pc-windows-gnu"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一、安装Rust&lt;br&gt;1、如果你之前使用了一个有Windows下GUI安装向导的.msi文件安装了Rust，请到控制面板-&amp;gt;程序与功能(添加/删除程序)里卸载。&lt;/p&gt;
+&lt;p&gt;2、设置安装路径。默认它会把Rust装到你的&lt;del&gt;/.rustup 里，依赖库下载到&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="Rust-lang" scheme="https://phpkoo.com/categories/Rust-lang/"/>
+    
+    
+      <category term="rust" scheme="https://phpkoo.com/tags/rust/"/>
+    
+      <category term="rust-lang" scheme="https://phpkoo.com/tags/rust-lang/"/>
+    
+      <category term="vscode" scheme="https://phpkoo.com/tags/vscode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>go build 常见编译优化</title>
+    <link href="https://phpkoo.com/posts/393.html"/>
+    <id>https://phpkoo.com/posts/393.html</id>
+    <published>2018-03-13T07:36:08.000Z</published>
+    <updated>2020-02-27T01:02:52.746Z</updated>
+    
+    <content type="html"><![CDATA[<p>一般情况下，go build 可以直接编译程序，无需额外的参数设定。<br>但在编译生产环境下使用的可执行程序时候，go build 的一些参数还是很有用的。</p><p>减小编译后可执行程序的大小</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go build -ldflags <span class="string">'-w -s'</span></span><br></pre></td></tr></table></figure><p>说明：<br>-w 禁止生成debug信息,注意使用该选项后，无法使用 gdb 进行调试<br>-s 禁用符号表<br>可以使用 go tool link –help 查看 ldflags 各参数含义</p><p>禁止gc优化和内联</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go build -gcflags <span class="string">'-N -l'</span></span><br></pre></td></tr></table></figure><p>说明:<br>-N 禁止编译优化<br>-l 禁止内联,禁止内联也可以一定程度上减小可执行程序大小<br>可以使用 go tool compile –help 查看 gcflags 各参数含义</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一般情况下，go build 可以直接编译程序，无需额外的参数设定。&lt;br&gt;但在编译生产环境下使用的可执行程序时候，go build 的一些参数还是很有用的。&lt;/p&gt;
+&lt;p&gt;减小编译后可执行程序的大小&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;ta
+      
+    
+    </summary>
+    
+    
+      <category term="GoLang" scheme="https://phpkoo.com/categories/GoLang/"/>
+    
+    
+      <category term="golang" scheme="https://phpkoo.com/tags/golang/"/>
+    
+      <category term="go" scheme="https://phpkoo.com/tags/go/"/>
+    
+      <category term="build" scheme="https://phpkoo.com/tags/build/"/>
+    
+      <category term="gola" scheme="https://phpkoo.com/tags/gola/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Go Get安装一些第三方库-网络问题</title>
+    <link href="https://phpkoo.com/posts/391.html"/>
+    <id>https://phpkoo.com/posts/391.html</id>
+    <published>2018-03-13T06:27:53.000Z</published>
+    <updated>2020-02-27T01:02:52.747Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于限制问题，国内使用 go get 安装 golang 官方包可能会失败，如我自己在安装golint时，出现了以下报错：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ go get -u -v golang.org/x/lint/golint</span><br><span class="line">Fetching https://golang.org/x/lint/golint?go-get=1</span><br><span class="line">https fetch failed: Get https://golang.org/x/lint/golint?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.</span><br></pre></td></tr></table></figure><p>不翻墙的情况下怎么解决这个问题？其实 golang 在 github 上建立了一个镜像库，如 <a href="https://github.com/golang/lint" target="_blank" rel="noopener">https://github.com/golang/lint</a> 即是 <a href="https://golang.org/x/lint" target="_blank" rel="noopener">https://golang.org/x/lint</a> 的镜像库<br>获取 golang.org/x/lint 包，其实只需要以下步骤：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p <span class="variable">$GOPATH</span>/src/golang.org/x</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/golang.org/x</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/golang/lint.git</span><br><span class="line"></span><br><span class="line"><span class="comment">#执行go install</span></span><br><span class="line">go install golang.org/x/lint/golint</span><br></pre></td></tr></table></figure><p>ps<br>go get实际是从互联网上下载或更新指定的代码包及其依赖包，并对它们进行编译和安装。所以上面的步骤需要手动go install一下代码包。<br>go get常用的辅助参数。</p><p>-insecure 允许非安全下载，主要是针对没有HTTPS的HTTP路径。<br>-u 这个很常见，有更新的话会覆盖本地的package，默认不会覆盖的。<br>-v 显示Log，即verbose.<br>-t 同时下载需要运行测试的package.<br>-d 只下载，但不安装package.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;由于限制问题，国内使用 go get 安装 golang 官方包可能会失败，如我自己在安装golint时，出现了以下报错：&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span c
+      
+    
+    </summary>
+    
+    
+      <category term="GoLang" scheme="https://phpkoo.com/categories/GoLang/"/>
+    
+    
+      <category term="golang" scheme="https://phpkoo.com/tags/golang/"/>
+    
+      <category term="go" scheme="https://phpkoo.com/tags/go/"/>
+    
+      <category term="github" scheme="https://phpkoo.com/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vscode for win10下安装phpcs</title>
+    <link href="https://phpkoo.com/posts/378.html"/>
+    <id>https://phpkoo.com/posts/378.html</id>
+    <published>2017-12-19T15:03:02.000Z</published>
+    <updated>2020-02-27T01:02:52.756Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>下载并安装 Visual Studio Code<br>微软官网：<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a><br>插件库：<a href="https://marketplace.visualstudio.com/#VSCode" target="_blank" rel="noopener">https://marketplace.visualstudio.com/#VSCode</a></p></li><li><p>在Windows 10环境下安装PHP  </p></li><li><p>1 下载自己中意的PHP版本（我选的是php-7.2.0-Win32-VC15-x64）：<br>PHP官网：<a href="http://windows.php.net/download" target="_blank" rel="noopener">http://windows.php.net/download</a></p></li></ol><p>2.2 将php-7.2.0-Win32-VC15-x64.zip 解压到D盘根目录（注：也可以解压到C盘），并将php-7.2.0-Win32-VC15-x64文件夹重命名为php，最终php路径如下（注意这个很关键，会影响到后面PHP_CodeSniffer组件的安装）：</p><p><code>D:\php\</code></p><p>2.3 设置环境变量，允许执行PHP<br>打开高级系统设置（Win+R，然后输入sysdm.cpl打开即可进入，找到Path环境变量，把”D:\php”这个路径加到里面）</p><p>2.4 检查PHP环境是否正常（Win+R，然后输入CMD运行，然后执行php -h命令）如下</p><p><code>php -h</code></p><p>2.5 重命名 php.ini ，在php根目录会找到以下两个文件：<br>php.ini-development 开发测试用<br>php.ini-production 安全性高，适合线上</p><p>这里我选择将php.ini-production重命名为php.ini</p><ol start="3"><li>安装pear库（您也可以另外用composer库，直接看第4步）  </li><li>1 下载<a href="http://pear.php.net/go-pear.phar" target="_blank" rel="noopener">http://pear.php.net/go-pear.phar</a>  </li><li>2 复制go-pear.phar文件到C:\php目录  </li><li>3 继续运行CMD然后确保已经cd到了C:\php&gt;，执行以下命令</li></ol><p><code>D:\php&gt;php go-pear.phar</code></p><p>遇到：<br>Are you installing a system-wide PEAR or a local copy?<br>(system|local) [system] :<br>输入local继续（什么都不输直接回车，那么表示默认选择system，但这可能存在权限问题而终止）<br>后面就是yes，Y，回车，一步步按提示进行下去。</p><p>3.4 检查php.ini里面已经配置好，结尾会看到：</p><p><code>include_path=&quot;.;D:\php\pear&quot;</code></p><p>（如果是PHP7可能默认已经做了路径指向，因此pear装完后不会有这句代码）</p><p>3.5 CMD里面执行pear，如果返回相应内容即表示pear安装成功：</p><ol start="4"><li>安装PHPcs<br>以下是最关键一步，运行CMD，执行以下命令：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">D:\php&gt;pear install PHP_CodeSniffer</span><br><span class="line">WARNING: channel &quot;pear.php.net&quot; has updated its protocols, use &quot;pear channel-upd</span><br><span class="line">ate pear.php.net&quot; to update</span><br><span class="line">downloading PHP_CodeSniffer-2.0.0.tgz ...</span><br><span class="line">Starting to download PHP_CodeSniffer-2.0.0.tgz (448,559 bytes)</span><br><span class="line">................................................................................</span><br><span class="line">..........done: 448,559 bytes</span><br><span class="line">ERROR: failed to mkdir C:\php\pear\tests\PHP_CodeSniffer\CodeSniffer\Core\File</span><br></pre></td></tr></table></figure>如果出现以下错误：<br>ERROR: failed to mkdir C:\php\pear\tests\PHP_CodeSniffer\CodeSniffer\Core\File</li></ol><p>需要设置如下配置，以管理员身份支行cmd分别输入以下命令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">D:\php&gt;pear config-set php_dir D:\php\pear</span><br><span class="line">config-set succeeded</span><br><span class="line"></span><br><span class="line">D:\php&gt;pear config-set doc_dir D:\php\pear</span><br><span class="line">config-set succeeded</span><br><span class="line"></span><br><span class="line">D:\php&gt;pear config-set cfg_dir D:\php\pear</span><br><span class="line">config-set succeeded</span><br><span class="line"></span><br><span class="line">D:\php&gt;pear config-set data_dir D:\php\pear</span><br><span class="line">config-set succeeded</span><br><span class="line"></span><br><span class="line">D:\php&gt;pear config-set test_dir D:\php\pear</span><br><span class="line">config-set succeeded</span><br><span class="line"></span><br><span class="line">D:\php&gt;pear config-set www_dir D:\php\pear</span><br><span class="line">config-set succeeded</span><br><span class="line"></span><br><span class="line">D:\php&gt;pear install PHP_CodeSniffer</span><br><span class="line">WARNING: channel &quot;pear.php.net&quot; has updated its protocols, use &quot;pear channel-upd</span><br><span class="line">ate pear.php.net&quot; to update</span><br><span class="line">downloading PHP_CodeSniffer-2.0.0.tgz ...</span><br><span class="line">Starting to download PHP_CodeSniffer-2.0.0.tgz (448,559 bytes)</span><br><span class="line">.............................done: 448,559 bytes</span><br><span class="line">install ok: channel:&#x2F;&#x2F;pear.php.net&#x2F;PHP_CodeSniffer-2.0.0</span><br></pre></td></tr></table></figure><ol start="5"><li>安装PHP CodeSniffer for Visual Studio Code插件（英文介绍）  </li><li>1 打开 Visual Studio Code；  </li><li>2 在Windows下面按快捷键 Ctrl+P 或者 Mac下面 Cmd+P 来快捷打开对话框；  </li><li>3 键入 ext install phpcs 找到插件：  </li><li>4 直接回车或者点那个云图标来下载和安装此插件；  </li><li>5 重启 Visual Studio Code 就可以享用此强大IDE了。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;下载并安装 Visual Studio Code&lt;br&gt;微软官网：&lt;a href=&quot;https://code.visualstudio.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://code.visualstud
+      
+    
+    </summary>
+    
+    
+      <category term="开发工具" scheme="https://phpkoo.com/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="vscode" scheme="https://phpkoo.com/tags/vscode/"/>
+    
+      <category term="win10" scheme="https://phpkoo.com/tags/win10/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nginx（openresty）升级ssl模块 以支持 HTTP/2</title>
+    <link href="https://phpkoo.com/posts/375.html"/>
+    <id>https://phpkoo.com/posts/375.html</id>
+    <published>2017-12-08T06:43:49.000Z</published>
+    <updated>2020-02-27T01:02:52.753Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们并不需要升级系统自带的 openssl，因为随便升级 openssl 会带来安全风险。我们只下载 openssl 1.0.2 源码包，借助它来重新编译（相当于重新安装）服务器上的 NginX 即可。一旦成了 built with OpenSSL 1.0.2，就意味着能够支持 http/2 了。</p><p>1、下载并解压 OpenSSL</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">wget https://www.openssl.org/<span class="built_in">source</span>/openssl-1.0.2-latest.tar.gz</span><br><span class="line">tar -zxf openssl-1.0.2-latest.tar.gz</span><br></pre></td></tr></table></figure><p>2、修改编译参数</p><p>#####指定opensll包位置<br><code>--with-openssl=/usr/local/src/openssl-1.0.2m</code></p><p>#####开启ssl模块<br><code>--with-http_ssl_module</code></p><p>#####开启http/2模块<br><code>--with-http_v2_module</code></p><p>#####编译报错是“collect2: ld returned 1 exit status”需要指定pcre8.36及以上版本<br><code>--with-pcre=/usr/local/src/pcre-8.40</code></p><p>3、开启ssl 修改配置</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>4、开启http/2 修改配置</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl http2;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>附：<br>pcre下载：<a href="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/" target="_blank" rel="noopener">ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们并不需要升级系统自带的 openssl，因为随便升级 openssl 会带来安全风险。我们只下载 openssl 1.0.2 源码包，借助它来重新编译（相当于重新安装）服务器上的 NginX 即可。一旦成了 built with OpenSSL 1.0.2，就意味着能够
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
+    
+      <category term="Nginx" scheme="https://phpkoo.com/categories/Linux/Nginx/"/>
+    
+    
+      <category term="nginx" scheme="https://phpkoo.com/tags/nginx/"/>
+    
+      <category term="ssl" scheme="https://phpkoo.com/tags/ssl/"/>
+    
+      <category term="http/2" scheme="https://phpkoo.com/tags/http-2/"/>
+    
+      <category term="openresty" scheme="https://phpkoo.com/tags/openresty/"/>
+    
+  </entry>
+  
+</feed>

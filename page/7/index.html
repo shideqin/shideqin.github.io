@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="关注小众语言，记录、分享技术点滴！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="阿德的博客">
+<meta property="og:url" content="https://phpkoo.com/page/7/">
+<meta property="og:site_name" content="阿德的博客">
+<meta property="og:description" content="关注小众语言，记录、分享技术点滴！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="阿德">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://phpkoo.com/page/7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false
+  };
+</script>
+
+  <title>阿德的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="阿德的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿德的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/111.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/111.html" class="post-title-link" itemprop="url">centos上安装php-memcached(v2.1.0)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-05-27 18:25:06" itemprop="dateCreated datePublished" datetime="2014-05-27T18:25:06+08:00">2014-05-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一、所需软件包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://launchpad.net/libmemcached/1.0/1.0.18/+download/libmemcached-1.0.18.tar.gz  </span><br><span class="line">wget http://pecl.php.net/get/memcached-2.2.0.tgz</span><br></pre></td></tr></table></figure>
+<p>二、解压</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar xzf libmemcached-1.0.18.tar.gz  </span><br><span class="line">tar xzf memcached-2.2.0.tgz</span><br></pre></td></tr></table></figure>
+<p>三、GCC升级</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc44 gcc44-c++ libstdc++44-devel  </span><br><span class="line"><span class="built_in">export</span> CC=/wp-content/bin/gcc44  </span><br><span class="line"><span class="built_in">export</span> CXX=/wp-content/bin/g++44</span><br></pre></td></tr></table></figure>
+<p>提示：yum源更新命令yum update</p>
+<p>四、libmemcached安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/libmemcached --with-memcached  </span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>五、memcached扩展安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/php/bin/phpize</span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config --with-libmemcached-dir=/usr/<span class="built_in">local</span>/libmemcached --<span class="built_in">enable</span>-memcached-sasl</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>安装完成</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/109.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/109.html" class="post-title-link" itemprop="url">如何运行一个golang程序为守护进程？</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-05-09 16:02:00" itemprop="dateCreated datePublished" datetime="2014-05-09T16:02:00+08:00">2014-05-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GoLang/" itemprop="url" rel="index"><span itemprop="name">GoLang</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>安装daemonize</p>
+<p>1、安装git环境</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git -y</span><br></pre></td></tr></table></figure>
+<p>2、获取daemonize</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git://github.com/bmc/daemonize.git</span><br></pre></td></tr></table></figure>
+<p>3、安装daemonize</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> daemonize  </span><br><span class="line">./configure  </span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>4、查看是否安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">daemonize -v</span><br></pre></td></tr></table></figure>
+<p>通过daemonize执行golang守护进程<br>你需要打包你的golang程序为可执行文件（go build），并通过daemonize来执行它来实现守护进程，如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">daemonize -p /var/run/myapp.pid -l /var/lock/subsys/myapp -u nobody /path/to/myapp</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/108.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/108.html" class="post-title-link" itemprop="url">CentOS6.3升级Python到2.7.3版本</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-09-10 17:55:20" itemprop="dateCreated datePublished" datetime="2013-09-10T17:55:20+08:00">2013-09-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>查看python的版本</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -V</span><br><span class="line">Python 2.6.6</span><br></pre></td></tr></table></figure>
+<p>1.下载Python-2.7.3</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://python.org/ftp/python/2.7.3/Python-2.7.3.tar.bz2</span><br></pre></td></tr></table></figure>
+<p>2.解压Python-2.7.3</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jxvf Python-2.7.3.tar.bz2</span><br></pre></td></tr></table></figure>
+<p>3.进入刚解压后的文件夹(可使用命令)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Python-2.7.3</span><br></pre></td></tr></table></figure>
+<p>4.安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make all</span><br><span class="line">make install</span><br><span class="line">make clean</span><br><span class="line">make distclean</span><br></pre></td></tr></table></figure>
+<p>5.查看版本信息</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/wp-content/<span class="built_in">local</span>/bin/python2.7 -V</span><br></pre></td></tr></table></figure>
+<p>6.建立软连接，使系统默认的python指向python2.7<br>正常情况下即使python2.7安装成功后，系统默认指向的python仍然是2.6.6版本，考虑到yum是基于python2.6.6才能正常工作，不敢轻易卸载。</p>
+<p>如何实现将系统默认的python指向到2.7版本呢？</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv /wp-content/bin/python /wp-content/bin/python2.6.6</span><br><span class="line">ln -s /wp-content/<span class="built_in">local</span>/bin/python2.7 /wp-content/bin/python</span><br></pre></td></tr></table></figure>
+<p>检验python指向是否成功</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
+<p>7.解决系统python软链接指向python2.7版本后，yum不能正常工作</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /wp-content/bin/yum</span><br><span class="line">将文件头部的</span><br><span class="line"><span class="comment">#!/wp-content/bin/python</span></span><br><span class="line">改成</span><br><span class="line"><span class="comment">#!/wp-content/bin/python2.6.6</span></span><br></pre></td></tr></table></figure>
+<p>整个升级过程完成，可以使用Python2.7.3版本了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/107.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/107.html" class="post-title-link" itemprop="url">Centos 测试硬盘读写速度</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-06-17 14:11:50" itemprop="dateCreated datePublished" datetime="2013-06-17T14:11:50+08:00">2013-06-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>time有计时作用，dd用于复制，从if读出，写到of。if=/dev/zero不产生IO，因此可以用来测试纯写速度。同理of=/dev/null不产生IO，可以用来测试纯读速度。bs是每次读或写的大小，即一个块的大小，count是读写块的数量。</p>
+<p>1.测/目录所在磁盘的纯写速度：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=/dev/zero of=1Gb.file bs=1k count=1000000</span><br><span class="line">time sh -c <span class="string">"dd if=/dev/zero of=1Gb.file bs=1k count=1000000; sync"</span></span><br></pre></td></tr></table></figure>
+<p>2.测/目录所在磁盘的纯读速度：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=1Gb.file bs=64k |dd of=/dev/null</span><br><span class="line">time sh -c <span class="string">"dd if=1Gb.file bs=64k |dd of=/dev/null; sync"</span></span><br></pre></td></tr></table></figure>
+<p>3.测读写速度：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=1Gb.file of=2Gb.file bs=64k</span><br><span class="line">time sh -c <span class="string">"dd if=1Gb.file of=2Gb.file bs=64k; sync"</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/106.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/106.html" class="post-title-link" itemprop="url">发布第一个github代码开源</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-05-31 14:07:20" itemprop="dateCreated datePublished" datetime="2013-05-31T14:07:20+08:00">2013-05-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 10:27:11" itemprop="dateModified" datetime="2020-02-27T10:27:11+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nodejs/" itemprop="url" rel="index"><span itemprop="name">Nodejs</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>很久没写日志了，最近做一个公司项目，用到最近比较火的一门语言<a href="http://www.nodejs.org" target="_blank" rel="noopener">NodeJS</a>用该语言开发相关的功能，这里开源一个用nodejs写的mongodb库，闲话不多说，直接上项目地址。</p>
+<p>项目地址：<a href="https://github.com/shideqin/mongodb-lib" target="_blank" rel="noopener">https://github.com/shideqin/mongodb-lib</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/105.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/105.html" class="post-title-link" itemprop="url">php中获取本周/本月的第一天的日期</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2012-09-26 16:15:40" itemprop="dateCreated datePublished" datetime="2012-09-26T16:15:40+08:00">2012-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//本周第一天 </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">weekFirstDay</span>(<span class="params">$time=null</span>) </span>&#123;  </span><br><span class="line">    $time = ($time==<span class="literal">null</span>) ? time() : $time;  </span><br><span class="line">    <span class="keyword">return</span> date(<span class="string">'Y-m-d'</span>, $time<span class="number">-86400</span>*(date(<span class="string">'N'</span>,$time)<span class="number">-1</span>));  </span><br><span class="line">&#125;  </span><br><span class="line"> <span class="comment">//本月第一天  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">monthFirstDay</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> date(<span class="string">'Y-m-d'</span>, mktime(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,date(<span class="string">'n'</span>),<span class="number">1</span>,date(<span class="string">'Y'</span>)));  </span><br><span class="line">&#125;  </span><br><span class="line"> <span class="comment">//本季度第一天  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">quarterFirstDay</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> date(<span class="string">'Y-m-d'</span>, mktime(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,date(<span class="string">'n'</span>)-(date(<span class="string">'n'</span>)<span class="number">-1</span>)%<span class="number">3</span>,<span class="number">1</span>,date(<span class="string">'Y'</span>)));  </span><br><span class="line">&#125;  </span><br><span class="line"> <span class="comment">//本年第一天  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">yearFirstDay</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> date(<span class="string">'Y'</span>).<span class="string">'-01-01'</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/104.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/104.html" class="post-title-link" itemprop="url">可代替VI及Nodepad++的产物</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2012-07-02 00:34:51" itemprop="dateCreated datePublished" datetime="2012-07-02T00:34:51+08:00">2012-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Sublime Text 2 一款优化的代码开发工具，可算是一款小型的IDE工具，支持WIN,MAC,LINUX等操作系统，有丰富的工具包，可以通过Package管理工具进行各种扩展包安装，类似Eclipse中的Plug-in，同时该工具免费使用，无须支持免费当然偶尔会有付费提示，可不理会继续使用。</p>
+<p>下载地址：<a href="http://www.sublimetext.com/" target="_blank" rel="noopener">http://www.sublimetext.com/</a></p>
+<p>汉化语言包：<a href="http://download.csdn.net/detail/shisdq/4398263" target="_blank" rel="noopener">http://download.csdn.net/detail/shisdq/4398263</a></p>
+<p>注册补丁下载：<a href="http://download.csdn.net/detail/shisdq/4398223" target="_blank" rel="noopener">http://download.csdn.net/detail/shisdq/4398223</a></p>
+<p>注：文章中提供相关的工具，如有涉及到版权等相关问题均与作者无关，只做测试使用，禁止传播！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/103.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/103.html" class="post-title-link" itemprop="url">HTML中自定义属性,与自定义事件...</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-12-23 10:37:28" itemprop="dateCreated datePublished" datetime="2011-12-23T10:37:28+08:00">2011-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 10:14:36" itemprop="dateModified" datetime="2020-02-27T10:14:36+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>此种技术一般使用在大型的UI系统开发中: 主要用于核心开发者了为了让 各类普通开发人员能方便调用自己的方法(事件).. 下面是相关示例: 核心开发者,负责拖动事件的JS书写.. 普通开发人员或者美工,只需制作HTML排版…并加上 核心开发者定义的自定义属性后,就能实现拖动. 微软IE中的document.attachEvent为我们提供了良好的自定义事件能力.. 本实例中的自定义属性为:eDrag 通过自定义属性来激活自定义事件.. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> __DragId, __eDragSrc, __DragTop, __DragLeft;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__OnDrag</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> _element = event.srcElement;</span><br><span class="line">	<span class="keyword">if</span>(_element.eDrag)&#123;</span><br><span class="line">		<span class="keyword">if</span>(event.type==<span class="string">"mousedown"</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(_element.eDragSrc)&#123;</span><br><span class="line">				__eDragSrc = <span class="built_in">document</span>.getElementById(_element.eDragSrc);</span><br><span class="line">				__eDragSrc.style.display = <span class="string">"block"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">document</span>.body.style.cursor = <span class="string">"default"</span>;</span><br><span class="line">			__DragId = <span class="built_in">document</span>.getElementById(_element.eDrag);</span><br><span class="line">			__DragLeft = <span class="built_in">parseInt</span>(__DragId.offsetWidth)-(<span class="built_in">parseInt</span>(__DragId.offsetWidth)-(event.x-<span class="built_in">parseInt</span>(__DragId.offsetLeft)));</span><br><span class="line">			__DragTop = <span class="built_in">parseInt</span>(__DragId.offsetHeight)-(<span class="built_in">parseInt</span>(__DragId.offsetHeight)-(event.y-<span class="built_in">parseInt</span>(__DragId.offsetTop)));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(event.type==<span class="string">"mouseup"</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(__DragId)&#123;</span><br><span class="line">				__DragId = <span class="literal">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(__eDragSrc)&#123;</span><br><span class="line">				__eDragSrc.style.display = <span class="string">"none"</span>;</span><br><span class="line">				__eDragSrc = <span class="literal">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(event.type==<span class="string">"mousemove"</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(__DragId)&#123;</span><br><span class="line">			__DragId.style.top = event.y - __DragTop;</span><br><span class="line">			__DragId.style.left = event.x - __DragLeft;</span><br><span class="line">			__DragId.style.margin = <span class="string">"auto"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.attachEvent(<span class="string">"onmousedown"</span>, __OnDrag);</span><br><span class="line"><span class="built_in">document</span>.attachEvent(<span class="string">"onmousemove"</span>, __OnDrag);</span><br><span class="line"><span class="built_in">document</span>.attachEvent(<span class="string">"onmouseup"</span>, __OnDrag);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/87.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/87.html" class="post-title-link" itemprop="url">那些相见恨晚的 JavaScript 技巧</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-12-03 11:34:35" itemprop="dateCreated datePublished" datetime="2010-12-03T11:34:35+08:00">2010-12-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>JavaScript 的成功让人津津乐道，为 Web 网页编写 JavaScript 代码已经是所有 Web 设计师的基本功，这门有趣的语言蕴藏着许多不为人熟知的东西，即使多年的 JavaScript 程序员，也未能完全吃透。本文从7个方面讲述 JavaScript 中那些你不很熟知但非常实用的技巧。</p>
+<p>简略语句<br>JavaScript 可以使用简略语句快速创建对象和数组，比如下面的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> car = <span class="keyword">new</span> <span class="built_in">Object</span>();  </span><br><span class="line">car.colour = <span class="string">'red'</span>;  </span><br><span class="line">car.wheels = <span class="number">4</span>;  </span><br><span class="line">car.hubcaps = <span class="string">'spinning'</span>;  </span><br><span class="line">car.age = <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+<p>可以使用简略语句如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> car = &#123;</span><br><span class="line">   colour:<span class="string">'red'</span>,</span><br><span class="line">   wheels:<span class="number">4</span>,</span><br><span class="line">   hubcaps:<span class="string">'spinning'</span>,</span><br><span class="line">   age:<span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对象 car 就此创建，不过需要特别注意，结束花括号前一定不要加 “;” 否则在 IE 会遇到很大麻烦。  </p>
+<p>创建数组的传统方法是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> moviesThatNeedBetterWriters = <span class="keyword">new</span> <span class="built_in">Array</span>(</span><br><span class="line">  <span class="string">'Transformers'</span>,<span class="string">'Transformers2'</span>,<span class="string">'Avatar'</span>,<span class="string">'Indiana Jones 4'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>使用简略语句则：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> moviesThatNeedBetterWriters = [</span><br><span class="line">  <span class="string">'Transformers'</span>,<span class="string">'Transformers2'</span>,<span class="string">'Avatar'</span>,<span class="string">'Indiana Jones 4'</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+<p>另一个可以使用简略语句的地方是条件判断语句：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> direction;  </span><br><span class="line"><span class="keyword">if</span>(x &lt; <span class="number">200</span>)&#123;   direction = <span class="number">1</span>; &#125; <span class="keyword">else</span> &#123;   direction = <span class="number">-1</span>; &#125;</span><br></pre></td></tr></table></figure>
+<p>可以简略为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> direction = x &lt; <span class="number">200</span> ? <span class="number">1</span> : <span class="number">-1</span>;</span><br></pre></td></tr></table></figure>
+<p>JSON 数据格式<br>JSON 是 “JavaScript Object Notation” 的缩写，由 Douglas Crockford 设计，JSON 改变了 JavaScript 在缓存复杂数据格式方面的困境，如下例，假如你要描述一个乐队，可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> band = &#123;  </span><br><span class="line">   <span class="string">"name"</span>:<span class="string">"The Red Hot Chili Peppers"</span>,  </span><br><span class="line">   <span class="string">"members"</span>:[  </span><br><span class="line">     &#123;  </span><br><span class="line">       <span class="string">"name"</span>:<span class="string">"Anthony Kiedis"</span>,  </span><br><span class="line">       <span class="string">"role"</span>:<span class="string">"lead vocals"</span>  </span><br><span class="line">     &#125;,  </span><br><span class="line">     &#123;  </span><br><span class="line">       <span class="string">"name"</span>:<span class="string">"Michael 'Flea' Balzary"</span>,  </span><br><span class="line">       <span class="string">"role"</span>:<span class="string">"bass guitar, trumpet, backing vocals"</span>  </span><br><span class="line">     &#125;,  </span><br><span class="line">     &#123;  </span><br><span class="line">       <span class="string">"name"</span>:<span class="string">"Chad Smith"</span>,  </span><br><span class="line">       <span class="string">"role"</span>:<span class="string">"drums,percussion"</span>  </span><br><span class="line">     &#125;,  </span><br><span class="line">     &#123;  </span><br><span class="line">       <span class="string">"name"</span>:<span class="string">"John Frusciante"</span>,  </span><br><span class="line">       <span class="string">"role"</span>:<span class="string">"Lead Guitar"</span>  </span><br><span class="line">     &#125;  </span><br><span class="line">   ],  </span><br><span class="line">   <span class="string">"year"</span>:<span class="string">"2009"</span>  </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>你可以在 JavaScript 中直接使用 JSON，甚至作为某些 API 的返回数据对象，以下代码调用著名书签网站 delicious.com 的一个 API，返回你在该网站的所有书签，并显示在你自己的网站：</p>
+<p>JavaScript 本地函数 (Math, Array 和 String)<br>JavaScript 有很多内置函数，有效的使用，可以避免很多不必要的代码，比如，从一个数组中找出最大值，传统的方法是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">3</span>,<span class="number">342</span>,<span class="number">23</span>,<span class="number">22</span>,<span class="number">124</span>];  </span><br><span class="line"><span class="keyword">var</span> max = <span class="number">0</span>;  </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;numbers.length;i++)&#123;  </span><br><span class="line">  <span class="keyword">if</span>(numbers[i]=<span class="string">""</span>&gt; max)&#123;  </span><br><span class="line">    max = numbers[i];  </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">alert(max);</span><br></pre></td></tr></table></figure>
+<p>使用内置函数可以更容易实现：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> numbers = [<span class="number">3</span>,<span class="number">342</span>,<span class="number">23</span>,<span class="number">22</span>,<span class="number">124</span>];  </span><br><span class="line">numbers.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;<span class="keyword">return</span> b - a&#125;);  </span><br><span class="line">alert(numbers[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+<p>另一个方法是使用 Math.max() 方法：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.max(<span class="number">12</span>,<span class="number">123</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">433</span>,<span class="number">4</span>); <span class="comment">// returns 433</span></span><br></pre></td></tr></table></figure>
+<p>你可以用这个方法帮助探测浏览器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scrollTop= <span class="built_in">Math</span>.max(  </span><br><span class="line"> doc.documentElement.scrollTop,  </span><br><span class="line"> doc.body.scrollTop  </span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这解决了 IE 浏览器的一个问题，通过这种方法，你总是可以找到那个正确的值，因为浏览器不支持的那个值会返回 undefined。</p>
+<p>还可以使用 JavaScript 内置的 split() 和 join() 函数处理 HTML 对象的 CSS 类名，如果 HTML 对象的类名是空格隔开的多个名字，你在为它追加或删除一个 CSS 类名的时候需要特别注意，如果该对象还没有类名属性，可以直接将新的类名赋予它，如果已经存在类名，新增的类名前必须有一个空格，用传统的 JavaScript 方法是这样实现的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addclass</span>(<span class="params">elm,newclass</span>)</span>&#123;  </span><br><span class="line">  <span class="keyword">var</span> c = elm.className;  </span><br><span class="line">  elm.className = (c === <span class="string">''</span>) ? newclass : c+<span class="string">' '</span>+newclass;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 split 和 join 方法则直观优雅得多：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addclass</span>(<span class="params">elm,newclass</span>)</span>&#123;  </span><br><span class="line">  <span class="keyword">var</span> classes = elm.className.split(<span class="string">' '</span>);  </span><br><span class="line">  classes.push(newclass);  </span><br><span class="line">  elm.className = classes.join(<span class="string">' '</span>);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>事件代理<br>与其在 HTML 文档中设计一堆事件，不如直接设计一个事件代理，举例说明，假如你有一些链接，用户点击后不想打开链接，而是执行某个事件，HTML 代码如下：</p>
+<h2 id="Great-Web-resources"><a href="#Great-Web-resources" class="headerlink" title="Great Web resources"></a>Great Web resources</h2><ul>
+<li><a href="http://opera.com/wsc" target="_blank" rel="noopener">Opera Web Standards Curriculum</a></li>
+<li><a href="http://sitepoint.com" target="_blank" rel="noopener">Sitepoint</a></li>
+<li><a href="http://alistapart.com" target="_blank" rel="noopener">A List Apart</a></li>
+<li><a href="http://yuiblog.com" target="_blank" rel="noopener">YUI Blog</a></li>
+<li><a href="http://blameitonthevoices.com" target="_blank" rel="noopener">Blame it on the voices</a></li>
+<li><a href="http://oddlyspecific.com" target="_blank" rel="noopener">Oddly specific</a></li>
+</ul>
+<p>使用事件代理，可以直接处理，无需遍历：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> resources = <span class="built_in">document</span>.getElementById(<span class="string">'resources'</span>);</span><br><span class="line">   resources.addEventListener(<span class="string">'click'</span>,handler,<span class="literal">false</span>);</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">handler</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">var</span> x = e.target; <span class="comment">// get the link tha</span></span><br><span class="line">     <span class="keyword">if</span>(x.nodeName.toLowerCase() === <span class="string">'a'</span>)&#123;</span><br><span class="line">       alert(<span class="string">'Event delegation:'</span> + x);</span><br><span class="line">       e.preventDefault();</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;;</span><br><span class="line"> &#125;)();</span><br></pre></td></tr></table></figure>
+<p>匿名函数与 Module 模式<br>JavaScript 的一个问题是，任何变量，函数或是对象，除非是在某个函数内部定义，否则，就是全局的，意味着同一网页的别的代码可以访问并改写这个变量（ECMA 的 JavaScript 5 已经改变了这一状况 - 译者），使用匿名函数，你可以绕过这一问题。</p>
+<p>比如，你有这样一段代码，很显然，变量 name, age, status 将成为全局变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'Chris'</span>;  </span><br><span class="line"><span class="keyword">var</span> age = <span class="string">'34'</span>;  </span><br><span class="line"><span class="keyword">var</span> status = <span class="string">'single'</span>;  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createMember</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">  <span class="comment">// [...]  </span></span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMemberDetails</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">  <span class="comment">// [...]  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了避免这一问题，你可以使用匿名函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> myApplication = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'Chris'</span>;  </span><br><span class="line">  <span class="keyword">var</span> age = <span class="string">'34'</span>;  </span><br><span class="line">  <span class="keyword">var</span> status = <span class="string">'single'</span>;  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">createMember</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="comment">// [...]  </span></span><br><span class="line">  &#125;  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getMemberDetails</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="comment">// [...]  </span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<p>如果这个函数不会被调用，可以更直接为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">  <span class="keyword">var</span> name = <span class="string">'Chris'</span>;  </span><br><span class="line">  <span class="keyword">var</span> age = <span class="string">'34'</span>;  </span><br><span class="line">  <span class="keyword">var</span> status = <span class="string">'single'</span>;  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">createMember</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="comment">// [...]  </span></span><br><span class="line">  &#125;  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getMemberDetails</span>(<span class="params"></span>)</span>&#123;  </span><br><span class="line">    <span class="comment">// [...]  </span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<p>如果要访问其中的对象或函数，可以：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myApplication = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> name = <span class="string">'Chris'</span>;</span><br><span class="line">   <span class="keyword">var</span> age = <span class="string">'34'</span>;</span><br><span class="line">   <span class="keyword">var</span> status = <span class="string">'single'</span>;</span><br><span class="line">   <span class="keyword">return</span>&#123;</span><br><span class="line">     createMember:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="comment">// […]</span></span><br><span class="line">     &#125;,</span><br><span class="line">     getMemberDetails:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       <span class="comment">// […]</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;();</span><br><span class="line"> <span class="comment">// myApplication.createMember() and</span></span><br><span class="line"> <span class="comment">// myApplication.getMemberDetails() now works.</span></span><br></pre></td></tr></table></figure>
+<p>这就是所谓 Module 模式或单例模式（Singleton），该模式为 Douglas Crockford 所推崇，并被大量应用在 Yahoo User Interface Library YUI。</p>
+<p>假如你想在别的地方调用里面的方法，又不想在调用前使用 myApplication 这个对象名，可以在匿名函数中返回这些方法，甚至用简称返回：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myApplication = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> name = <span class="string">'Chris'</span>;</span><br><span class="line">   <span class="keyword">var</span> age = <span class="string">'34'</span>;</span><br><span class="line">   <span class="keyword">var</span> status = <span class="string">'single'</span>;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">createMember</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="comment">// […]</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">getMemberDetails</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="comment">// […]</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span>&#123;</span><br><span class="line">     create:createMember,</span><br><span class="line">     <span class="keyword">get</span>:getMemberDetails</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;();</span><br><span class="line"> //myApplication.<span class="keyword">get</span>() and myApplication.create() now work.</span><br></pre></td></tr></table></figure>
+<p>代码配置<br>别人使用你编写的 JavaScript 代码的时候，难免会更改某些代码，但这会很困难，因为不是每个人都很容易读懂别人的代码，与其这样，不如创建一个代码配置对象，别人只需要在这个对象中更改某些配置即可实现代码的更改。这里有一篇 JavaScript 配置对象详解的文章，简单说：</p>
+<p>在代码中创建一个叫做 configuration 的对象<br>里面保存所有可以更改的配置，如 CSS ID 和类名，按钮的标签文字，描述性文字，本地化语言设置<br>将该对象设置为全局对象，以便别人直接访问并改写</p>
+<p>你应当在最后一步做这项工作，这里有一个文章，交付代码前的5件事值的参考。<br>同后台交互<br>JavaScript 是一门前台语言，你需要别的语言同后台交互，并返回数据，使用 AJAX，你可以让 JavaScript 直接使用同后台的交互，将复杂的数据处理交由后台处理。<br>JavaScript 框架<br>自己编写适应各种浏览器的代码是完全浪费时间，应当选择一个 JavaScript 框架，让这些复杂的事情交给框架处理。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/86.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/86.html" class="post-title-link" itemprop="url">计算php运行时间（毫秒数）</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-11-09 23:10:47" itemprop="dateCreated datePublished" datetime="2010-11-09T23:10:47+08:00">2010-11-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>非常简单，记录一下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$begin= explode(<span class="string">' '</span>, microtime());</span><br><span class="line"></span><br><span class="line"><span class="comment">//php script here</span></span><br><span class="line"></span><br><span class="line">$end = explode(<span class="string">' '</span>, microtime());  </span><br><span class="line"><span class="keyword">echo</span> ($end[<span class="number">1</span>]-$begin[<span class="number">1</span>]).<span class="string">'s'</span>.($end[<span class="number">0</span>]-$begin[<span class="number">0</span>]).<span class="string">'ms'</span>;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">阿德</p>
+  <div class="site-description" itemprop="description">关注小众语言，记录、分享技术点滴！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">171</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿德</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

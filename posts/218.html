@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Advanced Audio Coding (AAC) 是 MP3 的后继格式，它被定义於 MPEG-4 part 3 (ISO&#x2F;IEC 14496-3)。它通常使用在 MP4 容器内；对于音乐习惯上使用 .m4a 副档名。第二常见使用是在 MKV (Matroska) 档内，因为它比 MP4 支援更多以文字为基础的软字幕 (例如 ass, ssa…)。本文中的范例将使用 MP4 与 M4A 副档">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AAC编码基本说明">
+<meta property="og:url" content="https://phpkoo.com/posts/218.html">
+<meta property="og:site_name" content="阿德的博客">
+<meta property="og:description" content="Advanced Audio Coding (AAC) 是 MP3 的后继格式，它被定义於 MPEG-4 part 3 (ISO&#x2F;IEC 14496-3)。它通常使用在 MP4 容器内；对于音乐习惯上使用 .m4a 副档名。第二常见使用是在 MKV (Matroska) 档内，因为它比 MP4 支援更多以文字为基础的软字幕 (例如 ass, ssa…)。本文中的范例将使用 MP4 与 M4A 副档">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload.phpkoo.com/uploads/2015/09/mobile01-0aaa64dadec533c578cc87c6c1054e16.png">
+<meta property="article:published_time" content="2015-09-18T10:02:05.000Z">
+<meta property="article:modified_time" content="2020-02-27T01:02:52.720Z">
+<meta property="article:author" content="阿德">
+<meta property="article:tag" content="ffmpeg">
+<meta property="article:tag" content="aac">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload.phpkoo.com/uploads/2015/09/mobile01-0aaa64dadec533c578cc87c6c1054e16.png">
+
+<link rel="canonical" href="https://phpkoo.com/posts/218.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>AAC编码基本说明 | 阿德的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="阿德的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿德的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/218.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AAC编码基本说明
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-09-18 18:02:05" itemprop="dateCreated datePublished" datetime="2015-09-18T18:02:05+08:00">2015-09-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index"><span itemprop="name">FFmpeg</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Advanced Audio Coding (AAC) 是 MP3 的后继格式，它被定义於 MPEG-4 part 3 (ISO/IEC 14496-3)。它通常使用在 MP4 容器内；对于音乐习惯上使用 .m4a 副档名。第二常见使用是在 MKV (Matroska) 档内，因为它比 MP4 支援更多以文字为基础的软字幕 (例如 ass, ssa…)。本文中的范例将使用 MP4 与 M4A 副档名。<br>​<br>FFmpeg 可以支援 4 个 AAC-LC 编码器 (aac, libfaac, libfdk_aac, libvo_aacenc) 与两个 AAC-HE 编码器 (libaacplus, libfdk_aac)。libaacplus, libfaac, libfdk_aac 的授权不与 GPL 相容，所以当 GPU 授权源代码也包含在内时 GPU 不允许包含源代码授权依据这些授权的二进位档的发布。因此这些编码器被指定为 “non-free”，且你不能下载内建它们的 ffmpeg。这可以透过自行编译 ffmpeg 来解决。</p>
+<p>对于 AAC-LC 品质而言，其答案可能是:<br>libfdk_aac &gt; libfaac &gt; Native FFmpeg AAC encoder (aac) &gt; libvo_aacenc<br><a href="https://trac.ffmpeg.org/wiki/Encode/HighQualityAudio#AudioencodersFFmpegcanuse" target="_blank" rel="noopener">https://trac.ffmpeg.org/wiki/Encode/HighQualityAudio#AudioencodersFFmpegcanuse</a></p>
+<p><strong>libfdk_aac</strong></p>
+<p>The Fraunhofer FDK AAC 编解码程式库。这是目前 ffmpeg 所能提供的最高品质 AAC 编码器。需要 ffmpeg 组态 (configuration) 中含有 –enable-libfdk-aac (如果也使用 –enable-gpl 则还需要 –enable-nonfree)。</p>
+<p>详细资料: Fraunhofer FDK AAC - Hydrogenaud</p>
+<p>Constant Bit Rate (CBR, 常数位元速率) 模式</p>
+<p>指定一个目标位元速率。它可以让你精準控制输出档案大小 (= 位元率 * 时间长度)，且它与 HE-AAC profile 相容。由经验得知，双声道推荐 位元率 &gt;= 128kbps，6 声道则推荐位元率 &gt;= 384kbps (由 双声道位元率 * 声道数 / 2)。使用 -b 选项来控制输出位元速率。</p>
+<p>范例:</p>
+<p>转换一个音讯档为 AAC 并以 M4A (MP4) 容器来封装:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -c:a libfdk_aac -b:a 128k output.m4a</span><br></pre></td></tr></table></figure>
+<p>转换一个影片的 5.1 生到音讯为 AAC，并复制其视讯串流:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -c:v copy -c:a libfdk_aac -b:a 384k output.mp4</span><br></pre></td></tr></table></figure>
+<p>Variable Bit Rate (VBR, 可变位元速率) 模式</p>
+<p>指定一个目标品质，而不是特定的位元速率。设定值范围为 1-5，较高的值会得到较高的位元率与品质。使用 -vbr 选项来设定 VBR 等级。</p>
+<p>范例:</p>
+<p>转换一个音讯档为 AAC 并以 M4A (MP4) 容器来封装:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -c:a libfdk_aac -vbr 3 output.m4a</span><br></pre></td></tr></table></figure>
+<p>转换一个影片的 5.1 生到音讯为 AAC，并复制其视讯串流:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -c:v copy -c:a libfdk_aac -vbr 3 output.mp4</span><br></pre></td></tr></table></figure>
+<p><strong>High-Efficiency AAC</strong></p>
+<p>简称 AAC-HE 又名为 aacPlus，这是一对专门针对低位元速率的 AAC profiles (version 1 与 version 2)，AAC-HE v1。对于双声道而言 (如下图所示)，AAC-HE v1 适用于 96kbps 以下，而 AAC-HE v2 适用于 48kbps 以下。但大多数播放设备不支援播放任何版本的 AAC-HE 而只能播放 AAC-LC。</p>
+<p><a href="https://upload.phpkoo.com/uploads/2015/09/mobile01-0aaa64dadec533c578cc87c6c1054e16.png" target="_blank" rel="noopener"><img src="https://upload.phpkoo.com/uploads/2015/09/mobile01-0aaa64dadec533c578cc87c6c1054e16.png" alt="mobile01-0aaa64dadec533c578cc87c6c1054e16"></a></p>
+<p>x 轴为音质; y 轴为位元率</p>
+<p>注意: AAC-HE v2 只能处理双声道。如果需要降混 (down-mix) 至 单声道，则使用 AAC-HE v1。</p>
+<p>如果需要指定 Profile 则使用 -profile 选项。</p>
+<p>Profiles:<br>aac_low<br>MPEG-4 AAC LC (default)<br>aac_he<br>MPEG-4 HE-AAC (SBR)<br>aac_he_v2<br>MPEG-4 HE-AAC v2 (SBR+PS)<br>aac_ld<br>MPEG-4 AAC LD<br>aac_eld<br>MPEG-4 AAC ELD</p>
+<p>例如:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -ac 2 -c:a libfdk_aac -profile:a aac_he -vbr 3 output.m4a</span><br></pre></td></tr></table></figure>
+<p><strong>Native FFmpeg AAC encoder</strong><br>原生 (Native) FFmpeg AAC 编码器是已包含在 ffmpeg 内，而且它不像本文中其它 AAC 编码器那样需要一个外部程式库。注意这将不会让你得到如同 libfdk_aac 一样的良好结果。这被认为是实验性的编码器，所以需要 “-strict experimental” 或 “-strict -2 is”。</p>
+<p><strong>指定位元率</strong></p>
+<p>使用 -b 选项来指定输出位元率为 240kbps:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -strict experimental -c:a aac -b:a 240k output.m4a</span><br></pre></td></tr></table></figure>
+<p><strong>指定品质</strong></p>
+<p>使用 -q 选项来指定输出品质等级为 6:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -strict experimental -c:a aac -q:a 6 output.m4a</span><br></pre></td></tr></table></figure>
+<p>设定值有效范围为 0.1-10。比较高的设定值会得到较高的输出品质与位元率大小。<br>此 VBR 是实验性的并且有可能得到比 CBR 更差的结果。</p>
+<p><strong>libvo_aacenc</strong></p>
+<p>VisualOn AAC 编码程式库。需要 ffmpeg 组态 (configuration) 中含有 –enable-libvo-aacenc。它有非 non-free 的优点，但它是一个更差的编码器比起 libfdk_aac 甚至 原生的 FFmpeg AAC 编码器，根据 FFmpeg AACの音质评価。此编码器最多只支援 2 声道，并只有 CBR 模式，而且不支援 VBR 输出。</p>
+<p><strong>CBR 128Kbps：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -ac 2 -c:a libvo_aacenc -b:a 128k output.m4a</span><br></pre></td></tr></table></figure>
+<p><strong>附：</strong></p>
+<p>HE-AAC, HE-AAC v2<br>品质 高品质<br>比特率 HE-AAC：32至48kbit/s 单声道<br>HE-AAC v2：16至24kbit/s 单声道<br>高品质音频<br>采样率 24至96kHz<br>声道 单声道、立体声、多声道（如5.1、7.1）<br>应用 DVB（数 字视频广播）、ISDB（综合业务数字广播）、ARIB、ATSC-M/H、DAB+（数字音频广播）、DRM+（数字版权管理）、DRM、DVB- H（手持式数字视频广播）、DMB（数字多媒体广播）、MediaFLO、3GPP、XM广播、移动电话、音频和视频下载服务</p>
+<p>AAC-LC<br>品质 达到统计学标准的清晰度<br>比特率 最高每通道256kbit/s<br>采样率 8至96kHz<br>声道 单声道、立体声、多声道（如5.1、7.1）<br>应用 苹果 iPod、 iTunes、QuickTime、 日本ISDB（综合业务数字广播）、 AV 接收器、汽车收音机、移动音乐播放器、移动电话</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ffmpeg/" rel="tag"># ffmpeg</a>
+              <a href="/tags/aac/" rel="tag"># aac</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/207.html" rel="prev" title="对FFmpeg的X264预置比较">
+      <i class="fa fa-chevron-left"></i> 对FFmpeg的X264预置比较
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/253.html" rel="next" title="centos下php7支持memcached">
+      centos下php7支持memcached <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">阿德</p>
+  <div class="site-description" itemprop="description">关注小众语言，记录、分享技术点滴！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">171</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿德</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
