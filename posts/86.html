@@ -15,46 +15,20 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://phpkoo.com').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-  <meta name="description" content="非常简单，记录一下： $begin&#x3D; explode(&#39; &#39;, microtime()); &#x2F;&#x2F;php script here $end &#x3D; explode(&#39; &#39;, microtime()); echo ($end[1]-$begin[1]).&#39;s&#39;.($end[0]-$begin[0]).&#39;ms&#39;;">
+  <meta name="description" content="非常简单，记录一下： 123456$begin&#x3D; explode(&#39; &#39;, microtime());&#x2F;&#x2F;php script here$end &#x3D; explode(&#39; &#39;, microtime());  echo ($end[1]-$begin[1]).&#39;s&#39;.($end[0]-$begin[0]).&#39;ms&#39;;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算php运行时间（毫秒数）">
 <meta property="og:url" content="https://phpkoo.com/posts/86.html">
 <meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="非常简单，记录一下： $begin&#x3D; explode(&#39; &#39;, microtime()); &#x2F;&#x2F;php script here $end &#x3D; explode(&#39; &#39;, microtime()); echo ($end[1]-$begin[1]).&#39;s&#39;.($end[0]-$begin[0]).&#39;ms&#39;;">
+<meta property="og:description" content="非常简单，记录一下： 123456$begin&#x3D; explode(&#39; &#39;, microtime());&#x2F;&#x2F;php script here$end &#x3D; explode(&#39; &#39;, microtime());  echo ($end[1]-$begin[1]).&#39;s&#39;.($end[0]-$begin[0]).&#39;ms&#39;;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2010-11-09T15:10:47.000Z">
-<meta property="article:modified_time" content="2020-01-16T06:28:43.353Z">
+<meta property="article:modified_time" content="2020-02-27T01:02:52.719Z">
 <meta property="article:author" content="阿德">
 <meta property="article:tag" content="php">
 <meta property="article:tag" content="microtime()">
@@ -113,6 +87,14 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -125,11 +107,9 @@
         <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -182,9 +162,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -249,7 +229,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,9 +237,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
-                  </a>
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
                 </span>
             </span>
 
@@ -274,8 +252,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>非常简单，记录一下： <code>$begin= explode(&#39; &#39;, microtime()); //php script here $end = explode(&#39; &#39;, microtime()); echo ($end[1]-$begin[1]).&#39;s&#39;.($end[0]-$begin[0]).&#39;ms&#39;;</code></p>
-
+        <p>非常简单，记录一下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$begin= explode(<span class="string">' '</span>, microtime());</span><br><span class="line"></span><br><span class="line"><span class="comment">//php script here</span></span><br><span class="line"></span><br><span class="line">$end = explode(<span class="string">' '</span>, microtime());  </span><br><span class="line"><span class="keyword">echo</span> ($end[<span class="number">1</span>]-$begin[<span class="number">1</span>]).<span class="string">'s'</span>.($end[<span class="number">0</span>]-$begin[<span class="number">0</span>]).<span class="string">'ms'</span>;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -374,7 +352,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -387,7 +365,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-count">171</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -15,36 +15,10 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://phpkoo.com').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="关注小众语言，记录、分享技术点滴！">
 <meta property="og:type" content="website">
@@ -108,6 +82,14 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -120,11 +102,9 @@
         <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -177,9 +157,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -245,7 +225,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,9 +233,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">Mysql</span>
-                  </a>
+                  <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
                 </span>
             </span>
 
@@ -270,8 +248,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>mysql分社区版和企业版，其中社区版为免费使用并且开源。 1、下载mysql5.7社区版（64位） [shell] wget <a href="http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86\_64.tar" target="_blank" rel="noopener">http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86\_64.tar</a> tar -xvf mysql-5.7.17-linux-glibc2.5-x86_64.tar tar -zxvf mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz [/shell] 2、解压拷贝 [shell] mv mysql-5.7.17-linux-glibc2.5-x86_64 /usr/local/mysql [/shell] 3、创建mysql用户 [shell] groupadd mysql useradd -r -g mysql mysql [/shell] 4、创建mysql的数据目录，该目录在初始化数据库的时候会用到 [shell] mkdir /usr/local/mysql/data /usr/local/mysql/log chown -R mysql:mysql /usr/local/mysql [/shell] 5、创建my.cnf文件 [shell] cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf vim /etc/my.cnf [client] port = 3306 socket = /tmp/mysql.sock [mysqld] server_id=1 port = 3306 user = mysql socket = /tmp/mysql.sock basedir = /usr/local/mysql datadir = /usr/local/mysql/data pid-file = /usr/local/mysql/data/mysql.pid max_connections = 1000 max_connect_errors = 1000 table_open_cache = 1024 max_allowed_packet = 128M open_files_limit = 65535 #####====================================[innodb]============================== innodb_buffer_pool_size = 1024M innodb_file_per_table = 1 innodb_write_io_threads = 4 innodb_read_io_threads = 4 innodb_purge_threads = 2 innodb_flush_log_at_trx_commit = 1 innodb_log_file_size = 512M innodb_log_files_in_group = 2 innodb_log_buffer_size = 16M innodb_max_dirty_pages_pct = 80 innodb_lock_wait_timeout = 30 innodb_data_file_path=ibdata1:1024M:autoextend #####====================================[log]============================== log_error = /usr/local/mysql/log/mysql-error.log slow_query_log = 1 long_query_time = 1 slow_query_log_file = /usr/local/mysql/log/mysql-slow.log sql_mode=ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION [/shell] 6、初始化数据库 [shell] /usr/local/mysql/bin/mysql_install_db –basedir=/usr/local/mysql –datadir=/usr/local/mysql/data –user=mysql [/shell] 7、修改目录权限 [shell] chown -R mysql:mysql /usr/local/mysql [/shell] 8、配置启动文件 [shell] cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld [/shell] 9、启动mysql [shell] /etc/init.d/mysqld start [/shell] 10、获取初始密码 [shell] cat ~/.mysql_secret rm -rf ~/.mysql_secret [/shell] 11、重设初始密码 [shell] /usr/local/mysql/bin/mysql -uroot -p mysql&gt; show databases; ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement. mysql&gt; ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘<strong>****</strong>‘; mysql&gt; grant all privileges on <em>.</em> to root@’%’ identified by ‘123456’; mysql&gt; flush privileges; [/shell] ps:远程连接mysql，报can’t connect to mysql server on ‘localhost’ (10060) 请检查一下iptables，默认可能禁用了3306端口 [shell] vim /etc/sysconfig/iptables -A INPUT -m state –state NEW -m tcp -p tcp –dport 3306 -j ACCEPT [/shell] 重启iptables [shell] service iptables restart [/shell] PS: 1、创建用户 [shell] CREATE USER ‘username’@’host’ IDENTIFIED BY ‘password’; [/shell] 说明： username：你将创建的用户名 host：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符% password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器 2、授权 [shell] GRANT privileges ON databasename.tablename TO ‘username’@’host’ [/shell] 说明： privileges：用户的操作权限，如SELECT，INSERT，UPDATE等，如果要授予所的权限则使用ALL databasename：数据库名 tablename：表名，如果要授予该用户对所有数据库和表的相应操作权限则可用<em>表示，如</em>.* 注意： 用以上命令授权的用户不能给其它用户授权，如果想让该用户可以授权，用以下命令: [shell] GRANT privileges ON databasename.tablename TO ‘username’@’host’ WITH GRANT OPTION; [/shell] 3、设置与更改用户密码 [shell] SET PASSWORD FOR ‘username’@’host’ = PASSWORD(‘newpassword’); [/shell] 如果是当前登陆用户用 [shell] SET PASSWORD = PASSWORD(“newpassword”); [/shell] 4、撤销用户权限 [shell] REVOKE privilege ON databasename.tablename FROM ‘username’@’host’; [/shell] 说明： privilege, databasename, tablename：同授权部分 注意： 假如你在给用户‘pig’@’%’授权的时候是这样的（或类似的）：GRANT SELECT ON test.user TO ‘pig’@’%’，则在使用REVOKE SELECT ON <em>.</em> FROM ‘pig’@’%’;命令并不能撤销该用户对test数据库中user表的SELECT 操作。相反，如果授权使用的是GRANT SELECT ON <em>.</em> TO ‘pig’@’%’;则REVOKE SELECT ON test.user FROM ‘pig’@’%’;命令也不能撤销该用户对test数据库中user表的Select权限。 具体信息可以用命令SHOW GRANTS FOR ‘pig’@’%’; 查看。 5、删除用户 [shell] DROP USER ‘username’@’host’; [/shell]</p>
+          <p>mysql分社区版和企业版，其中社区版为免费使用并且开源。<br>1、下载mysql5.7社区版（64位）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar</span><br><span class="line">tar -xvf mysql-5.7.17-linux-glibc2.5-x86_64.tar</span><br><span class="line">tar -zxvf mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>2、解压拷贝</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv mysql-5.7.17-linux-glibc2.5-x86_64 /usr/<span class="built_in">local</span>/mysql</span><br></pre></td></tr></table></figure>
+<p>3、创建mysql用户</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql mysql</span><br></pre></td></tr></table></figure>
+<p>4、创建mysql的数据目录，该目录在初始化数据库的时候会用到</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/<span class="built_in">local</span>/mysql/data /usr/<span class="built_in">local</span>/mysql/<span class="built_in">log</span></span><br><span class="line">chown -R mysql:mysql /usr/<span class="built_in">local</span>/mysql</span><br></pre></td></tr></table></figure>
+<p>5、创建my.cnf文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/<span class="built_in">local</span>/mysql/support-files/my-default.cnf /etc/my.cnf</span><br><span class="line">vim /etc/my.cnf</span><br><span class="line"></span><br><span class="line">[client]</span><br><span class="line">port = 3306</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">server_id=1</span><br><span class="line">port = 3306</span><br><span class="line">user = mysql</span><br><span class="line">socket = /tmp/mysql.sock</span><br><span class="line">basedir = /usr/<span class="built_in">local</span>/mysql</span><br><span class="line">datadir = /usr/<span class="built_in">local</span>/mysql/data</span><br><span class="line">pid-file = /usr/<span class="built_in">local</span>/mysql/data/mysql.pid</span><br><span class="line">max_connections = 1000</span><br><span class="line">max_connect_errors = 1000</span><br><span class="line">table_open_cache = 1024</span><br><span class="line">max_allowed_packet = 128M</span><br><span class="line">open_files_limit = 65535</span><br><span class="line"><span class="comment">#####====================================[innodb]==============================</span></span><br><span class="line">innodb_buffer_pool_size = 1024M</span><br><span class="line">innodb_file_per_table = 1</span><br><span class="line">innodb_write_io_threads = 4</span><br><span class="line">innodb_read_io_threads = 4</span><br><span class="line">innodb_purge_threads = 2</span><br><span class="line">innodb_flush_log_at_trx_commit = 1</span><br><span class="line">innodb_log_file_size = 512M</span><br><span class="line">innodb_log_files_in_group = 2</span><br><span class="line">innodb_log_buffer_size = 16M</span><br><span class="line">innodb_max_dirty_pages_pct = 80</span><br><span class="line">innodb_lock_wait_timeout = 30</span><br><span class="line">innodb_data_file_path=ibdata1:1024M:autoextend</span><br><span class="line"></span><br><span class="line"><span class="comment">#####====================================[log]==============================</span></span><br><span class="line">log_error = /usr/<span class="built_in">local</span>/mysql/<span class="built_in">log</span>/mysql-error.log</span><br><span class="line">slow_query_log = 1</span><br><span class="line">long_query_time = 1</span><br><span class="line">slow_query_log_file = /usr/<span class="built_in">local</span>/mysql/<span class="built_in">log</span>/mysql-slow.log</span><br><span class="line"></span><br><span class="line">sql_mode=ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure>
+<p>6、初始化数据库</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/mysql/bin/mysql_install_db --basedir=/usr/<span class="built_in">local</span>/mysql --datadir=/usr/<span class="built_in">local</span>/mysql/data --user=mysql</span><br></pre></td></tr></table></figure>
+<p>7、修改目录权限</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql:mysql /usr/<span class="built_in">local</span>/mysql</span><br></pre></td></tr></table></figure>
+<p>8、配置启动文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/<span class="built_in">local</span>/mysql/support-files/mysql.server /etc/init.d/mysqld</span><br></pre></td></tr></table></figure>
+<p>9、启动mysql</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/mysqld start</span><br></pre></td></tr></table></figure>
+<p>10、获取初始密码</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.mysql_secret</span><br><span class="line">rm -rf ~/.mysql_secret</span><br></pre></td></tr></table></figure>
+<p>11、重设初始密码</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/mysql/bin/mysql -uroot -p</span><br><span class="line"></span><br><span class="line">mysql&gt; show databases;</span><br><span class="line">ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.</span><br><span class="line"></span><br><span class="line">mysql&gt; ALTER USER <span class="string">'root'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'********'</span>;</span><br><span class="line"></span><br><span class="line">mysql&gt; grant all privileges on *.* to root@<span class="string">'%'</span> identified by <span class="string">'123456'</span>;</span><br><span class="line"></span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
+<p>ps:远程连接mysql，报can’t connect to mysql server on ‘localhost’ (10060)<br>请检查一下iptables，默认可能禁用了3306端口</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysconfig/iptables</span><br><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 3306 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<p>重启iptables</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure>
+<p>PS:</p>
+<p>1、创建用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'username'</span>@<span class="string">'host'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
 
+<p>说明：<br>username：你将创建的用户名<br>host：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符%<br>password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器</p>
+<p>2、授权</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">privileges</span> <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'host'</span></span><br></pre></td></tr></table></figure>
+
+<p>说明：<br>privileges：用户的操作权限，如SELECT，INSERT，UPDATE等，如果要授予所的权限则使用ALL<br>databasename：数据库名<br>tablename：表名，如果要授予该用户对所有数据库和表的相应操作权限则可用<em>表示，如</em>.*</p>
+<p>注意：<br>用以上命令授权的用户不能给其它用户授权，如果想让该用户可以授权，用以下命令:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">privileges</span> <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'host'</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> <span class="keyword">OPTION</span>;</span><br></pre></td></tr></table></figure>
+<p>3、设置与更改用户密码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">PASSWORD</span> <span class="keyword">FOR</span> <span class="string">'username'</span>@<span class="string">'host'</span> = <span class="keyword">PASSWORD</span>(<span class="string">'newpassword'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如果是当前登陆用户用</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> <span class="keyword">PASSWORD</span> = <span class="keyword">PASSWORD</span>(<span class="string">"newpassword"</span>);</span><br></pre></td></tr></table></figure>
+<p>4、撤销用户权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> privilege <span class="keyword">ON</span> databasename.tablename <span class="keyword">FROM</span> <span class="string">'username'</span>@<span class="string">'host'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>说明：<br>privilege, databasename, tablename：同授权部分</p>
+<p>注意： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">假如你在给用户&#39;pig&#39;@&#39;%&#39;授权的时候是这样的（或类似的）：GRANT SELECT ON test.user TO &#39;pig&#39;@&#39;%&#39;，则在使用REVOKE SELECT ON *.* FROM &#39;pig&#39;@&#39;%&#39;;命令并不能撤销该用户对test数据库中user表的SELECT 操作。相反，如果授权使用的是GRANT SELECT ON *.* TO &#39;pig&#39;@&#39;%&#39;;则REVOKE SELECT ON test.user FROM &#39;pig&#39;@&#39;%&#39;;命令也不能撤销该用户对test数据库中user表的Select权限。</span><br><span class="line"></span><br><span class="line">具体信息可以用命令SHOW GRANTS FOR &#39;pig&#39;@&#39;%&#39;; 查看。</span><br></pre></td></tr></table></figure>
+<p>5、删除用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> <span class="string">'username'</span>@<span class="string">'host'</span>;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -321,7 +347,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -329,9 +355,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
             </span>
 
@@ -346,7 +370,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>php一共有两个模块分别为mongo和mongodb，其中php7只支持mongodb模块 1.安装依赖包 [shell] yum install autoconf [/shell] 2.下载mongodb模块 [shell] wget -O mongodb-1.1.9.tgz <a href="https://pecl.php.net/get/mongodb" target="_blank" rel="noopener">https://pecl.php.net/get/mongodb</a> tar -zxvf mongodb-1.1.9.tgz cd mongodb-1.1.9 [/shell] 3.编译与安装 [shell] /usr/local/php/bin/phpize ./configure –with-php-config=/usr/local/php/bin/php-config make make install [/shell] 安装完成</p>
+          <p>php一共有两个模块分别为mongo和mongodb，其中php7只支持mongodb模块</p>
+<p>1.安装依赖包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install autoconf</span><br></pre></td></tr></table></figure>
+<p>2.下载mongodb模块</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O mongodb-1.1.9.tgz https://pecl.php.net/get/mongodb</span><br><span class="line">tar -zxvf mongodb-1.1.9.tgz</span><br><span class="line"><span class="built_in">cd</span> mongodb-1.1.9</span><br></pre></td></tr></table></figure>
+<p>3.编译与安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/php/bin/phpize</span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>安装完成</p>
 
       
     </div>
@@ -397,7 +428,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -405,15 +436,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Nginx/" itemprop="url" rel="index">
-                    <span itemprop="name">Nginx</span>
-                  </a>
+                  <a href="/categories/Linux/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a>
                 </span>
             </span>
 
@@ -428,7 +455,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>首先由于nginx的一些模块依赖一些lib库，所以在安装nginx之前，必须先安装这些lib库，这些依赖库主要有g++、gcc、openssl-devel、pcre-devel和zlib-devel 所以执行如下命令安装 1.安装依赖包 [shell] yum install gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel ncurses-devel perl [/shell] 2.下载最新版的nginx [shell] wget <a href="http://nginx.org/download/nginx-1.10.2.tar.gz" target="_blank" rel="noopener">http://nginx.org/download/nginx-1.10.2.tar.gz</a> tar -zxvf nginx-1.10.2.tar.gz [/shell] 3.编译与安装 [shell] ./configure –prefix=/usr/local/nginx make make install [/shell] 4.查看nginx的安装目录 [shell] whereis nginx [/shell] 5.启动 [shell] /usr/local/nginx [/shell] 安装完成</p>
+          <p>首先由于nginx的一些模块依赖一些lib库，所以在安装nginx之前，必须先安装这些lib库，这些依赖库主要有g++、gcc、openssl-devel、pcre-devel和zlib-devel 所以执行如下命令安装<br>1.安装依赖包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel ncurses-devel perl</span><br></pre></td></tr></table></figure>
+<p>2.下载最新版的nginx</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.10.2.tar.gz</span><br><span class="line">tar -zxvf nginx-1.10.2.tar.gz</span><br></pre></td></tr></table></figure>
+<p>3.编译与安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/nginx</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>4.查看nginx的安装目录</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis nginx</span><br></pre></td></tr></table></figure>
+<p>5.启动</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx</span><br></pre></td></tr></table></figure>
+<p>安装完成</p>
 
       
     </div>
@@ -479,7 +516,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -487,9 +524,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
-                  </a>
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
                 </span>
             </span>
 
@@ -504,8 +539,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>编译安装 php-fpm 1.下载php7 [shell] wget -O php7.tar.gz <a href="http://cn2.php.net/get/php-7.0.13.tar.gz/from/this/mirror" target="_blank" rel="noopener">http://cn2.php.net/get/php-7.0.13.tar.gz/from/this/mirror</a> tar -zxvf php7.tar.gz cd php-7.0.13 [/shell] 2.安装依赖包 [shell] yum install gcc gcc-c++ libxml2 libxml2-devel openssl openssl-devel bzip2 bzip2-devel libcurl libcurl-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel gmp gmp-devel libmcrypt libmcrypt-devel readline readline-devel libxslt libxslt-devel [/shell] 3.编译配置（如果出现错误，基本都是上一步的依赖文件没有安装所致） 可以从这一步起参考PHP官方安装说明：<a href="http://php.net/manual/zh/install.unix.nginx.php" target="_blank" rel="noopener">http://php.net/manual/zh/install.unix.nginx.php</a> [shell] ./configure \ –prefix=/usr/local/php \ –with-config-file-path=/usr/local/php/etc \ –enable-fpm \ –enable-inline-optimization \ –disable-debug \ –disable-rpath \ –enable-shared \ –enable-soap \ –with-libxml-dir \ –with-xmlrpc \ –with-openssl \ –with-mhash \ –with-pcre-regex \ –with-sqlite3 \ –with-zlib \ –enable-bcmath \ –with-iconv \ –with-bz2 \ –enable-calendar \ –with-curl \ –with-cdb \ –enable-dom \ –enable-exif \ –enable-fileinfo \ –enable-filter \ –with-pcre-dir \ –enable-ftp \ –with-gd \ –with-openssl-dir \ –with-jpeg-dir \ –with-png-dir \ –with-zlib-dir \ –with-freetype-dir \ –with-gettext \ –with-gmp \ –with-mhash \ –enable-json \ –enable-mbstring \ –enable-mbregex \ –enable-mbregex-backtrack \ –with-libmbfl \ –with-onig \ –enable-pdo \ –with-mysqli=mysqlnd \ –with-pdo-mysql=mysqlnd \ –with-zlib-dir \ –with-pdo-sqlite \ –with-readline \ –enable-session \ –enable-shmop \ –enable-simplexml \ –enable-sockets \ –enable-sysvmsg \ –enable-sysvsem \ –enable-sysvshm \ –enable-wddx \ –with-libxml-dir \ –with-xsl \ –enable-zip \ –enable-mysqlnd-compression-support \ –with-pear \ –enable-opcache [/shell] 4.正式安装 [shell] make &amp;&amp; make install [/shell] 5.配置环境变量 [shell] cat &gt;&gt;/etc/profile&lt;&lt;EOF export PATH=\$PATH:/usr/local/php/bin EOF [/shell] 6.导入环境变量 [shell] source /etc/profile [/shell] 7.配置php-fpm [shell] cp php.ini-production /usr/local/php/etc/php.ini cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf cp /usr/local/php/etc/php-fpm.d/<a href="http://www.conf.default" target="_blank" rel="noopener">www.conf.default</a> /usr/local/php/etc/php-fpm.d/<a href="http://www.conf" target="_blank" rel="noopener">www.conf</a> cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm chmod +x /etc/init.d/php-fpm [/shell] 8.启动php-fpm [shell] /etc/init.d/php-fpm start [/shell] 安装完成 ps: 有2种方式可以找到之前的编译参数： 1.在源码 /lamp/php-5.4.11/中找到 config.nice，这个就是之前的编译参数 2.去掉enable-gd-jis-conv编译参数，引起imagettftext()中文乱码问题 3.在php.ini配置文件中找到Configure相关的配置 : [shell] /usr/local/php/bin/php -i |grep ‘Configure’ [/shell]</p>
-
+          <p>编译安装 php-fpm<br>1.下载php7</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O php7.tar.gz http://cn2.php.net/get/php-7.0.13.tar.gz/from/this/mirror</span><br><span class="line">tar -zxvf php7.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-7.0.13</span><br></pre></td></tr></table></figure>
+<p>2.安装依赖包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc gcc-c++ libxml2 libxml2-devel openssl openssl-devel bzip2 bzip2-devel libcurl libcurl-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel gmp gmp-devel libmcrypt libmcrypt-devel readline readline-devel libxslt libxslt-devel</span><br></pre></td></tr></table></figure>
+<p>3.编译配置（如果出现错误，基本都是上一步的依赖文件没有安装所致）<br>可以从这一步起参考PHP官方安装说明：<a href="http://php.net/manual/zh/install.unix.nginx.php" target="_blank" rel="noopener">http://php.net/manual/zh/install.unix.nginx.php</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">./configure \</span><br><span class="line">--prefix=/usr/<span class="built_in">local</span>/php \</span><br><span class="line">--with-config-file-path=/usr/<span class="built_in">local</span>/php/etc \</span><br><span class="line">--<span class="built_in">enable</span>-fpm \</span><br><span class="line">--<span class="built_in">enable</span>-inline-optimization \</span><br><span class="line">--<span class="built_in">disable</span>-debug \</span><br><span class="line">--<span class="built_in">disable</span>-rpath \</span><br><span class="line">--<span class="built_in">enable</span>-shared  \</span><br><span class="line">--<span class="built_in">enable</span>-soap \</span><br><span class="line">--with-libxml-dir \</span><br><span class="line">--with-xmlrpc \</span><br><span class="line">--with-openssl \</span><br><span class="line">--with-mhash \</span><br><span class="line">--with-pcre-regex \</span><br><span class="line">--with-sqlite3 \</span><br><span class="line">--with-zlib \</span><br><span class="line">--<span class="built_in">enable</span>-bcmath \</span><br><span class="line">--with-iconv \</span><br><span class="line">--with-bz2 \</span><br><span class="line">--<span class="built_in">enable</span>-calendar \</span><br><span class="line">--with-curl \</span><br><span class="line">--with-cdb \</span><br><span class="line">--<span class="built_in">enable</span>-dom \</span><br><span class="line">--<span class="built_in">enable</span>-exif \</span><br><span class="line">--<span class="built_in">enable</span>-fileinfo \</span><br><span class="line">--<span class="built_in">enable</span>-filter \</span><br><span class="line">--with-pcre-dir \</span><br><span class="line">--<span class="built_in">enable</span>-ftp \</span><br><span class="line">--with-gd \</span><br><span class="line">--with-openssl-dir \</span><br><span class="line">--with-jpeg-dir \</span><br><span class="line">--with-png-dir \</span><br><span class="line">--with-zlib-dir  \</span><br><span class="line">--with-freetype-dir \</span><br><span class="line">--with-gettext \</span><br><span class="line">--with-gmp \</span><br><span class="line">--with-mhash \</span><br><span class="line">--<span class="built_in">enable</span>-json \</span><br><span class="line">--<span class="built_in">enable</span>-mbstring \</span><br><span class="line">--<span class="built_in">enable</span>-mbregex \</span><br><span class="line">--<span class="built_in">enable</span>-mbregex-backtrack \</span><br><span class="line">--with-libmbfl \</span><br><span class="line">--with-onig \</span><br><span class="line">--<span class="built_in">enable</span>-pdo \</span><br><span class="line">--with-mysqli=mysqlnd \</span><br><span class="line">--with-pdo-mysql=mysqlnd \</span><br><span class="line">--with-zlib-dir \</span><br><span class="line">--with-pdo-sqlite \</span><br><span class="line">--with-readline \</span><br><span class="line">--<span class="built_in">enable</span>-session \</span><br><span class="line">--<span class="built_in">enable</span>-shmop \</span><br><span class="line">--<span class="built_in">enable</span>-simplexml \</span><br><span class="line">--<span class="built_in">enable</span>-sockets  \</span><br><span class="line">--<span class="built_in">enable</span>-sysvmsg \</span><br><span class="line">--<span class="built_in">enable</span>-sysvsem \</span><br><span class="line">--<span class="built_in">enable</span>-sysvshm \</span><br><span class="line">--<span class="built_in">enable</span>-wddx \</span><br><span class="line">--with-libxml-dir \</span><br><span class="line">--with-xsl \</span><br><span class="line">--<span class="built_in">enable</span>-zip \</span><br><span class="line">--<span class="built_in">enable</span>-mysqlnd-compression-support \</span><br><span class="line">--with-pear \</span><br><span class="line">--<span class="built_in">enable</span>-opcache</span><br></pre></td></tr></table></figure>
+<p>4.正式安装</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>5.配置环境变量</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; /etc/profile&lt;&lt;EOF</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/php/bin</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>6.导入环境变量</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<p>7.配置php-fpm</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cp php.ini-production /usr/<span class="built_in">local</span>/php/etc/php.ini</span><br><span class="line">cp /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf.default /usr/<span class="built_in">local</span>/php/etc/php-fpm.conf</span><br><span class="line">cp /usr/<span class="built_in">local</span>/php/etc/php-fpm.d/www.conf.default /usr/<span class="built_in">local</span>/php/etc/php-fpm.d/www.conf</span><br><span class="line">cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm</span><br><span class="line">chmod +x /etc/init.d/php-fpm</span><br></pre></td></tr></table></figure>
+<p>8.启动php-fpm</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/php-fpm start</span><br></pre></td></tr></table></figure>
+<p>安装完成</p>
+<p>ps:<br>有2种方式可以找到之前的编译参数：<br>1.在源码 /lamp/php-5.4.11/中找到 config.nice，这个就是之前的编译参数<br>2.去掉enable-gd-jis-conv编译参数，引起imagettftext()中文乱码问题<br>3.在php.ini配置文件中找到Configure相关的配置 :</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/php/bin/php -i |grep <span class="string">'Configure'</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -555,7 +607,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -563,9 +615,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
             </span>
 
@@ -581,11 +631,11 @@
 
       
           <p>php7出了！性能提升一倍！<br>不过兼容性好像还不太好，我在php7下安装memcached扩展遇到了问题，记录一下。</p>
-<p>1. 首先需要安装libmemcached支持：<br>官网在此，找到最新版的下载链接 <a href="https://launchpad.net/libmemcached，使用wget下载tar.gz压缩包，解压缩，进入目录，依次执行（prefix后为安装目录）：" target="_blank" rel="noopener">https://launchpad.net/libmemcached，使用wget下载tar.gz压缩包，解压缩，进入目录，依次执行（prefix后为安装目录）：</a></p>
-<p>[shell] ./configure –prefix=/usr/local/libmemcached make make install [/shell]</p>
-<p>2. 安装memcached<br>php使用memcache的扩展有两个，一个memcache，一个memcached，前者比较老，推荐使用第二个，我们这里以第二个为例：<br>在github上找到适用于php7的分支（<a href="https://github.com/php-memcached-dev/php-memcached/tree/php7），同样使用wget下载zip压缩包，解压缩，进入目录，依次执行下列命令（其中php-config和libmemcached目录根据具体情况设定，可以使用whereis或者find来查找）：" target="_blank" rel="noopener">https://github.com/php-memcached-dev/php-memcached/tree/php7），同样使用wget下载zip压缩包，解压缩，进入目录，依次执行下列命令（其中php-config和libmemcached目录根据具体情况设定，可以使用whereis或者find来查找）：</a></p>
-<p>[shell] /usr/local/php/bin/phpize ./configure –with-php-config=/usr/local/php/bin/php-config –enable-memcached-sasl make make install [/shell]</p>
-<p>安装成功</p>
+<ol>
+<li>首先需要安装libmemcached支持：<br>官网在此，找到最新版的下载链接 <a href="https://launchpad.net/libmemcached，使用wget下载tar.gz压缩包，解压缩，进入目录，依次执行（prefix后为安装目录）：" target="_blank" rel="noopener">https://launchpad.net/libmemcached，使用wget下载tar.gz压缩包，解压缩，进入目录，依次执行（prefix后为安装目录）：</a><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/libmemcached  </span><br><span class="line">make  </span><br><span class="line">make install</span><br></pre></td></tr></table></figure></li>
+<li>安装memcached<br>php使用memcache的扩展有两个，一个memcache，一个memcached，前者比较老，推荐使用第二个，我们这里以第二个为例：<br>在github上找到适用于php7的分支（<a href="https://github.com/php-memcached-dev/php-memcached/tree/php7），同样使用wget下载zip压缩包，解压缩，进入目录，依次执行下列命令（其中php-config和libmemcached目录根据具体情况设定，可以使用whereis或者find来查找）：" target="_blank" rel="noopener">https://github.com/php-memcached-dev/php-memcached/tree/php7），同样使用wget下载zip压缩包，解压缩，进入目录，依次执行下列命令（其中php-config和libmemcached目录根据具体情况设定，可以使用whereis或者find来查找）：</a><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/php/bin/phpize  </span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/php/bin/php-config --<span class="built_in">enable</span>-memcached-sasl  </span><br><span class="line">make  </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+安装成功</li>
+</ol>
 
       
     </div>
@@ -636,7 +686,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -644,9 +694,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
-                  </a>
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index"><span itemprop="name">FFmpeg</span></a>
                 </span>
             </span>
 
@@ -661,9 +709,49 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Advanced Audio Coding (AAC) 是 MP3 的后继格式，它被定义於 MPEG-4 part 3 (ISO/IEC 14496-3)。它通常使用在 MP4 容器内；对于音乐习惯上使用 .m4a 副档名。第二常见使用是在 MKV (Matroska) 档内，因为它比 MP4 支援更多以文字为基础的软字幕 (例如 ass, ssa…)。本文中的范例将使用 MP4 与 M4A 副档名。 ​ FFmpeg 可以支援 4 个 AAC-LC 编码器 (aac, libfaac, libfdk_aac, libvo_aacenc) 与两个 AAC-HE 编码器 (libaacplus, libfdk_aac)。libaacplus, libfaac, libfdk_aac 的授权不与 GPL 相容，所以当 GPU 授权源代码也包含在内时 GPU 不允许包含源代码授权依据这些授权的二进位档的发布。因此这些编码器被指定为 “non-free”，且你不能下载内建它们的 ffmpeg。这可以透过自行编译 ffmpeg 来解决。 对于 AAC-LC 品质而言，其答案可能是: libfdk_aac &gt; libfaac &gt; Native FFmpeg AAC encoder (aac) &gt; libvo_aacenc <a href="https://trac.ffmpeg.org/wiki/Encode/HighQualityAudio#AudioencodersFFmpegcanuse" target="_blank" rel="noopener">https://trac.ffmpeg.org/wiki/Encode/HighQualityAudio#AudioencodersFFmpegcanuse</a> <strong>libfdk_aac</strong> The Fraunhofer FDK AAC 编解码程式库。这是目前 ffmpeg 所能提供的最高品质 AAC 编码器。需要 ffmpeg 组态 (configuration) 中含有 –enable-libfdk-aac (如果也使用 –enable-gpl 则还需要 –enable-nonfree)。 详细资料: Fraunhofer FDK AAC - Hydrogenaud Constant Bit Rate (CBR, 常数位元速率) 模式 指定一个目标位元速率。它可以让你精準控制输出档案大小 (= 位元率 * 时间长度)，且它与 HE-AAC profile 相容。由经验得知，双声道推荐 位元率 &gt;= 128kbps，6 声道则推荐位元率 &gt;= 384kbps (由 双声道位元率 * 声道数 / 2)。使用 -b 选项来控制输出位元速率。 范例: 转换一个音讯档为 AAC 并以 M4A (MP4) 容器来封装: [shell] ffmpeg -i input.wav -c:a libfdk_aac -b:a 128k output.m4a [/shell] 转换一个影片的 5.1 生到音讯为 AAC，并复制其视讯串流: [shell] ffmpeg -i input.mp4 -c:v copy -c:a libfdk_aac -b:a 384k output.mp4 [/shell] Variable Bit Rate (VBR, 可变位元速率) 模式 指定一个目标品质，而不是特定的位元速率。设定值范围为 1-5，较高的值会得到较高的位元率与品质。使用 -vbr 选项来设定 VBR 等级。 范例: 转换一个音讯档为 AAC 并以 M4A (MP4) 容器来封装: [shell] ffmpeg -i input.wav -c:a libfdk_aac -vbr 3 output.m4a [/shell] 转换一个影片的 5.1 生到音讯为 AAC，并复制其视讯串流: [shell] ffmpeg -i input.mp4 -c:v copy -c:a libfdk_aac -vbr 3 output.mp4 [/shell] <strong>High-Efficiency AAC</strong> 简称 AAC-HE 又名为 aacPlus，这是一对专门针对低位元速率的 AAC profiles (version 1 与 version 2)，AAC-HE v1。对于双声道而言 (如下图所示)，AAC-HE v1 适用于 96kbps 以下，而 AAC-HE v2 适用于 48kbps 以下。但大多数播放设备不支援播放任何版本的 AAC-HE 而只能播放 AAC-LC。 <a href="https://upload.phpkoo.com/uploads/2015/09/mobile01-0aaa64dadec533c578cc87c6c1054e16.png" target="_blank" rel="noopener"><img src="https://upload.phpkoo.com/uploads/2015/09/mobile01-0aaa64dadec533c578cc87c6c1054e16.png" alt="mobile01-0aaa64dadec533c578cc87c6c1054e16"></a> x 轴为音质; y 轴为位元率 注意: AAC-HE v2 只能处理双声道。如果需要降混 (down-mix) 至 单声道，则使用 AAC-HE v1。 如果需要指定 Profile 则使用 -profile 选项。 Profiles: aac_low MPEG-4 AAC LC (default) aac_he MPEG-4 HE-AAC (SBR) aac_he_v2 MPEG-4 HE-AAC v2 (SBR+PS) aac_ld MPEG-4 AAC LD aac_eld MPEG-4 AAC ELD 例如: [shell] ffmpeg -i input.wav -ac 2 -c:a libfdk_aac -profile:a aac_he -vbr 3 output.m4a [/shell] <strong>Native FFmpeg AAC encoder</strong> 原生 (Native) FFmpeg AAC 编码器是已包含在 ffmpeg 内，而且它不像本文中其它 AAC 编码器那样需要一个外部程式库。注意这将不会让你得到如同 libfdk_aac 一样的良好结果。这被认为是实验性的编码器，所以需要 “-strict experimental” 或 “-strict -2 is”。 <strong>指定位元率</strong> 使用 -b 选项来指定输出位元率为 240kbps: [shell] ffmpeg -i input.wav -strict experimental -c:a aac -b:a 240k output.m4a [/shell] <strong>指定品质</strong> 使用 -q 选项来指定输出品质等级为 6: [shell] ffmpeg -i input.wav -strict experimental -c:a aac -q:a 6 output.m4a [/shell] 设定值有效范围为 0.1-10。比较高的设定值会得到较高的输出品质与位元率大小。 此 VBR 是实验性的并且有可能得到比 CBR 更差的结果。 <strong>libvo_aacenc</strong> VisualOn AAC 编码程式库。需要 ffmpeg 组态 (configuration) 中含有 –enable-libvo-aacenc。它有非 non-free 的优点，但它是一个更差的编码器比起 libfdk_aac 甚至 原生的 FFmpeg AAC 编码器，根据 FFmpeg AACの音质评価。此编码器最多只支援 2 声道，并只有 CBR 模式，而且不支援 VBR 输出。 <strong>CBR 128Kbps：</strong> [shell] ffmpeg -i input.wav -ac 2 -c:a libvo_aacenc -b:a 128k output.m4a [/shell] <strong>附：</strong></p>
-<p>HE-AAC, HE-AAC v2<br>品质    高品质<br>比特率    HE-AAC：32至48kbit/s 单声道<br>        HE-AAC v2：16至24kbit/s 单声道<br>        高品质音频<br>采样率    24至96kHz<br>声道    单声道、立体声、多声道（如5.1、7.1）<br>应用    DVB（数 字视频广播）、ISDB（综合业务数字广播）、ARIB、ATSC-M/H、DAB+（数字音频广播）、DRM+（数字版权管理）、DRM、DVB- H（手持式数字视频广播）、DMB（数字多媒体广播）、MediaFLO、3GPP、XM广播、移动电话、音频和视频下载服务</p>
-<p>AAC-LC<br>品质    达到统计学标准的清晰度<br>比特率    最高每通道256kbit/s<br>采样率    8至96kHz<br>声道    单声道、立体声、多声道（如5.1、7.1）<br>应用    苹果 iPod、 iTunes、QuickTime、 日本ISDB（综合业务数字广播）、 AV 接收器、汽车收音机、移动音乐播放器、移动电话</p>
+          <p>Advanced Audio Coding (AAC) 是 MP3 的后继格式，它被定义於 MPEG-4 part 3 (ISO/IEC 14496-3)。它通常使用在 MP4 容器内；对于音乐习惯上使用 .m4a 副档名。第二常见使用是在 MKV (Matroska) 档内，因为它比 MP4 支援更多以文字为基础的软字幕 (例如 ass, ssa…)。本文中的范例将使用 MP4 与 M4A 副档名。<br>​<br>FFmpeg 可以支援 4 个 AAC-LC 编码器 (aac, libfaac, libfdk_aac, libvo_aacenc) 与两个 AAC-HE 编码器 (libaacplus, libfdk_aac)。libaacplus, libfaac, libfdk_aac 的授权不与 GPL 相容，所以当 GPU 授权源代码也包含在内时 GPU 不允许包含源代码授权依据这些授权的二进位档的发布。因此这些编码器被指定为 “non-free”，且你不能下载内建它们的 ffmpeg。这可以透过自行编译 ffmpeg 来解决。</p>
+<p>对于 AAC-LC 品质而言，其答案可能是:<br>libfdk_aac &gt; libfaac &gt; Native FFmpeg AAC encoder (aac) &gt; libvo_aacenc<br><a href="https://trac.ffmpeg.org/wiki/Encode/HighQualityAudio#AudioencodersFFmpegcanuse" target="_blank" rel="noopener">https://trac.ffmpeg.org/wiki/Encode/HighQualityAudio#AudioencodersFFmpegcanuse</a></p>
+<p><strong>libfdk_aac</strong></p>
+<p>The Fraunhofer FDK AAC 编解码程式库。这是目前 ffmpeg 所能提供的最高品质 AAC 编码器。需要 ffmpeg 组态 (configuration) 中含有 –enable-libfdk-aac (如果也使用 –enable-gpl 则还需要 –enable-nonfree)。</p>
+<p>详细资料: Fraunhofer FDK AAC - Hydrogenaud</p>
+<p>Constant Bit Rate (CBR, 常数位元速率) 模式</p>
+<p>指定一个目标位元速率。它可以让你精準控制输出档案大小 (= 位元率 * 时间长度)，且它与 HE-AAC profile 相容。由经验得知，双声道推荐 位元率 &gt;= 128kbps，6 声道则推荐位元率 &gt;= 384kbps (由 双声道位元率 * 声道数 / 2)。使用 -b 选项来控制输出位元速率。</p>
+<p>范例:</p>
+<p>转换一个音讯档为 AAC 并以 M4A (MP4) 容器来封装:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -c:a libfdk_aac -b:a 128k output.m4a</span><br></pre></td></tr></table></figure>
+<p>转换一个影片的 5.1 生到音讯为 AAC，并复制其视讯串流:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -c:v copy -c:a libfdk_aac -b:a 384k output.mp4</span><br></pre></td></tr></table></figure>
+<p>Variable Bit Rate (VBR, 可变位元速率) 模式</p>
+<p>指定一个目标品质，而不是特定的位元速率。设定值范围为 1-5，较高的值会得到较高的位元率与品质。使用 -vbr 选项来设定 VBR 等级。</p>
+<p>范例:</p>
+<p>转换一个音讯档为 AAC 并以 M4A (MP4) 容器来封装:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -c:a libfdk_aac -vbr 3 output.m4a</span><br></pre></td></tr></table></figure>
+<p>转换一个影片的 5.1 生到音讯为 AAC，并复制其视讯串流:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -c:v copy -c:a libfdk_aac -vbr 3 output.mp4</span><br></pre></td></tr></table></figure>
+<p><strong>High-Efficiency AAC</strong></p>
+<p>简称 AAC-HE 又名为 aacPlus，这是一对专门针对低位元速率的 AAC profiles (version 1 与 version 2)，AAC-HE v1。对于双声道而言 (如下图所示)，AAC-HE v1 适用于 96kbps 以下，而 AAC-HE v2 适用于 48kbps 以下。但大多数播放设备不支援播放任何版本的 AAC-HE 而只能播放 AAC-LC。</p>
+<p><a href="https://upload.phpkoo.com/uploads/2015/09/mobile01-0aaa64dadec533c578cc87c6c1054e16.png" target="_blank" rel="noopener"><img src="https://upload.phpkoo.com/uploads/2015/09/mobile01-0aaa64dadec533c578cc87c6c1054e16.png" alt="mobile01-0aaa64dadec533c578cc87c6c1054e16"></a></p>
+<p>x 轴为音质; y 轴为位元率</p>
+<p>注意: AAC-HE v2 只能处理双声道。如果需要降混 (down-mix) 至 单声道，则使用 AAC-HE v1。</p>
+<p>如果需要指定 Profile 则使用 -profile 选项。</p>
+<p>Profiles:<br>aac_low<br>MPEG-4 AAC LC (default)<br>aac_he<br>MPEG-4 HE-AAC (SBR)<br>aac_he_v2<br>MPEG-4 HE-AAC v2 (SBR+PS)<br>aac_ld<br>MPEG-4 AAC LD<br>aac_eld<br>MPEG-4 AAC ELD</p>
+<p>例如:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -ac 2 -c:a libfdk_aac -profile:a aac_he -vbr 3 output.m4a</span><br></pre></td></tr></table></figure>
+<p><strong>Native FFmpeg AAC encoder</strong><br>原生 (Native) FFmpeg AAC 编码器是已包含在 ffmpeg 内，而且它不像本文中其它 AAC 编码器那样需要一个外部程式库。注意这将不会让你得到如同 libfdk_aac 一样的良好结果。这被认为是实验性的编码器，所以需要 “-strict experimental” 或 “-strict -2 is”。</p>
+<p><strong>指定位元率</strong></p>
+<p>使用 -b 选项来指定输出位元率为 240kbps:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -strict experimental -c:a aac -b:a 240k output.m4a</span><br></pre></td></tr></table></figure>
+<p><strong>指定品质</strong></p>
+<p>使用 -q 选项来指定输出品质等级为 6:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -strict experimental -c:a aac -q:a 6 output.m4a</span><br></pre></td></tr></table></figure>
+<p>设定值有效范围为 0.1-10。比较高的设定值会得到较高的输出品质与位元率大小。<br>此 VBR 是实验性的并且有可能得到比 CBR 更差的结果。</p>
+<p><strong>libvo_aacenc</strong></p>
+<p>VisualOn AAC 编码程式库。需要 ffmpeg 组态 (configuration) 中含有 –enable-libvo-aacenc。它有非 non-free 的优点，但它是一个更差的编码器比起 libfdk_aac 甚至 原生的 FFmpeg AAC 编码器，根据 FFmpeg AACの音质评価。此编码器最多只支援 2 声道，并只有 CBR 模式，而且不支援 VBR 输出。</p>
+<p><strong>CBR 128Kbps：</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.wav -ac 2 -c:a libvo_aacenc -b:a 128k output.m4a</span><br></pre></td></tr></table></figure>
+<p><strong>附：</strong></p>
+<p>HE-AAC, HE-AAC v2<br>品质 高品质<br>比特率 HE-AAC：32至48kbit/s 单声道<br>HE-AAC v2：16至24kbit/s 单声道<br>高品质音频<br>采样率 24至96kHz<br>声道 单声道、立体声、多声道（如5.1、7.1）<br>应用 DVB（数 字视频广播）、ISDB（综合业务数字广播）、ARIB、ATSC-M/H、DAB+（数字音频广播）、DRM+（数字版权管理）、DRM、DVB- H（手持式数字视频广播）、DMB（数字多媒体广播）、MediaFLO、3GPP、XM广播、移动电话、音频和视频下载服务</p>
+<p>AAC-LC<br>品质 达到统计学标准的清晰度<br>比特率 最高每通道256kbit/s<br>采样率 8至96kHz<br>声道 单声道、立体声、多声道（如5.1、7.1）<br>应用 苹果 iPod、 iTunes、QuickTime、 日本ISDB（综合业务数字广播）、 AV 接收器、汽车收音机、移动音乐播放器、移动电话</p>
 
       
     </div>
@@ -714,7 +802,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 10:40:18" itemprop="dateModified" datetime="2020-02-27T10:40:18+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -722,9 +810,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
-                  </a>
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index"><span itemprop="name">FFmpeg</span></a>
                 </span>
             </span>
 
@@ -739,40 +825,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>对FFmpeg的X264质量预设测量性能，要知道哪个选项是最适合我的目的将MPEG2 TS到苹果电视的MP4。因素需要考虑是： 1）转换的速度 2）文件的大小 3）视频的质量 最重要的因素就是转换的速度，如果时间转换比录制短。同时对于文件的大小也是越小越好。 测试方法 [shell] for i in ultrafast superfast veryfast faster fast medium slow slower veryslow placebo do ffmpeg -i sample.ts -vcodec libx264 \ -preset $i -profile:v baseline -level 3.0 -s 1280x720 \ -acodec libfaac -ab 160k \ -y $i.mp4 done [/shell] sample.ts是一个60秒的全高清（1440×1080），MPEG2视频 测试结果</p>
-<p>preset used for conversion</p>
-<p>Conversion speed (fps - frames per second) . The bigger the faster.</p>
-<p>Size of the output video file (in bytes)</p>
-<p>ultrafast</p>
-<p>29.6</p>
-<p>81,046,858</p>
-<p>superfast</p>
-<p>27.9</p>
-<p>58,180,478</p>
-<p>veryfast</p>
-<p>20.6</p>
-<p>43,968,615</p>
-<p>faster</p>
-<p>13.0</p>
-<p>32,981,783</p>
-<p>fast</p>
-<p>9.1</p>
-<p>35,461,071</p>
-<p>medium</p>
-<p>8.0</p>
-<p>35,119,322</p>
-<p>slow</p>
-<p>5.6</p>
-<p>33,367,247</p>
-<p>slower</p>
-<p>2.1</p>
-<p>33,698,347</p>
-<p>veryslow</p>
-<p>1.3</p>
-<p>29,697,663</p>
-<p>placebo</p>
-<p>0.6</p>
-<p>29,395,288</p>
+          <p>对FFmpeg的X264质量预设测量性能，要知道哪个选项是最适合我的目的将MPEG2 TS到苹果电视的MP4。因素需要考虑是：<br>1）转换的速度<br>2）文件的大小<br>3）视频的质量<br>最重要的因素就是转换的速度，如果时间转换比录制短。同时对于文件的大小也是越小越好。</p>
+<p>测试方法</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> ultrafast superfast veryfast faster fast medium slow slower veryslow placebo</span><br><span class="line"><span class="keyword">do</span> ffmpeg -i sample.ts -vcodec libx264 \</span><br><span class="line">      -preset <span class="variable">$i</span> -profile:v baseline -level 3.0 -s 1280x720 \</span><br><span class="line">      -acodec libfaac -ab 160k \</span><br><span class="line">      -y <span class="variable">$i</span>.mp4</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+<p>sample.ts是一个60秒的全高清（1440×1080），MPEG2视频</p>
+<p>测试结果</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">preset used <span class="keyword">for</span> conversion</span><br><span class="line">Conversion speed (fps - frames per second) . The bigger the faster.</span><br><span class="line">Size of the output video file (<span class="keyword">in</span> bytes)</span><br><span class="line"></span><br><span class="line">ultrafast</span><br><span class="line">29.6</span><br><span class="line">81,046,858</span><br><span class="line"></span><br><span class="line">superfast</span><br><span class="line">27.9</span><br><span class="line">58,180,478</span><br><span class="line"></span><br><span class="line">veryfast</span><br><span class="line">20.6</span><br><span class="line">43,968,615</span><br><span class="line"></span><br><span class="line">faster</span><br><span class="line">13.0</span><br><span class="line">32,981,783</span><br><span class="line"></span><br><span class="line">fast</span><br><span class="line">9.1</span><br><span class="line">35,461,071</span><br><span class="line"></span><br><span class="line">medium</span><br><span class="line">8.0</span><br><span class="line">35,119,322</span><br><span class="line"></span><br><span class="line">slow</span><br><span class="line">5.6</span><br><span class="line">33,367,247</span><br><span class="line"></span><br><span class="line">slower</span><br><span class="line">2.1</span><br><span class="line">33,698,347</span><br><span class="line"></span><br><span class="line">veryslow</span><br><span class="line">1.3</span><br><span class="line">29,697,663</span><br><span class="line"></span><br><span class="line">placebo</span><br><span class="line">0.6</span><br><span class="line">29,395,288</span><br></pre></td></tr></table></figure>
 <p><a href="https://upload.phpkoo.com/uploads/2015/09/ffmpeg-presets-comparison-results.png" target="_blank" rel="noopener"><img src="https://upload.phpkoo.com/uploads/2015/09/ffmpeg-presets-comparison-results.png" alt="ffmpeg-presets-comparison-results"></a></p>
 
       
@@ -824,7 +882,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -832,9 +890,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LUA/" itemprop="url" rel="index">
-                    <span itemprop="name">LUA</span>
-                  </a>
+                  <a href="/categories/LUA/" itemprop="url" rel="index"><span itemprop="name">LUA</span></a>
                 </span>
             </span>
 
@@ -849,7 +905,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>到LUA官网下载安装包 [shell] $ wget <a href="http://www.lua.org/ftp/lua-5.1.5.tar.gz" target="_blank" rel="noopener">http://www.lua.org/ftp/lua-5.1.5.tar.gz</a> $ tar zxvf lua-5.1.5.tar.gz $ cd lua-5.1.5/ $ yum install -y readline-devel ncurses-devel $ make linux [/shell] 如下提示： cd src &amp;&amp; make linux make[1]: Entering directory <code>/usr/local/src/lua-5.1.5/src&#39; make all MYCFLAGS=-DLUA\_USE\_LINUX MYLIBS=&quot;-Wl,-E -ldl -lreadline -lhistory -lncurses&quot; make\[2\]: Entering directory</code>/usr/local/src/lua-5.1.5/src’ make[2]: Nothing to be done for `all’. make[2]: Leaving directory `/usr/local/src/lua-5.1.5/src’ make[1]: Leaving directory `/usr/local/src/lua-5.1.5/src’ [shell] $ make install [/shell] cd src &amp;&amp; mkdir -p /usr/local/bin /usr/local/include /usr/local/lib /usr/local/man/man1 /usr/local/share/lua/5.1 /usr/local/lib/lua/5.1 cd src &amp;&amp; install -p -m 0755 lua luac /usr/local/bin cd src &amp;&amp; install -p -m 0644 lua.h luaconf.h lualib.h lauxlib.h ../etc/lua.hpp /usr/local/include cd src &amp;&amp; install -p -m 0644 liblua.a /usr/local/lib cd doc &amp;&amp; install -p -m 0644 lua.1 luac.1 /usr/local/man/man1 [shell] $ whereis lua lua: /usr/bin/lua /usr/lib64/lua /usr/local/bin/lua /usr/local/lib/lua /usr/share/lua /usr/share/man/man1/lua.1.gz $ /usr/local/bin/lua Lua 5.1.5 Copyright (C) 1994-2012 Lua.org, PUC-Rio [/shell] 安装完成。</p>
+          <p>到LUA官网下载安装包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://www.lua.org/ftp/lua-5.1.5.tar.gz</span><br><span class="line">$ tar zxvf lua-5.1.5.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> lua-5.1.5/</span><br><span class="line">$ yum install -y readline-devel ncurses-devel</span><br><span class="line">$ make linux</span><br></pre></td></tr></table></figure>
+<p>如下提示：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> src &amp;&amp; make linux  </span><br><span class="line">make[1]: Entering directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span></span><br><span class="line">make all MYCFLAGS=-DLUA_USE_LINUX MYLIBS=<span class="string">"-Wl,-E -ldl -lreadline -lhistory -lncurses"</span></span><br><span class="line">make[2]: Entering directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span>  </span><br><span class="line">make[2]: Nothing to be <span class="keyword">done</span> <span class="keyword">for</span> <span class="string">'all'</span>.</span><br><span class="line">make[2]: Leaving directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span></span><br><span class="line">make[1]: Leaving directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ make install</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; mkdir -p /usr/<span class="built_in">local</span>/bin /usr/<span class="built_in">local</span>/include /usr/<span class="built_in">local</span>/lib /usr/<span class="built_in">local</span>/man/man1 /usr/<span class="built_in">local</span>/share/lua/5.1 /usr/<span class="built_in">local</span>/lib/lua/5.1  </span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; install -p -m 0755 lua luac /usr/<span class="built_in">local</span>/bin  </span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; install -p -m 0644 lua.h luaconf.h lualib.h lauxlib.h ../etc/lua.hpp /usr/<span class="built_in">local</span>/include  </span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; install -p -m 0644 liblua.a /usr/<span class="built_in">local</span>/lib  </span><br><span class="line"><span class="built_in">cd</span> doc &amp;&amp; install -p -m 0644 lua.1 luac.1 /usr/<span class="built_in">local</span>/man/man1</span><br><span class="line"></span><br><span class="line">$ whereis lua</span><br><span class="line">lua: /usr/bin/lua /usr/lib64/lua /usr/<span class="built_in">local</span>/bin/lua /usr/<span class="built_in">local</span>/lib/lua /usr/share/lua /usr/share/man/man1/lua.1.gz</span><br><span class="line"></span><br><span class="line">$ /usr/<span class="built_in">local</span>/bin/lua</span><br><span class="line">Lua 5.1.5 Copyright (C) 1994-2012 Lua.org, PUC-Rio</span><br></pre></td></tr></table></figure>
+<p>安装完成。</p>
 
       
     </div>
@@ -900,7 +960,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -908,9 +968,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LUA/" itemprop="url" rel="index">
-                    <span itemprop="name">LUA</span>
-                  </a>
+                  <a href="/categories/LUA/" itemprop="url" rel="index"><span itemprop="name">LUA</span></a>
                 </span>
             </span>
 
@@ -925,7 +983,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>mongorover模块是mongodb官方提供的lua语言的驱动，官网API文档：<a href="http://api.mongodb.org/lua/0.1/index.html" target="_blank" rel="noopener">http://api.mongodb.org/lua/0.1/index.html</a> 通过luarocks方式安装lua模块 一、安装luarocks工具 [shell] $ wget <a href="http://luarocks.org/releases/luarocks-2.2.2.tar.gz" target="_blank" rel="noopener">http://luarocks.org/releases/luarocks-2.2.2.tar.gz</a> $ tar zxpf luarocks-2.2.2.tar.gz $ cd luarocks-2.2.2 $ ./configure $ make bootstrap [/shell] 二、安装mongorover模块 [shell] $ luarocks install mongorover [/shell] 安装时，报以下错误信息 Error: Could not find expected file libbson-1.0/bson.h, or libbson-1.0/bson.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local 三、安装bson库 官方安装参照：<a href="http://api.mongodb.org/libbson/current/installing.html" target="_blank" rel="noopener">http://api.mongodb.org/libbson/current/installing.html</a> [shell] $ wget <a href="https://github.com/mongodb/libbson/releases/download/1.1.10/libbson-1.1.10.tar.gz" target="_blank" rel="noopener">https://github.com/mongodb/libbson/releases/download/1.1.10/libbson-1.1.10.tar.gz</a> $ tar -xzf libbson-1.1.10.tar.gz $ cd libbson-1.1.10/ $ ./configure $ make $ make install $ ln -s /usr/include/libbson-1.0/ /usr/local/libbson-1.0 [/shell] 再执行,安装mongorover模块,又报以下错误 Error: Could not find expected file libmongoc-1.0/mongoc.h, or libmongoc-1.0/mongoc.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local 四、安装libmongoc库 官方安装参照：<a href="http://api.mongodb.org/c/current/installing.html" target="_blank" rel="noopener">http://api.mongodb.org/c/current/installing.html</a> [shell] $ wget <a href="https://github.com/mongodb/mongo-c-driver/releases/download/1.1.10/mongo-c-driver-1.1.10.tar.gz" target="_blank" rel="noopener">https://github.com/mongodb/mongo-c-driver/releases/download/1.1.10/mongo-c-driver-1.1.10.tar.gz</a> $ tar -xzf mongo-c-driver-1.1.10.tar.gz $ cd mongo-c-driver-1.1.10/ $ ./configure $ make $ make install $ ln -s /usr/include/libmongoc-1.0/ /usr/local/libmongoc-1.0 [/shell] 再执行,安装mongorover模块，安装成功</p>
+          <p>mongorover模块是mongodb官方提供的lua语言的驱动，官网API文档：<a href="http://api.mongodb.org/lua/0.1/index.html" target="_blank" rel="noopener">http://api.mongodb.org/lua/0.1/index.html</a></p>
+<p>通过luarocks方式安装lua模块</p>
+<p>一、安装luarocks工具</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz</span><br><span class="line">$ tar zxpf luarocks-2.2.2.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> luarocks-2.2.2</span><br><span class="line">$ ./configure</span><br><span class="line">$ make bootstrap</span><br></pre></td></tr></table></figure>
+<p>二、安装mongorover模块</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ luarocks install mongorover</span><br></pre></td></tr></table></figure>
+<p>安装时，报以下错误信息</p>
+<p>Error: Could not find expected file libbson-1.0/bson.h, or libbson-1.0/bson.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local</p>
+<p>三、安装bson库</p>
+<p>官方安装参照：<a href="http://api.mongodb.org/libbson/current/installing.html" target="_blank" rel="noopener">http://api.mongodb.org/libbson/current/installing.html</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://github.com/mongodb/libbson/releases/download/1.1.10/libbson-1.1.10.tar.gz</span><br><span class="line">$ tar -xzf libbson-1.1.10.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> libbson-1.1.10/</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br><span class="line">$ ln -s /usr/include/libbson-1.0/ /usr/<span class="built_in">local</span>/libbson-1.0</span><br></pre></td></tr></table></figure>
+<p>再执行,安装mongorover模块,又报以下错误</p>
+<p>Error: Could not find expected file libmongoc-1.0/mongoc.h, or libmongoc-1.0/mongoc.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local</p>
+<p>四、安装libmongoc库</p>
+<p>官方安装参照：<a href="http://api.mongodb.org/c/current/installing.html" target="_blank" rel="noopener">http://api.mongodb.org/c/current/installing.html</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://github.com/mongodb/mongo-c-driver/releases/download/1.1.10/mongo-c-driver-1.1.10.tar.gz</span><br><span class="line">$ tar -xzf mongo-c-driver-1.1.10.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> mongo-c-driver-1.1.10/</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br><span class="line">$ ln -s /usr/include/libmongoc-1.0/ /usr/<span class="built_in">local</span>/libmongoc-1.0</span><br></pre></td></tr></table></figure>
+<p>再执行,安装mongorover模块，安装成功</p>
 
       
     </div>
@@ -976,7 +1050,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -984,9 +1058,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
             </span>
 
@@ -1001,7 +1073,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>zeromq是个类似于Socket的一系列接口，他跟Socket的区别是：普通的socket是端到端的（1:1的关系），而ZMQ却是可以N：M 的关系，人们对BSD套接字的了解较多的是点对点的连接，点对点连接需要显式地建立连接、销毁连接、选择协议（TCP/UDP）和处理错误等，而ZMQ屏蔽了这些细节，让你的网络编程更为简单。ZMQ用于node与node间的通信，node可以是主机或者是进程。 <strong>安装</strong> ZeroMQ：<a href="http://download.zeromq.org/zeromq-4.1.3.tar.gz" target="_blank" rel="noopener">http://download.zeromq.org/zeromq-4.1.3.tar.gz</a> [shell] $ tar -xvzf zeromq-4.1.3.tar.gz $ cd zeromq-4.1.3 $ ./configure $ make $ make install [/shell] ./configure 提示 checking for sodium… no configure: error: Package requirements (libsodium) were not met ibsodium 是一个流行、易于使用的软件库。主要用于加密、解密、签名和生成密码哈希等等。这是一个可移植的、跨编译器支持、可安装的，基于 <a href="http://nacl.cr.yp.to/" target="_blank" rel="noopener">NaCl</a> 开发，提供一个兼容 API。它的目标是为所有构建更高级别的加密工具提供所需要的核心操作。 <strong>安装</strong> libsodium：<a href="https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz" target="_blank" rel="noopener">https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz</a> [shell] $ tar -xvzf libsodium-1.0.3.tar.gz $ cd libsodium-1.0.3 $ ./configure $ make $ make install [/shell] <strong>设置环境变量</strong> [shell] $ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig [/shell] 最后ldconfig一下，更新一下动态链接库。 [shell] $ ldconfig [/shell] 再次安装ZeroMQ,安装成功。 同时需要将 [shell] $ yum remove zeromq $ yum remove zeromq-devel [/shell] 安装成功后，可安装nodejs或python等的zmq模块来验证一下刚安装的版本。</p>
+          <p>zeromq是个类似于Socket的一系列接口，他跟Socket的区别是：普通的socket是端到端的（1:1的关系），而ZMQ却是可以N：M 的关系，人们对BSD套接字的了解较多的是点对点的连接，点对点连接需要显式地建立连接、销毁连接、选择协议（TCP/UDP）和处理错误等，而ZMQ屏蔽了这些细节，让你的网络编程更为简单。ZMQ用于node与node间的通信，node可以是主机或者是进程。</p>
+<p><strong>安装</strong></p>
+<p>ZeroMQ：<a href="http://download.zeromq.org/zeromq-4.1.3.tar.gz" target="_blank" rel="noopener">http://download.zeromq.org/zeromq-4.1.3.tar.gz</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf zeromq-4.1.3.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> zeromq-4.1.3</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br><span class="line"></span><br><span class="line">./configure</span><br><span class="line"></span><br><span class="line">checking <span class="keyword">for</span> sodium... no  </span><br><span class="line">configure: error: Package requirements (libsodium) were not met</span><br></pre></td></tr></table></figure>
+<p>ibsodium 是一个流行、易于使用的软件库。主要用于加密、解密、签名和生成密码哈希等等。这是一个可移植的、跨编译器支持、可安装的，基于 <a href="http://nacl.cr.yp.to/" target="_blank" rel="noopener">NaCl</a> 开发，提供一个兼容 API。它的目标是为所有构建更高级别的加密工具提供所需要的核心操作。</p>
+<p><strong>安装</strong></p>
+<p>libsodium：<a href="https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz" target="_blank" rel="noopener">https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf libsodium-1.0.3.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> libsodium-1.0.3</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<p><strong>设置环境变量</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> PKG_CONFIG_PATH=/usr/<span class="built_in">local</span>/lib/pkgconfig</span><br></pre></td></tr></table></figure>
+<p>最后ldconfig一下，更新一下动态链接库。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ldconfig</span><br></pre></td></tr></table></figure>
+<p>再次安装ZeroMQ,安装成功。</p>
+<p>同时需要将</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum remove zeromq</span><br><span class="line">$ yum remove zeromq-devel</span><br></pre></td></tr></table></figure>
+<p>安装成功后，可安装nodejs或python等的zmq模块来验证一下刚安装的版本。</p>
 
       
     </div>
@@ -1087,7 +1174,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1100,7 +1187,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-count">171</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

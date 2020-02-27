@@ -15,46 +15,20 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://phpkoo.com').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-  <meta name="description" content="nvm 默认是从 http:&#x2F;&#x2F;nodejs.org&#x2F;dist&#x2F; 下载的, 国外服务器, 必然很慢, 好在 nvm 以及支持从镜像服务器下载包, 于是我们可以方便地从七牛的 node dist 镜像下载 [shell] NVM_NODEJS_ORG_MIRROR&#x3D;https:&#x2F;&#x2F;npm.taobao.org&#x2F;dist nvm install 0.11.11 [&#x2F;shell] 于是你就会看到一段非常">
+  <meta name="description" content="nvm 默认是从 http:&#x2F;&#x2F;nodejs.org&#x2F;dist&#x2F; 下载的, 国外服务器, 必然很慢, 好在 nvm 以及支持从镜像服务器下载包, 于是我们可以方便地从七牛的 node dist 镜像下载 1NVM_NODEJS_ORG_MIRROR&#x3D;https:&#x2F;&#x2F;npm.taobao.org&#x2F;dist nvm install 0.11.11 于是你就会看到一段非常快速进度条: 123######">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nvm 快速切换 Node 版本">
 <meta property="og:url" content="https://phpkoo.com/posts/168.html">
 <meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="nvm 默认是从 http:&#x2F;&#x2F;nodejs.org&#x2F;dist&#x2F; 下载的, 国外服务器, 必然很慢, 好在 nvm 以及支持从镜像服务器下载包, 于是我们可以方便地从七牛的 node dist 镜像下载 [shell] NVM_NODEJS_ORG_MIRROR&#x3D;https:&#x2F;&#x2F;npm.taobao.org&#x2F;dist nvm install 0.11.11 [&#x2F;shell] 于是你就会看到一段非常">
+<meta property="og:description" content="nvm 默认是从 http:&#x2F;&#x2F;nodejs.org&#x2F;dist&#x2F; 下载的, 国外服务器, 必然很慢, 好在 nvm 以及支持从镜像服务器下载包, 于是我们可以方便地从七牛的 node dist 镜像下载 1NVM_NODEJS_ORG_MIRROR&#x3D;https:&#x2F;&#x2F;npm.taobao.org&#x2F;dist nvm install 0.11.11 于是你就会看到一段非常快速进度条: 123######">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2015-08-24T08:24:50.000Z">
-<meta property="article:modified_time" content="2020-01-16T06:28:43.433Z">
+<meta property="article:modified_time" content="2020-02-27T02:41:11.973Z">
 <meta property="article:author" content="阿德">
 <meta property="article:tag" content="node多版本管理">
 <meta property="article:tag" content="nvm">
@@ -112,6 +86,14 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -124,11 +106,9 @@
         <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -181,9 +161,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -248,7 +228,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 10:41:11" itemprop="dateModified" datetime="2020-02-27T10:41:11+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -256,9 +236,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">Nodejs</span>
-                  </a>
+                  <a href="/categories/Nodejs/" itemprop="url" rel="index"><span itemprop="name">Nodejs</span></a>
                 </span>
             </span>
 
@@ -273,7 +251,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>nvm 默认是从 <a href="http://nodejs.org/dist/" target="_blank" rel="noopener">http://nodejs.org/dist/</a> 下载的, 国外服务器, 必然很慢, 好在 nvm 以及支持从镜像服务器下载包, 于是我们可以方便地从七牛的 node dist 镜像下载 [shell] NVM_NODEJS_ORG_MIRROR=<a href="https://npm.taobao.org/dist" target="_blank" rel="noopener">https://npm.taobao.org/dist</a> nvm install 0.11.11 [/shell] 于是你就会看到一段非常快速进度条: [shell] ######################################################################## 100.0% Now using node v0.11.11 [/shell] 如果你不想每次都输入环境变量 NVM_NODEJS_ORG_MIRROR, 那么我建议你加入到 .bashrc 文件中: source [shell] export NVM_NODEJS_ORG_MIRROR=<a href="https://npm.taobao.org/dist" target="_blank" rel="noopener">https://npm.taobao.org/dist</a> source path/to/nvm/nvm.sh [/shell] 然后你可以继续非常方便地安装各个版本的 node 了, 你可以查看一下你当前已经安装的版本: [shell] nvm ls nvm v0.8.26 v0.10.26 v0.11.11 -&gt; v0.11.12 [/shell] <strong>nrm 快速切换 NPM 源</strong> <strong>安装</strong> [shell] npm install -g nrm [/shell] <strong>使用</strong> 列出可选的源 [shell] nrm ls * npm —- <a href="https://registry.npmjs.org/" target="_blank" rel="noopener">https://registry.npmjs.org/</a> cnpm — <a href="http://r.cnpmjs.org/" target="_blank" rel="noopener">http://r.cnpmjs.org/</a> taobao - <a href="http://registry.npm.taobao.org/" target="_blank" rel="noopener">http://registry.npm.taobao.org/</a> eu —– <a href="http://registry.npmjs.eu/" target="_blank" rel="noopener">http://registry.npmjs.eu/</a> au —– <a href="http://registry.npmjs.org.au/" target="_blank" rel="noopener">http://registry.npmjs.org.au/</a> sl —– <a href="http://npm.strongloop.com/" target="_blank" rel="noopener">http://npm.strongloop.com/</a> nj —– <a href="https://registry.nodejitsu.com/" target="_blank" rel="noopener">https://registry.nodejitsu.com/</a> [/shell] 带<em>的是当前使用的源，上面的输出表明当前源是官方源。 *</em>切换** 切换到taobao [shell] nrm use taobao [/shell] 增加源 你可以增加定制的源，特别适用于添加企业内部的私有源。 私有源可以使用cnpmjs架设 。 [shell] nrm add <registry> <url> [home] [/shell] 删除源 [shell] nrm del <registry> [/shell] 测试速度 你还可以通过 nrm test 测试相应源的响应时间。 例如，测试官方源的响应时间： [shell] nrm test npm npm —- 1328ms [/shell] 测试所有源的响应时间： [shell] nrm test npm —- 891ms cnpm — 1213ms * taobao - 460ms eu —– 3859ms au —– 1073ms sl —– 4150ms nj —– 8008ms [/shell] 注意，为了取得较准确的结果，可以考虑多次测试取平均值。 许可 nrm 为开源软件，使用 MIT 许可。 项目主页 <a href="http://github.com/Pana/nrm" target="_blank" rel="noopener">github.com/Pana/nrm</a></p>
+        <p>nvm 默认是从 <a href="http://nodejs.org/dist/" target="_blank" rel="noopener">http://nodejs.org/dist/</a> 下载的, 国外服务器, 必然很慢, 好在 nvm 以及支持从镜像服务器下载包, 于是我们可以方便地从七牛的 node dist 镜像下载</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/dist nvm install 0.11.11</span><br></pre></td></tr></table></figure>
+<p>于是你就会看到一段非常快速进度条:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">Now using node v0.11.11</span><br></pre></td></tr></table></figure>
+<p>如果你不想每次都输入环境变量 NVM_NODEJS_ORG_MIRROR, 那么我建议你加入到 .bashrc 文件中:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/dist</span><br><span class="line"><span class="built_in">source</span> path/to/nvm/nvm.sh</span><br></pre></td></tr></table></figure>
+<p>然后你可以继续非常方便地安装各个版本的 node 了, 你可以查看一下你当前已经安装的版本:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nvm ls</span><br><span class="line">nvm</span><br><span class="line">v0.8.26</span><br><span class="line">v0.10.26</span><br><span class="line">v0.11.11</span><br><span class="line">-&gt; v0.11.12</span><br></pre></td></tr></table></figure>
+<p><strong>nrm 快速切换 NPM 源</strong></p>
+<p><strong>安装</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<p>列出可选的源</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nrm ls</span><br><span class="line">* npm ---- https://registry.npmjs.org/</span><br><span class="line">cnpm --- http://r.cnpmjs.org/</span><br><span class="line">taobao - http://registry.npm.taobao.org/</span><br><span class="line">eu ----- http://registry.npmjs.eu/</span><br><span class="line">au ----- http://registry.npmjs.org.au/</span><br><span class="line">sl ----- http://npm.strongloop.com/</span><br><span class="line">nj ----- https://registry.nodejitsu.com/</span><br></pre></td></tr></table></figure>
+<p>带*的是当前使用的源，上面的输出表明当前源是官方源。</p>
+<p><strong>切换</strong></p>
+<p>切换到taobao</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure>
+<p>增加源</p>
+<p>你可以增加定制的源，特别适用于添加企业内部的私有源。 私有源可以使用cnpmjs架设 。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm add  &lt;registry&gt; &lt;url&gt; [home]</span><br></pre></td></tr></table></figure>
+<p>删除源</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm del &lt;registry&gt;</span><br></pre></td></tr></table></figure>
+<p>测试速度</p>
+<p>你还可以通过 nrm test 测试相应源的响应时间。</p>
+<p>例如，测试官方源的响应时间：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nrm <span class="built_in">test</span> npm</span><br><span class="line">npm ---- 1328ms</span><br></pre></td></tr></table></figure>
+<p>测试所有源的响应时间：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nrm <span class="built_in">test</span></span><br><span class="line">npm ---- 891ms</span><br><span class="line">cnpm --- 1213ms</span><br><span class="line">* taobao - 460ms</span><br><span class="line">eu ----- 3859ms</span><br><span class="line">au ----- 1073ms</span><br><span class="line">sl ----- 4150ms</span><br><span class="line">nj ----- 8008ms</span><br></pre></td></tr></table></figure>
+<p>注意，为了取得较准确的结果，可以考虑多次测试取平均值。</p>
+<p>许可</p>
+<p>nrm 为开源软件，使用 MIT 许可。</p>
+<p>项目主页</p>
+<p><a href="http://github.com/Pana/nrm" target="_blank" rel="noopener">github.com/Pana/nrm</a></p>
 
     </div>
 
@@ -372,7 +383,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -385,7 +396,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-count">171</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

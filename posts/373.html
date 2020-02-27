@@ -15,46 +15,20 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://phpkoo.com').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-  <meta name="description" content="CentOS 6.x（7.x） 的 OpenSSL 软件版本实在是低，2017 年了还在用人家 2013 年的版本，而且 1.0.1 版本对 ALPN 不支持，已经没法跟上大环境的节奏了 可以看一下默认自带的版本 [shell] # openssl version OpenSSL 1.0.1e-fips 11 Feb 2013 [&#x2F;shell] 所以我们有必要升级 OpenSSL 到 1.0.2">
+  <meta name="description" content="CentOS 6.x（7.x） 的 OpenSSL 软件版本实在是低，2017 年了还在用人家 2013 年的版本，而且 1.0.1 版本对 ALPN 不支持，已经没法跟上大环境的节奏了可以看一下默认自带的版本 12$ openssl versionOpenSSL 1.0.1e-fips 11 Feb 2013 所以我们有必要升级 OpenSSL 到 1.0.2 版本以下所有操作均需在 root">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS 安装(升级) OpenSSL">
 <meta property="og:url" content="https://phpkoo.com/posts/373.html">
 <meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="CentOS 6.x（7.x） 的 OpenSSL 软件版本实在是低，2017 年了还在用人家 2013 年的版本，而且 1.0.1 版本对 ALPN 不支持，已经没法跟上大环境的节奏了 可以看一下默认自带的版本 [shell] # openssl version OpenSSL 1.0.1e-fips 11 Feb 2013 [&#x2F;shell] 所以我们有必要升级 OpenSSL 到 1.0.2">
+<meta property="og:description" content="CentOS 6.x（7.x） 的 OpenSSL 软件版本实在是低，2017 年了还在用人家 2013 年的版本，而且 1.0.1 版本对 ALPN 不支持，已经没法跟上大环境的节奏了可以看一下默认自带的版本 12$ openssl versionOpenSSL 1.0.1e-fips 11 Feb 2013 所以我们有必要升级 OpenSSL 到 1.0.2 版本以下所有操作均需在 root">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-12-08T02:49:56.000Z">
-<meta property="article:modified_time" content="2020-01-16T06:28:43.393Z">
+<meta property="article:modified_time" content="2020-02-27T01:02:52.734Z">
 <meta property="article:author" content="阿德">
 <meta property="article:tag" content="centos">
 <meta property="article:tag" content="openssl">
@@ -112,6 +86,14 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -124,11 +106,9 @@
         <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -181,9 +161,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -248,7 +228,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -256,9 +236,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
             </span>
 
@@ -273,8 +251,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>CentOS 6.x（7.x） 的 OpenSSL 软件版本实在是低，2017 年了还在用人家 2013 年的版本，而且 1.0.1 版本对 ALPN 不支持，已经没法跟上大环境的节奏了 可以看一下默认自带的版本 [shell] # openssl version OpenSSL 1.0.1e-fips 11 Feb 2013 [/shell] 所以我们有必要升级 OpenSSL 到 1.0.2 版本 以下所有操作均需在 root 用户下进行 1、安装必要软件 [shell] yum install gcc gcc-c++ autoconf automake zlib zlib-devel pcre-devel [/shell] 2、下载并解压 OpenSSL [shell] cd /usr/local/src wget <a href="https://www.openssl.org/source/openssl-1.0.2-latest.tar.gz" target="_blank" rel="noopener">https://www.openssl.org/source/openssl-1.0.2-latest.tar.gz</a> tar -zxf openssl-1.0.2-latest.tar.gz [/shell] 3、编译安装 OpenSSL [shell] cd openssl-1.0.2* ./config make &amp;&amp; make install [/shell] 4、移除旧版本 OpenSSL [shell] mv /usr/bin/openssl /tmp/ ln -s /usr/local/ssl/bin/openssl /usr/bin/openssl [/shell] 好了，大功告成，查看一下现在的版本 [shell] # openssl version OpenSSL 1.0.2m 26 Jan 2017 [/shell]</p>
-
+        <p>CentOS 6.x（7.x） 的 OpenSSL 软件版本实在是低，2017 年了还在用人家 2013 年的版本，而且 1.0.1 版本对 ALPN 不支持，已经没法跟上大环境的节奏了<br>可以看一下默认自带的版本</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ openssl version</span><br><span class="line">OpenSSL 1.0.1e-fips 11 Feb 2013</span><br></pre></td></tr></table></figure>
+<p>所以我们有必要升级 OpenSSL 到 1.0.2 版本<br>以下所有操作均需在 root 用户下进行<br>1、安装必要软件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc gcc-c++ autoconf automake zlib zlib-devel pcre-devel</span><br></pre></td></tr></table></figure>
+<p>2、下载并解压 OpenSSL</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">wget https://www.openssl.org/<span class="built_in">source</span>/openssl-1.0.2-latest.tar.gz</span><br><span class="line">tar -zxf openssl-1.0.2-latest.tar.gz</span><br></pre></td></tr></table></figure>
+<p>3、编译安装 OpenSSL</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> openssl-1.0.2*</span><br><span class="line">./config</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>4、移除旧版本 OpenSSL</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv /usr/bin/openssl /tmp/</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/ssl/bin/openssl /usr/bin/openssl</span><br></pre></td></tr></table></figure>
+<p>好了，大功告成，查看一下现在的版本</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ openssl version</span><br><span class="line">OpenSSL 1.0.2m  26 Jan 2017</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -372,7 +360,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -385,7 +373,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-count">171</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

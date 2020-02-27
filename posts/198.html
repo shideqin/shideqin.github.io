@@ -15,46 +15,20 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://phpkoo.com').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-  <meta name="description" content="到LUA官网下载安装包 [shell] $ wget http:&#x2F;&#x2F;www.lua.org&#x2F;ftp&#x2F;lua-5.1.5.tar.gz $ tar zxvf lua-5.1.5.tar.gz $ cd lua-5.1.5&#x2F; $ yum install -y readline-devel ncurses-devel $ make linux [&#x2F;shell] 如下提示： cd src &amp;&amp;am">
+  <meta name="description" content="到LUA官网下载安装包 12345$ wget http:&#x2F;&#x2F;www.lua.org&#x2F;ftp&#x2F;lua-5.1.5.tar.gz$ tar zxvf lua-5.1.5.tar.gz$ cd lua-5.1.5&#x2F;$ yum install -y readline-devel ncurses-devel$ make linux 如下提示： 1234567891011121314151617181920">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos下安装lua环境">
 <meta property="og:url" content="https://phpkoo.com/posts/198.html">
 <meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="到LUA官网下载安装包 [shell] $ wget http:&#x2F;&#x2F;www.lua.org&#x2F;ftp&#x2F;lua-5.1.5.tar.gz $ tar zxvf lua-5.1.5.tar.gz $ cd lua-5.1.5&#x2F; $ yum install -y readline-devel ncurses-devel $ make linux [&#x2F;shell] 如下提示： cd src &amp;&amp;am">
+<meta property="og:description" content="到LUA官网下载安装包 12345$ wget http:&#x2F;&#x2F;www.lua.org&#x2F;ftp&#x2F;lua-5.1.5.tar.gz$ tar zxvf lua-5.1.5.tar.gz$ cd lua-5.1.5&#x2F;$ yum install -y readline-devel ncurses-devel$ make linux 如下提示： 1234567891011121314151617181920">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2015-09-16T14:51:05.000Z">
-<meta property="article:modified_time" content="2020-01-16T06:28:43.367Z">
+<meta property="article:modified_time" content="2020-02-27T01:02:52.724Z">
 <meta property="article:author" content="阿德">
 <meta property="article:tag" content="LUA">
 <meta name="twitter:card" content="summary">
@@ -111,6 +85,14 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -123,11 +105,9 @@
         <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -180,9 +160,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -247,7 +227,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,9 +235,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LUA/" itemprop="url" rel="index">
-                    <span itemprop="name">LUA</span>
-                  </a>
+                  <a href="/categories/LUA/" itemprop="url" rel="index"><span itemprop="name">LUA</span></a>
                 </span>
             </span>
 
@@ -272,7 +250,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>到LUA官网下载安装包 [shell] $ wget <a href="http://www.lua.org/ftp/lua-5.1.5.tar.gz" target="_blank" rel="noopener">http://www.lua.org/ftp/lua-5.1.5.tar.gz</a> $ tar zxvf lua-5.1.5.tar.gz $ cd lua-5.1.5/ $ yum install -y readline-devel ncurses-devel $ make linux [/shell] 如下提示： cd src &amp;&amp; make linux make[1]: Entering directory <code>/usr/local/src/lua-5.1.5/src&#39; make all MYCFLAGS=-DLUA\_USE\_LINUX MYLIBS=&quot;-Wl,-E -ldl -lreadline -lhistory -lncurses&quot; make\[2\]: Entering directory</code>/usr/local/src/lua-5.1.5/src’ make[2]: Nothing to be done for `all’. make[2]: Leaving directory `/usr/local/src/lua-5.1.5/src’ make[1]: Leaving directory `/usr/local/src/lua-5.1.5/src’ [shell] $ make install [/shell] cd src &amp;&amp; mkdir -p /usr/local/bin /usr/local/include /usr/local/lib /usr/local/man/man1 /usr/local/share/lua/5.1 /usr/local/lib/lua/5.1 cd src &amp;&amp; install -p -m 0755 lua luac /usr/local/bin cd src &amp;&amp; install -p -m 0644 lua.h luaconf.h lualib.h lauxlib.h ../etc/lua.hpp /usr/local/include cd src &amp;&amp; install -p -m 0644 liblua.a /usr/local/lib cd doc &amp;&amp; install -p -m 0644 lua.1 luac.1 /usr/local/man/man1 [shell] $ whereis lua lua: /usr/bin/lua /usr/lib64/lua /usr/local/bin/lua /usr/local/lib/lua /usr/share/lua /usr/share/man/man1/lua.1.gz $ /usr/local/bin/lua Lua 5.1.5 Copyright (C) 1994-2012 Lua.org, PUC-Rio [/shell] 安装完成。</p>
+        <p>到LUA官网下载安装包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://www.lua.org/ftp/lua-5.1.5.tar.gz</span><br><span class="line">$ tar zxvf lua-5.1.5.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> lua-5.1.5/</span><br><span class="line">$ yum install -y readline-devel ncurses-devel</span><br><span class="line">$ make linux</span><br></pre></td></tr></table></figure>
+<p>如下提示：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> src &amp;&amp; make linux  </span><br><span class="line">make[1]: Entering directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span></span><br><span class="line">make all MYCFLAGS=-DLUA_USE_LINUX MYLIBS=<span class="string">"-Wl,-E -ldl -lreadline -lhistory -lncurses"</span></span><br><span class="line">make[2]: Entering directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span>  </span><br><span class="line">make[2]: Nothing to be <span class="keyword">done</span> <span class="keyword">for</span> <span class="string">'all'</span>.</span><br><span class="line">make[2]: Leaving directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span></span><br><span class="line">make[1]: Leaving directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ make install</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; mkdir -p /usr/<span class="built_in">local</span>/bin /usr/<span class="built_in">local</span>/include /usr/<span class="built_in">local</span>/lib /usr/<span class="built_in">local</span>/man/man1 /usr/<span class="built_in">local</span>/share/lua/5.1 /usr/<span class="built_in">local</span>/lib/lua/5.1  </span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; install -p -m 0755 lua luac /usr/<span class="built_in">local</span>/bin  </span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; install -p -m 0644 lua.h luaconf.h lualib.h lauxlib.h ../etc/lua.hpp /usr/<span class="built_in">local</span>/include  </span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; install -p -m 0644 liblua.a /usr/<span class="built_in">local</span>/lib  </span><br><span class="line"><span class="built_in">cd</span> doc &amp;&amp; install -p -m 0644 lua.1 luac.1 /usr/<span class="built_in">local</span>/man/man1</span><br><span class="line"></span><br><span class="line">$ whereis lua</span><br><span class="line">lua: /usr/bin/lua /usr/lib64/lua /usr/<span class="built_in">local</span>/bin/lua /usr/<span class="built_in">local</span>/lib/lua /usr/share/lua /usr/share/man/man1/lua.1.gz</span><br><span class="line"></span><br><span class="line">$ /usr/<span class="built_in">local</span>/bin/lua</span><br><span class="line">Lua 5.1.5 Copyright (C) 1994-2012 Lua.org, PUC-Rio</span><br></pre></td></tr></table></figure>
+<p>安装完成。</p>
 
     </div>
 
@@ -370,7 +352,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -383,7 +365,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-count">171</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

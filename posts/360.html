@@ -15,46 +15,20 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://phpkoo.com').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
-  <meta name="description" content="1、安装gcc和gcc-c++ [shell] $ yum -y install gcc $ yum -y install gcc-c++ #或者 $ yum groupinstall “Development Tools” #或者 $ yum install gcc gcc-c++ kernel-devel [&#x2F;shell] 2、yum安装包时提示libstdc++版本冲突 [shell] $">
+  <meta name="description" content="1、安装gcc和gcc-c++ 12$ yum -y install gcc$ yum -y install gcc-c++ #或者 1$ yum groupinstall &quot;Development Tools&quot; #或者 1$ yum install gcc gcc-c++ kernel-devel 2、yum安装包时提示libstdc++版本冲突 1234$ yum downgrade libg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux下使用yum安装gcc的几点心得">
 <meta property="og:url" content="https://phpkoo.com/posts/360.html">
 <meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="1、安装gcc和gcc-c++ [shell] $ yum -y install gcc $ yum -y install gcc-c++ #或者 $ yum groupinstall “Development Tools” #或者 $ yum install gcc gcc-c++ kernel-devel [&#x2F;shell] 2、yum安装包时提示libstdc++版本冲突 [shell] $">
+<meta property="og:description" content="1、安装gcc和gcc-c++ 12$ yum -y install gcc$ yum -y install gcc-c++ #或者 1$ yum groupinstall &quot;Development Tools&quot; #或者 1$ yum install gcc gcc-c++ kernel-devel 2、yum安装包时提示libstdc++版本冲突 1234$ yum downgrade libg">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2017-09-15T10:00:18.000Z">
-<meta property="article:modified_time" content="2020-01-16T06:28:43.422Z">
+<meta property="article:modified_time" content="2020-02-27T01:02:52.749Z">
 <meta property="article:author" content="阿德">
 <meta property="article:tag" content="yum">
 <meta property="article:tag" content="gcc">
@@ -112,6 +86,14 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -124,11 +106,9 @@
         <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -181,9 +161,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -248,7 +228,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -256,9 +236,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
             </span>
 
@@ -273,8 +251,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>1、安装gcc和gcc-c++ [shell] $ yum -y install gcc $ yum -y install gcc-c++ #或者 $ yum groupinstall “Development Tools” #或者 $ yum install gcc gcc-c++ kernel-devel [/shell] 2、yum安装包时提示libstdc++版本冲突 [shell] $ yum downgrade libgomp $ yum downgrade libstdc++ $ yum downgrade libgcc $ yum downgrade cpp [/shell]</p>
-
+        <p>1、安装gcc和gcc-c++</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install gcc</span><br><span class="line">$ yum -y install gcc-c++</span><br></pre></td></tr></table></figure>
+<p>#或者</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum groupinstall <span class="string">"Development Tools"</span></span><br></pre></td></tr></table></figure>
+<p>#或者</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install gcc gcc-c++ kernel-devel</span><br></pre></td></tr></table></figure>
+<p>2、yum安装包时提示libstdc++版本冲突</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ yum downgrade libgomp</span><br><span class="line">$ yum downgrade libstdc++</span><br><span class="line">$ yum downgrade libgcc</span><br><span class="line">$ yum downgrade cpp</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -372,7 +356,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -385,7 +369,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-count">171</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

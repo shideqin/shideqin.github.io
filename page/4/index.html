@@ -15,36 +15,10 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://phpkoo.com').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="关注小众语言，记录、分享技术点滴！">
 <meta property="og:type" content="website">
@@ -108,6 +82,14 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -120,11 +102,9 @@
         <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -177,9 +157,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -245,7 +225,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,15 +233,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">Mysql</span>
-                  </a>
+                  <a href="/categories/Linux/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
                 </span>
             </span>
 
@@ -276,7 +252,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>mysql启动时出现mysqld_safe: line 707: ulimit: open files: cannot modify limit: Operation not permitted错误 解决方法： [shell] ulimit -n 65535 [/shell] 普通用户ssh连接linux服务器是总是提示： ulimit: open files: cannot modify limit: Operation not permitted 解决方法： [shell] $ vi /etc/security/limits.conf # End of file #添加以下内容： root soft nofile 65535 root hard nofile 65535 * soft nofile 65535 * hard nofile 65535 #优化内核时： * soft nproc 65535 * hard nproc 65535 [/shell] 重启系统</p>
+          <p>mysql启动时出现mysqld_safe: line 707: ulimit: open files: cannot modify limit: Operation not permitted错误<br>解决方法：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ulimit</span> -n 65535</span><br></pre></td></tr></table></figure>
+<p>普通用户ssh连接linux服务器是总是提示：  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ulimit</span>: open files: cannot modify <span class="built_in">limit</span>: Operation not permitted</span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/security/limits.conf</span><br><span class="line"><span class="comment"># End of file</span></span><br><span class="line"><span class="comment">#添加以下内容：</span></span><br><span class="line">root soft nofile 65535</span><br><span class="line">root hard nofile 65535</span><br><span class="line">* soft nofile 65535</span><br><span class="line">* hard nofile 65535</span><br><span class="line"></span><br><span class="line"><span class="comment">#优化内核时：</span></span><br><span class="line">* soft nproc 65535</span><br><span class="line">* hard nproc 65535</span><br></pre></td></tr></table></figure>
+<p>重启系统</p>
 
       
     </div>
@@ -327,7 +309,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -335,9 +317,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
             </span>
 
@@ -352,7 +332,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在内网，从一台服务器传mysql的源码安装包到另外一台服务器时，发生如下的错误： [shell] $ scp mysql-5.1.55.tar.gz <a href="mailto:root@192.168.3.22">root@192.168.3.22</a>:. <a href="mailto:root@192.168.3.22">root@192.168.3.22</a>‘s password: bash: scp: command not found lost connection [/shell] 提示scp的命令找不到，但是查找发现命令是存在的 [shell] $ whereis scp scp: /usr/bin/scp /usr/share/man/man1/scp.1.gz [/shell] 如果本地都没有问题，那是另一端服务器上没有安装scp的命令？ [shell] $ whereis scp scp: [/shell] 果真是如此，所以是server端没有找到scp的命令，而不是本地 安装上scp的依赖包 [shell] $ yum install openssh-clients [/shell] 安装好之后，重新传输文件OK。</p>
+          <p>在内网，从一台服务器传mysql的源码安装包到另外一台服务器时，发生如下的错误：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ scp mysql-5.1.55.tar.gz root@192.168.3.22:.</span><br><span class="line">root@192.168.3.22<span class="string">'s password:</span></span><br><span class="line"><span class="string">bash: scp: command not found</span></span><br><span class="line"><span class="string">lost connection</span></span><br></pre></td></tr></table></figure>
+<p>提示scp的命令找不到，但是查找发现命令是存在的</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ whereis scp</span><br><span class="line">scp: /usr/bin/scp /usr/share/man/man1/scp.1.gz</span><br></pre></td></tr></table></figure>
+<p>如果本地都没有问题，那是另一端服务器上没有安装scp的命令？</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ whereis scp</span><br><span class="line">scp:</span><br></pre></td></tr></table></figure>
+
+<p>果真是如此，所以是server端没有找到scp的命令，而不是本地<br>安装上scp的依赖包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install openssh-clients</span><br></pre></td></tr></table></figure>
+<p>安装好之后，重新传输文件OK。</p>
 
       
     </div>
@@ -403,7 +392,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -411,9 +400,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">Mysql</span>
-                  </a>
+                  <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
                 </span>
             </span>
 
@@ -428,8 +415,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>/usr/local/mysql/bin/mysql_install_db –basedir=/usr/local/mysql –datadir=/usr/local/mysql/data –user=mysql 在安装二进制mysql的软件包时（版本mysql5.7社区版），初始化中出现 error while loading shared libraries: libaio.so.1: cannot open shared object file: No such file or directory的错误： 解决方法： [shell] $ yum install -y libaio //安装后在初始化就OK了 [/shell]</p>
-
+          <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/mysql/bin/mysql_install_db --basedir=/usr/<span class="built_in">local</span>/mysql --datadir=/usr/<span class="built_in">local</span>/mysql/data --user=mysql</span><br></pre></td></tr></table></figure>
+<p>在安装二进制mysql的软件包时（版本mysql5.7社区版），初始化中出现 error while loading shared libraries: libaio.so.1: cannot open shared object file: No such file or directory的错误：</p>
+<p>解决方法：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y libaio  <span class="comment">#安装后在初始化就OK了</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -479,7 +468,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -487,9 +476,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
             </span>
 
@@ -504,8 +491,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>错误描述 [shell] $ yum install libmcrypt libmcrypt-devel Setting up Install Process No package libmcrypt-devel available. Error: Nothing to do [/shell] 我们会看到centos yum从仓库中根本找不到这几个包。但我不想使用源码编译就想使用yum安装，怎么办？ 解决方法： [shell] $ yum install epel-release //扩展包更新包 $ yum update //更新yum源 $ yum install libmcrypt libmcrypt-devel //就ok了 [/shell]</p>
-
+          <p>错误描述</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ yum install libmcrypt libmcrypt-devel</span><br><span class="line">Setting up Install Process</span><br><span class="line">No package libmcrypt-devel available.</span><br><span class="line">Error: Nothing to <span class="keyword">do</span></span><br></pre></td></tr></table></figure>
+<p>我们会看到centos yum从仓库中根本找不到这几个包。但我不想使用源码编译就想使用yum安装，怎么办？</p>
+<p>解决方法：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ yum install epel-release  <span class="comment">#扩展包更新包</span></span><br><span class="line">$ yum update <span class="comment">#更新yum源</span></span><br><span class="line">$ yum install libmcrypt libmcrypt-devel <span class="comment">#就ok了</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -555,7 +545,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -563,9 +553,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
             </span>
 
@@ -580,7 +568,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><strong>1、备份</strong> [shell] $ mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup [/shell] <strong>2、下载新的CentOS-Base.repo 到/etc/yum.repos.d/</strong> CentOS 5 [shell] $ wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-5.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-5.repo</a> [/shell] CentOS 6 [shell] $ wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-6.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-6.repo</a> [/shell] CentOS 7 [shell] $ wget -O /etc/yum.repos.d/CentOS-Base.repo <a href="http://mirrors.aliyun.com/repo/Centos-7.repo" target="_blank" rel="noopener">http://mirrors.aliyun.com/repo/Centos-7.repo</a> [/shell] <strong>3、之后运行yum makecache生成缓存</strong> [shell] $ yum clean all $ yum makecache [/shell] 完成 ps: 1、同步频率为每天一次，每天凌晨2：00-4：00为镜像的同步时间 2、若使用阿里云服务器，将源的域名从mirrors.aliyun.com改为mirrors.aliyuncs.com,不占用公网流量。</p>
+          <p><strong>1、备份</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</span><br></pre></td></tr></table></figure>
+<p><strong>2、下载新的CentOS-Base.repo 到/etc/yum.repos.d/</strong><br>CentOS 5</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo</span><br></pre></td></tr></table></figure>
+<p>CentOS 6</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo</span><br></pre></td></tr></table></figure>
+<p>CentOS 7</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
+<p><strong>3、之后运行yum makecache生成缓存</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum clean all</span><br><span class="line">$ yum makecache</span><br></pre></td></tr></table></figure>
+<p>完成</p>
+<p>ps:<br>1、同步频率为每天一次，每天凌晨2：00-4：00为镜像的同步时间<br>2、若使用阿里云服务器，将源的域名从mirrors.aliyun.com改为mirrors.aliyuncs.com,不占用公网流量。</p>
 
       
     </div>
@@ -631,7 +630,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -639,9 +638,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index">
-                    <span itemprop="name">Docker</span>
-                  </a>
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
                 </span>
             </span>
 
@@ -656,8 +653,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>官方建议使用centos7部署docker1.9.1。 目前，很多系统仍为centos6.8，本文用于测试将centos6.8升级至1.9.1. <strong>查看系统版本</strong> [shell] $ more /etc/issue CentOS release 6.8 (Final) Kernel \r on an \m [/shell] <strong>查看内核版本</strong> [shell] $ uname -r 2.6.32-573.22.1.el6.x86_64 [/shell] <strong>升级内核至3.10</strong> [shell] $ rpm –import <a href="https://www.elrepo.org/RPM-GPG-KEY-elrepo.org" target="_blank" rel="noopener">https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</a> $ cd /etc/yum.repos.d/ $ rpm -ivh <a href="http://www.elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm" target="_blank" rel="noopener">http://www.elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm</a> $ yum –enablerepo=elrepo-kernel install kernel-lt -y [/shell] 升级完毕，修改grup并进行重启。 <strong>修改grub.conf文件default值为0</strong> [shell] $ vim /etc/grub.conf # grub.conf generated by anaconda # # Note that you do not have to rerun grub after making changes to this file # NOTICE: You do not have a /boot partition. This means that # all kernel and initrd paths are relative to /, eg. # root (hd0,0) # kernel /boot/vmlinuz-version ro root=/dev/vda1 # initrd /boot/initrd-[generic-]version.img #boot=/dev/vda default=0 timeout=5 splashimage=(hd0,0)/boot/grub/splash.xpm.gz hiddenmenu title CentOS (3.10.105-1.el6.elrepo.x86_64) root (hd0,0) kernel /boot/vmlinuz-3.10.105-1.el6.elrepo.x86_64 ro root=UUID=55d851da-601d-440a-b119-4fcd9cde4d02 rd_NO_LUKS rd_NO_LVM LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet initrd /boot/initramfs-3.10.105-1.el6.elrepo.x86_64.img title CentOS (2.6.32-642.6.2.el6.x86_64) root (hd0,0) kernel /boot/vmlinuz-2.6.32-642.6.2.el6.x86_64 ro root=UUID=55d851da-601d-440a-b119-4fcd9cde4d02 rd_NO_LUKS rd_NO_LVM LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet initrd /boot/initramfs-2.6.32-642.6.2.el6.x86_64.img [/shell] <strong>重启系统</strong> [shell] $ reboot [/shell] <strong>重启后查看版本</strong> [shell] $ uname -r 3.10.105-1.el6.elrepo.x86_64 [/shell] <strong>安装docker 1.9.1</strong> [shell] $ curl -sSL -O <a href="https://get.docker.com/builds/Linux/x86_64/docker-1.9.1" target="_blank" rel="noopener">https://get.docker.com/builds/Linux/x86_64/docker-1.9.1</a> &amp;&amp; chmod +x docker-1.9.1 &amp;&amp; mv docker-1.9.1 /usr/local/bin/docker $ cp /usr/local/bin/docker /usr/bin/docker $ service docker start [/shell] <strong>重启后验证</strong> [shell] $ docker version Client: Version: 1.9.1 API version: 1.21 Go version: go1.4.3 Git commit: a34a1d5 Built: Fri Nov 20 17:56:04 UTC 2015 OS/Arch: linux/amd64 Server: Version: 1.9.1 API version: 1.21 Go version: go1.4.3 Git commit: a34a1d5 Built: Fri Nov 20 17:56:04 UTC 2015 OS/Arch: linux/amd64 [/shell]</p>
-
+          <p>官方建议使用centos7部署docker1.9.1。<br>目前，很多系统仍为centos6.8，本文用于测试将centos6.8升级至1.9.1.</p>
+<p><strong>查看系统版本</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ more /etc/issue</span><br><span class="line">CentOS release 6.8 (Final)</span><br><span class="line">Kernel \r on an \m</span><br></pre></td></tr></table></figure>
+<p><strong>查看内核版本</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ uname -r</span><br><span class="line">2.6.32-573.22.1.el6.x86_64</span><br></pre></td></tr></table></figure>
+<p><strong>升级内核至3.10</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</span><br><span class="line">$ <span class="built_in">cd</span> /etc/yum.repos.d/</span><br><span class="line">$ rpm -ivh http://www.elrepo.org/elrepo-release-6-5.el6.elrepo.noarch.rpm</span><br><span class="line">$ yum --enablerepo=elrepo-kernel install kernel<span class="_">-lt</span> -y</span><br></pre></td></tr></table></figure>
+<p>升级完毕，修改grup并进行重启。</p>
+<p><strong>修改grub.conf文件default值为0</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/grub.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># grub.conf generated by anaconda</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Note that you do not have to rerun grub after making changes to this file</span></span><br><span class="line"><span class="comment"># NOTICE:  You do not have a /boot partition.  This means that</span></span><br><span class="line"><span class="comment">#          all kernel and initrd paths are relative to /, eg.</span></span><br><span class="line"><span class="comment">#          root (hd0,0)</span></span><br><span class="line"><span class="comment">#          kernel /boot/vmlinuz-version ro root=/dev/vda1</span></span><br><span class="line"><span class="comment">#          initrd /boot/initrd-[generic-]version.img</span></span><br><span class="line"><span class="comment">#boot=/dev/vda</span></span><br><span class="line">default=0</span><br><span class="line">timeout=5</span><br><span class="line">splashimage=(hd0,0)/boot/grub/splash.xpm.gz</span><br><span class="line">hiddenmenu</span><br><span class="line">title CentOS (3.10.105-1.el6.elrepo.x86_64)</span><br><span class="line">        root (hd0,0)</span><br><span class="line">        kernel /boot/vmlinuz-3.10.105-1.el6.elrepo.x86_64 ro root=UUID=55d851da-601d-440a-b119-4fcd9cde4d02 rd_NO_LUKS rd_NO_LVM LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet</span><br><span class="line">        initrd /boot/initramfs-3.10.105-1.el6.elrepo.x86_64.img</span><br><span class="line">title CentOS (2.6.32-642.6.2.el6.x86_64)</span><br><span class="line">        root (hd0,0)</span><br><span class="line">        kernel /boot/vmlinuz-2.6.32-642.6.2.el6.x86_64 ro root=UUID=55d851da-601d-440a-b119-4fcd9cde4d02 rd_NO_LUKS rd_NO_LVM LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto  KEYBOARDTYPE=pc KEYTABLE=us rd_NO_DM rhgb quiet</span><br><span class="line">        initrd /boot/initramfs-2.6.32-642.6.2.el6.x86_64.img</span><br></pre></td></tr></table></figure>
+<p><strong>重启系统</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ reboot</span><br></pre></td></tr></table></figure>
+<p><strong>重启后查看版本</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ uname -r</span><br><span class="line">3.10.105-1.el6.elrepo.x86_64</span><br></pre></td></tr></table></figure>
+<p><strong>安装docker 1.9.1</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ curl -sSL -O https://get.docker.com/builds/Linux/x86_64/docker-1.9.1 &amp;&amp; chmod +x docker-1.9.1 &amp;&amp; mv docker-1.9.1 /usr/<span class="built_in">local</span>/bin/docker</span><br><span class="line">$ cp /usr/<span class="built_in">local</span>/bin/docker /usr/bin/docker</span><br><span class="line">$ service docker start</span><br></pre></td></tr></table></figure>
+<p><strong>重启后验证</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:      1.9.1</span><br><span class="line"> API version:  1.21</span><br><span class="line"> Go version:   go1.4.3</span><br><span class="line"> Git commit:   a34a1d5</span><br><span class="line"> Built:        Fri Nov 20 17:56:04 UTC 2015</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Version:      1.9.1</span><br><span class="line"> API version:  1.21</span><br><span class="line"> Go version:   go1.4.3</span><br><span class="line"> Git commit:   a34a1d5</span><br><span class="line"> Built:        Fri Nov 20 17:56:04 UTC 2015</span><br><span class="line"> OS/Arch:      linux/amd64</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -707,7 +720,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -715,9 +728,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index">
-                    <span itemprop="name">Docker</span>
-                  </a>
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
                 </span>
             </span>
 
@@ -732,7 +743,47 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a>是一个能够把开发应用程序自动部署到容器的开源引擎。它由Docker公司的团队编写，基于Apache 2.0开源协议授权。它提供了一个简单、轻量的建模方式，使开发生命周期更高效快速，鼓励了面向服务的架构设计。 <strong>前提条件</strong> <strong>内核</strong> Docker运行对内核要求比较高，因此一般建议直接在Ubuntu这样的平台运行。但作为一个容器标准，Docker也是支持其他如CentOS, Mac OS X, Windows等平台。目前Docker支持以下版本CentOS: <em>CentOS 7(64位)</em> <em>CentOS 6.5(64位)及以后</em> 在运行CentOS 6.5及以后版本时，需要内核版本&gt;=2.6.32-431，因为这些内核包含了运行Docker的一些特定修改。 [shell] $ uname -r 2.6.32-573.22.1.el6.x86_64 [/shell] <strong>Device Mapper</strong> Docker默认使用AUFS作为存储驱动，但是AUFS并没有被包括在Linux的主线内核中。CentOS中可以使用Device Mapper作为存储驱动，这是在2.6.9内核版本引入的新功能。我们需要先确认是否启用该功能: [shell] $ ls -l /sys/class/misc/device-mapper lrwxrwxrwx 1 root root 0 Mar 11 17:06 /sys/class/misc/device-mapper -&gt; ../../devices/virtual/misc/device-mapper [/shell] 如果没有检测到Device Mapper，需要安装device-mapper软件包: [shell] $ yum install -y device-mapper [/shell] 然后重新加载dm_mod内核模块: [shell] $ modprobe dm_mod [/shell] <strong>第一步 Enable EPEL</strong> 对于CentOS6.8, Docker可以在EPEL源里面找到，所以我们首先需要确保启用EPEL。 [shell] $ yum -y install epel-release-6-8.noarch [/shell] <strong>第二步 Install Docker-IO</strong> 最后需要安装docker-io的RPM包。 [shell] $ yum -y install docker-io [/shell] 这样完成了Docker的安装。 [shell] $ docker -v Docker version 1.7.1, build 786b29d/1.7.1 [/shell] <strong>启动</strong> <strong>第一步 启动服务</strong> 一旦安装好Docker之后，我们需要启动Docker Deamon: [shell] $ service docker start [/shell] <strong>第二步 设置开机启动(可选)</strong> 如果希望Docker Deamon开机运行，还需要做如下操作: [shell] $ chkconfig docker on [/shell] <strong>验证</strong> <strong>验证Docker Deamon</strong> 启动服务后，直接用docker info命令确认docker是否正确安装并运行: [shell] $ docker info Containers: 1 Images: 4 Storage Driver: devicemapper Pool Name: docker-202:1-1835598-pool Pool Blocksize: 65.54 kB Backing Filesystem: extfs Data file: /dev/loop0 Metadata file: /dev/loop1 Data Space Used: 541.8 MB Data Space Total: 107.4 GB Data Space Available: 28.89 GB Metadata Space Used: 983 kB Metadata Space Total: 2.147 GB Metadata Space Available: 2.147 GB Udev Sync Supported: true Deferred Removal Enabled: false Data loop file: /var/lib/docker/devicemapper/devicemapper/data Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata Library Version: 1.02.117-RHEL6 (2016-08-15) Execution Driver: native-0.2 Logging Driver: json-file Kernel Version: 2.6.32-573.22.1.el6.x86_64 Operating System: <unknown> CPUs: 1 Total Memory: 994.6 MiB Name: iZ23l4s2070Z ID: CGIV:KQ7V:LP5I:NF5V:ZMKG:4AK3:RMDZ:QLVL:BY6F:GQF3:V7E5:TDCA [/shell] <strong>验证Docker Client</strong> 现在就让我们验证下Docker是否能正常运行，首先我们来获取centos6.8的镜像: [shell] $ docker pull daocloud.io/centos:6 [/shell] 这里使用的是DaoCloud源，因为官方源在国内不稳定。国内其它源地址：1、<a href="https://c.163.com/hub" target="_blank" rel="noopener">https://c.163.com/hub</a> 2、<a href="http://hub.daocloud.io" target="_blank" rel="noopener">http://hub.daocloud.io</a>，但要求Docker版本&gt;=1.3.2。然后我们检查是否能看到镜像: [shell] $ docker images REPOSITORY TAG IMAGE ID CREATED VIRTUAL SIZE daocloud.io/centos 6 10611b26a8b9 4 months ago 194.6 MB [/shell] 激动的时刻到了，让我们运行一下: [shell] $ docker run -i -t daocloud.io/centos /bin/bash [/shell] 一切正常的话，你会看到一个终端提示符，然后你就可以像操作任何CentOS机器一样进行你的体验。</p>
+          <p><a href="https://www.docker.com/" target="_blank" rel="noopener">Docker</a>是一个能够把开发应用程序自动部署到容器的开源引擎。它由Docker公司的团队编写，基于Apache 2.0开源协议授权。它提供了一个简单、轻量的建模方式，使开发生命周期更高效快速，鼓励了面向服务的架构设计。</p>
+<p><strong>前提条件</strong></p>
+<p><strong>内核</strong></p>
+<p>Docker运行对内核要求比较高，因此一般建议直接在Ubuntu这样的平台运行。但作为一个容器标准，Docker也是支持其他如CentOS, Mac OS X, Windows等平台。目前Docker支持以下版本CentOS:</p>
+<p><em>CentOS 7(64位)</em><br><em>CentOS 6.5(64位)及以后</em></p>
+<p>在运行CentOS 6.5及以后版本时，需要内核版本&gt;=2.6.32-431，因为这些内核包含了运行Docker的一些特定修改。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ uname -r</span><br><span class="line">2.6.32-573.22.1.el6.x86_64</span><br></pre></td></tr></table></figure>
+<p><strong>Device Mapper</strong></p>
+<p>Docker默认使用AUFS作为存储驱动，但是AUFS并没有被包括在Linux的主线内核中。CentOS中可以使用Device Mapper作为存储驱动，这是在2.6.9内核版本引入的新功能。我们需要先确认是否启用该功能:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l /sys/class/misc/device-mapper</span><br><span class="line">lrwxrwxrwx 1 root root 0 Mar 11 17:06 /sys/class/misc/device-mapper -&gt; ../../devices/virtual/misc/device-mapper</span><br></pre></td></tr></table></figure>
+<p>如果没有检测到Device Mapper，需要安装device-mapper软件包:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y device-mapper</span><br></pre></td></tr></table></figure>
+<p>然后重新加载dm_mod内核模块:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ modprobe dm_mod</span><br></pre></td></tr></table></figure>
+<p><strong>第一步 Enable EPEL</strong></p>
+<p>对于CentOS6.8, Docker可以在EPEL源里面找到，所以我们首先需要确保启用EPEL。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install epel-release-6-8.noarch</span><br></pre></td></tr></table></figure>
+<p><strong>第二步 Install Docker-IO</strong></p>
+<p>最后需要安装docker-io的RPM包。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum -y install docker-io</span><br></pre></td></tr></table></figure>
+<p>这样完成了Docker的安装。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker -v</span><br><span class="line">Docker version 1.7.1, build 786b29d/1.7.1</span><br></pre></td></tr></table></figure>
+<p><strong>启动</strong></p>
+<p><strong>第一步 启动服务</strong></p>
+<p>一旦安装好Docker之后，我们需要启动Docker Deamon:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ service docker start</span><br></pre></td></tr></table></figure>
+<p><strong>第二步 设置开机启动(可选)</strong></p>
+<p>如果希望Docker Deamon开机运行，还需要做如下操作:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ chkconfig docker on</span><br></pre></td></tr></table></figure>
+<p><strong>验证</strong></p>
+<p><strong>验证Docker Deamon</strong></p>
+<p>启动服务后，直接用docker info命令确认docker是否正确安装并运行:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$ docker info</span><br><span class="line">Containers: 1</span><br><span class="line">Images: 4</span><br><span class="line">Storage Driver: devicemapper</span><br><span class="line"> Pool Name: docker-202:1-1835598-pool</span><br><span class="line"> Pool Blocksize: 65.54 kB</span><br><span class="line"> Backing Filesystem: extfs</span><br><span class="line"> Data file: /dev/loop0</span><br><span class="line"> Metadata file: /dev/loop1</span><br><span class="line"> Data Space Used: 541.8 MB</span><br><span class="line"> Data Space Total: 107.4 GB</span><br><span class="line"> Data Space Available: 28.89 GB</span><br><span class="line"> Metadata Space Used: 983 kB</span><br><span class="line"> Metadata Space Total: 2.147 GB</span><br><span class="line"> Metadata Space Available: 2.147 GB</span><br><span class="line"> Udev Sync Supported: <span class="literal">true</span></span><br><span class="line"> Deferred Removal Enabled: <span class="literal">false</span></span><br><span class="line"> Data loop file: /var/lib/docker/devicemapper/devicemapper/data</span><br><span class="line"> Metadata loop file: /var/lib/docker/devicemapper/devicemapper/metadata</span><br><span class="line"> Library Version: 1.02.117-RHEL6 (2016-08-15)</span><br><span class="line">Execution Driver: native-0.2</span><br><span class="line">Logging Driver: json-file</span><br><span class="line">Kernel Version: 2.6.32-573.22.1.el6.x86_64</span><br><span class="line">Operating System: &lt;unknown&gt;</span><br><span class="line">CPUs: 1</span><br><span class="line">Total Memory: 994.6 MiB</span><br><span class="line">Name: iZ23l4s2070Z</span><br><span class="line">ID: CGIV:KQ7V:LP5I:NF5V:ZMKG:4AK3:RMDZ:QLVL:BY6F:GQF3:V7E5:TDCA</span><br></pre></td></tr></table></figure>
+<p><strong>验证Docker Client</strong></p>
+<p>现在就让我们验证下Docker是否能正常运行，首先我们来获取centos6.8的镜像:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker pull daocloud.io/centos:6</span><br></pre></td></tr></table></figure>
+<p>这里使用的是DaoCloud源，因为官方源在国内不稳定。国内其它源地址：1、<a href="https://c.163.com/hub" target="_blank" rel="noopener">https://c.163.com/hub</a> 2、<a href="http://hub.daocloud.io" target="_blank" rel="noopener">http://hub.daocloud.io</a>，但要求Docker版本&gt;=1.3.2。然后我们检查是否能看到镜像:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker images</span><br><span class="line">REPOSITORY           TAG                 IMAGE ID            CREATED             VIRTUAL SIZE</span><br><span class="line">daocloud.io/centos   6                   10611b26a8b9        4 months ago        194.6 MB</span><br></pre></td></tr></table></figure>
+<p>激动的时刻到了，让我们运行一下:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -i -t daocloud.io/centos /bin/bash</span><br></pre></td></tr></table></figure>
+<p>一切正常的话，你会看到一个终端提示符，然后你就可以像操作任何CentOS机器一样进行你的体验。</p>
 
       
     </div>
@@ -783,7 +834,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -791,9 +842,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
                 </span>
             </span>
 
@@ -808,7 +857,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>CentOS配置vsftp服务器，特殊情况下方便快速管理文件。 1、安装vsftpd [shell] yum -y install vsftpd [/shell] 2、配置vsftpd.conf文件（修改下面中文部分内容） [shell] vi /etc/vsftpd/vsftpd.conf [/shell] [shell] # Example config file /etc/vsftpd/vsftpd.conf # # The default compiled in settings are fairly paranoid. This sample file # loosens things up a bit, to make the ftp daemon more usable. # Please see vsftpd.conf.5 for all compiled in defaults. # # READ THIS: This example file is NOT an exhaustive list of vsftpd options. # Please read the vsftpd.conf.5 manual page to get a full idea of vsftpd’s # capabilities. # # Allow anonymous FTP? (Beware - allowed by default if you comment this out). # 是否允许匿名登录（将其禁止） #anonymous_enable=YES # # 允许使用本地帐户进行FTP用户登录验证 # Uncomment this to allow local users to log in. local_enable=YES # # Uncomment this to enable any form of FTP write command. write_enable=YES # # Default umask for local users is 077. You may wish to change this to 022, # if your users expect that (022 is used by most other ftpd’s) local_umask=022 # # Uncomment this to allow the anonymous FTP user to upload files. This only # has an effect if the above global write enable is activated. Also, you will # obviously need to create a directory writable by the FTP user. #anon_upload_enable=YES # # Uncomment this if you want the anonymous FTP user to be able to create # new directories. #anon_mkdir_write_enable=YES # # Activate directory messages - messages given to remote users when they # go into a certain directory. dirmessage_enable=YES # # The target log file can be vsftpd_log_file or xferlog_file. # This depends on setting xferlog_std_format parameter xferlog_enable=YES # # Make sure PORT transfer connections originate from port 20 (ftp-data). connect_from_port_20=YES # # If you want, you can arrange for uploaded anonymous files to be owned by # a different user. Note! Using “root” for uploaded files is not # recommended! #chown_uploads=YES #chown_username=whoever # # The name of log file when xferlog_enable=YES and xferlog_std_format=YES # WARNING - changing this filename affects /etc/logrotate.d/vsftpd.log #xferlog_file=/var/log/xferlog # # Switches between logging into vsftpd_log_file and xferlog_file files. # NO writes to vsftpd_log_file, YES to xferlog_file xferlog_std_format=YES # # You may change the default value for timing out an idle session. # 设置连接超时时间（单位秒） idle_session_timeout=600 # # You may change the default value for timing out a data connection. # 数据传输超时时间（单位秒） data_connection_timeout=120 # # It is recommended that you define on your system a unique user which the # ftp server can use as a totally isolated and unprivileged user. #nopriv_user=ftpsecure # # Enable this and the server will recognise asynchronous ABOR requests. Not # recommended for security (the code is non-trivial). Not enabling it, # however, may confuse older FTP clients. #async_abor_enable=YES # # By default the server will pretend to allow ASCII mode but in fact ignore # the request. Turn on the below options to have the server actually do ASCII # mangling on files when in ASCII mode. # Beware that on some FTP servers, ASCII support allows a denial of service # attack (DoS) via the command “SIZE /big/file” in ASCII mode. vsftpd # predicted this attack and has always been safe, reporting the size of the # raw file. # ASCII mangling is a horrible feature of the protocol. # 是否允许上传/下载二进制文件 ascii_upload_enable=YES ascii_download_enable=YES # # You may fully customise the login banner string: #ftpd_banner=Welcome to blah FTP service. # # You may specify a file of disallowed anonymous e-mail addresses. Apparently # useful for combatting certain DoS attacks. #deny_email_enable=YES # (default follows) #banned_email_file=/etc/vsftpd/banned_emails # # You may specify an explicit list of local users to chroot() to their home # directory. If chroot_local_user is YES, then this list becomes a list of # users to NOT chroot(). # 限制所有的本地用户只能访问自己的目录 chroot_local_user=YES # 当chroot_list_enable=YES，chroot_local_user=YES时，在/etc/vsftpd/chroot_list文件中列出的用户，可以切换到其他目录；未在文件中列出的用户，不能切换到其他目录。 #chroot_list_enable=YES # (default follows) #chroot_list_file=/etc/vsftpd/chroot_list # # You may activate the “-R” option to the builtin ls. This is disabled by # default to avoid remote users being able to cause excessive I/O on large # sites. However, some broken FTP clients such as “ncftp” and “mirror” assume # the presence of the “-R” option, so there is a strong case for enabling it. # 是否允许使用ls -R等命令 ls_recurse_enable=YES # # When “listen” directive is enabled, vsftpd runs in standalone mode and # listens on IPv4 sockets. This directive cannot be used in conjunction # with the listen_ipv6 directive. listen=YES # # This directive enables listening on IPv6 sockets. To listen on IPv4 and IPv6 # sockets, you must run two copies of vsftpd with two configuration files. # Make sure, that one of the listen options is commented !! #listen_ipv6=YES pam_service_name=vsftpd userlist_enable=YES userlist_file=/etc/vsftpd/user_list # [新增]是否只允许userlist_file文件中的用户登录FTP服务器，userlist_enable为YES才生效 # YES，默认值，禁止文件中的用户登录，同时也不向这些用户发出输入密码的提示。NO，只允许在文件中的用户登录FTP服务器 userlist_deny=NO tcp_wrappers=YES # [新增]所有用户的根目录（对匿名用户无效，不设置时，默认为用户的家目录/home/ftpuser） local_root=/data [/shell] 3、新增ftp用户并为其设置密码 [shell] useradd -d /home/ftpuser -s /sbin/nologin ftpuser passwd ftpuser [/shell] 4、编辑user_list文件，给予ftpuser用户访问ftp权限 [shell] vim /etc/vsftpd/user_list [/shell] 在文件末尾加入ftpuser并保存 5、建立可访问目录并指定用户 [shell] mkdir -p /data chown -R ftpuser /data/ #注意后面有个/ chmod -R 755 /data [/shell] 6、启动vsftpd服务 [shell] service vsftpd start [/shell] 7、开机启动vsftpd服务 [shell] chkconfig vsftpd on [/shell] 至此完毕</p>
+          <p>CentOS配置vsftp服务器，特殊情况下方便快速管理文件。<br>1、安装vsftpd</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install vsftpd</span><br></pre></td></tr></table></figure>
+<p>2、配置vsftpd.conf文件（修改下面中文部分内容）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/vsftpd/vsftpd.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example config file /etc/vsftpd/vsftpd.conf</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The default compiled in settings are fairly paranoid. This sample file</span></span><br><span class="line"><span class="comment"># loosens things up a bit, to make the ftp daemon more usable.</span></span><br><span class="line"><span class="comment"># Please see vsftpd.conf.5 for all compiled in defaults.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># READ THIS: This example file is NOT an exhaustive list of vsftpd options.</span></span><br><span class="line"><span class="comment"># Please read the vsftpd.conf.5 manual page to get a full idea of vsftpd's</span></span><br><span class="line"><span class="comment"># capabilities.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Allow anonymous FTP? (Beware - allowed by default if you comment this out).</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否允许匿名登录（将其禁止）</span></span><br><span class="line"><span class="comment">#anonymous_enable=YES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 允许使用本地帐户进行FTP用户登录验证</span></span><br><span class="line"><span class="comment"># Uncomment this to allow local users to log in.</span></span><br><span class="line">local_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Uncomment this to enable any form of FTP write command.</span></span><br><span class="line">write_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Default umask for local users is 077. You may wish to change this to 022,</span></span><br><span class="line"><span class="comment"># if your users expect that (022 is used by most other ftpd's)</span></span><br><span class="line">local_umask=022</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Uncomment this to allow the anonymous FTP user to upload files. This only</span></span><br><span class="line"><span class="comment"># has an effect if the above global write enable is activated. Also, you will</span></span><br><span class="line"><span class="comment"># obviously need to create a directory writable by the FTP user.</span></span><br><span class="line"><span class="comment">#anon_upload_enable=YES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Uncomment this if you want the anonymous FTP user to be able to create</span></span><br><span class="line"><span class="comment"># new directories.</span></span><br><span class="line"><span class="comment">#anon_mkdir_write_enable=YES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Activate directory messages - messages given to remote users when they</span></span><br><span class="line"><span class="comment"># go into a certain directory.</span></span><br><span class="line">dirmessage_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The target log file can be vsftpd_log_file or xferlog_file.</span></span><br><span class="line"><span class="comment"># This depends on setting xferlog_std_format parameter</span></span><br><span class="line">xferlog_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Make sure PORT transfer connections originate from port 20 (ftp-data).</span></span><br><span class="line">connect_from_port_20=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If you want, you can arrange for uploaded anonymous files to be owned by</span></span><br><span class="line"><span class="comment"># a different user. Note! Using "root" for uploaded files is not</span></span><br><span class="line"><span class="comment"># recommended!</span></span><br><span class="line"><span class="comment">#chown_uploads=YES</span></span><br><span class="line"><span class="comment">#chown_username=whoever</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The name of log file when xferlog_enable=YES and xferlog_std_format=YES</span></span><br><span class="line"><span class="comment"># WARNING - changing this filename affects /etc/logrotate.d/vsftpd.log</span></span><br><span class="line"><span class="comment">#xferlog_file=/var/log/xferlog</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Switches between logging into vsftpd_log_file and xferlog_file files.</span></span><br><span class="line"><span class="comment"># NO writes to vsftpd_log_file, YES to xferlog_file</span></span><br><span class="line">xferlog_std_format=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may change the default value for timing out an idle session.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置连接超时时间（单位秒）</span></span><br><span class="line">idle_session_timeout=600</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may change the default value for timing out a data connection.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据传输超时时间（单位秒）</span></span><br><span class="line">data_connection_timeout=120</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># It is recommended that you define on your system a unique user which the</span></span><br><span class="line"><span class="comment"># ftp server can use as a totally isolated and unprivileged user.</span></span><br><span class="line"><span class="comment">#nopriv_user=ftpsecure</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Enable this and the server will recognise asynchronous ABOR requests. Not</span></span><br><span class="line"><span class="comment"># recommended for security (the code is non-trivial). Not enabling it,</span></span><br><span class="line"><span class="comment"># however, may confuse older FTP clients.</span></span><br><span class="line"><span class="comment">#async_abor_enable=YES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># By default the server will pretend to allow ASCII mode but in fact ignore</span></span><br><span class="line"><span class="comment"># the request. Turn on the below options to have the server actually do ASCII</span></span><br><span class="line"><span class="comment"># mangling on files when in ASCII mode.</span></span><br><span class="line"><span class="comment"># Beware that on some FTP servers, ASCII support allows a denial of service</span></span><br><span class="line"><span class="comment"># attack (DoS) via the command "SIZE /big/file" in ASCII mode. vsftpd</span></span><br><span class="line"><span class="comment"># predicted this attack and has always been safe, reporting the size of the</span></span><br><span class="line"><span class="comment"># raw file.</span></span><br><span class="line"><span class="comment"># ASCII mangling is a horrible feature of the protocol.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否允许上传/下载二进制文件</span></span><br><span class="line">ascii_upload_enable=YES</span><br><span class="line">ascii_download_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may fully customise the login banner string:</span></span><br><span class="line"><span class="comment">#ftpd_banner=Welcome to blah FTP service.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may specify a file of disallowed anonymous e-mail addresses. Apparently</span></span><br><span class="line"><span class="comment"># useful for combatting certain DoS attacks.</span></span><br><span class="line"><span class="comment">#deny_email_enable=YES</span></span><br><span class="line"><span class="comment"># (default follows)</span></span><br><span class="line"><span class="comment">#banned_email_file=/etc/vsftpd/banned_emails</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may specify an explicit list of local users to chroot() to their home</span></span><br><span class="line"><span class="comment"># directory. If chroot_local_user is YES, then this list becomes a list of</span></span><br><span class="line"><span class="comment"># users to NOT chroot().</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 限制所有的本地用户只能访问自己的目录</span></span><br><span class="line">chroot_local_user=YES</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当chroot_list_enable=YES，chroot_local_user=YES时，在/etc/vsftpd/chroot_list文件中列出的用户，可以切换到其他目录；未在文件中列出的用户，不能切换到其他目录。</span></span><br><span class="line"><span class="comment">#chroot_list_enable=YES</span></span><br><span class="line"><span class="comment"># (default follows)</span></span><br><span class="line"><span class="comment">#chroot_list_file=/etc/vsftpd/chroot_list</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may activate the "-R" option to the builtin ls. This is disabled by</span></span><br><span class="line"><span class="comment"># default to avoid remote users being able to cause excessive I/O on large</span></span><br><span class="line"><span class="comment"># sites. However, some broken FTP clients such as "ncftp" and "mirror" assume</span></span><br><span class="line"><span class="comment"># the presence of the "-R" option, so there is a strong case for enabling it.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否允许使用ls -R等命令</span></span><br><span class="line">ls_recurse_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># When "listen" directive is enabled, vsftpd runs in standalone mode and</span></span><br><span class="line"><span class="comment"># listens on IPv4 sockets. This directive cannot be used in conjunction</span></span><br><span class="line"><span class="comment"># with the listen_ipv6 directive.</span></span><br><span class="line">listen=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This directive enables listening on IPv6 sockets. To listen on IPv4 and IPv6</span></span><br><span class="line"><span class="comment"># sockets, you must run two copies of vsftpd with two configuration files.</span></span><br><span class="line"><span class="comment"># Make sure, that one of the listen options is commented !!</span></span><br><span class="line"><span class="comment">#listen_ipv6=YES</span></span><br><span class="line"></span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">userlist_enable=YES</span><br><span class="line">userlist_file=/etc/vsftpd/user_list</span><br><span class="line"></span><br><span class="line"><span class="comment"># [新增]是否只允许userlist_file文件中的用户登录FTP服务器，userlist_enable为YES才生效</span></span><br><span class="line"><span class="comment"># YES，默认值，禁止文件中的用户登录，同时也不向这些用户发出输入密码的提示。NO，只允许在文件中的用户登录FTP服务器</span></span><br><span class="line">userlist_deny=NO</span><br><span class="line">tcp_wrappers=YES</span><br><span class="line"></span><br><span class="line"><span class="comment"># [新增]所有用户的根目录（对匿名用户无效，不设置时，默认为用户的家目录/home/ftpuser）</span></span><br><span class="line">local_root=/data</span><br></pre></td></tr></table></figure>
+<p>3、新增ftp用户并为其设置密码</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -d /home/ftpuser -s /sbin/nologin ftpuser</span><br><span class="line">passwd ftpuser</span><br></pre></td></tr></table></figure>
+<p>4、编辑user_list文件，给予ftpuser用户访问ftp权限</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vsftpd/user_list</span><br></pre></td></tr></table></figure>
+
+<p>在文件末尾加入ftpuser并保存</p>
+<p>5、建立可访问目录并指定用户</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data</span><br><span class="line">chown -R ftpuser /data/      <span class="comment">#注意后面有个/</span></span><br><span class="line">chmod -R 755 /data</span><br></pre></td></tr></table></figure>
+<p>6、启动vsftpd服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service vsftpd start</span><br></pre></td></tr></table></figure>
+<p>7、开机启动vsftpd服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig vsftpd on</span><br></pre></td></tr></table></figure>
+<p>至此完毕</p>
 
       
     </div>
@@ -859,7 +924,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 10:47:48" itemprop="dateModified" datetime="2020-02-27T10:47:48+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -867,9 +932,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/FFmpeg/" itemprop="url" rel="index">
-                    <span itemprop="name">FFmpeg</span>
-                  </a>
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index"><span itemprop="name">FFmpeg</span></a>
                 </span>
             </span>
 
@@ -884,7 +947,39 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>3.2 HLS标签说明 3.2.1 EXT-X-TARGETDURATION 该标签指定了媒体文件持续时间的最大值，播放文件列表中的媒体文件在EXTINF标签中定义的持续时间必须小于或者等于该标签指定的持续时间。该标签在播放列表文件中必须出现一次，其格式为： # EXT-X-TARGETDURATION：<s>  s是一个以秒为单位的整数。 3.2.2 EXT-X-MEDIA-SEQUENCE 播放列表文件中每个媒体文件的URI都有一个唯一的序列号。URI的序列号等于它之前那个RUI的序列号加一。EXT-X-MEDIA-SEQUENCE指明了出现在播放列表文件中的第一个URI的序列号。其格式如下： #EXT-X-MEDIA-SEQUENCE：<Number>  播放列表文件中的EXT-X-MEDIA-SEQUENCE标签不能多于一个。如果播放列表文件中没有EXT-X-MEDIA-SEQUENCE标签，那么将会把播放列表中第一个URI的序列号当成0。 <strong>注：</strong>媒体文件的序列号码不是必须出现在它的URI中的。见6.3.2和6.3.5。 3.2.3 EXT-X-KEY 媒体文件可能是被加密的，EXT-X-KEY提供了解密媒体文件的必要信息，它的格式如下： #EXT-X-KEY：METHOD=<method> [,URI = “<uri>”] [,IV = <iv>] Method属性指定了加密方法，定义了两种加密方法：NONE和AES-128。 加密方法NONE表示媒体文件不被加密，如果加密方法是NONE，那么URI和IV属性不允许存在。 加密方法AES-128表示媒体文件使用高级加密标准128位密钥和PKCS7 padding加密。如果加密方法是AES-128，那么对于URI属性，如果存在，则指定获取密钥的方法；对于IV属性，如果存在，则指定使用密钥的初始化向量。 IV属性出现在协议版本2中，新的EXT-X-KEY将会取代任何一个先前的EXT-X-KEY。 如果播放列表文件没有包含EXT-X-KEY标签，那么媒体文件将不会被加密。 密钥文件的格式见第五章，媒体文件加密信息见5.2、6.2.3、6.3.6。 3.2.4 EXT-X-PROGRAM-DATE-TIME EXT-X-PROGRAM-DATE-TIME标签将下一个媒体文件的开头和绝对日期关联起来。日期/时间的表示基于ISO/IEC，并且要指明时区。例如： #EXT-X-PROGRAM-DATE-TIME:&lt;YYYY–MM–DDThh:mm:ssZ&gt; 详见6.2.1和6.3.3 3.2.5 EXT-X-ALLOW-CATCH EXT-X-ALLOW-CATCH标签指定客户端可以或者不准缓存下载的媒体文件用来重播。它可能会出现在播放列表文件的任何地方，但是不能出现两次或以上。该标签适用于播放列表中的所有分片。其格式如下： #EXT-X-ALLOW-CACHE:&lt;YES|NO&gt; 详见6.3.3 3.2.6 EXT-X-ENDLIST EXT-X-ENDLIST标签标示没有更多媒体文件将会加入到播放列表中，它可能会出现在播放列表文件的任何地方，但是不能出现两次或以上。其格式如下： #EXT-X-ENDLIST 3.2.7 EXT-X-STREAM-INF EXT-X-STREAM-INF标签表示在播放列表中的下一个URI标识另一个播放列表文件。格式如下： #EXT-X-STREAM-INF:[attribute=value][,attribute=value]* <URI> 在一个EXT-X-STREAM-INF标签中attribute不能出现两次或以上。其它属性定义： BANDWIDTH = <n> n为每秒比特数,它必须是每个媒体文件比特速率的上限，必须经过计算包含那些在播放列表中出现的或者将要出现的容器开销。 PROGRAM-ID=<i> i是一个数字，在播放列表文件的范围内唯一的标识了一个特定的演示文稿。 一个播放列表文件可能包含多个具有相同PROGRAM-ID 的EXT-X-STREAM-INF标签来标识某个演示文稿的不同编码。这些变种的的播放列表可能包含额外的EXT-X-STREAM-INF标签。 CODECS=”[format][,format]*” 每一种格式都指定了存在于媒体文件中的媒体类型。合法的格式标示符都是那些在ISO文件格式名称空间被RFC4281定义的格式。 RESOLUTION=<N>x<M> N是流中视频水平编码分辨率的近似，以像素数表示，M是编码垂直分辨率的近似。 3.2.8 EXT-X-DISCONTINUITY EXT-X-DISCONTINUITY标签表示该标签后边的媒体文件和之前的媒体文件之间的编码间断。特性可能改变的一组是： file format number and type of tracks encoding parameters encoding sequence 详见第四章，6.2.1、6.3.3。 3.2.9 EXT-X-VERSION EXT-X-VERSION标签指出了播放列表版本的适应性。播放列表文件、其关联的媒体和服务器必须遵守最新版本的所有规定。 4 多媒体文件 每一个媒体文件资源定位符都必须标识一个媒体文件，该文件是整体数据的一个分片。每个媒体文件必须按照MPEG-2的传输流和MPEG-2音频流的格式。[ISO13818] 传输流文件必须包含一个MPEG-2节目。在每个文件的开始应该有一个节目关联表和一个节目映射表。包含视频的文件应该有至少一个密钥帧和足够的信息来完全初始化一个视频解码器。 播放列表中的媒体文件必须是编码流中媒体文件的末尾与先前的序列号的延续，除非它是播放列表中出现的第一个媒体文件，或者它前边有EXT-X-DISCONTINUITY标签。 客户端应该准备好处理一个特定类型（音频或视频等）的多个轨道。一个没有优先级的客户端应该选择它能播放的具有最小数字编号的音轨。 客户端应该忽略那些传输流的内部不能识别的流。 媒体文件内样本流和相应的多媒体流的编码参数应保持一致。然而客户端应该解决编码的变化问题，例如缩放视频内容以适应分辨率改变。 URI属性中EXT-X-KEY标签标识一个密钥文件。密钥文件包含解密播放列表中媒体文件的密钥。AES-128加密算法使用16字节的密钥。密钥文件的格式为16字节的二进制数数组。</p>
+          <p>3.2 HLS标签说明</p>
+<p>3.2.1 EXT-X-TARGETDURATION</p>
+<p>该标签指定了媒体文件持续时间的最大值，播放文件列表中的媒体文件在EXTINF标签中定义的持续时间必须小于或者等于该标签指定的持续时间。该标签在播放列表文件中必须出现一次，其格式为：</p>
+<p><code># EXT-X-TARGETDURATION：&lt;s&gt;</code>  s是一个以秒为单位的整数。</p>
+<p>3.2.2 EXT-X-MEDIA-SEQUENCE</p>
+<p>播放列表文件中每个媒体文件的URI都有一个唯一的序列号。URI的序列号等于它之前那个RUI的序列号加一。EXT-X-MEDIA-SEQUENCE指明了出现在播放列表文件中的第一个URI的序列号。其格式如下：</p>
+<p><code>#EXT-X-MEDIA-SEQUENCE：&lt;Number&gt;</code>  播放列表文件中的EXT-X-MEDIA-SEQUENCE标签不能多于一个。如果播放列表文件中没有EXT-X-MEDIA-SEQUENCE标签，那么将会把播放列表中第一个URI的序列号当成0。</p>
+<p><strong>注：</strong>媒体文件的序列号码不是必须出现在它的URI中的。见6.3.2和6.3.5。</p>
+<p>3.2.3 EXT-X-KEY</p>
+<p>媒体文件可能是被加密的，EXT-X-KEY提供了解密媒体文件的必要信息，它的格式如下：</p>
+<p><code>#EXT-X-KEY：METHOD=&lt;method&gt; [,URI = &quot;&lt;uri&gt;&quot;] [,IV = &lt;iv&gt;]</code></p>
+<p>Method属性指定了加密方法，定义了两种加密方法：NONE和AES-128。<br>加密方法NONE表示媒体文件不被加密，如果加密方法是NONE，那么URI和IV属性不允许存在。<br>加密方法AES-128表示媒体文件使用高级加密标准128位密钥和PKCS7 padding加密。如果加密方法是AES-128，那么对于URI属性，如果存在，则指定获取密钥的方法；对于IV属性，如果存在，则指定使用密钥的初始化向量。<br>IV属性出现在协议版本2中，新的EXT-X-KEY将会取代任何一个先前的EXT-X-KEY。<br>如果播放列表文件没有包含EXT-X-KEY标签，那么媒体文件将不会被加密。</p>
+<p>密钥文件的格式见第五章，媒体文件加密信息见5.2、6.2.3、6.3.6。</p>
+<p>3.2.4 EXT-X-PROGRAM-DATE-TIME</p>
+<p>EXT-X-PROGRAM-DATE-TIME标签将下一个媒体文件的开头和绝对日期关联起来。日期/时间的表示基于ISO/IEC，并且要指明时区。例如：<br><code>#EXT-X-PROGRAM-DATE-TIME:&lt;YYYY–MM–DDThh:mm:ssZ&gt;</code></p>
+<p>详见6.2.1和6.3.3</p>
+<p>3.2.5 EXT-X-ALLOW-CATCH</p>
+<p>EXT-X-ALLOW-CATCH标签指定客户端可以或者不准缓存下载的媒体文件用来重播。它可能会出现在播放列表文件的任何地方，但是不能出现两次或以上。该标签适用于播放列表中的所有分片。其格式如下：<br><code>#EXT-X-ALLOW-CACHE:&lt;YES|NO&gt;</code></p>
+<p>详见6.3.3</p>
+<p>3.2.6 EXT-X-ENDLIST</p>
+<p>EXT-X-ENDLIST标签标示没有更多媒体文件将会加入到播放列表中，它可能会出现在播放列表文件的任何地方，但是不能出现两次或以上。其格式如下：<br><code>#EXT-X-ENDLIST</code></p>
+<p>3.2.7 EXT-X-STREAM-INF</p>
+<p>EXT-X-STREAM-INF标签表示在播放列表中的下一个URI标识另一个播放列表文件。格式如下：<br><code>#EXT-X-STREAM-INF:[attribute=value][,attribute=value]\* &lt;URI&gt;</code></p>
+<p>在一个EXT-X-STREAM-INF标签中attribute不能出现两次或以上。其它属性定义：<br><code>BANDWIDTH = &lt;n&gt;</code><br>n为每秒比特数,它必须是每个媒体文件比特速率的上限，必须经过计算包含那些在播放列表中出现的或者将要出现的容器开销。<br><code>PROGRAM-ID=&lt;i&gt;</code><br>i是一个数字，在播放列表文件的范围内唯一的标识了一个特定的演示文稿。<br>一个播放列表文件可能包含多个具有相同PROGRAM-ID 的EXT-X-STREAM-INF标签来标识某个演示文稿的不同编码。这些变种的的播放列表可能包含额外的EXT-X-STREAM-INF标签。<br><code>CODECS=&quot;[format][,format]*&quot;</code><br>每一种格式都指定了存在于媒体文件中的媒体类型。合法的格式标示符都是那些在ISO文件格式名称空间被RFC4281定义的格式。<br>RESOLUTION=<N>x<M><br>N是流中视频水平编码分辨率的近似，以像素数表示，M是编码垂直分辨率的近似。</p>
+<p>3.2.8 EXT-X-DISCONTINUITY</p>
+<p>EXT-X-DISCONTINUITY标签表示该标签后边的媒体文件和之前的媒体文件之间的编码间断。特性可能改变的一组是：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file format  </span><br><span class="line">number and type of tracks  </span><br><span class="line">encoding parameters  </span><br><span class="line">encoding sequence</span><br></pre></td></tr></table></figure>
+<p>详见第四章，6.2.1、6.3.3。</p>
+<p>3.2.9 EXT-X-VERSION</p>
+<p>EXT-X-VERSION标签指出了播放列表版本的适应性。播放列表文件、其关联的媒体和服务器必须遵守最新版本的所有规定。</p>
+<p>4 多媒体文件</p>
+<p>每一个媒体文件资源定位符都必须标识一个媒体文件，该文件是整体数据的一个分片。每个媒体文件必须按照MPEG-2的传输流和MPEG-2音频流的格式。[ISO13818]<br>传输流文件必须包含一个MPEG-2节目。在每个文件的开始应该有一个节目关联表和一个节目映射表。包含视频的文件应该有至少一个密钥帧和足够的信息来完全初始化一个视频解码器。<br>播放列表中的媒体文件必须是编码流中媒体文件的末尾与先前的序列号的延续，除非它是播放列表中出现的第一个媒体文件，或者它前边有EXT-X-DISCONTINUITY标签。<br>客户端应该准备好处理一个特定类型（音频或视频等）的多个轨道。一个没有优先级的客户端应该选择它能播放的具有最小数字编号的音轨。<br>客户端应该忽略那些传输流的内部不能识别的流。<br>媒体文件内样本流和相应的多媒体流的编码参数应保持一致。然而客户端应该解决编码的变化问题，例如缩放视频内容以适应分辨率改变。</p>
+<p>URI属性中EXT-X-KEY标签标识一个密钥文件。密钥文件包含解密播放列表中媒体文件的密钥。AES-128加密算法使用16字节的密钥。密钥文件的格式为16字节的二进制数数组。</p>
 
       
     </div>
@@ -943,9 +1038,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
+                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
                 </span>
             </span>
 
@@ -1046,7 +1139,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1059,7 +1152,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-count">171</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

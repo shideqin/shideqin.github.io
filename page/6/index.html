@@ -15,36 +15,10 @@
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-
 <script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    hostname: new URL('https://phpkoo.com').hostname,
-    root: '/',
-    scheme: 'Gemini',
-    version: '7.7.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
-    copycode: {"enable":false,"show_result":false,"style":null},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
-    algolia: {
-      appID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
-  };
-</script>
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
 
   <meta name="description" content="关注小众语言，记录、分享技术点滴！">
 <meta property="og:type" content="website">
@@ -108,6 +82,14 @@
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
   <div class="site-meta">
 
     <div>
@@ -120,11 +102,9 @@
         <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
   </div>
 
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -177,9 +157,9 @@
     <i class="fa fa-search"></i>
   </span>
   <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
            placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
+           type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
     <i class="fa fa-times-circle"></i>
@@ -245,7 +225,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 10:41:11" itemprop="dateModified" datetime="2020-02-27T10:41:11+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,9 +233,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">Nodejs</span>
-                  </a>
+                  <a href="/categories/Nodejs/" itemprop="url" rel="index"><span itemprop="name">Nodejs</span></a>
                 </span>
             </span>
 
@@ -270,7 +248,40 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>nvm 默认是从 <a href="http://nodejs.org/dist/" target="_blank" rel="noopener">http://nodejs.org/dist/</a> 下载的, 国外服务器, 必然很慢, 好在 nvm 以及支持从镜像服务器下载包, 于是我们可以方便地从七牛的 node dist 镜像下载 [shell] NVM_NODEJS_ORG_MIRROR=<a href="https://npm.taobao.org/dist" target="_blank" rel="noopener">https://npm.taobao.org/dist</a> nvm install 0.11.11 [/shell] 于是你就会看到一段非常快速进度条: [shell] ######################################################################## 100.0% Now using node v0.11.11 [/shell] 如果你不想每次都输入环境变量 NVM_NODEJS_ORG_MIRROR, 那么我建议你加入到 .bashrc 文件中: source [shell] export NVM_NODEJS_ORG_MIRROR=<a href="https://npm.taobao.org/dist" target="_blank" rel="noopener">https://npm.taobao.org/dist</a> source path/to/nvm/nvm.sh [/shell] 然后你可以继续非常方便地安装各个版本的 node 了, 你可以查看一下你当前已经安装的版本: [shell] nvm ls nvm v0.8.26 v0.10.26 v0.11.11 -&gt; v0.11.12 [/shell] <strong>nrm 快速切换 NPM 源</strong> <strong>安装</strong> [shell] npm install -g nrm [/shell] <strong>使用</strong> 列出可选的源 [shell] nrm ls * npm —- <a href="https://registry.npmjs.org/" target="_blank" rel="noopener">https://registry.npmjs.org/</a> cnpm — <a href="http://r.cnpmjs.org/" target="_blank" rel="noopener">http://r.cnpmjs.org/</a> taobao - <a href="http://registry.npm.taobao.org/" target="_blank" rel="noopener">http://registry.npm.taobao.org/</a> eu —– <a href="http://registry.npmjs.eu/" target="_blank" rel="noopener">http://registry.npmjs.eu/</a> au —– <a href="http://registry.npmjs.org.au/" target="_blank" rel="noopener">http://registry.npmjs.org.au/</a> sl —– <a href="http://npm.strongloop.com/" target="_blank" rel="noopener">http://npm.strongloop.com/</a> nj —– <a href="https://registry.nodejitsu.com/" target="_blank" rel="noopener">https://registry.nodejitsu.com/</a> [/shell] 带<em>的是当前使用的源，上面的输出表明当前源是官方源。 *</em>切换** 切换到taobao [shell] nrm use taobao [/shell] 增加源 你可以增加定制的源，特别适用于添加企业内部的私有源。 私有源可以使用cnpmjs架设 。 [shell] nrm add <registry> <url> [home] [/shell] 删除源 [shell] nrm del <registry> [/shell] 测试速度 你还可以通过 nrm test 测试相应源的响应时间。 例如，测试官方源的响应时间： [shell] nrm test npm npm —- 1328ms [/shell] 测试所有源的响应时间： [shell] nrm test npm —- 891ms cnpm — 1213ms * taobao - 460ms eu —– 3859ms au —– 1073ms sl —– 4150ms nj —– 8008ms [/shell] 注意，为了取得较准确的结果，可以考虑多次测试取平均值。 许可 nrm 为开源软件，使用 MIT 许可。 项目主页 <a href="http://github.com/Pana/nrm" target="_blank" rel="noopener">github.com/Pana/nrm</a></p>
+          <p>nvm 默认是从 <a href="http://nodejs.org/dist/" target="_blank" rel="noopener">http://nodejs.org/dist/</a> 下载的, 国外服务器, 必然很慢, 好在 nvm 以及支持从镜像服务器下载包, 于是我们可以方便地从七牛的 node dist 镜像下载</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/dist nvm install 0.11.11</span><br></pre></td></tr></table></figure>
+<p>于是你就会看到一段非常快速进度条:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">######################################################################## 100.0%</span></span><br><span class="line">Now using node v0.11.11</span><br></pre></td></tr></table></figure>
+<p>如果你不想每次都输入环境变量 NVM_NODEJS_ORG_MIRROR, 那么我建议你加入到 .bashrc 文件中:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/dist</span><br><span class="line"><span class="built_in">source</span> path/to/nvm/nvm.sh</span><br></pre></td></tr></table></figure>
+<p>然后你可以继续非常方便地安装各个版本的 node 了, 你可以查看一下你当前已经安装的版本:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nvm ls</span><br><span class="line">nvm</span><br><span class="line">v0.8.26</span><br><span class="line">v0.10.26</span><br><span class="line">v0.11.11</span><br><span class="line">-&gt; v0.11.12</span><br></pre></td></tr></table></figure>
+<p><strong>nrm 快速切换 NPM 源</strong></p>
+<p><strong>安装</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nrm</span><br></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<p>列出可选的源</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nrm ls</span><br><span class="line">* npm ---- https://registry.npmjs.org/</span><br><span class="line">cnpm --- http://r.cnpmjs.org/</span><br><span class="line">taobao - http://registry.npm.taobao.org/</span><br><span class="line">eu ----- http://registry.npmjs.eu/</span><br><span class="line">au ----- http://registry.npmjs.org.au/</span><br><span class="line">sl ----- http://npm.strongloop.com/</span><br><span class="line">nj ----- https://registry.nodejitsu.com/</span><br></pre></td></tr></table></figure>
+<p>带*的是当前使用的源，上面的输出表明当前源是官方源。</p>
+<p><strong>切换</strong></p>
+<p>切换到taobao</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure>
+<p>增加源</p>
+<p>你可以增加定制的源，特别适用于添加企业内部的私有源。 私有源可以使用cnpmjs架设 。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm add  &lt;registry&gt; &lt;url&gt; [home]</span><br></pre></td></tr></table></figure>
+<p>删除源</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm del &lt;registry&gt;</span><br></pre></td></tr></table></figure>
+<p>测试速度</p>
+<p>你还可以通过 nrm test 测试相应源的响应时间。</p>
+<p>例如，测试官方源的响应时间：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nrm <span class="built_in">test</span> npm</span><br><span class="line">npm ---- 1328ms</span><br></pre></td></tr></table></figure>
+<p>测试所有源的响应时间：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nrm <span class="built_in">test</span></span><br><span class="line">npm ---- 891ms</span><br><span class="line">cnpm --- 1213ms</span><br><span class="line">* taobao - 460ms</span><br><span class="line">eu ----- 3859ms</span><br><span class="line">au ----- 1073ms</span><br><span class="line">sl ----- 4150ms</span><br><span class="line">nj ----- 8008ms</span><br></pre></td></tr></table></figure>
+<p>注意，为了取得较准确的结果，可以考虑多次测试取平均值。</p>
+<p>许可</p>
+<p>nrm 为开源软件，使用 MIT 许可。</p>
+<p>项目主页</p>
+<p><a href="http://github.com/Pana/nrm" target="_blank" rel="noopener">github.com/Pana/nrm</a></p>
 
       
     </div>
@@ -321,7 +332,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -329,9 +340,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
-                  </a>
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
                 </span>
             </span>
 
@@ -350,29 +359,33 @@
 <p>特性：<br>支持Windows和Linux平台。<br>支持高并发高性能。<br>HTML网页中内嵌LUA脚本代码，类似于PHP。<br>支持非阻塞的数据库操作，目前只支持MYSQL。<br>支持异步的文件IO操作。<br>支持非阻塞的SOCKET IO操作。</p>
 <p><strong>方式一：使用集成包安装</strong></p>
 <p>下载 <a href="https://github.com/openresty/ngx_openresty" target="_blank" rel="noopener">ngx_openresty</a>，该集成包中有：Nginx，Lua或Luajit，ngx_lua，以及一些有用的Nginx第三方模块。</p>
-<p>[shell] wget <a href="https://github.com/openresty/ngx_openresty" target="_blank" rel="noopener">https://github.com/openresty/ngx_openresty</a> ./configure –with-luajit make make install [/shell]</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/openresty/ngx_openresty  </span><br><span class="line">./configure --with-luajit  </span><br><span class="line">make  </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 <p><strong>方式二：Ngx_lua可以手动编译进Nginx(或Tengine)</strong></p>
 <p>假定nginx的安装路径为：/usr/local/nginx</p>
-<p>所需要的模块如下：<br><a href="https://github.com/openresty/luajit2" target="_blank" rel="noopener">luajit2</a> <a href="https://github.com/openresty/luajit2" target="_blank" rel="noopener">https://github.com/openresty/luajit2</a><br><a href="https://github.com/simpl/ngx_devel_kit" target="_blank" rel="noopener">ngx_devel_kit</a> <a href="https://github.com/simpl/ngx\_devel\_kit" target="_blank" rel="noopener">https://github.com/simpl/ngx\_devel\_kit</a><br><a href="https://github.com/agentzh/echo-nginx-module" target="_blank" rel="noopener">echo-nginx-module</a> <a href="https://github.com/agentzh/echo-nginx-module" target="_blank" rel="noopener">https://github.com/agentzh/echo-nginx-module</a><br><a href="https://github.com/chaoslawful/lua-nginx-module" target="_blank" rel="noopener">lua-nginx-module</a> <a href="https://github.com/chaoslawful/lua-nginx-module" target="_blank" rel="noopener">https://github.com/chaoslawful/lua-nginx-module</a></p>
+<p>所需要的模块如下：<br><a href="https://github.com/openresty/luajit2" target="_blank" rel="noopener">luajit2</a> <a href="https://github.com/openresty/luajit2" target="_blank" rel="noopener">https://github.com/openresty/luajit2</a><br><a href="https://github.com/simpl/ngx_devel_kit" target="_blank" rel="noopener">ngx_devel_kit</a> <a href="https://github.com/simpl/ngx_devel_kit" target="_blank" rel="noopener">https://github.com/simpl/ngx_devel_kit</a><br><a href="https://github.com/agentzh/echo-nginx-module" target="_blank" rel="noopener">echo-nginx-module</a> <a href="https://github.com/agentzh/echo-nginx-module" target="_blank" rel="noopener">https://github.com/agentzh/echo-nginx-module</a><br><a href="https://github.com/chaoslawful/lua-nginx-module" target="_blank" rel="noopener">lua-nginx-module</a> <a href="https://github.com/chaoslawful/lua-nginx-module" target="_blank" rel="noopener">https://github.com/chaoslawful/lua-nginx-module</a></p>
 <p>安装步骤：</p>
 <p>1、安装openresty提供的luajit2</p>
-<p>[shell] wget -O luajit2.zip <a href="https://codeload.github.com/openresty/luajit2/zip/v2.1-agentzh" target="_blank" rel="noopener">https://codeload.github.com/openresty/luajit2/zip/v2.1-agentzh</a> unzip luajit2.zip cd luajit2 make make install [/shell]</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget -O luajit2.zip https://codeload.github.com/openresty/luajit2/zip/v2.1-agentzh  </span><br><span class="line">unzip luajit2.zip  </span><br><span class="line"><span class="built_in">cd</span> luajit2  </span><br><span class="line">make  </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 <p>下面配置 luajit的环境变量(Nginx编译时需要)</p>
-<p>[shell] export LUAJIT_LIB=/usr/local/lib export LUAJIT_INC=/usr/local/include/luajit-2.1 [/shell]</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LUAJIT_LIB=/usr/<span class="built_in">local</span>/lib  </span><br><span class="line"><span class="built_in">export</span> LUAJIT_INC=/usr/<span class="built_in">local</span>/include/luajit-2.1</span><br></pre></td></tr></table></figure>
 <p>2、安装 ngx_devel_kit (NDK) 模块</p>
-<p>[shell] wget -O ngx_devel_kit.zip <a href="https://codeload.github.com/simplresty/ngx\_devel\_kit/zip/master" target="_blank" rel="noopener">https://codeload.github.com/simplresty/ngx\_devel\_kit/zip/master</a> unzip ngx_devel_kit.zip -d /usr/local [/shell]</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O ngx_devel_kit.zip https://codeload.github.com/simplresty/ngx_devel_kit/zip/master  </span><br><span class="line">unzip ngx_devel_kit.zip -d /usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure>
 <p>3、安装 lua-nginx-module 模块</p>
-<p>[shell] wget -O lua-nginx-module.zip <a href="https://codeload.github.com/openresty/lua-nginx-module/zip/master" target="_blank" rel="noopener">https://codeload.github.com/openresty/lua-nginx-module/zip/master</a> unzip lua-nginx-module.zip -d /usr/local [/shell]</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O lua-nginx-module.zip https://codeload.github.com/openresty/lua-nginx-module/zip/master  </span><br><span class="line">unzip lua-nginx-module.zip -d /usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure>
 <p>4、重新编译Nginx，需要注意编译顺序</p>
-<p>[shell] ./configure –prefix=/usr/local/nginx \ –with-ld-opt=-Wl,-rpath,$LUAJIT_LIB \ –add-module=/usr/local/ngx_devel_kit \ –add-module=/usr/local/echo-nginx-module \ –add-module=/usr/local/lua-nginx-module make -j2 make install [/shell]</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/nginx   </span><br><span class="line">--with-ld-opt=-Wl,-rpath,<span class="variable">$LUAJIT_LIB</span>   </span><br><span class="line">--add-module=/usr/<span class="built_in">local</span>/ngx_devel_kit   </span><br><span class="line">--add-module=/usr/<span class="built_in">local</span>/<span class="built_in">echo</span>-nginx-module   </span><br><span class="line">--add-module=/usr/<span class="built_in">local</span>/lua-nginx-module  </span><br><span class="line">make -j2  </span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 <p><strong>注意：</strong>重新编译 Nginx 二进制，Nginx 需要 quit 再启动。而普通配置更新则 reload 即可。</p>
-<p>[shell] #quit kill -HUP `cat /usr/local/nginx/logs/nginx.pid` #reload /usr/local/nginx/sbin/nginx -s reload [/shell]</p>
+<p>quit</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">kill</span> -HUP cat /usr/<span class="built_in">local</span>/nginx/logs/nginx.pid</span><br></pre></td></tr></table></figure>
+<p>reload</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
 <p>模块编译完成！</p>
 <p>在编译安装 Nginx 的第三方模块时，碰到一个错误：</p>
-<p>[shell] /usr/local/nginx/sbin/ngxin -s reload /usr/local/nginx/sbin/nginx: error while loading shared libraries: libluajit-5.1.so.2: cannot open shared object file: No such file or directory [/shell]</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/ngxin -s reload  </span><br><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx: error <span class="keyword">while</span> loading shared libraries: libluajit-5.1.so.2: cannot open shared object file: No such file or directory</span><br></pre></td></tr></table></figure>
 <p>解决办法。<br>在 Nginx 编译时，需要指定 RPATH，加入下面选项即可</p>
-<p>[shell] ./configure –with-ld-opt=”-Wl,-rpath,$LUAJIT_LIB” 或者 export LD_LIBRARY_PATH=/usr/local/lib/:$LD_LIBRARY_PATH [/shell]</p>
-
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --with-ld-opt=<span class="string">"-Wl,-rpath,<span class="variable">$LUAJIT_LIB</span>"</span></span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/lib/:<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -422,7 +435,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -430,9 +443,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/GoLang/" itemprop="url" rel="index">
-                    <span itemprop="name">GoLang</span>
-                  </a>
+                  <a href="/categories/GoLang/" itemprop="url" rel="index"><span itemprop="name">GoLang</span></a>
                 </span>
             </span>
 
@@ -447,8 +458,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>[shell] #在国内镜像下载二进制包 wget <a href="http://www.golangtc.com/static/go/go1.4.2.linux-amd64.tar.gz" target="_blank" rel="noopener">http://www.golangtc.com/static/go/go1.4.2.linux-amd64.tar.gz</a> #直接解压到目标目录即可 tar -C /usr/local -zxvf go1.4.2.linux-amd64.tar.gz #把golang的bin目录加入全局环境变量 cat &gt;&gt;/etc/profile&lt;&lt;EOF export PATH=$PATH:/usr/local/go/bin EOF #让配置生效 source /etc/profile #检查下是否成功 go version #在当前用户目录下新建go目录作为项目目录 mkdir -p $HOME/go #用cat的方法在尾部增加配置配置golang的 GOROOT GOPATH cat &gt;&gt;$HOME/.bash_profile&lt;&lt;EOF export GOROOT=/usr/local/go export GOPATH=\$HOME/go export GOBIN=\$HOME/go/bin export PATH=\$PATH:\$GOROOT/bin EOF #让配置生效 source $HOME/.bash_profile #检查下go的env环境变量 go env [/shell]</p>
-
+          <p>在国内镜像下载二进制包  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.golangtc.com/static/go/go1.4.2.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>直接解压到目标目录即可</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -C /usr/<span class="built_in">local</span> -zxvf go1.4.2.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>把golang的bin目录加入全局环境变量  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; /etc/profile &lt;&lt; EOF  </span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/go/bin  </span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>让配置生效  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<p>检查下是否成功  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go version</span><br></pre></td></tr></table></figure>
+<p>在当前用户目录下新建go目录作为项目目录  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p <span class="variable">$HOME</span>/go</span><br></pre></td></tr></table></figure>
+<p>用cat的方法在尾部增加配置配置golang的 GOROOT GOPATH  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; <span class="variable">$HOME</span>/.bash_profile &lt;&lt; EOF  </span><br><span class="line"><span class="built_in">export</span> GOROOT=/usr/<span class="built_in">local</span>/go  </span><br><span class="line"><span class="built_in">export</span> GOPATH=<span class="variable">$HOME</span>/go  </span><br><span class="line"><span class="built_in">export</span> GOBIN=<span class="variable">$HOME</span>/go/bin  </span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOROOT</span>/bin</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>让配置生效  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> <span class="variable">$HOME</span>/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>检查下go的env环境变量  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go env</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -498,7 +525,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -506,9 +533,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
                 </span>
             </span>
 
@@ -523,7 +548,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>PIL是python理想的图片处理module，没安装该模块时会提示：ImportError: No module named Image，以下是PIL安装的依赖和步骤 我的环境：CentOS 6.5 / Python2.7 <strong>第一步：安装zlib png</strong> <strong>freetype</strong> **  jpeg** 安装zlib：<a href="http://zlib.net/zlib-1.2.8.tar.gz" target="_blank" rel="noopener">http://zlib.net/zlib-1.2.8.tar.gz</a> [shell] $ tar -xvzf zlib-1.2.8.tar.gz $ cd zlib-1.2.8 $ ./configure –prefix=/usr/local $ make $ make install [/shell] 安装png：<a href="ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng15/libpng-1.5.23.tar.gz" target="_blank" rel="noopener">ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng15/libpng-1.5.23.tar.gz</a> (如果文件不存在就浏览 /src/目录查找一下最新版) [shell] $ tar -xvzf libpng-1.5.23.tar.gz $ cd libpng-1.5.23 $ ./configure –prefix=/usr/local $ make $ make install [/shell] 安装freetype：<a href="http://nchc.dl.sourceforge.net/project/freetype/freetype2/2.4.7/freetype-2.4.7.tar.gz" target="_blank" rel="noopener">http://nchc.dl.sourceforge.net/project/freetype/freetype2/2.4.7/freetype-2.4.7.tar.gz</a> [shell] $ tar -xvzf freetype-2.4.7.tar.gz $ cd freetype-2.4.7/ $ ./configure –prefix=/usr/local $ make $ make install [/shell] 安装jpeg：<a href="http://www.ijg.org/files/jpegsrc.v8c.tar.gz" target="_blank" rel="noopener">http://www.ijg.org/files/jpegsrc.v8c.tar.gz</a> [shell] $ tar -xvzf jpegsrc.v8c.tar.gz $ cd jpeg-8c/ $ ./configure –prefix=/usr/local $ make $ make install [/shell] <strong>第二步：安装需要的 devel库（该步视情况可忽略）</strong> [shell] $ yum install libjpeg8-dev $ yum install libpng12-dev $ yum install libfreetype6-dev $ yum install zlib1g-dev [/shell] <strong>第三步：安装 PIL（ Python Imaging Library</strong> <strong>）</strong> 安装Image Library：<a href="http://effbot.org/downloads/Imaging-1.1.7.tar.gz" target="_blank" rel="noopener">http://effbot.org/downloads/Imaging-1.1.7.tar.gz</a> [shell] $ tar -xvzf Imaging-1.1.7.tar.gz $ cd Imaging-1.1.7/ #修改setup.py文件 vi setup.py #修改如下： JPEG_ROOT = “/usr/local/lib” ZLIB_ROOT = “/usr/local/lib” FREETYPE_ROOT = “/usr/local/lib” [/shell] 检查是否支持 [shell] $ python setup.py build_ext -i running build_ext ——————————————————————– PIL 1.1.7 SETUP SUMMARY ——————————————————————– version 1.1.7 platform linux2 2.7.8 (default, Sep 5 2014, 10:24:17) [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)] ——————————————————————– <strong>* TKINTER support not available — JPEG support available — ZLIB (PNG/ZIP) support available — FREETYPE2 support available *</strong> LITTLECMS support not available ——————————————————————– To add a missing option, make sure you have the required library, and set the corresponding ROOT variable in the setup.py script. To check the build, run the selftest.py script. [/shell] 开始安装Image Library [shell] $ python setup.py build $ python setup.py install [/shell] Python代码验证 [shell] $ python selftest.py *** The _imaging C module is not installed [/shell] ps: 运行python selftest.py提示The _imaging C module is not installed 解决方法，实际根据自己的python PIL路径设置 [shell] $ echo ‘/usr/local/lib/python2.7/site-packages/PIL’ &gt;&gt; /etc/ld.so.conf $ ldconfig [/shell] 重新python selftest.py，一路安装完成。</p>
+          <p>PIL是python理想的图片处理module，没安装该模块时会提示：ImportError: No module named Image，以下是PIL安装的依赖和步骤</p>
+<p>我的环境：CentOS 6.5 / Python2.7</p>
+<p><strong>第一步：安装zlib png</strong> <strong>freetype</strong> **  jpeg**</p>
+<p>安装zlib：<a href="http://zlib.net/zlib-1.2.8.tar.gz" target="_blank" rel="noopener">http://zlib.net/zlib-1.2.8.tar.gz</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf zlib-1.2.8.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> zlib-1.2.8</span><br><span class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span></span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<p>安装png：<a href="ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng15/libpng-1.5.23.tar.gz" target="_blank" rel="noopener">ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng15/libpng-1.5.23.tar.gz</a> (如果文件不存在就浏览 /src/目录查找一下最新版)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf libpng-1.5.23.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> libpng-1.5.23</span><br><span class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span></span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<p>安装freetype：<a href="http://nchc.dl.sourceforge.net/project/freetype/freetype2/2.4.7/freetype-2.4.7.tar.gz" target="_blank" rel="noopener">http://nchc.dl.sourceforge.net/project/freetype/freetype2/2.4.7/freetype-2.4.7.tar.gz</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf freetype-2.4.7.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> freetype-2.4.7/</span><br><span class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span></span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<p>安装jpeg：<a href="http://www.ijg.org/files/jpegsrc.v8c.tar.gz" target="_blank" rel="noopener">http://www.ijg.org/files/jpegsrc.v8c.tar.gz</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf jpegsrc.v8c.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> jpeg-8c/</span><br><span class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span></span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<p><strong>第二步：安装需要的 devel库（该步视情况可忽略）</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ yum install libjpeg8-dev</span><br><span class="line">$ yum install libpng12-dev</span><br><span class="line">$ yum install libfreetype6-dev</span><br><span class="line">$ yum install zlib1g-dev</span><br></pre></td></tr></table></figure>
+<p><strong>第三步：安装 PIL（ Python Imaging Library</strong> <strong>）</strong></p>
+<p>安装Image Library：<a href="http://effbot.org/downloads/Imaging-1.1.7.tar.gz" target="_blank" rel="noopener">http://effbot.org/downloads/Imaging-1.1.7.tar.gz</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf Imaging-1.1.7.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> Imaging-1.1.7/</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改setup.py文件</span></span><br><span class="line">vi setup.py</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改如下：</span></span><br><span class="line">JPEG_ROOT = <span class="string">"/usr/local/lib"</span></span><br><span class="line">ZLIB_ROOT = <span class="string">"/usr/local/lib"</span></span><br><span class="line">FREETYPE_ROOT = <span class="string">"/usr/local/lib"</span></span><br></pre></td></tr></table></figure>
+<p>检查是否支持</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ python setup.py build_ext -i</span><br><span class="line"></span><br><span class="line"> running build_ext</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">PIL 1.1.7 SETUP SUMMARY</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">version       1.1.7</span><br><span class="line">platform      linux2 2.7.8 (default, Sep  5 2014, 10:24:17)</span><br><span class="line">              [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">*** TKINTER support not available</span><br><span class="line">--- JPEG support available</span><br><span class="line">--- ZLIB (PNG/ZIP) support available</span><br><span class="line">--- FREETYPE2 support available</span><br><span class="line">*** LITTLECMS support not available</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">To add a missing option, make sure you have the required</span><br><span class="line">library, and <span class="built_in">set</span> the corresponding ROOT variable <span class="keyword">in</span> the</span><br><span class="line">setup.py script.</span><br><span class="line"></span><br><span class="line">To check the build, run the selftest.py script.</span><br></pre></td></tr></table></figure>
+<p>开始安装Image Library</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python setup.py build</span><br><span class="line">$ python setup.py install</span><br></pre></td></tr></table></figure>
+<p>Python代码验证</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python selftest.py</span><br><span class="line">*** The _imaging C module is not installed</span><br></pre></td></tr></table></figure>
+<p>ps:<br>运行python selftest.py提示The _imaging C module is not installed</p>
+<p>解决方法，实际根据自己的python PIL路径设置</p>
+<p>$ echo ‘/usr/local/lib/python2.7/site-packages/PIL’ &gt;&gt; /etc/ld.so.conf<br>$ ldconfig</p>
+<p>重新python selftest.py，一路安装完成。</p>
 
       
     </div>
@@ -574,7 +624,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -582,9 +632,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">Nodejs</span>
-                  </a>
+                  <a href="/categories/Nodejs/" itemprop="url" rel="index"><span itemprop="name">Nodejs</span></a>
                 </span>
             </span>
 
@@ -599,9 +647,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>nvm与Python的virtualenv和Ruby的rvm类似。 NVM (Node Version Manager，Node多版本管理器)是一个通用的叫法,它目前有许多不同的实现。通常我们说的 nvm 是指 <a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">https://github.com/creationix/nvm</a> 或者 <a href="https://github.com/visionmedia/n" target="_blank" rel="noopener">https://github.com/visionmedia/n</a> 。这两个工具都是使用shell编写的。 <strong>n</strong> <strong>安装</strong> 如果已经安装了npm的话，可以直接执行命令进行安装n : [shell] $ npm install -g n [/shell] 或者是直接获取源代码安装： [shell] $ git clone <a href="https://github.com/visionmedia/n.git" target="_blank" rel="noopener">https://github.com/visionmedia/n.git</a> $ cd n $ make install [/shell]</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>直接运行 n 命令查看所有已安装的版本。 [shell] $ n [/shell] 运行命令 n 进行安装指定版本的node。 version 可以是 stable(最新稳定版)、latest(最新版)或者具体的版本数字。 [shell] $ n stable install : v0.10.24 mkdir : /usr/local/n/versions/0.10.24 fetch : <a href="http://nodejs.org/dist/v0.10.24/node-v0.10.24-linux-x64.tar.gz" target="_blank" rel="noopener">http://nodejs.org/dist/v0.10.24/node-v0.10.24-linux-x64.tar.gz</a> [/shell] 指定的版本将会安装在 /usr/local/n/versions 目录下。 运行命令 n rm 删除已安装指定版本的node。 运行命令 n use 选择使用指定版本的node。 <strong>nvm(推荐使用)</strong> <a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a>全称Node Version Manager，它与<code>n</code>的实现方式不同，其是通过shell脚本实现的。 <strong>安装</strong> 安装方式有两种： [shell] $ git clone <a href="https://github.com/creationix/nvm.git" target="_blank" rel="noopener">https://github.com/creationix/nvm.git</a> <del>/.nvm $ source ~/.nvm/nvm.sh [/shell] 或者 [shell] $ wget -qO- <a href="https://raw.githubusercontent.com/creationix/nvm/master/install.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/creationix/nvm/master/install.sh</a> | sh $ source ~/.bash_profile [/shell] 以上脚本会把<code>nvm</code>库clone到`</del>/.nvm<code>，然后会在</code><del>/.bash_profile<code>,</code></del>/.zshrc<code>或``</code>~/.profile``末尾添加source，安装完成之后，你可以用以下命令来安装node <strong>使用</strong> 查看已安装的版本： [shell] $ nvm ls [/shell] 查看可以安装的版本： [shell] $ nvm ls-remote [/shell] 安装指定的版本： [shell] $ nvm install <version> [/shell]   指定的版本将会直接安装在 nvm 程序所在的目录下。 删除指定的版本： [shell] $ nvm uninstall <version> [/shell] 使用选定的版本： [shell] $ nvm use <version> [/shell]</p>
-
+          <p>nvm与Python的virtualenv和Ruby的rvm类似。<br>NVM (Node Version Manager，Node多版本管理器)是一个通用的叫法,它目前有许多不同的实现。通常我们说的 nvm 是指 <a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">https://github.com/creationix/nvm</a> 或者 <a href="https://github.com/visionmedia/n" target="_blank" rel="noopener">https://github.com/visionmedia/n</a> 。这两个工具都是使用shell编写的。</p>
+<p><strong>n</strong></p>
+<p><strong>安装</strong></p>
+<p>如果已经安装了npm的话，可以直接执行命令进行安装n :</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g n</span><br></pre></td></tr></table></figure>
+<p>或者是直接获取源代码安装：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/visionmedia/n.git</span><br><span class="line">$ <span class="built_in">cd</span> n</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>直接运行 n 命令查看所有已安装的版本。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ n</span><br></pre></td></tr></table></figure>
+<p>运行命令 n 进行安装指定版本的node。 version 可以是 stable(最新稳定版)、latest(最新版)或者具体的版本数字。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ n stable</span><br><span class="line">install : v0.10.24</span><br><span class="line">mkdir : /usr/<span class="built_in">local</span>/n/versions/0.10.24</span><br><span class="line">fetch : http://nodejs.org/dist/v0.10.24/node-v0.10.24-linux-x64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>指定的版本将会安装在 /usr/local/n/versions 目录下。<br>运行命令 n rm 删除已安装指定版本的node。<br>运行命令 n use 选择使用指定版本的node。</p>
+<p><strong>nvm(推荐使用)</strong></p>
+<p><a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a>全称Node Version Manager，它与<code>n</code>的实现方式不同，其是通过shell脚本实现的。</p>
+<p><strong>安装</strong></p>
+<p>安装方式有两种：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/creationix/nvm.git ~/.nvm</span><br><span class="line">$ <span class="built_in">source</span> ~/.nvm/nvm.sh</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh</span><br><span class="line">$ <span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>以上脚本会把<code>nvm</code>库clone到<code>~/.nvm</code>，然后会在<code>~/.bash_profile</code>, <code>~/.zshrc</code>或<code>`~/.profile</code>末尾添加source，安装完成之后，你可以用以下命令来安装node</p>
+<p><strong>使用</strong></p>
+<p>查看已安装的版本：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm ls</span><br></pre></td></tr></table></figure>
+<p>查看可以安装的版本：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm ls-remote</span><br></pre></td></tr></table></figure>
+<p>安装指定的版本：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install &lt;version&gt;</span><br></pre></td></tr></table></figure>
+<p>指定的版本将会直接安装在 nvm 程序所在的目录下。</p>
+<p>删除指定的版本：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm uninstall &lt;version&gt;</span><br></pre></td></tr></table></figure>
+<p>使用选定的版本：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm use &lt;version&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -651,7 +728,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -659,9 +736,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">Nodejs</span>
-                  </a>
+                  <a href="/categories/Nodejs/" itemprop="url" rel="index"><span itemprop="name">Nodejs</span></a>
                 </span>
             </span>
 
@@ -676,7 +751,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Unlike PHP and other more traditional web applications, a Node.js server is just that–the server itself. Which means when we write a web application in Node.js, we’re creating a server application that is loaded into memory, and handles requests from there. If the source files change, the application does not, because it’s already been loaded into memory. In order to update the application with new code, the server has to be restarted. This becomes a little challenging when the goal is to run a server cleanly with no downtime. If we reboot the Node server, we kill all existing connections, have a period of downtime, and then a fresh instance starts, ready to handle connections. That’s not going to fly in production. There are ways to prevent this, though. <a href="https://github.com/LearnBoost/up" target="_blank" rel="noopener">Up</a>, for example, acts as a intermediate between your application and the request, which allows changes to be gracefully reloaded. It’s nice, but a little heavier than I’d like, and doesn’t play nicely with <a href="http://nodejs.org/api/cluster.html" target="_blank" rel="noopener">Node clusters</a>. Besides, I thought figuring out how to handle this myself would make a good learning experience. Fortunately, the cluster module has a <em>disconnect</em> event, which allows us to gracefully end the worker process. It will stop handling new requests, and the process will exit once the current requests are finished. That’s perfect. Here’s an example of what I cooked up. We’ll start with a separate app.js file; it’s important that the application code and clustering code be separate. app.js [js] var http = require(“http”);</code> http.createServer(function(req,rep) { rep.writeHead(200); rep.write(“Hello, world!”); rep.end(); }).listen(8080); [/js] This is our application. It can do whatever we want, but I’m keeping it simple for my testing purposes. Next, we need a master process to handle the clustering and worker respawns. runner.js [js] var cluster = require(“cluster”);</code> if (cluster.isMaster) { // this is the master control process console.log(“Control process running: PID=” + process.pid); // fork as many times as we have CPUs var numCPUs = require(“os”).cpus().length; for (var i = 0; i &lt; numCPUs; i++) { cluster.fork(); } // handle unwanted worker exits cluster.on(“exit”, function(worker, code) { if (code != 0) { console.log(“Worker crashed! Spawning a replacement.”); cluster.fork(); } }); // I’m using the SIGUSR2 signal to listen for reload requests // you could, instead, use file watcher logic, or anything else process.on(“SIGUSR2”, function() { console.log(“SIGUSR2 received, reloading workers”); // delete the cached module, so we can reload the app delete require.cache[require.resolve(“./app”)]; // only reload one worker at a time // otherwise, we’ll have a time when no request handlers are running var i = 0; var workers = Object.keys(cluster.workers); var f = function() { if (i == workers.length) return; console.log(“Killing “ + workers[i]); cluster.workers[workers[i]].disconnect(); cluster.workers[workers[i]].on(“disconnect”, function() { console.log(“Shutdown complete”); }); var newWorker = cluster.fork(); newWorker.on(“listening”, function() { console.log(“Replacement worker online.”); i++; f(); }); } f(); }); } else { var app = require(“./app”); } [/js] Make sense? I’ll break it down a little bit. We fork, per the <a href="http://nodejs.org/api/cluster.html" target="_blank" rel="noopener">cluster example</a>. In all the non-master threads (the forked children), we load our separate application. Then, if the master process receives a SIGUSR2 signal, we delete the cache of our application module, retrieve a list of active worker ids, and disconnect them one by one. We do this to ensure that there is never a situation where we go below the threshold of optimal worker threads, or worse, reach a point where no workers are running. We then load a replacement worker, and repeat the process until all of the old workers have been told to disconnect. It’s a little rough, but it works. To test it, I run the application server, and hit it with an apachebench with 100,000 requests at 1000 concurrency to check for failed requests. Beautiful. I can now integrate this into my post-update git hook for use in deployment.</p>
+          <p>Unlike PHP and other more traditional web applications, a Node.js server is just that–the server itself. Which means when we write a web application in Node.js, we’re creating a server application that is loaded into memory, and handles requests from there. If the source files change, the application does not, because it’s already been loaded into memory. In order to update the application with new code, the server has to be restarted.</p>
+<p>This becomes a little challenging when the goal is to run a server cleanly with no downtime. If we reboot the Node server, we kill all existing connections, have a period of downtime, and then a fresh instance starts, ready to handle connections. That’s not going to fly in production.</p>
+<p>There are ways to prevent this, though. <a href="https://github.com/LearnBoost/up" target="_blank" rel="noopener">Up</a>, for example, acts as a intermediate between your application and the request, which allows changes to be gracefully reloaded. It’s nice, but a little heavier than I’d like, and doesn’t play nicely with <a href="http://nodejs.org/api/cluster.html" target="_blank" rel="noopener">Node clusters</a>. Besides, I thought figuring out how to handle this myself would make a good learning experience.</p>
+<p>Fortunately, the cluster module has a <em>disconnect</em> event, which allows us to gracefully end the worker process. It will stop handling new requests, and the process will exit once the current requests are finished. That’s perfect.</p>
+<p>Here’s an example of what I cooked up. We’ll start with a separate app.js file; it’s important that the application code and clustering code be separate.</p>
+<p>app.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</span><br><span class="line">     http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,rep</span>) </span>&#123;</span><br><span class="line">     rep.writeHead(<span class="number">200</span>);</span><br><span class="line">     rep.write(<span class="string">"Hello, world!"</span>);</span><br><span class="line">     rep.end();</span><br><span class="line"> &#125;).listen(<span class="number">8080</span>);</span><br></pre></td></tr></table></figure>
+<p>This is our application. It can do whatever we want, but I’m keeping it simple for my testing purposes.</p>
+<p>Next, we need a master process to handle the clustering and worker respawns.</p>
+<p>runner.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fork as many times as we have CPUs</span></span><br><span class="line"><span class="keyword">var</span> numCPUs = <span class="built_in">require</span>(<span class="string">"os"</span>).cpus().length;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; numCPUs; i++) &#123;</span><br><span class="line">    cluster.fork();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// handle unwanted worker exits</span></span><br><span class="line">cluster.on(<span class="string">"exit"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">worker, code</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (code != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Worker crashed! Spawning a replacement."</span>);</span><br><span class="line">        cluster.fork();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// I'm using the SIGUSR2 signal to listen for reload requests</span></span><br><span class="line"><span class="comment">// you could, instead, use file watcher logic, or anything else</span></span><br><span class="line">process.on(<span class="string">"SIGUSR2"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"SIGUSR2 received, reloading workers"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// delete the cached module, so we can reload the app</span></span><br><span class="line">    <span class="keyword">delete</span> <span class="built_in">require</span>.cache[<span class="built_in">require</span>.resolve(<span class="string">"./app"</span>)];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// only reload one worker at a time</span></span><br><span class="line">    <span class="comment">// otherwise, we'll have a time when no request handlers are running</span></span><br><span class="line">    <span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">var</span> workers = <span class="built_in">Object</span>.keys(cluster.workers);</span><br><span class="line">    <span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i == workers.length) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"Killing "</span> + workers[i]);</span><br><span class="line">        cluster.workers[workers[i]].disconnect();</span><br><span class="line">        cluster.workers[workers[i]].on(<span class="string">"disconnect"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"Shutdown complete"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">var</span> newWorker = cluster.fork();</span><br><span class="line">        newWorker.on(<span class="string">"listening"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">"Replacement worker online."</span>);</span><br><span class="line">            i++;</span><br><span class="line">            f();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    f();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>Make sense? I’ll break it down a little bit. We fork, per the <a href="http://nodejs.org/api/cluster.html" target="_blank" rel="noopener">cluster example</a>. In all the non-master threads (the forked children), we load our separate application. Then, if the master process receives a SIGUSR2 signal, we delete the cache of our application module, retrieve a list of active worker ids, and disconnect them one by one. We do this to ensure that there is never a situation where we go below the threshold of optimal worker threads, or worse, reach a point where no workers are running. We then load a replacement worker, and repeat the process until all of the old workers have been told to disconnect.</p>
+<p>It’s a little rough, but it works. To test it, I run the application server, and hit it with an apachebench with 100,000 requests at 1000 concurrency to check for failed requests.</p>
+<p>Beautiful. I can now integrate this into my post-update git hook for use in deployment.</p>
 
       
     </div>
@@ -727,7 +815,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -735,9 +823,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
-                  </a>
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
                 </span>
             </span>
 
@@ -752,8 +838,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>获得flv视频的缩略图和视频时间长度，php代码如下： [php] function BigEndian2Int($byte_word, $signed = false) { $int_value = 0; $byte_wordlen = strlen($byte_word); for ($i = 0; $i &lt; $byte_wordlen; $i++) { $int_value += ord($byte_word{$i}) * pow(256, ($byte_wordlen - 1 - $i)); } if ($signed) { $sign_mask_bit = 0x80 &lt;&lt; (8 * ($byte_wordlen - 1)); if ($int_value &amp; $sign_mask_bit) { $int_value = 0 - ($int_value &amp; ($sign_mask_bit - 1)); } } return $int_value; } //获得视频的数字时间 function getTime($name){ if(!file_exists($name)){ return; } $flv_data_length=filesize($name); $fp = @fopen($name, ‘rb’); $flv_header = fread($fp, 5); fseek($fp, 5, SEEK_SET); $frame_size_data_length =BigEndian2Int(fread($fp, 4)); $flv_header_frame_length = 9; if ($frame_size_data_length &gt; $flv_header_frame_length) { fseek($fp, $frame_size_data_length - $flv_header_frame_length, SEEK_CUR); } $duration = 0; while ((ftell($fp) + 1) &lt; $flv_data_length) { $this_tag_header = fread($fp, 16); $data_length = BigEndian2Int(substr($this_tag_header, 5, 3)); $timestamp = BigEndian2Int(substr($this_tag_header, 8, 3)); $next_offset = ftell($fp) - 1 + $data_length; if ($timestamp &gt; $duration) { $duration = $timestamp; } fseek($fp, $next_offset, SEEK_SET); } fclose($fp); return $duration; } //转化为0：03：56的时间格式 function fn($time){ $num = $time; $sec = intval($num/1000); $h = intval($sec/3600); $m = intval(($sec%3600)/60); $s = intval(($sec%60)); $tm = $h.’:’.$m.’:’.$s; return $tm; } $t = getTime(“22.flv”);//显示数字时间如236722 echo fn($t);//显示时间格式0:03:56 ?&gt; [/php]</p>
-
+          <p>获得flv视频的缩略图和视频时间长度，php代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BigEndian2Int</span><span class="params">($byte_word, $signed = false)</span> </span>&#123;</span><br><span class="line">    $int_value = <span class="number">0</span>;</span><br><span class="line">    $byte_wordlen = strlen($byte_word);</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $byte_wordlen; $i++) &#123;</span><br><span class="line">        $int_value += ord($byte_word&#123;$i&#125;) * pow(<span class="number">256</span>, ($byte_wordlen - <span class="number">1</span> - $i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ($signed) &#123;</span><br><span class="line">        $sign_mask_bit = <span class="number">0x80</span> &lt;&lt; (<span class="number">8</span> * ($byte_wordlen - <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">if</span> ($int_value &amp; $sign_mask_bit) &#123;</span><br><span class="line">            $int_value = <span class="number">0</span> - ($int_value &amp; ($sign_mask_bit - <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $int_value;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//获得视频的数字时间</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTime</span><span class="params">($name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!file_exists($name))&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $flv_data_length=filesize($name);</span><br><span class="line">    $fp = @fopen($name, <span class="string">'rb'</span>);</span><br><span class="line">    $flv_header = fread($fp, <span class="number">5</span>);</span><br><span class="line">    fseek($fp, <span class="number">5</span>, SEEK_SET);</span><br><span class="line">    $frame_size_data_length =BigEndian2Int(fread($fp, <span class="number">4</span>));</span><br><span class="line">    $flv_header_frame_length = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">if</span> ($frame_size_data_length &gt; $flv_header_frame_length) &#123;</span><br><span class="line">        fseek($fp, $frame_size_data_length - $flv_header_frame_length, SEEK_CUR);</span><br><span class="line">    &#125;</span><br><span class="line">    $duration = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ((ftell($fp) + <span class="number">1</span>) &lt; $flv_data_length) &#123;</span><br><span class="line">        $this_tag_header = fread($fp, <span class="number">16</span>);</span><br><span class="line">        $data_length = BigEndian2Int(substr($this_tag_header, <span class="number">5</span>, <span class="number">3</span>));</span><br><span class="line">        $timestamp = BigEndian2Int(substr($this_tag_header, <span class="number">8</span>, <span class="number">3</span>));</span><br><span class="line">        $next_offset = ftell($fp) - <span class="number">1</span> + $data_length;</span><br><span class="line">        <span class="keyword">if</span> ($timestamp &gt; $duration) &#123;</span><br><span class="line">            $duration = $timestamp;</span><br><span class="line">        &#125;</span><br><span class="line">        fseek($fp, $next_offset, SEEK_SET);</span><br><span class="line">    &#125;</span><br><span class="line">    fclose($fp);</span><br><span class="line">    <span class="keyword">return</span> $duration;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//转化为0：03：56的时间格式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">($time)</span></span>&#123;</span><br><span class="line">    $num = $time;</span><br><span class="line">    $sec = intval($num/<span class="number">1000</span>);</span><br><span class="line">    $h = intval($sec/<span class="number">3600</span>);</span><br><span class="line">    $m = intval(($sec%<span class="number">3600</span>)/<span class="number">60</span>);</span><br><span class="line">    $s = intval(($sec%<span class="number">60</span>));</span><br><span class="line">    $tm = $h.<span class="string">':'</span>.$m.<span class="string">':'</span>.$s;</span><br><span class="line">    <span class="keyword">return</span> $tm;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$t = getTime(<span class="string">"22.flv"</span>);<span class="comment">//显示数字时间如236722</span></span><br><span class="line"><span class="keyword">echo</span> fn($t);<span class="comment">//显示时间格式0:03:56</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -803,7 +889,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -811,9 +897,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/GoLang/" itemprop="url" rel="index">
-                    <span itemprop="name">GoLang</span>
-                  </a>
+                  <a href="/categories/GoLang/" itemprop="url" rel="index"><span itemprop="name">GoLang</span></a>
                 </span>
             </span>
 
@@ -828,8 +912,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>许式伟的《go语言编程》，有一个简单的例子，描述go协程和通信通道chan。挺优美的。如下： [shell] [root@localhost test]$ cat sum.go package main import “fmt” func sum(values []int, myChan chan int) { sum := 0 for _, value := range values { sum += value } myChan &lt;- sum } func main() { myChan := make(chan int, 2) values := []int{1, 2, 3, 5, 5, 4} go sum(values, myChan) //协程1 go sum(values[:3], myChan) //协程2 sum1, sum2 := &lt;-myChan, &lt;-myChan fmt.Println(“Result:”, sum1, sum2, sum1+sum2) } 结果： [root@localhost test]$ go run sum.go Result: 6 20 26 [/shell]</p>
-
+          <p>许式伟的《go语言编程》，有一个简单的例子，描述go协程和通信通道chan。挺优美的。如下：  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost <span class="built_in">test</span>]$ cat sum.go</span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">import <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line">func sum(values []int, myChan chan int) &#123;</span><br><span class="line"> sum := 0</span><br><span class="line"> <span class="keyword">for</span> _, value := range values &#123;</span><br><span class="line"> sum += value</span><br><span class="line"> &#125;</span><br><span class="line"> myChan &lt;- sum</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func <span class="function"><span class="title">main</span></span>() &#123;</span><br><span class="line"> myChan := make(chan int, 2)</span><br><span class="line"></span><br><span class="line"> values := []int&#123;1, 2, 3, 5, 5, 4&#125;</span><br><span class="line"> go sum(values, myChan)     //协程1</span><br><span class="line"> go sum(values[:3], myChan) //协程2</span><br><span class="line"></span><br><span class="line"> sum1, sum2 := &lt;-myChan, &lt;-myChan</span><br><span class="line"> fmt.Println(<span class="string">"Result:"</span>, sum1, sum2, sum1+sum2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost <span class="built_in">test</span>]$ go run sum.go</span><br><span class="line">Result: 6 20 26</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -879,7 +965,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -887,9 +973,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index">
-                    <span itemprop="name">开发工具</span>
-                  </a>
+                  <a href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
                 </span>
             </span>
 
@@ -904,7 +988,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>xp sp3系统，当安装SVN客户端时出现问题 当安装 TortoiseSVN 1.8** 版本的时候 出现“无法通过 windows installer 服务安装此安装程序包。您必须安装带有更新版本 Windows Installer 服务的 Windows Service Pack ”提示如何解决？ 在网上搜集了好久，有好多人出现了同样的问题，所以记录下来 点击下载： <a href="http://www.microsoft.com/zh-cn/download/confirmation.aspx?id=8483" target="_blank" rel="noopener">http://www.microsoft.com/zh-cn/download/confirmation.aspx?id=8483</a> 下载补丁 WindowsXP-KB942288-v3-x86.exe ， 重启电脑就可以安装了</p>
+          <p>xp sp3系统，当安装SVN客户端时出现问题</p>
+<p>当安装 TortoiseSVN 1.8** 版本的时候</p>
+<p>出现“无法通过 windows installer 服务安装此安装程序包。您必须安装带有更新版本 Windows Installer 服务的 Windows Service Pack ”提示如何解决？</p>
+<p>在网上搜集了好久，有好多人出现了同样的问题，所以记录下来</p>
+<p>点击下载： <a href="http://www.microsoft.com/zh-cn/download/confirmation.aspx?id=8483" target="_blank" rel="noopener">http://www.microsoft.com/zh-cn/download/confirmation.aspx?id=8483</a></p>
+<p>下载补丁 WindowsXP-KB942288-v3-x86.exe ， 重启电脑就可以安装了</p>
 
       
     </div>
@@ -955,7 +1044,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -963,9 +1052,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">Nodejs</span>
-                  </a>
+                  <a href="/categories/Nodejs/" itemprop="url" rel="index"><span itemprop="name">Nodejs</span></a>
                 </span>
             </span>
 
@@ -980,7 +1067,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>今天正式的去了理了下zmq这个传说是史上最快的消息队列，之前一直认为是个“服务”程序，是个类似于Socket的一系列接口，他跟Socket的区别是：普通的socket是端到端的（1:1的关系），而ZMQ却是可以N：M 的关系可以任意组合。上一段nodejs中使用zmq的官方例子 1、producer.js <code>[js] var zmq = require(&#39;zmq&#39;) , sock = zmq.socket(&#39;push&#39;);&lt;/code&gt; sock.bindSync(&#39;tcp://127.0.0.1:3000&#39;); console.log(&#39;Producer bound to port 3000&#39;); setInterval(function(){ console.log(&#39;sending work&#39;); sock.send(&#39;some work&#39;); }, 500); [/js] 2、worker.js `[js] var zmq = require(&#39;zmq&#39;) , sock = zmq.socket(&#39;pull&#39;);&lt;/code&gt; sock.connect(&#39;tcp://127.0.0.1:3000&#39;); console.log(&#39;Worker connected to port 3000&#39;); sock.on(&#39;message&#39;, function(msg){ console.log(&#39;work: %s&#39;, msg.toString()); }); [/js] 这样worker就开始工作了，接收到producer发送的数据`</code></p>
+          <p>今天正式的去了理了下zmq这个传说是史上最快的消息队列，之前一直认为是个“服务”程序，是个类似于Socket的一系列接口，他跟Socket的区别是：普通的socket是端到端的（1:1的关系），而ZMQ却是可以N：M 的关系可以任意组合。上一段nodejs中使用zmq的官方例子</p>
+<p>1、producer.js  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zmq = <span class="built_in">require</span>(<span class="string">'zmq'</span>)</span><br><span class="line">, sock = zmq.socket(<span class="string">'push'</span>);<span class="xml"><span class="tag">&lt;/<span class="name">code</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">code</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">sock.bindSync(<span class="string">'tcp://127.0.0.1:3000'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Producer bound to port 3000'</span>);</span><br><span class="line"></span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'sending work'</span>);</span><br><span class="line">sock.send(<span class="string">'some work'</span>);</span><br><span class="line">&#125;, <span class="number">500</span>);</span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
+<p>2、worker.js  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> zmq = <span class="built_in">require</span>(<span class="string">'zmq'</span>)</span><br><span class="line">, sock = zmq.socket(<span class="string">'pull'</span>);<span class="xml"><span class="tag">&lt;/<span class="name">code</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">code</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">sock.connect(<span class="string">'tcp://127.0.0.1:3000'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Worker connected to port 3000'</span>);</span><br><span class="line"></span><br><span class="line">sock.on(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'work: %s'</span>, msg.toString());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样worker就开始工作了，接收到producer发送的数据</p>
 
       
     </div>
@@ -1066,7 +1158,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">113</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1079,7 +1171,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">184</span>
+        <span class="site-state-item-count">171</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
