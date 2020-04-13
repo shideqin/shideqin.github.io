@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://phpkoo.com/tags/ulimits/</loc>
+        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/linux/</loc>
+        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/centos/</loc>
+        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/tags/m3u8/</loc>
         <lastmod>2020-02-27T02:47:48.285Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -423,13 +444,6 @@
     </url>
 
     <url>
-        <loc>https://phpkoo.com/tags/linux/</loc>
-        <lastmod>2020-02-27T01:02:52.749Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://phpkoo.com/tags/%25E8%25AF%2581%25E4%25B9%25A6%25E9%2593%25BE/</loc>
         <lastmod>2020-02-27T01:02:52.748Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -536,13 +550,6 @@
 
     <url>
         <loc>https://phpkoo.com/tags/%25E4%25BA%258C%25E7%25BA%25A7%25E5%259F%259F%25E5%2590%258D/</loc>
-        <lastmod>2020-02-27T01:02:52.740Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/centos/</loc>
         <lastmod>2020-02-27T01:02:52.740Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>

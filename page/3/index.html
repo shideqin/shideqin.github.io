@@ -194,6 +194,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/375.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/375.html" class="post-title-link" itemprop="url">nginx（openresty）升级ssl模块 以支持 HTTP/2</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-12-08 14:43:49" itemprop="dateCreated datePublished" datetime="2017-12-08T14:43:49+08:00">2017-12-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我们并不需要升级系统自带的 openssl，因为随便升级 openssl 会带来安全风险。我们只下载 openssl 1.0.2 源码包，借助它来重新编译（相当于重新安装）服务器上的 NginX 即可。一旦成了 built with OpenSSL 1.0.2，就意味着能够支持 http/2 了。</p>
+<p>1、下载并解压 OpenSSL</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">wget https://www.openssl.org/<span class="built_in">source</span>/openssl-1.0.2-latest.tar.gz</span><br><span class="line">tar -zxf openssl-1.0.2-latest.tar.gz</span><br></pre></td></tr></table></figure>
+<p>2、修改编译参数</p>
+<p>#####指定opensll包位置<br><code>--with-openssl=/usr/local/src/openssl-1.0.2m</code></p>
+<p>#####开启ssl模块<br><code>--with-http_ssl_module</code></p>
+<p>#####开启http/2模块<br><code>--with-http_v2_module</code></p>
+<p>#####编译报错是“collect2: ld returned 1 exit status”需要指定pcre8.36及以上版本<br><code>--with-pcre=/usr/local/src/pcre-8.40</code></p>
+<p>3、开启ssl 修改配置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、开启http/2 修改配置</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl http2;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>附：<br>pcre下载：<a href="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/" target="_blank" rel="noopener">ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/373.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -972,86 +1062,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/321.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/321.html" class="post-title-link" itemprop="url">docker常用命令及用法整理</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-03-11 20:44:20" itemprop="dateCreated datePublished" datetime="2017-03-11T20:44:20+08:00">2017-03-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>一、docker配置文件</strong><br>docker启动的配置参数文件</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/sysconfig/docker</span><br><span class="line">other_args=<span class="string">""</span></span><br></pre></td></tr></table></figure>
-<p><strong>二、docker参数说明</strong><br>1、指定docker镜像和容器存储路径</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--graph=/data/docker</span><br></pre></td></tr></table></figure>
-<p>2、指定默认的系统ulimit值  </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--default-ulimit nproc=65535</span><br></pre></td></tr></table></figure>
-<p><strong>三、docker命令说明</strong>  </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">docker search centos  <span class="comment">#搜索</span></span><br><span class="line">docker pull daocloud.io/centos:6 <span class="comment">#下载，这里使用daocloud提供的centOs6的镜像，系统版本是6.8</span></span><br><span class="line">docker images <span class="comment">#查看，下载好就会出现在镜像列表里</span></span><br><span class="line">docker run -it -p 22:22 <span class="comment">#运行</span></span><br><span class="line">docker run -it daocloud.io/centos:6 /bin/bash  </span><br><span class="line">-i <span class="comment">#允许我们对容器内的STDIN进行交互  </span></span><br><span class="line">-t <span class="comment">#在新容器内指定一个伪终端或终端  </span></span><br><span class="line">-d <span class="comment">#是后台运行，特别注意，后台运行而不是守护方式运行  </span></span><br><span class="line">--name <span class="comment">#指定容器的名称，可用于管理  </span></span><br><span class="line">-P <span class="comment">#大写，将所有公开的端口随机与宿主主机的端口进行绑定  </span></span><br><span class="line">-p <span class="comment">#小写，将宿主机的端口和容器的端口进行绑定。例如：将容器的22端口绑定到宿主机的10022端口上-p 10022:22，也可以同时指定IP绑定-p 127.0.0.1:10022:22  </span></span><br><span class="line">-v <span class="comment">#指定该容器挂载宿主机的目录，这样可以通过该目录来实现宿主主机与容器之间数据共享</span></span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> -it 容器ID /bin/bash <span class="comment">#执行</span></span><br><span class="line"></span><br><span class="line">docker ps -l <span class="comment">#列出最近一次启动的，且正在运行的container  </span></span><br><span class="line">docker ps -a <span class="comment">#列出所有的container  </span></span><br><span class="line">docker commit -m <span class="string">"备注"</span> 容器id 镜像名:tag版本 <span class="comment">#执行完就生成了带sshd的镜像了</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#注意：先删容器再删镜像  </span></span><br><span class="line">docker rm 容器id <span class="comment">#删除单个容器  </span></span><br><span class="line">docker rmi 镜像id <span class="comment">#删除单个镜像  </span></span><br><span class="line">docker rm `docker ps -a -q` <span class="comment">#删除所有容器  </span></span><br><span class="line">docker rm 容器id <span class="comment">#删除容器id为CONTAINER_ID的容器</span></span><br><span class="line"></span><br><span class="line">docker images <span class="comment">#查看本地镜像  </span></span><br><span class="line">docker attach 容器id <span class="comment">#启动一个已存在的docker实例  </span></span><br><span class="line">docker stop 容器id <span class="comment">#停止docker实例（或者直接退出容器登陆；不然这个命令执行后也会强制退出容器的登陆）  </span></span><br><span class="line">docker logs 容器id <span class="comment">#查看docker实例运行日志，确保正常运行  </span></span><br><span class="line">docker inspect 容器id <span class="comment">#查看container的实例属性，比如ip等等</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1122,7 +1132,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">114</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1135,7 +1145,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">171</span>
+        <span class="site-state-item-count">172</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

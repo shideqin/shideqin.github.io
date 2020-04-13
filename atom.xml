@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://phpkoo.com/"/>
-  <updated>2020-02-27T01:02:52.738Z</updated>
+  <updated>2020-04-13T03:20:06.755Z</updated>
   <id>https://phpkoo.com/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用watch实时查看进程的文件句柄信息</title>
+    <link href="https://phpkoo.com/posts/ck8xvytyy00008oom70uuhv82.html"/>
+    <id>https://phpkoo.com/posts/ck8xvytyy00008oom70uuhv82.html</id>
+    <published>2020-04-13T02:44:10.000Z</published>
+    <updated>2020-04-13T03:20:06.755Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、lsof相关使用<br>1、系统所有进程打开对应的句柄数</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -n|awk <span class="string">'&#123;print $2&#125;'</span>|sort|uniq -c |sort -nr|more</span><br></pre></td></tr></table></figure><p>2、查看当前进程实时打开的文件数</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -p 进程ID |wc -l</span><br></pre></td></tr></table></figure><p>3、查看被打开某一文件的相关进程信息</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof /proc</span><br></pre></td></tr></table></figure><p>4、查看监听端口25的进程</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:25</span><br></pre></td></tr></table></figure><p>5、查看活动的连接</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i @192.168.1.2</span><br></pre></td></tr></table></figure><p>二、查看当前进程持有文件句柄数量和文件句柄最大限制</p><p>1、查看这个PID持有的句柄数</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /proc/进程ID/fd | wc -l</span><br></pre></td></tr></table></figure><p>2、查看当前进程句柄数量限制</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/进程ID/limits | grep <span class="string">"files"</span></span><br></pre></td></tr></table></figure><p>三、查看系统总限制</p><p>1、查看系统总限制打开文件的最大数量</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/sys/fs/file-max</span><br></pre></td></tr></table></figure><p>四、watch命令<br>watch是一个非常实用的命令，基本所有的Linux发行版都带有这个小工具，如同名字一样，watch可以帮你监测一个命令的运行结果，省得你一遍遍的手动运行。在Linux下，watch是周期性的执行下个程序，并全屏显示执行结果。</p><p>1、每隔一秒高亮显示网络链接数的变化情况</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 1 -d netstat -ant</span><br></pre></td></tr></table></figure><p>2、每隔一秒高亮显示http链接数的变化情况</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 1 -d <span class="string">'pstree|grep http'</span></span><br></pre></td></tr></table></figure><p>3、实时查看模拟攻击客户机建立起来的连接数</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch <span class="string">'netstat -an | grep:21 | \ grep&lt;模拟攻击客户机的IP&gt;| wc -l'</span></span><br></pre></td></tr></table></figure><p>4、10秒一次输出系统的平均负载</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 10 <span class="string">'cat /proc/loadavg'</span></span><br></pre></td></tr></table></figure><p>5、监测磁盘inode和block数目变化情况</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 1 <span class="string">'df -i;df'</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一、lsof相关使用&lt;br&gt;1、系统所有进程打开对应的句柄数&lt;/p&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
+    
+    
+      <category term="centos" scheme="https://phpkoo.com/tags/centos/"/>
+    
+      <category term="linux" scheme="https://phpkoo.com/tags/linux/"/>
+    
+      <category term="ulimits" scheme="https://phpkoo.com/tags/ulimits/"/>
+    
+  </entry>
   
   <entry>
     <title>Composer 使用记录</title>
@@ -581,40 +612,6 @@
       <category term="vscode" scheme="https://phpkoo.com/tags/vscode/"/>
     
       <category term="win10" scheme="https://phpkoo.com/tags/win10/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx（openresty）升级ssl模块 以支持 HTTP/2</title>
-    <link href="https://phpkoo.com/posts/375.html"/>
-    <id>https://phpkoo.com/posts/375.html</id>
-    <published>2017-12-08T06:43:49.000Z</published>
-    <updated>2020-02-27T01:02:52.753Z</updated>
-    
-    <content type="html"><![CDATA[<p>我们并不需要升级系统自带的 openssl，因为随便升级 openssl 会带来安全风险。我们只下载 openssl 1.0.2 源码包，借助它来重新编译（相当于重新安装）服务器上的 NginX 即可。一旦成了 built with OpenSSL 1.0.2，就意味着能够支持 http/2 了。</p><p>1、下载并解压 OpenSSL</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src</span><br><span class="line">wget https://www.openssl.org/<span class="built_in">source</span>/openssl-1.0.2-latest.tar.gz</span><br><span class="line">tar -zxf openssl-1.0.2-latest.tar.gz</span><br></pre></td></tr></table></figure><p>2、修改编译参数</p><p>#####指定opensll包位置<br><code>--with-openssl=/usr/local/src/openssl-1.0.2m</code></p><p>#####开启ssl模块<br><code>--with-http_ssl_module</code></p><p>#####开启http/2模块<br><code>--with-http_v2_module</code></p><p>#####编译报错是“collect2: ld returned 1 exit status”需要指定pcre8.36及以上版本<br><code>--with-pcre=/usr/local/src/pcre-8.40</code></p><p>3、开启ssl 修改配置</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>4、开启http/2 修改配置</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl http2;</span><br><span class="line">    server_name  localhost;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>附：<br>pcre下载：<a href="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/" target="_blank" rel="noopener">ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;我们并不需要升级系统自带的 openssl，因为随便升级 openssl 会带来安全风险。我们只下载 openssl 1.0.2 源码包，借助它来重新编译（相当于重新安装）服务器上的 NginX 即可。一旦成了 built with OpenSSL 1.0.2，就意味着能够
-      
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
-    
-      <category term="Nginx" scheme="https://phpkoo.com/categories/Linux/Nginx/"/>
-    
-    
-      <category term="nginx" scheme="https://phpkoo.com/tags/nginx/"/>
-    
-      <category term="ssl" scheme="https://phpkoo.com/tags/ssl/"/>
-    
-      <category term="http/2" scheme="https://phpkoo.com/tags/http-2/"/>
-    
-      <category term="openresty" scheme="https://phpkoo.com/tags/openresty/"/>
     
   </entry>
   

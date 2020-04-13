@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用watch实时查看进程的文件句柄信息</title>
+    <url>/posts/ck8xvytyy00008oom70uuhv82.html</url>
+    <content><![CDATA[<p>一、lsof相关使用<br>1、系统所有进程打开对应的句柄数</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">lsof -n|awk <span class="string">'&#123;print $2&#125;'</span>|sort|uniq -c |sort -nr|more</span><br></pre></td></tr></table></figure>
+
+<p>2、查看当前进程实时打开的文件数</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">lsof -p 进程ID |wc -l</span><br></pre></td></tr></table></figure>
+
+<p>3、查看被打开某一文件的相关进程信息</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">lsof /proc</span><br></pre></td></tr></table></figure>
+
+<p>4、查看监听端口25的进程</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">lsof -i:25</span><br></pre></td></tr></table></figure>
+
+<p>5、查看活动的连接</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">lsof -i @192.168.1.2</span><br></pre></td></tr></table></figure>
+
+<p>二、查看当前进程持有文件句柄数量和文件句柄最大限制</p>
+<p>1、查看这个PID持有的句柄数</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ls /proc/进程ID/fd | wc -l</span><br></pre></td></tr></table></figure>
+
+<p>2、查看当前进程句柄数量限制</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat /proc/进程ID/limits | grep <span class="string">"files"</span></span><br></pre></td></tr></table></figure>
+
+<p>三、查看系统总限制</p>
+<p>1、查看系统总限制打开文件的最大数量</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">cat /proc/sys/fs/file-max</span><br></pre></td></tr></table></figure>
+
+<p>四、watch命令<br>watch是一个非常实用的命令，基本所有的Linux发行版都带有这个小工具，如同名字一样，watch可以帮你监测一个命令的运行结果，省得你一遍遍的手动运行。在Linux下，watch是周期性的执行下个程序，并全屏显示执行结果。</p>
+<p>1、每隔一秒高亮显示网络链接数的变化情况</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">watch -n 1 -d netstat -ant</span><br></pre></td></tr></table></figure>
+
+<p>2、每隔一秒高亮显示http链接数的变化情况</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">watch -n 1 -d <span class="string">'pstree|grep http'</span></span><br></pre></td></tr></table></figure>
+
+<p>3、实时查看模拟攻击客户机建立起来的连接数</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">watch <span class="string">'netstat -an | grep:21 | \ grep&lt;模拟攻击客户机的IP&gt;| wc -l'</span></span><br></pre></td></tr></table></figure>
+
+<p>4、10秒一次输出系统的平均负载</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">watch -n 10 <span class="string">'cat /proc/loadavg'</span></span><br></pre></td></tr></table></figure>
+
+<p>5、监测磁盘inode和block数目变化情况</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">watch -n 1 <span class="string">'df -i;df'</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>centos</tag>
+        <tag>linux</tag>
+        <tag>ulimits</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Composer 使用记录</title>
     <url>/posts/635.html</url>
     <content><![CDATA[<p>Composer 是 PHP 的一个依赖管理工具。它允许你申明项目所依赖的代码库，它会在你的项目中为你安装他们。</p>

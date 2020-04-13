@@ -4,22 +4,22 @@
 
     <sitemap>
         <loc>https://phpkoo.com/post-sitemap.xml</loc>
-        <lastmod>2020-02-27T02:47:48.285Z</lastmod>
+        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>https://phpkoo.com/page-sitemap.xml</loc>
-        <lastmod>2020-01-15T07:11:32.844Z</lastmod>
+        <lastmod>2020-04-13T02:58:52.010Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>https://phpkoo.com/category-sitemap.xml</loc>
-        <lastmod>2020-02-27T02:47:48.285Z</lastmod>
+        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>https://phpkoo.com/tag-sitemap.xml</loc>
-        <lastmod>2020-02-27T02:47:48.285Z</lastmod>
+        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
     </sitemap>
 
 </sitemapindex>
