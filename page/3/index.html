@@ -738,7 +738,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+                <time title="修改时间：2020-04-23 15:46:42" itemprop="dateModified" datetime="2020-04-23T15:46:42+08:00">2020-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -761,18 +761,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>lua-imagick基于imagemagick图片处理接口，使用lua语言实现的一个模块，以下是模块编译及依赖安装。<br>一、imagemagick安装（lua-imagick只支持6.9.x版本）<br>1、下载安装包</p>
+          <p>lua-imagick基于imagemagick图片处理接口，使用lua语言实现的一个模块，以下是模块编译及依赖安装。<br>一、imagemagick安装（lua-imagick只支持6.9.x版本）<br>1、安装依赖包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install libjpeg-devel freetype-devel</span><br></pre></td></tr></table></figure>
+<p>2、下载安装包</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://www.imagemagick.org/download/ImageMagick-6.9.8-6.zip</span><br></pre></td></tr></table></figure>
-<p>2、编译安装</p>
+<p>3、编译安装</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ unzip ImageMagick-6.9.8-6.zip</span><br><span class="line">$ <span class="built_in">cd</span> ImageMagick-6.9.8-6</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
-<p>二、安装libluajit<br>1、下载安装包</p>
+<p>二、安装libluajit<br>1、下载安装包<br>推荐</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -O luajit2-2.1-20200102.tar.gz https://github.com/openresty/luajit2/archive/v2.1-20200102.tar.gz</span><br></pre></td></tr></table></figure>
+<p>或</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://luajit.org/download/LuaJIT-2.0.4.tar.gz</span><br></pre></td></tr></table></figure>
 <p>2、编译安装</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ tar zxvf LuaJIT-2.0.4.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> LuaJIT-2.0.4</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
-<p>3、下面配置luajit的环境变量(Nginx编译时需要)</p>
+<p>3、下面配置luajit的环境变量(nginx编译时才需要)</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> LUAJIT_LIB=/usr/<span class="built_in">local</span>/lib</span><br><span class="line">$ <span class="built_in">export</span> LUAJIT_INC=/usr/<span class="built_in">local</span>/include/luajit-2.0</span><br></pre></td></tr></table></figure>
 <p>三、lua-imagick模块安装<br>1、下载模块安装包</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -O lua-imagick.zip https://codeload.github.com/isage/lua-imagick/zip/master</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -O lua-imagick.zip https://github.com/isage/lua-imagick/archive/master.zip</span><br></pre></td></tr></table></figure>
 <p>2、编译安装</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ unzip lua-imagick.zip</span><br><span class="line">$ <span class="built_in">cd</span> lua-imagick-master</span><br><span class="line">$ <span class="built_in">cd</span> ./src</span><br><span class="line">$ cmake ..</span><br><span class="line">-bash: cmake: <span class="built_in">command</span> not found</span><br><span class="line"></span><br><span class="line">$ make</span><br><span class="line">Scanning dependencies of target imagick</span><br><span class="line">[100%] Building C object CMakeFiles/imagick.dir/imagick.c.o</span><br><span class="line">Linking C shared module imagick.so</span><br><span class="line"></span><br><span class="line">$ make install</span><br><span class="line">[100%] Built target imagick</span><br><span class="line">Install the project...</span><br><span class="line">-- Install configuration: <span class="string">""</span></span><br><span class="line">-- Installing: /usr/<span class="built_in">local</span>/lib/lua/5.1/imagick.so</span><br><span class="line">-- Removed runtime path from <span class="string">"/usr/local/lib/lua/5.1/imagick.so"</span></span><br></pre></td></tr></table></figure>
 <p>3、安装cmake工具（如果已经存在，请跳过）</p>

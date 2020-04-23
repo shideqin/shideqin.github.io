@@ -8,6 +8,20 @@
     </url>
 
     <url>
+        <loc>https://phpkoo.com/categories/LUA/</loc>
+        <lastmod>2020-04-23T07:46:42.929Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/categories/Docker/</loc>
+        <lastmod>2020-04-23T07:36:56.364Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/categories/Linux/</loc>
         <lastmod>2020-04-13T03:20:06.755Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -106,13 +120,6 @@
     </url>
 
     <url>
-        <loc>https://phpkoo.com/categories/LUA/</loc>
-        <lastmod>2020-02-27T01:02:52.750Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://phpkoo.com/categories/Nginx/</loc>
         <lastmod>2020-02-27T01:02:52.748Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -129,13 +136,6 @@
     <url>
         <loc>https://phpkoo.com/categories/Git/</loc>
         <lastmod>2020-02-27T01:02:52.746Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/categories/Docker/</loc>
-        <lastmod>2020-02-27T01:02:52.741Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

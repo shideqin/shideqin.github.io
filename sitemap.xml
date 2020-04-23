@@ -4,7 +4,7 @@
 
     <sitemap>
         <loc>https://phpkoo.com/post-sitemap.xml</loc>
-        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
+        <lastmod>2020-04-23T07:46:42.929Z</lastmod>
     </sitemap>
 
     <sitemap>
@@ -14,12 +14,12 @@
 
     <sitemap>
         <loc>https://phpkoo.com/category-sitemap.xml</loc>
-        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
+        <lastmod>2020-04-23T07:46:42.929Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>https://phpkoo.com/tag-sitemap.xml</loc>
-        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
+        <lastmod>2020-04-23T07:46:42.929Z</lastmod>
     </sitemap>
 
 </sitemapindex>

@@ -3,6 +3,48 @@
 
 
     <url>
+        <loc>https://phpkoo.com/tags/imagick/</loc>
+        <lastmod>2020-04-23T07:46:42.929Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/LUA/</loc>
+        <lastmod>2020-04-23T07:46:42.929Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/centos/</loc>
+        <lastmod>2020-04-23T07:46:42.929Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/docker-ce/</loc>
+        <lastmod>2020-04-23T07:36:56.364Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/centos7/</loc>
+        <lastmod>2020-04-23T07:36:56.364Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/docker/</loc>
+        <lastmod>2020-04-23T07:36:56.364Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/tags/ulimits/</loc>
         <lastmod>2020-04-13T03:20:06.755Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -11,13 +53,6 @@
 
     <url>
         <loc>https://phpkoo.com/tags/linux/</loc>
-        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/centos/</loc>
         <lastmod>2020-04-13T03:20:06.755Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -409,13 +444,6 @@
     </url>
 
     <url>
-        <loc>https://phpkoo.com/tags/LUA/</loc>
-        <lastmod>2020-02-27T01:02:52.750Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://phpkoo.com/tags/gcc/</loc>
         <lastmod>2020-02-27T01:02:52.749Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -535,13 +563,6 @@
     </url>
 
     <url>
-        <loc>https://phpkoo.com/tags/docker/</loc>
-        <lastmod>2020-02-27T01:02:52.741Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://phpkoo.com/tags/%25E6%25B3%259B%25E5%259F%259F%25E5%2590%258D/</loc>
         <lastmod>2020-02-27T01:02:52.740Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -591,20 +612,6 @@
     </url>
 
     <url>
-        <loc>https://phpkoo.com/tags/docker-ce/</loc>
-        <lastmod>2020-02-27T01:02:52.733Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/centos7/</loc>
-        <lastmod>2020-02-27T01:02:52.733Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://phpkoo.com/tags/libmcrypt/</loc>
         <lastmod>2020-02-27T01:02:52.732Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -614,13 +621,6 @@
     <url>
         <loc>https://phpkoo.com/tags/php-memcached/</loc>
         <lastmod>2020-02-27T01:02:52.731Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/imagick/</loc>
-        <lastmod>2020-02-27T01:02:52.730Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

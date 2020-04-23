@@ -359,7 +359,7 @@
 <p>鉴于国内网络问题，强烈建议使用国内源，官方源请在注释中查看。<br>执行下面的命令添加 yum 软件源：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 官方源</span></span><br><span class="line">$ yum-config-manager \</span><br><span class="line">     --add-repo \</span><br><span class="line">     https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
 <p>如果需要最新版本的 Docker CE 请使用以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum-config-manager --<span class="built_in">enable</span> docker-ce-edge</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum-config-manager --<span class="built_in">enable</span> docker-ce</span><br></pre></td></tr></table></figure>
 <p>如果需要测试版本的 Docker CE 请使用以下命令：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum-config-manager --<span class="built_in">enable</span> docker-ce-test</span><br></pre></td></tr></table></figure>
 <p><strong>安装 Docker CE</strong><br>更新 yum 软件源缓存，并安装 docker-ce。</p>
@@ -789,18 +789,22 @@
   <entry>
     <title>centos下安装lua-imagick插件实现图片缩放等处理</title>
     <url>/posts/344.html</url>
-    <content><![CDATA[<p>lua-imagick基于imagemagick图片处理接口，使用lua语言实现的一个模块，以下是模块编译及依赖安装。<br>一、imagemagick安装（lua-imagick只支持6.9.x版本）<br>1、下载安装包</p>
+    <content><![CDATA[<p>lua-imagick基于imagemagick图片处理接口，使用lua语言实现的一个模块，以下是模块编译及依赖安装。<br>一、imagemagick安装（lua-imagick只支持6.9.x版本）<br>1、安装依赖包</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum -y install libjpeg-devel freetype-devel</span><br></pre></td></tr></table></figure>
+<p>2、下载安装包</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ wget https://www.imagemagick.org/download/ImageMagick-6.9.8-6.zip</span><br></pre></td></tr></table></figure>
-<p>2、编译安装</p>
+<p>3、编译安装</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ unzip ImageMagick-6.9.8-6.zip</span><br><span class="line">$ <span class="built_in">cd</span> ImageMagick-6.9.8-6</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
-<p>二、安装libluajit<br>1、下载安装包</p>
+<p>二、安装libluajit<br>1、下载安装包<br>推荐</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ wget -O luajit2-2.1-20200102.tar.gz https://github.com/openresty/luajit2/archive/v2.1-20200102.tar.gz</span><br></pre></td></tr></table></figure>
+<p>或</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ wget http://luajit.org/download/LuaJIT-2.0.4.tar.gz</span><br></pre></td></tr></table></figure>
 <p>2、编译安装</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ tar zxvf LuaJIT-2.0.4.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> LuaJIT-2.0.4</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
-<p>3、下面配置luajit的环境变量(Nginx编译时需要)</p>
+<p>3、下面配置luajit的环境变量(nginx编译时才需要)</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">export</span> LUAJIT_LIB=/usr/<span class="built_in">local</span>/lib</span><br><span class="line">$ <span class="built_in">export</span> LUAJIT_INC=/usr/<span class="built_in">local</span>/include/luajit-2.0</span><br></pre></td></tr></table></figure>
 <p>三、lua-imagick模块安装<br>1、下载模块安装包</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ wget -O lua-imagick.zip https://codeload.github.com/isage/lua-imagick/zip/master</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ wget -O lua-imagick.zip https://github.com/isage/lua-imagick/archive/master.zip</span><br></pre></td></tr></table></figure>
 <p>2、编译安装</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ unzip lua-imagick.zip</span><br><span class="line">$ <span class="built_in">cd</span> lua-imagick-master</span><br><span class="line">$ <span class="built_in">cd</span> ./src</span><br><span class="line">$ cmake ..</span><br><span class="line">-bash: cmake: <span class="built_in">command</span> not found</span><br><span class="line"></span><br><span class="line">$ make</span><br><span class="line">Scanning dependencies of target imagick</span><br><span class="line">[100%] Building C object CMakeFiles/imagick.dir/imagick.c.o</span><br><span class="line">Linking C shared module imagick.so</span><br><span class="line"></span><br><span class="line">$ make install</span><br><span class="line">[100%] Built target imagick</span><br><span class="line">Install the project...</span><br><span class="line">-- Install configuration: <span class="string">""</span></span><br><span class="line">-- Installing: /usr/<span class="built_in">local</span>/lib/lua/5.1/imagick.so</span><br><span class="line">-- Removed runtime path from <span class="string">"/usr/local/lib/lua/5.1/imagick.so"</span></span><br></pre></td></tr></table></figure>
 <p>3、安装cmake工具（如果已经存在，请跳过）</p>
