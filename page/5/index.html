@@ -194,6 +194,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/173.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/173.html" class="post-title-link" itemprop="url">M3U8解析</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-02-22 10:01:47" itemprop="dateCreated datePublished" datetime="2017-02-22T10:01:47+08:00">2017-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 10:47:48" itemprop="dateModified" datetime="2020-02-27T10:47:48+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index"><span itemprop="name">FFmpeg</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>3.2 HLS标签说明</p>
+<p>3.2.1 EXT-X-TARGETDURATION</p>
+<p>该标签指定了媒体文件持续时间的最大值，播放文件列表中的媒体文件在EXTINF标签中定义的持续时间必须小于或者等于该标签指定的持续时间。该标签在播放列表文件中必须出现一次，其格式为：</p>
+<p><code># EXT-X-TARGETDURATION：&lt;s&gt;</code>  s是一个以秒为单位的整数。</p>
+<p>3.2.2 EXT-X-MEDIA-SEQUENCE</p>
+<p>播放列表文件中每个媒体文件的URI都有一个唯一的序列号。URI的序列号等于它之前那个RUI的序列号加一。EXT-X-MEDIA-SEQUENCE指明了出现在播放列表文件中的第一个URI的序列号。其格式如下：</p>
+<p><code>#EXT-X-MEDIA-SEQUENCE：&lt;Number&gt;</code>  播放列表文件中的EXT-X-MEDIA-SEQUENCE标签不能多于一个。如果播放列表文件中没有EXT-X-MEDIA-SEQUENCE标签，那么将会把播放列表中第一个URI的序列号当成0。</p>
+<p><strong>注：</strong>媒体文件的序列号码不是必须出现在它的URI中的。见6.3.2和6.3.5。</p>
+<p>3.2.3 EXT-X-KEY</p>
+<p>媒体文件可能是被加密的，EXT-X-KEY提供了解密媒体文件的必要信息，它的格式如下：</p>
+<p><code>#EXT-X-KEY：METHOD=&lt;method&gt; [,URI = &quot;&lt;uri&gt;&quot;] [,IV = &lt;iv&gt;]</code></p>
+<p>Method属性指定了加密方法，定义了两种加密方法：NONE和AES-128。<br>加密方法NONE表示媒体文件不被加密，如果加密方法是NONE，那么URI和IV属性不允许存在。<br>加密方法AES-128表示媒体文件使用高级加密标准128位密钥和PKCS7 padding加密。如果加密方法是AES-128，那么对于URI属性，如果存在，则指定获取密钥的方法；对于IV属性，如果存在，则指定使用密钥的初始化向量。<br>IV属性出现在协议版本2中，新的EXT-X-KEY将会取代任何一个先前的EXT-X-KEY。<br>如果播放列表文件没有包含EXT-X-KEY标签，那么媒体文件将不会被加密。</p>
+<p>密钥文件的格式见第五章，媒体文件加密信息见5.2、6.2.3、6.3.6。</p>
+<p>3.2.4 EXT-X-PROGRAM-DATE-TIME</p>
+<p>EXT-X-PROGRAM-DATE-TIME标签将下一个媒体文件的开头和绝对日期关联起来。日期/时间的表示基于ISO/IEC，并且要指明时区。例如：<br><code>#EXT-X-PROGRAM-DATE-TIME:&lt;YYYY–MM–DDThh:mm:ssZ&gt;</code></p>
+<p>详见6.2.1和6.3.3</p>
+<p>3.2.5 EXT-X-ALLOW-CATCH</p>
+<p>EXT-X-ALLOW-CATCH标签指定客户端可以或者不准缓存下载的媒体文件用来重播。它可能会出现在播放列表文件的任何地方，但是不能出现两次或以上。该标签适用于播放列表中的所有分片。其格式如下：<br><code>#EXT-X-ALLOW-CACHE:&lt;YES|NO&gt;</code></p>
+<p>详见6.3.3</p>
+<p>3.2.6 EXT-X-ENDLIST</p>
+<p>EXT-X-ENDLIST标签标示没有更多媒体文件将会加入到播放列表中，它可能会出现在播放列表文件的任何地方，但是不能出现两次或以上。其格式如下：<br><code>#EXT-X-ENDLIST</code></p>
+<p>3.2.7 EXT-X-STREAM-INF</p>
+<p>EXT-X-STREAM-INF标签表示在播放列表中的下一个URI标识另一个播放列表文件。格式如下：<br><code>#EXT-X-STREAM-INF:[attribute=value][,attribute=value]\* &lt;URI&gt;</code></p>
+<p>在一个EXT-X-STREAM-INF标签中attribute不能出现两次或以上。其它属性定义：<br><code>BANDWIDTH = &lt;n&gt;</code><br>n为每秒比特数,它必须是每个媒体文件比特速率的上限，必须经过计算包含那些在播放列表中出现的或者将要出现的容器开销。<br><code>PROGRAM-ID=&lt;i&gt;</code><br>i是一个数字，在播放列表文件的范围内唯一的标识了一个特定的演示文稿。<br>一个播放列表文件可能包含多个具有相同PROGRAM-ID 的EXT-X-STREAM-INF标签来标识某个演示文稿的不同编码。这些变种的的播放列表可能包含额外的EXT-X-STREAM-INF标签。<br><code>CODECS=&quot;[format][,format]*&quot;</code><br>每一种格式都指定了存在于媒体文件中的媒体类型。合法的格式标示符都是那些在ISO文件格式名称空间被RFC4281定义的格式。<br>RESOLUTION=<N>x<M><br>N是流中视频水平编码分辨率的近似，以像素数表示，M是编码垂直分辨率的近似。</p>
+<p>3.2.8 EXT-X-DISCONTINUITY</p>
+<p>EXT-X-DISCONTINUITY标签表示该标签后边的媒体文件和之前的媒体文件之间的编码间断。特性可能改变的一组是：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file format  </span><br><span class="line">number and type of tracks  </span><br><span class="line">encoding parameters  </span><br><span class="line">encoding sequence</span><br></pre></td></tr></table></figure>
+<p>详见第四章，6.2.1、6.3.3。</p>
+<p>3.2.9 EXT-X-VERSION</p>
+<p>EXT-X-VERSION标签指出了播放列表版本的适应性。播放列表文件、其关联的媒体和服务器必须遵守最新版本的所有规定。</p>
+<p>4 多媒体文件</p>
+<p>每一个媒体文件资源定位符都必须标识一个媒体文件，该文件是整体数据的一个分片。每个媒体文件必须按照MPEG-2的传输流和MPEG-2音频流的格式。[ISO13818]<br>传输流文件必须包含一个MPEG-2节目。在每个文件的开始应该有一个节目关联表和一个节目映射表。包含视频的文件应该有至少一个密钥帧和足够的信息来完全初始化一个视频解码器。<br>播放列表中的媒体文件必须是编码流中媒体文件的末尾与先前的序列号的延续，除非它是播放列表中出现的第一个媒体文件，或者它前边有EXT-X-DISCONTINUITY标签。<br>客户端应该准备好处理一个特定类型（音频或视频等）的多个轨道。一个没有优先级的客户端应该选择它能播放的具有最小数字编号的音轨。<br>客户端应该忽略那些传输流的内部不能识别的流。<br>媒体文件内样本流和相应的多媒体流的编码参数应保持一致。然而客户端应该解决编码的变化问题，例如缩放视频内容以适应分辨率改变。</p>
+<p>URI属性中EXT-X-KEY标签标识一个密钥文件。密钥文件包含解密播放列表中媒体文件的密钥。AES-128加密算法使用16字节的密钥。密钥文件的格式为16字节的二进制数数组。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/282.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -999,96 +1105,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/190.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/190.html" class="post-title-link" itemprop="url">lua安装mongorover模块</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-09-09 11:12:07" itemprop="dateCreated datePublished" datetime="2015-09-09T11:12:07+08:00">2015-09-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LUA/" itemprop="url" rel="index"><span itemprop="name">LUA</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>mongorover模块是mongodb官方提供的lua语言的驱动，官网API文档：<a href="http://api.mongodb.org/lua/0.1/index.html" target="_blank" rel="noopener">http://api.mongodb.org/lua/0.1/index.html</a></p>
-<p>通过luarocks方式安装lua模块</p>
-<p>一、安装luarocks工具</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz</span><br><span class="line">$ tar zxpf luarocks-2.2.2.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> luarocks-2.2.2</span><br><span class="line">$ ./configure</span><br><span class="line">$ make bootstrap</span><br></pre></td></tr></table></figure>
-<p>二、安装mongorover模块</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ luarocks install mongorover</span><br></pre></td></tr></table></figure>
-<p>安装时，报以下错误信息</p>
-<p>Error: Could not find expected file libbson-1.0/bson.h, or libbson-1.0/bson.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local</p>
-<p>三、安装bson库</p>
-<p>官方安装参照：<a href="http://api.mongodb.org/libbson/current/installing.html" target="_blank" rel="noopener">http://api.mongodb.org/libbson/current/installing.html</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://github.com/mongodb/libbson/releases/download/1.1.10/libbson-1.1.10.tar.gz</span><br><span class="line">$ tar -xzf libbson-1.1.10.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> libbson-1.1.10/</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br><span class="line">$ ln -s /usr/include/libbson-1.0/ /usr/<span class="built_in">local</span>/libbson-1.0</span><br></pre></td></tr></table></figure>
-<p>再执行,安装mongorover模块,又报以下错误</p>
-<p>Error: Could not find expected file libmongoc-1.0/mongoc.h, or libmongoc-1.0/mongoc.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local</p>
-<p>四、安装libmongoc库</p>
-<p>官方安装参照：<a href="http://api.mongodb.org/c/current/installing.html" target="_blank" rel="noopener">http://api.mongodb.org/c/current/installing.html</a></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://github.com/mongodb/mongo-c-driver/releases/download/1.1.10/mongo-c-driver-1.1.10.tar.gz</span><br><span class="line">$ tar -xzf mongo-c-driver-1.1.10.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> mongo-c-driver-1.1.10/</span><br><span class="line">$ ./configure</span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br><span class="line">$ ln -s /usr/include/libmongoc-1.0/ /usr/<span class="built_in">local</span>/libmongoc-1.0</span><br></pre></td></tr></table></figure>
-<p>再执行,安装mongorover模块，安装成功</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1159,7 +1175,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">114</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1197,7 +1213,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

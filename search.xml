@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>centos下原生nginx支持openresty功能</title>
+    <url>/posts/ckn0256mx0000qsom1ao57x3i.html</url>
+    <content><![CDATA[<p>nginx想支持openresty的功能，需要安装以下模块及依赖<code>luajit2</code>、<code>lua-resty-core</code>、<code>lua-resty-lrucache</code>、<code>lua-nginx-module</code>、<code>ngx_devel_kit</code>以下5个依赖包必须先下载，另外如果需要同时支持SSL的话，还需要下载<code>openssl</code>依赖包（ssl只需要下载nginx编译时使用）。</p>
+<p>一、安装openresty依赖包<br>1、安装luajit2（下载最新版本）</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/openresty/luajit2/archive/v2.1-20201229.tar.gz</span><br><span class="line">tar -zxvf luajit2-2.1-20201229.tar.gz</span><br><span class="line"><span class="built_in">cd</span> luajit2-2.1-20201229</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line"><span class="comment">#导入环境变量（编译nginx时需要）</span></span><br><span class="line"><span class="built_in">export</span> LUAJIT_LIB=/usr/<span class="built_in">local</span>/lib</span><br><span class="line"><span class="built_in">export</span> LUAJIT_INC=/usr/<span class="built_in">local</span>/include/luajit-2.1</span><br></pre></td></tr></table></figure>
+<p>2、安装lua-resty-core</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/openresty/lua-resty-core/archive/v0.1.21.tar.gz</span><br><span class="line">tar -zxvf lua-resty-core-0.1.21.tar.gz</span><br><span class="line"><span class="built_in">cd</span> lua-resty-core-0.1.21</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>3、安装lua-resty-lrucache</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/openresty/lua-resty-lrucache/archive/v0.10.tar.gz</span><br><span class="line">tar -zxvf lua-resty-lrucache-0.10.tar.gz</span><br><span class="line"><span class="built_in">cd</span> lua-resty-lrucache-0.10</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>4、解压lua-nginx-module</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/openresty/lua-nginx-module/archive/v0.10.19.tar.gz</span><br><span class="line">tar -zxvf lua-nginx-module-0.10.19.tar.gz</span><br></pre></td></tr></table></figure>
+<p>5、解压ngx_devel_kit</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/vision5/ngx_devel_kit/archive/v0.3.1.tar.gz</span><br><span class="line">tar -zxvf ngx_devel_kit-0.3.1.tar.gz</span><br></pre></td></tr></table></figure>
+<p>6、解压openssl</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://www.openssl.org/<span class="built_in">source</span>/openssl-1.1.1k.tar.gz</span><br><span class="line">tar -zxvf openssl-1.1.1k.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>二、编译及安装nginx</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.18.0.tar.gz</span><br><span class="line">tar -zxvf nginx-1.18.0.tar.gz</span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/nginx \</span><br><span class="line">--with-openssl=/usr/<span class="built_in">local</span>/src/openssl-1.1.1k \</span><br><span class="line">--with-http_ssl_module \</span><br><span class="line">--with-http_stub_status_module \</span><br><span class="line">--with-http_auth_request_module \</span><br><span class="line">--with-http_gzip_static_module \</span><br><span class="line">--with-threads \</span><br><span class="line">--with-stream \</span><br><span class="line">--with-stream_ssl_module \</span><br><span class="line">--with-stream_ssl_preread_module \</span><br><span class="line">--with-http_slice_module \</span><br><span class="line">--with-compat \</span><br><span class="line">--with-file-aio \</span><br><span class="line">--with-http_v2_module \</span><br><span class="line">--with-ld-opt=<span class="string">"-Wl,-rpath,/usr/local/lib"</span> \</span><br><span class="line">--add-module=/usr/<span class="built_in">local</span>/src/ngx_devel_kit-0.3.1 \</span><br><span class="line">--add-module=/usr/<span class="built_in">local</span>/src/lua-nginx-module-0.10.19</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>三、nginx配置</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置openresty模块目录</span></span><br><span class="line">lua_package_path <span class="string">"/usr/local/lib/lua/?.lua;/usr/local/nginx/conf/lua/?.lua;;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定dns解析服务器,实现动态upstream</span></span><br><span class="line">resolver 114.114.114.114 223.5.5.5 1.1.1.1 8.8.8.8 valid=30;</span><br><span class="line">resolver_timeout 5;</span><br></pre></td></tr></table></figure>
+
+<p>四、hello openresty(/usr/local/nginx/conf/lua/hello.lua)</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">ngx.<span class="built_in">print</span>(<span class="string">"hello openresty!"</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>centos</tag>
+        <tag>linux</tag>
+        <tag>nginx</tag>
+        <tag>openresty</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用watch实时查看进程的文件句柄信息</title>
     <url>/posts/ck8xvytyy00008oom70uuhv82.html</url>
     <content><![CDATA[<p>一、lsof相关使用<br>1、系统所有进程打开对应的句柄数</p>

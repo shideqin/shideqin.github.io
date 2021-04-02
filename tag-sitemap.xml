@@ -3,6 +3,34 @@
 
 
     <url>
+        <loc>https://phpkoo.com/tags/openresty/</loc>
+        <lastmod>2021-04-02T08:46:04.979Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/nginx/</loc>
+        <lastmod>2021-04-02T08:46:04.979Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/linux/</loc>
+        <lastmod>2021-04-02T08:46:04.979Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/centos/</loc>
+        <lastmod>2021-04-02T08:46:04.979Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/tags/imagick/</loc>
         <lastmod>2020-04-23T07:46:42.929Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -11,13 +39,6 @@
 
     <url>
         <loc>https://phpkoo.com/tags/LUA/</loc>
-        <lastmod>2020-04-23T07:46:42.929Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/centos/</loc>
         <lastmod>2020-04-23T07:46:42.929Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -46,13 +67,6 @@
 
     <url>
         <loc>https://phpkoo.com/tags/ulimits/</loc>
-        <lastmod>2020-04-13T03:20:06.755Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/linux/</loc>
         <lastmod>2020-04-13T03:20:06.755Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -381,13 +395,6 @@
     </url>
 
     <url>
-        <loc>https://phpkoo.com/tags/openresty/</loc>
-        <lastmod>2020-02-27T01:02:52.753Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://phpkoo.com/tags/http-2/</loc>
         <lastmod>2020-02-27T01:02:52.753Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -396,13 +403,6 @@
 
     <url>
         <loc>https://phpkoo.com/tags/ssl/</loc>
-        <lastmod>2020-02-27T01:02:52.753Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/nginx/</loc>
         <lastmod>2020-02-27T01:02:52.753Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
