@@ -194,6 +194,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/103.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/103.html" class="post-title-link" itemprop="url">HTML中自定义属性,与自定义事件...</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2011-12-23 10:37:28" itemprop="dateCreated datePublished" datetime="2011-12-23T10:37:28+08:00">2011-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 10:14:36" itemprop="dateModified" datetime="2020-02-27T10:14:36+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>此种技术一般使用在大型的UI系统开发中: 主要用于核心开发者了为了让 各类普通开发人员能方便调用自己的方法(事件).. 下面是相关示例: 核心开发者,负责拖动事件的JS书写.. 普通开发人员或者美工,只需制作HTML排版…并加上 核心开发者定义的自定义属性后,就能实现拖动. 微软IE中的document.attachEvent为我们提供了良好的自定义事件能力.. 本实例中的自定义属性为:eDrag 通过自定义属性来激活自定义事件.. </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> __DragId, __eDragSrc, __DragTop, __DragLeft;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__OnDrag</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> _element = event.srcElement;</span><br><span class="line">	<span class="keyword">if</span>(_element.eDrag)&#123;</span><br><span class="line">		<span class="keyword">if</span>(event.type==<span class="string">"mousedown"</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(_element.eDragSrc)&#123;</span><br><span class="line">				__eDragSrc = <span class="built_in">document</span>.getElementById(_element.eDragSrc);</span><br><span class="line">				__eDragSrc.style.display = <span class="string">"block"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">document</span>.body.style.cursor = <span class="string">"default"</span>;</span><br><span class="line">			__DragId = <span class="built_in">document</span>.getElementById(_element.eDrag);</span><br><span class="line">			__DragLeft = <span class="built_in">parseInt</span>(__DragId.offsetWidth)-(<span class="built_in">parseInt</span>(__DragId.offsetWidth)-(event.x-<span class="built_in">parseInt</span>(__DragId.offsetLeft)));</span><br><span class="line">			__DragTop = <span class="built_in">parseInt</span>(__DragId.offsetHeight)-(<span class="built_in">parseInt</span>(__DragId.offsetHeight)-(event.y-<span class="built_in">parseInt</span>(__DragId.offsetTop)));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(event.type==<span class="string">"mouseup"</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(__DragId)&#123;</span><br><span class="line">				__DragId = <span class="literal">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(__eDragSrc)&#123;</span><br><span class="line">				__eDragSrc.style.display = <span class="string">"none"</span>;</span><br><span class="line">				__eDragSrc = <span class="literal">null</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(event.type==<span class="string">"mousemove"</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(__DragId)&#123;</span><br><span class="line">			__DragId.style.top = event.y - __DragTop;</span><br><span class="line">			__DragId.style.left = event.x - __DragLeft;</span><br><span class="line">			__DragId.style.margin = <span class="string">"auto"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.attachEvent(<span class="string">"onmousedown"</span>, __OnDrag);</span><br><span class="line"><span class="built_in">document</span>.attachEvent(<span class="string">"onmousemove"</span>, __OnDrag);</span><br><span class="line"><span class="built_in">document</span>.attachEvent(<span class="string">"onmouseup"</span>, __OnDrag);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/87.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -954,91 +1028,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/73.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/73.html" class="post-title-link" itemprop="url">通过file_get_contents来Post数据的实例[转载]</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2010-05-14 21:56:07" itemprop="dateCreated datePublished" datetime="2010-05-14T21:56:07+08:00">2010-05-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>原文：</p>
-<p>file_get_contents.php: Post数据</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Post</span><span class="params">($url, $post = null)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    $context = <span class="keyword">array</span>();</span><br><span class="line">    <span class="keyword">if</span> (is_array($post))</span><br><span class="line">    &#123;</span><br><span class="line">      ksort($post);</span><br><span class="line">      $context[<span class="string">'http'</span>] = <span class="keyword">array</span>(</span><br><span class="line">        <span class="string">'method'</span> =&gt; <span class="string">'POST'</span>,</span><br><span class="line">        <span class="string">'content'</span> =&gt; http_build_query($post, <span class="string">''</span>, <span class="string">'&amp;'</span>),</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> file_get_contents($url, <span class="keyword">false</span>, stream_context_create($context));</span><br><span class="line">&#125;</span><br><span class="line">$data = <span class="keyword">array</span>(</span><br><span class="line">  <span class="string">'name'</span> =&gt; <span class="string">'test'</span>,</span><br><span class="line">  <span class="string">'email'</span> =&gt; <span class="string">'test@gmail.com'</span>,</span><br><span class="line">  <span class="string">'submit'</span> =&gt; <span class="string">'submit'</span>,</span><br><span class="line">);</span><br><span class="line"><span class="keyword">echo</span> Post(<span class="string">'http://localhost/5-5/request_post_result.php'</span>, $data);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>接收数据：<br>request_post_result.php 接收经过Post的数据：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">echo</span> $_POST[<span class="string">'name'</span>];</span><br><span class="line"><span class="keyword">echo</span> $_POST[<span class="string">'email'</span>];</span><br><span class="line"><span class="keyword">echo</span> $_POST[<span class="string">'submit'</span>];</span><br><span class="line"><span class="keyword">echo</span> <span class="string">"fdfd"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>看一下，里面有一个特别的函数：stream_context_create，翻开手册看了一下，也没说什么呀，只是说：Creates and returns a stream context with any options supplied in options preset.</p>
-<p>而file_get_contents呢？它说：</p>
-<p>Note: Context support was added with PHP 5.0.0. For a description of contexts, refer to Reference CLX, Stream Functions.</p>
-<p>关于Stream Functions，手册上这么描述的。。。</p>
-<p>A wrapper is additional code which tells the stream how to handle specific protocols/encodings. For example, the http wrapper knows how to translate a URL into an HTTP/1.0 request for a file on a remote server. There are many wrappers built into PHP by default (See Appendix O), and additional, custom wrappers may be added either within a PHP script using stream_wrapper_register(), or directly from an extension using the API Reference in Chapter 52. Because any variety of wrapper may be added to PHP, there is no set limit on what can be done with them. To access the list of currently registered wrappers, use stream_get_wrappers().</p>
-<p>A stream is referenced as: scheme://target<br>scheme(string) - The name of the wrapper to be used. Examples include: file, http, https, ftp, ftps, compress.zlib, compress.bz2, and php. See Appendix O for a list of PHP built-in wrappers. If no wrapper is specified, the function default is used (typically file://).</p>
-<p>target - Depends on the wrapper used. For filesystem related streams this is typically a path and filename of the desired file. For network related streams this is typically a hostname, often with a path appended. Again, see Appendix O for a description of targets for built-in streams.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1109,7 +1098,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1122,7 +1111,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">172</span>
+        <span class="site-state-item-count">174</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

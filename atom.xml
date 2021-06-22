@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://phpkoo.com/"/>
-  <updated>2021-04-02T08:46:04.979Z</updated>
+  <updated>2021-06-22T03:02:23.167Z</updated>
   <id>https://phpkoo.com/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>luarocks安装lua-mongo模块</title>
+    <link href="https://phpkoo.com/posts/ckq7gq70d0000t0omgiip0bo0.html"/>
+    <id>https://phpkoo.com/posts/ckq7gq70d0000t0omgiip0bo0.html</id>
+    <published>2021-06-22T01:41:59.000Z</published>
+    <updated>2021-06-22T03:02:23.167Z</updated>
+    
+    <content type="html"><![CDATA[<p>lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：<a href="https://github.com/neoxic/lua-mongo" target="_blank" rel="noopener">https://github.com/neoxic/lua-mongo</a></p><p>通过luarocks方式安装lua模块</p><p>一、安装luarocks工具，官网:<a href="https://luarocks.org/" target="_blank" rel="noopener">https://luarocks.org/</a><br>二、安装lua-mongo模块</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luarocks install lua-mongo</span><br></pre></td></tr></table></figure><p>安装时，报以下错误信息</p><p>Error: Could not find expected file libmongoc-1.0/mongoc.h, or libmongoc-1.0/mongoc.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local</p><p>三、安装cmake</p><p>因为mongo-c-driver需要使用cmake进行编译</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc gcc-c++ ncurses-devel</span><br><span class="line">wget wget https://cmake.org/files/v3.3/cmake-3.3.2.tar.gz</span><br><span class="line">tar -xzf cmake-3.3.2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> cmake-3.3.2/</span><br><span class="line">./bootstrap</span><br><span class="line">gmake</span><br><span class="line">gmake install</span><br></pre></td></tr></table></figure><p>四、安装libmongoc库</p><p>官方安装参照：<a href="http://mongoc.org/" target="_blank" rel="noopener">http://mongoc.org/</a></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/mongodb/mongo-c-driver/releases/download/1.17.6/mongo-c-driver-1.17.6.tar.gz</span><br><span class="line">tar -xzf mongo-c-driver-1.17.6.tar.gz</span><br><span class="line"><span class="built_in">cd</span> mongo-c-driver-1.17.6/</span><br><span class="line">cmake .</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><p>再执行,安装lua-mongo模块</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luarocks install lua-mongo</span><br></pre></td></tr></table></figure><p>安装成功</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：&lt;a href=&quot;https://github.com/neoxic/lua-mongo&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;h
+      
+    
+    </summary>
+    
+    
+      <category term="LUA" scheme="https://phpkoo.com/categories/LUA/"/>
+    
+    
+      <category term="centos" scheme="https://phpkoo.com/tags/centos/"/>
+    
+      <category term="linux" scheme="https://phpkoo.com/tags/linux/"/>
+    
+      <category term="nginx" scheme="https://phpkoo.com/tags/nginx/"/>
+    
+      <category term="openresty" scheme="https://phpkoo.com/tags/openresty/"/>
+    
+      <category term="lua" scheme="https://phpkoo.com/tags/lua/"/>
+    
+      <category term="lua-mongo模块" scheme="https://phpkoo.com/tags/lua-mongo%E6%A8%A1%E5%9D%97/"/>
+    
+  </entry>
   
   <entry>
     <title>centos下原生nginx支持openresty功能</title>
@@ -584,37 +620,6 @@
       <category term="build" scheme="https://phpkoo.com/tags/build/"/>
     
       <category term="gola" scheme="https://phpkoo.com/tags/gola/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Go Get安装一些第三方库-网络问题</title>
-    <link href="https://phpkoo.com/posts/391.html"/>
-    <id>https://phpkoo.com/posts/391.html</id>
-    <published>2018-03-13T06:27:53.000Z</published>
-    <updated>2020-02-27T01:02:52.747Z</updated>
-    
-    <content type="html"><![CDATA[<p>由于限制问题，国内使用 go get 安装 golang 官方包可能会失败，如我自己在安装golint时，出现了以下报错：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ go get -u -v golang.org/x/lint/golint</span><br><span class="line">Fetching https://golang.org/x/lint/golint?go-get=1</span><br><span class="line">https fetch failed: Get https://golang.org/x/lint/golint?go-get=1: dial tcp 216.239.37.1:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.</span><br></pre></td></tr></table></figure><p>不翻墙的情况下怎么解决这个问题？其实 golang 在 github 上建立了一个镜像库，如 <a href="https://github.com/golang/lint" target="_blank" rel="noopener">https://github.com/golang/lint</a> 即是 <a href="https://golang.org/x/lint" target="_blank" rel="noopener">https://golang.org/x/lint</a> 的镜像库<br>获取 golang.org/x/lint 包，其实只需要以下步骤：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p <span class="variable">$GOPATH</span>/src/golang.org/x</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/golang.org/x</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/golang/lint.git</span><br><span class="line"></span><br><span class="line"><span class="comment">#执行go install</span></span><br><span class="line">go install golang.org/x/lint/golint</span><br></pre></td></tr></table></figure><p>ps<br>go get实际是从互联网上下载或更新指定的代码包及其依赖包，并对它们进行编译和安装。所以上面的步骤需要手动go install一下代码包。<br>go get常用的辅助参数。</p><p>-insecure 允许非安全下载，主要是针对没有HTTPS的HTTP路径。<br>-u 这个很常见，有更新的话会覆盖本地的package，默认不会覆盖的。<br>-v 显示Log，即verbose.<br>-t 同时下载需要运行测试的package.<br>-d 只下载，但不安装package.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;由于限制问题，国内使用 go get 安装 golang 官方包可能会失败，如我自己在安装golint时，出现了以下报错：&lt;/p&gt;
-&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span c
-      
-    
-    </summary>
-    
-    
-      <category term="GoLang" scheme="https://phpkoo.com/categories/GoLang/"/>
-    
-    
-      <category term="golang" scheme="https://phpkoo.com/tags/golang/"/>
-    
-      <category term="go" scheme="https://phpkoo.com/tags/go/"/>
-    
-      <category term="github" scheme="https://phpkoo.com/tags/github/"/>
     
   </entry>
   

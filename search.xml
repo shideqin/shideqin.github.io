@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>luarocks安装lua-mongo模块</title>
+    <url>/posts/ckq7gq70d0000t0omgiip0bo0.html</url>
+    <content><![CDATA[<p>lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：<a href="https://github.com/neoxic/lua-mongo" target="_blank" rel="noopener">https://github.com/neoxic/lua-mongo</a></p>
+<p>通过luarocks方式安装lua模块</p>
+<p>一、安装luarocks工具，官网:<a href="https://luarocks.org/" target="_blank" rel="noopener">https://luarocks.org/</a><br>二、安装lua-mongo模块</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">luarocks install lua-mongo</span><br></pre></td></tr></table></figure>
+<p>安装时，报以下错误信息</p>
+<p>Error: Could not find expected file libmongoc-1.0/mongoc.h, or libmongoc-1.0/mongoc.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local</p>
+<p>三、安装cmake</p>
+<p>因为mongo-c-driver需要使用cmake进行编译</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">yum install gcc gcc-c++ ncurses-devel</span><br><span class="line">wget wget https://cmake.org/files/v3.3/cmake-3.3.2.tar.gz</span><br><span class="line">tar -xzf cmake-3.3.2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> cmake-3.3.2/</span><br><span class="line">./bootstrap</span><br><span class="line">gmake</span><br><span class="line">gmake install</span><br></pre></td></tr></table></figure>
+
+<p>四、安装libmongoc库</p>
+<p>官方安装参照：<a href="http://mongoc.org/" target="_blank" rel="noopener">http://mongoc.org/</a></p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/mongodb/mongo-c-driver/releases/download/1.17.6/mongo-c-driver-1.17.6.tar.gz</span><br><span class="line">tar -xzf mongo-c-driver-1.17.6.tar.gz</span><br><span class="line"><span class="built_in">cd</span> mongo-c-driver-1.17.6/</span><br><span class="line">cmake .</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>再执行,安装lua-mongo模块</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">luarocks install lua-mongo</span><br></pre></td></tr></table></figure>
+<p>安装成功</p>
+]]></content>
+      <categories>
+        <category>LUA</category>
+      </categories>
+      <tags>
+        <tag>centos</tag>
+        <tag>linux</tag>
+        <tag>nginx</tag>
+        <tag>openresty</tag>
+        <tag>lua</tag>
+        <tag>lua-mongo模块</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>centos下原生nginx支持openresty功能</title>
     <url>/posts/ckn0256mx0000qsom1ao57x3i.html</url>
     <content><![CDATA[<p>nginx想支持openresty的功能，需要安装以下模块及依赖<code>luajit2</code>、<code>lua-resty-core</code>、<code>lua-resty-lrucache</code>、<code>lua-nginx-module</code>、<code>ngx_devel_kit</code>以下5个依赖包必须先下载，另外如果需要同时支持SSL的话，还需要下载<code>openssl</code>依赖包（ssl只需要下载nginx编译时使用）。</p>

@@ -194,6 +194,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/290.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/290.html" class="post-title-link" itemprop="url">CentOS6 安装vsftpd</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-03-08 21:34:47" itemprop="dateCreated datePublished" datetime="2017-03-08T21:34:47+08:00">2017-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>CentOS配置vsftp服务器，特殊情况下方便快速管理文件。<br>1、安装vsftpd</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install vsftpd</span><br></pre></td></tr></table></figure>
+<p>2、配置vsftpd.conf文件（修改下面中文部分内容）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/vsftpd/vsftpd.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># Example config file /etc/vsftpd/vsftpd.conf</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The default compiled in settings are fairly paranoid. This sample file</span></span><br><span class="line"><span class="comment"># loosens things up a bit, to make the ftp daemon more usable.</span></span><br><span class="line"><span class="comment"># Please see vsftpd.conf.5 for all compiled in defaults.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># READ THIS: This example file is NOT an exhaustive list of vsftpd options.</span></span><br><span class="line"><span class="comment"># Please read the vsftpd.conf.5 manual page to get a full idea of vsftpd's</span></span><br><span class="line"><span class="comment"># capabilities.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Allow anonymous FTP? (Beware - allowed by default if you comment this out).</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否允许匿名登录（将其禁止）</span></span><br><span class="line"><span class="comment">#anonymous_enable=YES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 允许使用本地帐户进行FTP用户登录验证</span></span><br><span class="line"><span class="comment"># Uncomment this to allow local users to log in.</span></span><br><span class="line">local_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Uncomment this to enable any form of FTP write command.</span></span><br><span class="line">write_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Default umask for local users is 077. You may wish to change this to 022,</span></span><br><span class="line"><span class="comment"># if your users expect that (022 is used by most other ftpd's)</span></span><br><span class="line">local_umask=022</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Uncomment this to allow the anonymous FTP user to upload files. This only</span></span><br><span class="line"><span class="comment"># has an effect if the above global write enable is activated. Also, you will</span></span><br><span class="line"><span class="comment"># obviously need to create a directory writable by the FTP user.</span></span><br><span class="line"><span class="comment">#anon_upload_enable=YES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Uncomment this if you want the anonymous FTP user to be able to create</span></span><br><span class="line"><span class="comment"># new directories.</span></span><br><span class="line"><span class="comment">#anon_mkdir_write_enable=YES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Activate directory messages - messages given to remote users when they</span></span><br><span class="line"><span class="comment"># go into a certain directory.</span></span><br><span class="line">dirmessage_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The target log file can be vsftpd_log_file or xferlog_file.</span></span><br><span class="line"><span class="comment"># This depends on setting xferlog_std_format parameter</span></span><br><span class="line">xferlog_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Make sure PORT transfer connections originate from port 20 (ftp-data).</span></span><br><span class="line">connect_from_port_20=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If you want, you can arrange for uploaded anonymous files to be owned by</span></span><br><span class="line"><span class="comment"># a different user. Note! Using "root" for uploaded files is not</span></span><br><span class="line"><span class="comment"># recommended!</span></span><br><span class="line"><span class="comment">#chown_uploads=YES</span></span><br><span class="line"><span class="comment">#chown_username=whoever</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The name of log file when xferlog_enable=YES and xferlog_std_format=YES</span></span><br><span class="line"><span class="comment"># WARNING - changing this filename affects /etc/logrotate.d/vsftpd.log</span></span><br><span class="line"><span class="comment">#xferlog_file=/var/log/xferlog</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Switches between logging into vsftpd_log_file and xferlog_file files.</span></span><br><span class="line"><span class="comment"># NO writes to vsftpd_log_file, YES to xferlog_file</span></span><br><span class="line">xferlog_std_format=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may change the default value for timing out an idle session.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置连接超时时间（单位秒）</span></span><br><span class="line">idle_session_timeout=600</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may change the default value for timing out a data connection.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据传输超时时间（单位秒）</span></span><br><span class="line">data_connection_timeout=120</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># It is recommended that you define on your system a unique user which the</span></span><br><span class="line"><span class="comment"># ftp server can use as a totally isolated and unprivileged user.</span></span><br><span class="line"><span class="comment">#nopriv_user=ftpsecure</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Enable this and the server will recognise asynchronous ABOR requests. Not</span></span><br><span class="line"><span class="comment"># recommended for security (the code is non-trivial). Not enabling it,</span></span><br><span class="line"><span class="comment"># however, may confuse older FTP clients.</span></span><br><span class="line"><span class="comment">#async_abor_enable=YES</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># By default the server will pretend to allow ASCII mode but in fact ignore</span></span><br><span class="line"><span class="comment"># the request. Turn on the below options to have the server actually do ASCII</span></span><br><span class="line"><span class="comment"># mangling on files when in ASCII mode.</span></span><br><span class="line"><span class="comment"># Beware that on some FTP servers, ASCII support allows a denial of service</span></span><br><span class="line"><span class="comment"># attack (DoS) via the command "SIZE /big/file" in ASCII mode. vsftpd</span></span><br><span class="line"><span class="comment"># predicted this attack and has always been safe, reporting the size of the</span></span><br><span class="line"><span class="comment"># raw file.</span></span><br><span class="line"><span class="comment"># ASCII mangling is a horrible feature of the protocol.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否允许上传/下载二进制文件</span></span><br><span class="line">ascii_upload_enable=YES</span><br><span class="line">ascii_download_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may fully customise the login banner string:</span></span><br><span class="line"><span class="comment">#ftpd_banner=Welcome to blah FTP service.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may specify a file of disallowed anonymous e-mail addresses. Apparently</span></span><br><span class="line"><span class="comment"># useful for combatting certain DoS attacks.</span></span><br><span class="line"><span class="comment">#deny_email_enable=YES</span></span><br><span class="line"><span class="comment"># (default follows)</span></span><br><span class="line"><span class="comment">#banned_email_file=/etc/vsftpd/banned_emails</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may specify an explicit list of local users to chroot() to their home</span></span><br><span class="line"><span class="comment"># directory. If chroot_local_user is YES, then this list becomes a list of</span></span><br><span class="line"><span class="comment"># users to NOT chroot().</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 限制所有的本地用户只能访问自己的目录</span></span><br><span class="line">chroot_local_user=YES</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当chroot_list_enable=YES，chroot_local_user=YES时，在/etc/vsftpd/chroot_list文件中列出的用户，可以切换到其他目录；未在文件中列出的用户，不能切换到其他目录。</span></span><br><span class="line"><span class="comment">#chroot_list_enable=YES</span></span><br><span class="line"><span class="comment"># (default follows)</span></span><br><span class="line"><span class="comment">#chroot_list_file=/etc/vsftpd/chroot_list</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You may activate the "-R" option to the builtin ls. This is disabled by</span></span><br><span class="line"><span class="comment"># default to avoid remote users being able to cause excessive I/O on large</span></span><br><span class="line"><span class="comment"># sites. However, some broken FTP clients such as "ncftp" and "mirror" assume</span></span><br><span class="line"><span class="comment"># the presence of the "-R" option, so there is a strong case for enabling it.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否允许使用ls -R等命令</span></span><br><span class="line">ls_recurse_enable=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># When "listen" directive is enabled, vsftpd runs in standalone mode and</span></span><br><span class="line"><span class="comment"># listens on IPv4 sockets. This directive cannot be used in conjunction</span></span><br><span class="line"><span class="comment"># with the listen_ipv6 directive.</span></span><br><span class="line">listen=YES</span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This directive enables listening on IPv6 sockets. To listen on IPv4 and IPv6</span></span><br><span class="line"><span class="comment"># sockets, you must run two copies of vsftpd with two configuration files.</span></span><br><span class="line"><span class="comment"># Make sure, that one of the listen options is commented !!</span></span><br><span class="line"><span class="comment">#listen_ipv6=YES</span></span><br><span class="line"></span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line">userlist_enable=YES</span><br><span class="line">userlist_file=/etc/vsftpd/user_list</span><br><span class="line"></span><br><span class="line"><span class="comment"># [新增]是否只允许userlist_file文件中的用户登录FTP服务器，userlist_enable为YES才生效</span></span><br><span class="line"><span class="comment"># YES，默认值，禁止文件中的用户登录，同时也不向这些用户发出输入密码的提示。NO，只允许在文件中的用户登录FTP服务器</span></span><br><span class="line">userlist_deny=NO</span><br><span class="line">tcp_wrappers=YES</span><br><span class="line"></span><br><span class="line"><span class="comment"># [新增]所有用户的根目录（对匿名用户无效，不设置时，默认为用户的家目录/home/ftpuser）</span></span><br><span class="line">local_root=/data</span><br></pre></td></tr></table></figure>
+<p>3、新增ftp用户并为其设置密码</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd -d /home/ftpuser -s /sbin/nologin ftpuser</span><br><span class="line">passwd ftpuser</span><br></pre></td></tr></table></figure>
+<p>4、编辑user_list文件，给予ftpuser用户访问ftp权限</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vsftpd/user_list</span><br></pre></td></tr></table></figure>
+
+<p>在文件末尾加入ftpuser并保存</p>
+<p>5、建立可访问目录并指定用户</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data</span><br><span class="line">chown -R ftpuser /data/      <span class="comment">#注意后面有个/</span></span><br><span class="line">chmod -R 755 /data</span><br></pre></td></tr></table></figure>
+<p>6、启动vsftpd服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service vsftpd start</span><br></pre></td></tr></table></figure>
+<p>7、开机启动vsftpd服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig vsftpd on</span><br></pre></td></tr></table></figure>
+<p>至此完毕</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/173.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1027,84 +1117,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/198.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/198.html" class="post-title-link" itemprop="url">centos下安装lua环境</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2015-09-16 22:51:05" itemprop="dateCreated datePublished" datetime="2015-09-16T22:51:05+08:00">2015-09-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LUA/" itemprop="url" rel="index"><span itemprop="name">LUA</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>到LUA官网下载安装包</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ wget http://www.lua.org/ftp/lua-5.1.5.tar.gz</span><br><span class="line">$ tar zxvf lua-5.1.5.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> lua-5.1.5/</span><br><span class="line">$ yum install -y readline-devel ncurses-devel</span><br><span class="line">$ make linux</span><br></pre></td></tr></table></figure>
-<p>如下提示：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> src &amp;&amp; make linux  </span><br><span class="line">make[1]: Entering directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span></span><br><span class="line">make all MYCFLAGS=-DLUA_USE_LINUX MYLIBS=<span class="string">"-Wl,-E -ldl -lreadline -lhistory -lncurses"</span></span><br><span class="line">make[2]: Entering directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span>  </span><br><span class="line">make[2]: Nothing to be <span class="keyword">done</span> <span class="keyword">for</span> <span class="string">'all'</span>.</span><br><span class="line">make[2]: Leaving directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span></span><br><span class="line">make[1]: Leaving directory <span class="string">'/usr/local/src/lua-5.1.5/src'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ make install</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; mkdir -p /usr/<span class="built_in">local</span>/bin /usr/<span class="built_in">local</span>/include /usr/<span class="built_in">local</span>/lib /usr/<span class="built_in">local</span>/man/man1 /usr/<span class="built_in">local</span>/share/lua/5.1 /usr/<span class="built_in">local</span>/lib/lua/5.1  </span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; install -p -m 0755 lua luac /usr/<span class="built_in">local</span>/bin  </span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; install -p -m 0644 lua.h luaconf.h lualib.h lauxlib.h ../etc/lua.hpp /usr/<span class="built_in">local</span>/include  </span><br><span class="line"><span class="built_in">cd</span> src &amp;&amp; install -p -m 0644 liblua.a /usr/<span class="built_in">local</span>/lib  </span><br><span class="line"><span class="built_in">cd</span> doc &amp;&amp; install -p -m 0644 lua.1 luac.1 /usr/<span class="built_in">local</span>/man/man1</span><br><span class="line"></span><br><span class="line">$ whereis lua</span><br><span class="line">lua: /usr/bin/lua /usr/lib64/lua /usr/<span class="built_in">local</span>/bin/lua /usr/<span class="built_in">local</span>/lib/lua /usr/share/lua /usr/share/man/man1/lua.1.gz</span><br><span class="line"></span><br><span class="line">$ /usr/<span class="built_in">local</span>/bin/lua</span><br><span class="line">Lua 5.1.5 Copyright (C) 1994-2012 Lua.org, PUC-Rio</span><br></pre></td></tr></table></figure>
-<p>安装完成。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1175,7 +1187,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1188,7 +1200,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">172</span>
+        <span class="site-state-item-count">174</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

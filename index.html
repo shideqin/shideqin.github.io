@@ -194,6 +194,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/ckq7gq70d0000t0omgiip0bo0.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/ckq7gq70d0000t0omgiip0bo0.html" class="post-title-link" itemprop="url">luarocks安装lua-mongo模块</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-06-22 09:41:59 / 修改时间：11:02:23" itemprop="dateCreated datePublished" datetime="2021-06-22T09:41:59+08:00">2021-06-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LUA/" itemprop="url" rel="index"><span itemprop="name">LUA</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：<a href="https://github.com/neoxic/lua-mongo" target="_blank" rel="noopener">https://github.com/neoxic/lua-mongo</a></p>
+<p>通过luarocks方式安装lua模块</p>
+<p>一、安装luarocks工具，官网:<a href="https://luarocks.org/" target="_blank" rel="noopener">https://luarocks.org/</a><br>二、安装lua-mongo模块</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luarocks install lua-mongo</span><br></pre></td></tr></table></figure>
+<p>安装时，报以下错误信息</p>
+<p>Error: Could not find expected file libmongoc-1.0/mongoc.h, or libmongoc-1.0/mongoc.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local</p>
+<p>三、安装cmake</p>
+<p>因为mongo-c-driver需要使用cmake进行编译</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc gcc-c++ ncurses-devel</span><br><span class="line">wget wget https://cmake.org/files/v3.3/cmake-3.3.2.tar.gz</span><br><span class="line">tar -xzf cmake-3.3.2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> cmake-3.3.2/</span><br><span class="line">./bootstrap</span><br><span class="line">gmake</span><br><span class="line">gmake install</span><br></pre></td></tr></table></figure>
+
+<p>四、安装libmongoc库</p>
+<p>官方安装参照：<a href="http://mongoc.org/" target="_blank" rel="noopener">http://mongoc.org/</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/mongodb/mongo-c-driver/releases/download/1.17.6/mongo-c-driver-1.17.6.tar.gz</span><br><span class="line">tar -xzf mongo-c-driver-1.17.6.tar.gz</span><br><span class="line"><span class="built_in">cd</span> mongo-c-driver-1.17.6/</span><br><span class="line">cmake .</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>再执行,安装lua-mongo模块</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luarocks install lua-mongo</span><br></pre></td></tr></table></figure>
+<p>安装成功</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/ckn0256mx0000qsom1ao57x3i.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1032,80 +1115,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/504.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/504.html" class="post-title-link" itemprop="url">.gitignore 不起作用的解决办法</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-01 22:21:11" itemprop="dateCreated datePublished" datetime="2019-01-01T22:21:11+08:00">2019-01-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>把某些目录或文件加入.gitignore规则，发现并未生效，原因是.gitignore只能忽略那些原来没有被追踪的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未被追踪状态），然后再提交：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rm -r --cached .</span><br><span class="line">git add .</span><br><span class="line">git commit -m 'update .gitignore'</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1176,7 +1185,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">115</span>
+          <span class="site-state-item-count">116</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1189,7 +1198,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">172</span>
+        <span class="site-state-item-count">174</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
