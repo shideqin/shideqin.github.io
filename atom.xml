@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://phpkoo.com/"/>
-  <updated>2021-06-22T03:02:23.167Z</updated>
+  <updated>2021-06-22T03:03:02.116Z</updated>
   <id>https://phpkoo.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://phpkoo.com/posts/ckq7gq70d0000t0omgiip0bo0.html"/>
     <id>https://phpkoo.com/posts/ckq7gq70d0000t0omgiip0bo0.html</id>
     <published>2021-06-22T01:41:59.000Z</published>
-    <updated>2021-06-22T03:02:23.167Z</updated>
+    <updated>2021-06-22T03:03:02.116Z</updated>
     
     <content type="html"><![CDATA[<p>lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：<a href="https://github.com/neoxic/lua-mongo" target="_blank" rel="noopener">https://github.com/neoxic/lua-mongo</a></p><p>通过luarocks方式安装lua模块</p><p>一、安装luarocks工具，官网:<a href="https://luarocks.org/" target="_blank" rel="noopener">https://luarocks.org/</a><br>二、安装lua-mongo模块</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luarocks install lua-mongo</span><br></pre></td></tr></table></figure><p>安装时，报以下错误信息</p><p>Error: Could not find expected file libmongoc-1.0/mongoc.h, or libmongoc-1.0/mongoc.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local</p><p>三、安装cmake</p><p>因为mongo-c-driver需要使用cmake进行编译</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc gcc-c++ ncurses-devel</span><br><span class="line">wget wget https://cmake.org/files/v3.3/cmake-3.3.2.tar.gz</span><br><span class="line">tar -xzf cmake-3.3.2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> cmake-3.3.2/</span><br><span class="line">./bootstrap</span><br><span class="line">gmake</span><br><span class="line">gmake install</span><br></pre></td></tr></table></figure><p>四、安装libmongoc库</p><p>官方安装参照：<a href="http://mongoc.org/" target="_blank" rel="noopener">http://mongoc.org/</a></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/mongodb/mongo-c-driver/releases/download/1.17.6/mongo-c-driver-1.17.6.tar.gz</span><br><span class="line">tar -xzf mongo-c-driver-1.17.6.tar.gz</span><br><span class="line"><span class="built_in">cd</span> mongo-c-driver-1.17.6/</span><br><span class="line">cmake .</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><p>再执行,安装lua-mongo模块</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luarocks install lua-mongo</span><br></pre></td></tr></table></figure><p>安装成功</p>]]></content>
     
