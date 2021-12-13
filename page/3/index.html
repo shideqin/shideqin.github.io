@@ -194,6 +194,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/393.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/393.html" class="post-title-link" itemprop="url">go build 常见编译优化</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-03-13 15:36:08" itemprop="dateCreated datePublished" datetime="2018-03-13T15:36:08+08:00">2018-03-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GoLang/" itemprop="url" rel="index"><span itemprop="name">GoLang</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一般情况下，go build 可以直接编译程序，无需额外的参数设定。<br>但在编译生产环境下使用的可执行程序时候，go build 的一些参数还是很有用的。</p>
+<p>减小编译后可执行程序的大小</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go build -ldflags <span class="string">'-w -s'</span></span><br></pre></td></tr></table></figure>
+<p>说明：<br>-w 禁止生成debug信息,注意使用该选项后，无法使用 gdb 进行调试<br>-s 禁用符号表<br>可以使用 go tool link –help 查看 ldflags 各参数含义</p>
+<p>禁止gc优化和内联</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go build -gcflags <span class="string">'-N -l'</span></span><br></pre></td></tr></table></figure>
+<p>说明:<br>-N 禁止编译优化<br>-l 禁止内联,禁止内联也可以一定程度上减小可执行程序大小<br>可以使用 go tool compile –help 查看 gcflags 各参数含义</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/391.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -990,86 +1070,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/338.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/338.html" class="post-title-link" itemprop="url">启动docker报错docker: relocation error:symbol dm_task_get_info_with_deferred_remove</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-03-21 11:13:59" itemprop="dateCreated datePublished" datetime="2017-03-21T11:13:59+08:00">2017-03-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>今天从公司一个闲置电脑上装个docker，不料安装没有那么顺利，启动docker有如下报错：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ docker -d</span><br><span class="line">WARN[0000] You are running linux kernel version 2.6.32-431.23.3.el6.x86_64, <span class="built_in">which</span> might be unstable running docker. Please upgrade your kernel to 3.10.0.</span><br><span class="line">INFO[0000] Listening <span class="keyword">for</span> HTTP on unix (/var/run/docker.sock)</span><br><span class="line">docker: relocation error: docker: symbol dm_task_get_info_with_deferred_remove, version Base not defined <span class="keyword">in</span> file libdevmapper.so.1.02 with link time reference</span><br></pre></td></tr></table></figure>
-<p>其中警告了kernel升级，这个可以忽略，但还是建议升一下内核，最主要的问题是symbol dm_task_get_info_with_deferred_remove问题</p>
-<p>网友提供的解决方案如下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y  upgrade device-mapper-libs</span><br></pre></td></tr></table></figure>
-<p>瞬间解决了。</p>
-<p>ps 系统环境如下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/issue</span><br><span class="line">CentOS release 6.5 (Final)</span><br><span class="line">Kernel \r on an \m</span><br><span class="line"></span><br><span class="line">$ uname -r</span><br><span class="line">2.6.32-431.23.3.el6.x86_64</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1140,7 +1140,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">117</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1153,7 +1153,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">174</span>
+        <span class="site-state-item-count">176</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

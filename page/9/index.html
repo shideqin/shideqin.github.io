@@ -194,6 +194,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/74.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/74.html" class="post-title-link" itemprop="url">PHP加密扩展库——Mcrypt扩展库</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-05-14 22:03:50" itemprop="dateCreated datePublished" datetime="2010-05-14T22:03:50+08:00">2010-05-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>PHP除了自带的几种加密函数外，还有功能更全面的加密扩展库Mcrypt和Mhash。其中，Mcrypt扩展库可以实现加密解密功能，就是既能将明文加密，也可以密文还原。<br>1.Mcrypt库安装</p>
+<p>在标准的PHP安装过程中并没有把Mrcypt安装上，但PHP的主目录下包含了libmcrypt.dll和libmhash.dll文件(libmhash.dll是Mhash扩展库，这里可以一起装上)。首先，将这两个文件复制到系统目录windows\system32下，然后在PHP.ini文件中按Ctrl+F快捷键跳出查找框，并找到；extension=php-mcrypt.dll和;extension=php_mhash.dll这两个语句，接着将前面的“；”去掉；最后，保存并重启Apache服务器即可生效。</p>
+<p>2.Mcrypt库的算法和加密模式</p>
+<p>Mcrypt库支持20多种加密算法和8种加密模式，具体可以通过函数mcrypt_list_algorithms()和mcrypt_list_modes()来显示，结果如下：<br>Mcrypt支持的算法有：cast-128 gost rijndael-128 twofish arcfour cast-256 loki97 rijndael-192 saferplus wake blowfish-compat des rijndael-256 serpent xtea blowfish enigma rc2 tripledes<br>Mcrypt支持的加密模式有：cbc cfb ctr ecb ncfb nofb ofb stream<br>这些算法和模式在应用中要以常量来表示，写的时候加上前缀MCRYPT_和MCRYPT_来表示，如下面Mcrypt应用的例子：<br>DES算法表示为MCRYPT_DES;<br>ECB模式表示为MCRYPT_MODE_ECB；</p>
+<p>3.Mcrypt应用</p>
+<p>先看一个例子，了解Mcrypt的工作流程，再来看看部分流程使用的函数：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"> $str_encrypt = mcrypt_encrypt($cipher,$key,$str,$modes,$iv);<span class="comment">//加密函数</span></span><br><span class="line"> <span class="keyword">echo</span> <span class="string">"加密密文："</span>.$str_encrypt;</span><br><span class="line"> $str_decrypt = mcrypt_decrypt($cipher,$key,$str_encrypt,$modes,$iv);<span class="comment">//解密函数</span></span><br><span class="line"> <span class="keyword">echo</span> <span class="string">"还原："</span>.$str_decrypt;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p>加密明文：我的名字是？一般人我不告诉他！<br>加密密文： 锍盌?]鸴?q攦軄L 笑 郺葄”簻 黙<br>还原：我的名字是？一般人我不告诉他！</p>
+<p>&lt;1&gt;由例子中可看到，使用Mcrypt对数据加密和解密之前，首先创建了一个初始化向量，简称为iv。由$iv = mcrypt_create_iv(mcrypt_get_iv_size($cipher,$modes),MCRYPT_RAND);可见创建初始化向量需要两个参数：size指定了iv的大小；source为iv的源，其中值MCRYPT_RAND为系统随机数。<br>&lt;2&gt;函数mcrypt_get_iv_size($cipher,$modes)返回初始化向量大小，参数cipher和mode分别指算法和加密模式。<br>&lt;3&gt;加密函数$str_encrypt = mcrypt_encrypt($cipher,$key,$str,$modes,$iv); 该函数的5个参数分别如下：cipher——加密算法、key——密钥、data(str)——需要加密的数据、mode——算法模式、iv——初始化向量<br>&lt;4&gt;解密函数mcrypt_decrypt($cipher,$key,$str_encrypt,$modes,$iv); 该函数和加密函数的参数几乎一样，唯一不同的是data，也就是说data为需要解密的数据$str_encrypt，而不是原始数据$str。<br>注：加密和解密函数中的参数cipher、key和mode必须一一对应，否则数据不能被还原。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/73.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -885,80 +968,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/63.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/63.html" class="post-title-link" itemprop="url">Javascript trim()函数实现</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2010-03-03 13:57:55" itemprop="dateCreated datePublished" datetime="2010-03-03T13:57:55+08:00">2010-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 10:14:43" itemprop="dateModified" datetime="2020-02-27T10:14:43+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在JavaScript中我们需要用到trim的地方很多，但是JavaScript又没有独立的trim函数或者方法可以使用，所以我们需要自己写个trim函数来实现我们的目的。<br>方案一： 以原型方式调用，即obj.trim()形式，此方式简单且使用方面广泛，定义方式如下： </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** * 删除左右两端的空格 */</span></span><br><span class="line"><span class="built_in">String</span>.prototype.trim=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>, <span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除左边的空格 */</span></span><br><span class="line"><span class="built_in">String</span>.prototype.ltrim=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(^\s*)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除右边的空格 */</span></span><br><span class="line"><span class="built_in">String</span>.prototype.rtrim=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(\s*$)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用示例如下：</span></span><br><span class="line">alert(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value.trim());</span><br><span class="line">alert(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value.ltrim());</span><br><span class="line">alert(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value.rtrim());</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">方案二： 以工具方式调用，即trim(obj)的形式，此方式可以用于特殊处理需要，定义方式如下： </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="comment">/** * 删除左右两端的空格 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>, <span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除左边的空格 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ltrim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除右边的空格 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">rtrim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.replace(<span class="regexp">/(\s*$)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用示例如下：</span></span><br><span class="line">alert(trim(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value));</span><br><span class="line">alert(ltrim(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value));</span><br><span class="line">alert(rtrim(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value));</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1029,7 +1038,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">117</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1042,7 +1051,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">174</span>
+        <span class="site-state-item-count">176</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

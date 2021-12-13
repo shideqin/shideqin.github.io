@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>https://phpkoo.com/categories/GoLang/</loc>
+        <lastmod>2021-12-13T03:30:19.490Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/categories/LUA/</loc>
         <lastmod>2021-06-22T03:03:02.116Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -122,13 +129,6 @@
     <url>
         <loc>https://phpkoo.com/categories/Nginx/</loc>
         <lastmod>2020-02-27T01:02:52.748Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/categories/GoLang/</loc>
-        <lastmod>2020-02-27T01:02:52.747Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

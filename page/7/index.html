@@ -194,6 +194,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/119.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/119.html" class="post-title-link" itemprop="url">利用Ffmpeg获得flv视频缩略图和视频长度时间</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2014-11-06 13:48:07" itemprop="dateCreated datePublished" datetime="2014-11-06T13:48:07+08:00">2014-11-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>获得flv视频的缩略图和视频时间长度，php代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BigEndian2Int</span><span class="params">($byte_word, $signed = false)</span> </span>&#123;</span><br><span class="line">    $int_value = <span class="number">0</span>;</span><br><span class="line">    $byte_wordlen = strlen($byte_word);</span><br><span class="line">    <span class="keyword">for</span> ($i = <span class="number">0</span>; $i &lt; $byte_wordlen; $i++) &#123;</span><br><span class="line">        $int_value += ord($byte_word&#123;$i&#125;) * pow(<span class="number">256</span>, ($byte_wordlen - <span class="number">1</span> - $i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> ($signed) &#123;</span><br><span class="line">        $sign_mask_bit = <span class="number">0x80</span> &lt;&lt; (<span class="number">8</span> * ($byte_wordlen - <span class="number">1</span>));</span><br><span class="line">        <span class="keyword">if</span> ($int_value &amp; $sign_mask_bit) &#123;</span><br><span class="line">            $int_value = <span class="number">0</span> - ($int_value &amp; ($sign_mask_bit - <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $int_value;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="comment">//获得视频的数字时间</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getTime</span><span class="params">($name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!file_exists($name))&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    $flv_data_length=filesize($name);</span><br><span class="line">    $fp = @fopen($name, <span class="string">'rb'</span>);</span><br><span class="line">    $flv_header = fread($fp, <span class="number">5</span>);</span><br><span class="line">    fseek($fp, <span class="number">5</span>, SEEK_SET);</span><br><span class="line">    $frame_size_data_length =BigEndian2Int(fread($fp, <span class="number">4</span>));</span><br><span class="line">    $flv_header_frame_length = <span class="number">9</span>;</span><br><span class="line">    <span class="keyword">if</span> ($frame_size_data_length &gt; $flv_header_frame_length) &#123;</span><br><span class="line">        fseek($fp, $frame_size_data_length - $flv_header_frame_length, SEEK_CUR);</span><br><span class="line">    &#125;</span><br><span class="line">    $duration = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> ((ftell($fp) + <span class="number">1</span>) &lt; $flv_data_length) &#123;</span><br><span class="line">        $this_tag_header = fread($fp, <span class="number">16</span>);</span><br><span class="line">        $data_length = BigEndian2Int(substr($this_tag_header, <span class="number">5</span>, <span class="number">3</span>));</span><br><span class="line">        $timestamp = BigEndian2Int(substr($this_tag_header, <span class="number">8</span>, <span class="number">3</span>));</span><br><span class="line">        $next_offset = ftell($fp) - <span class="number">1</span> + $data_length;</span><br><span class="line">        <span class="keyword">if</span> ($timestamp &gt; $duration) &#123;</span><br><span class="line">            $duration = $timestamp;</span><br><span class="line">        &#125;</span><br><span class="line">        fseek($fp, $next_offset, SEEK_SET);</span><br><span class="line">    &#125;</span><br><span class="line">    fclose($fp);</span><br><span class="line">    <span class="keyword">return</span> $duration;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//转化为0：03：56的时间格式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span><span class="params">($time)</span></span>&#123;</span><br><span class="line">    $num = $time;</span><br><span class="line">    $sec = intval($num/<span class="number">1000</span>);</span><br><span class="line">    $h = intval($sec/<span class="number">3600</span>);</span><br><span class="line">    $m = intval(($sec%<span class="number">3600</span>)/<span class="number">60</span>);</span><br><span class="line">    $s = intval(($sec%<span class="number">60</span>));</span><br><span class="line">    $tm = $h.<span class="string">':'</span>.$m.<span class="string">':'</span>.$s;</span><br><span class="line">    <span class="keyword">return</span> $tm;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$t = getTime(<span class="string">"22.flv"</span>);<span class="comment">//显示数字时间如236722</span></span><br><span class="line"><span class="keyword">echo</span> fn($t);<span class="comment">//显示时间格式0:03:56</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/117.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -916,88 +990,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/104.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/104.html" class="post-title-link" itemprop="url">可代替VI及Nodepad++的产物</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2012-07-02 00:34:51" itemprop="dateCreated datePublished" datetime="2012-07-02T00:34:51+08:00">2012-07-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Sublime Text 2 一款优化的代码开发工具，可算是一款小型的IDE工具，支持WIN,MAC,LINUX等操作系统，有丰富的工具包，可以通过Package管理工具进行各种扩展包安装，类似Eclipse中的Plug-in，同时该工具免费使用，无须支持免费当然偶尔会有付费提示，可不理会继续使用。</p>
-<p>下载地址：<a href="http://www.sublimetext.com/" target="_blank" rel="noopener">http://www.sublimetext.com/</a></p>
-<p>汉化语言包：<a href="http://download.csdn.net/detail/shisdq/4398263" target="_blank" rel="noopener">http://download.csdn.net/detail/shisdq/4398263</a></p>
-<p>注册补丁下载：<a href="http://download.csdn.net/detail/shisdq/4398223" target="_blank" rel="noopener">http://download.csdn.net/detail/shisdq/4398223</a></p>
-<p>注：文章中提供相关的工具，如有涉及到版权等相关问题均与作者无关，只做测试使用，禁止传播！</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1068,7 +1060,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">117</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1081,7 +1073,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">174</span>
+        <span class="site-state-item-count">176</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

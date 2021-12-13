@@ -194,6 +194,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/63.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/63.html" class="post-title-link" itemprop="url">Javascript trim()函数实现</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-03-03 13:57:55" itemprop="dateCreated datePublished" datetime="2010-03-03T13:57:55+08:00">2010-03-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 10:14:43" itemprop="dateModified" datetime="2020-02-27T10:14:43+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在JavaScript中我们需要用到trim的地方很多，但是JavaScript又没有独立的trim函数或者方法可以使用，所以我们需要自己写个trim函数来实现我们的目的。<br>方案一： 以原型方式调用，即obj.trim()形式，此方式简单且使用方面广泛，定义方式如下： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** * 删除左右两端的空格 */</span></span><br><span class="line"><span class="built_in">String</span>.prototype.trim=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>, <span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除左边的空格 */</span></span><br><span class="line"><span class="built_in">String</span>.prototype.ltrim=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(^\s*)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除右边的空格 */</span></span><br><span class="line"><span class="built_in">String</span>.prototype.rtrim=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/(\s*$)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用示例如下：</span></span><br><span class="line">alert(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value.trim());</span><br><span class="line">alert(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value.ltrim());</span><br><span class="line">alert(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value.rtrim());</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">方案二： 以工具方式调用，即trim(obj)的形式，此方式可以用于特殊处理需要，定义方式如下： </span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="comment">/** * 删除左右两端的空格 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)|(\s*$)/g</span>, <span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除左边的空格 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ltrim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.replace(<span class="regexp">/(^\s*)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/** * 删除右边的空格 */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">rtrim</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> str.replace(<span class="regexp">/(\s*$)/g</span>,<span class="string">''</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用示例如下：</span></span><br><span class="line">alert(trim(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value));</span><br><span class="line">alert(ltrim(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value));</span><br><span class="line">alert(rtrim(<span class="built_in">document</span>.getElementById(<span class="string">'abc'</span>).value));</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/62.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -903,82 +977,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/28.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/28.html" class="post-title-link" itemprop="url">md5 结合 crypt ＝无敌密码</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2010-01-21 11:59:38" itemprop="dateCreated datePublished" datetime="2010-01-21T11:59:38+08:00">2010-01-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>PHP的内置函数crypt 很不错<br>配合MD5 更天下无敌</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">//不安全</span></span><br><span class="line"> <span class="keyword">echo</span> <span class="string">"crypt加密后"</span>.crypt($pass);</span><br><span class="line"><span class="comment">// 比较乱的密码 刷新后还会变</span></span><br><span class="line"> <span class="keyword">echo</span> <span class="string">"crypt复杂加密后"</span>.crypt($pass,substr($pass,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line"><span class="comment">//还是不爽</span></span><br><span class="line"> <span class="keyword">echo</span> <span class="string">"无敌加密后"</span>.md5(crypt($pass,substr($pass,<span class="number">0</span>,<span class="number">2</span>)));</span><br><span class="line"><span class="comment">// 现在让黑客如何破这个密码？</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>最后的密码 还是32位 初看 都以为是 MD5加密<br>可无论对方MD5的HASH值多么庞大 几个T的数据 都无法破解出来</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1049,7 +1047,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">116</span>
+          <span class="site-state-item-count">117</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1062,7 +1060,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">174</span>
+        <span class="site-state-item-count">176</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
