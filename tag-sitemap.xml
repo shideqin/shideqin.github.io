@@ -3,22 +3,43 @@
 
 
     <url>
+        <loc>https://phpkoo.com/tags/SSL%25E8%25AF%2581%25E4%25B9%25A6/</loc>
+        <lastmod>2021-12-22T06:28:27.884Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/HTTPS%25E8%25AF%2581%25E4%25B9%25A6/</loc>
+        <lastmod>2021-12-22T06:28:27.884Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/OpenSSL/</loc>
+        <lastmod>2021-12-22T06:28:27.884Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/tags/Content-Length/</loc>
-        <lastmod>2021-12-13T03:30:19.490Z</lastmod>
+        <lastmod>2021-12-13T03:30:47.284Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://phpkoo.com/tags/http/</loc>
-        <lastmod>2021-12-13T03:30:19.490Z</lastmod>
+        <lastmod>2021-12-13T03:30:47.284Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://phpkoo.com/tags/go/</loc>
-        <lastmod>2021-12-13T03:30:19.490Z</lastmod>
+        <lastmod>2021-12-13T03:30:47.284Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

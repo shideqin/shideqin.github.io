@@ -8,8 +8,29 @@
     </url>
 
     <url>
+        <loc>https://phpkoo.com/categories/OpenSSL/HTTPS/SSL/</loc>
+        <lastmod>2021-12-22T06:28:27.884Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/categories/OpenSSL/HTTPS/</loc>
+        <lastmod>2021-12-22T06:28:27.884Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/categories/OpenSSL/</loc>
+        <lastmod>2021-12-22T06:28:27.884Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/categories/GoLang/</loc>
-        <lastmod>2021-12-13T03:30:19.490Z</lastmod>
+        <lastmod>2021-12-13T03:30:47.284Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
