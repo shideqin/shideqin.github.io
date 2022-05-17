@@ -1826,9 +1826,9 @@
 <p><a href="https://github.com/creationix/nvm" target="_blank" rel="noopener">nvm</a>全称Node Version Manager，它与<code>n</code>的实现方式不同，其是通过shell脚本实现的。</p>
 <p><strong>安装</strong></p>
 <p>安装方式有两种：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/creationix/nvm.git ~/.nvm</span><br><span class="line">$ <span class="built_in">source</span> ~/.nvm/nvm.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#增外使用</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/creationix/nvm.git ~/.nvm</span><br><span class="line">$ <span class="built_in">source</span> ~/.nvm/nvm.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#墙内使用</span></span><br><span class="line">$ curl -fsSL https://gitee.com/sdq/nvm/raw/master/install.sh | bash</span><br><span class="line">$ <span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>或者</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ wget -qO- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh</span><br><span class="line">$ <span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#增外使用</span></span><br><span class="line">$ wget -qO- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | sh</span><br><span class="line">$ <span class="built_in">source</span> ~/.bash_profile</span><br><span class="line"></span><br><span class="line"><span class="comment">#墙内使用</span></span><br><span class="line">$ curl -fsSL https://gitee.com/sdq/nvm/raw/master/install.sh | bash</span><br><span class="line">$ <span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
 <p>以上脚本会把<code>nvm</code>库clone到<code>~/.nvm</code>，然后会在<code>~/.bash_profile</code>, <code>~/.zshrc</code>或<code>`~/.profile</code>末尾添加source，安装完成之后，你可以用以下命令来安装node</p>
 <p><strong>使用</strong></p>
 <p>查看已安装的版本：</p>

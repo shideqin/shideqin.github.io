@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://phpkoo.com/posts/142.html</loc>
+        <lastmod>2022-05-17T06:34:16.840Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/posts/ckxh5a4yu0000jgomhcgn9vzy.html</loc>
         <lastmod>2021-12-22T06:28:27.884Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -209,14 +217,6 @@
 
     <url>
         <loc>https://phpkoo.com/posts/375.html</loc>
-        <lastmod>2020-02-27T01:02:52.753Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/posts/142.html</loc>
         <lastmod>2020-02-27T01:02:52.753Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
