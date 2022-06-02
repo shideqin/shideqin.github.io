@@ -3,6 +3,34 @@
 
 
     <url>
+        <loc>https://phpkoo.com/tags/Prometheus/</loc>
+        <lastmod>2022-06-02T02:25:43.243Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/HPA/</loc>
+        <lastmod>2022-06-02T02:25:43.243Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/KEDA/</loc>
+        <lastmod>2022-06-02T02:25:43.243Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/Kubernetes/</loc>
+        <lastmod>2022-06-02T02:25:43.243Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/tags/%25E5%25A4%259A%25E7%2589%2588%25E6%259C%25AC%25E7%25AE%25A1%25E7%2590%2586/</loc>
         <lastmod>2022-05-17T06:34:16.840Z</lastmod>
         <changefreq>weekly</changefreq>
