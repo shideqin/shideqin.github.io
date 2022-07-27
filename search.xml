@@ -8,7 +8,7 @@
 <p>以下实例演示了如何对指定的表设置元表：</p>
 <figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">mytable = &#123;&#125;                          <span class="comment">-- 普通表</span></span><br><span class="line">mymetatable = &#123;&#125;                      <span class="comment">-- 元表</span></span><br><span class="line"><span class="built_in">setmetatable</span>(mytable,mymetatable)     <span class="comment">-- 把 mymetatable 设为 mytable 的元表</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>二、元表__index 元方法</strong><br>这是 metatable 最常用的键。<br>当你通过键来访问 table 的时候，如果这个键没有值，那么Lua就会寻找该table的metatable（假定有metatable）中的”<strong>index”键。如果”</strong>index”包含一个表格，Lua会在表格中查找相应的键。</p>
+<p><strong>二、元表__index 元方法</strong><br>这是 metatable 最常用的键。<br>当你通过键来访问 table 的时候，如果这个键没有值，那么Lua就会寻找该table的metatable（假定有metatable）中的＿＿index 键。如果＿＿index包含一个表格，Lua会在表格中查找相应的键。</p>
 <figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">other = &#123; foo = <span class="number">3</span> &#125;</span><br><span class="line">t = <span class="built_in">setmetatable</span>(&#123;&#125;, &#123; <span class="built_in">__index</span> = other &#125;)</span><br><span class="line"><span class="built_in">print</span>(t.foo)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(t.bar)</span><br><span class="line"><span class="literal">nil</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>三、使用metatable实现继承</strong></p>
