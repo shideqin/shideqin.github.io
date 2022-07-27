@@ -3,6 +3,27 @@
 
 
     <url>
+        <loc>https://phpkoo.com/tags/metatable/</loc>
+        <lastmod>2022-07-27T06:57:43.827Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/%25E9%259D%25A2%25E5%2590%2591%25E5%25AF%25B9%25E8%25B1%25A1/</loc>
+        <lastmod>2022-07-27T06:57:43.827Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/lua/</loc>
+        <lastmod>2022-07-27T06:57:43.827Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/tags/ulimit/</loc>
         <lastmod>2022-07-27T06:50:06.761Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -12,27 +33,6 @@
     <url>
         <loc>https://phpkoo.com/tags/centos/</loc>
         <lastmod>2022-07-27T06:50:06.761Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/metatable/</loc>
-        <lastmod>2022-07-27T06:47:27.678Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/%25E9%259D%25A2%25E5%2590%2591%25E5%25AF%25B9%25E8%25B1%25A1/</loc>
-        <lastmod>2022-07-27T06:47:27.678Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/lua/</loc>
-        <lastmod>2022-07-27T06:47:27.678Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
