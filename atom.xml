@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://phpkoo.com/"/>
-  <updated>2022-07-27T06:46:20.008Z</updated>
+  <updated>2022-07-27T06:47:27.678Z</updated>
   <id>https://phpkoo.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>lua利用metatable实现类的继承和多态</title>
-    <link href="https://phpkoo.com/posts/cl638q6pn00008kom477a3hku.html"/>
-    <id>https://phpkoo.com/posts/cl638q6pn00008kom477a3hku.html</id>
+    <link href="https://phpkoo.com/posts/cl638w6rd008jzwomfill6tra.html"/>
+    <id>https://phpkoo.com/posts/cl638w6rd008jzwomfill6tra.html</id>
     <published>2022-07-27T05:47:09.000Z</published>
-    <updated>2022-07-27T06:46:20.008Z</updated>
+    <updated>2022-07-27T06:47:27.678Z</updated>
     
     <content type="html"><![CDATA[<p>在lua原生语法特性中是不具备面向对象设计的特性。因此，要想在lua上像其他高级语言一样使用面向对象的设计方法，就需要使用原生的元表(metatable)来模拟面向对象设计。</p><p><strong>一、元表setmetatable</strong><br>对指定 table 设置元表(metatable)，如果元表(metatable)中存在__metatable 键值，setmetatable 会失败。</p><p>以下实例演示了如何对指定的表设置元表：</p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mytable = &#123;&#125;                          <span class="comment">-- 普通表</span></span><br><span class="line">mymetatable = &#123;&#125;                      <span class="comment">-- 元表</span></span><br><span class="line"><span class="built_in">setmetatable</span>(mytable,mymetatable)     <span class="comment">-- 把 mymetatable 设为 mytable 的元表</span></span><br></pre></td></tr></table></figure><p><strong>二、元表__index 元方法</strong><br>这是 metatable 最常用的键。<br>当你通过键来访问 table 的时候，如果这个键没有值，那么Lua就会寻找该table的metatable（假定有metatable）中的<strong>index键。如果</strong>index包含一个表格，Lua会在表格中查找相应的键。</p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">other = &#123; foo = <span class="number">3</span> &#125;</span><br><span class="line">t = <span class="built_in">setmetatable</span>(&#123;&#125;, &#123; <span class="built_in">__index</span> = other &#125;)</span><br><span class="line"><span class="built_in">print</span>(t.foo)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(t.bar)</span><br><span class="line"><span class="literal">nil</span></span><br></pre></td></tr></table></figure><p><strong>三、使用metatable实现继承</strong></p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> _M = &#123;</span><br><span class="line">        version = <span class="string">'lua 1.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> parent = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parent.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, parent)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure><p><strong>四、使用metatable实现重载和多态</strong></p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> _M = &#123;</span><br><span class="line">        version = <span class="string">'lua 1.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> parent = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parent.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, parent)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> _M2 = parent.new()</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> child = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">child.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, child)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 重载echo方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M2:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M2:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test = parent.new()</span><br><span class="line">test:echo()</span><br><span class="line"></span><br><span class="line">test = child.new()</span><br><span class="line">test:echo()</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -51,8 +51,8 @@
   
   <entry>
     <title>openssl模块安装luaossl（luacrypto）</title>
-    <link href="https://phpkoo.com/posts/cl638q6rx00098kombnsob49i.html"/>
-    <id>https://phpkoo.com/posts/cl638q6rx00098kombnsob49i.html</id>
+    <link href="https://phpkoo.com/posts/cl638w6rp009bzwom3yg1ftm3.html"/>
+    <id>https://phpkoo.com/posts/cl638w6rp009bzwom3yg1ftm3.html</id>
     <published>2022-07-27T01:43:20.000Z</published>
     <updated>2022-07-27T06:43:17.560Z</updated>
     
@@ -75,20 +75,20 @@
     
       <category term="lua" scheme="https://phpkoo.com/tags/lua/"/>
     
-      <category term="OpenSSL" scheme="https://phpkoo.com/tags/OpenSSL/"/>
-    
       <category term="luaossl" scheme="https://phpkoo.com/tags/luaossl/"/>
     
       <category term="luacrypto" scheme="https://phpkoo.com/tags/luacrypto/"/>
     
       <category term="luarocks" scheme="https://phpkoo.com/tags/luarocks/"/>
     
+      <category term="OpenSSL" scheme="https://phpkoo.com/tags/OpenSSL/"/>
+    
   </entry>
   
   <entry>
     <title>Kubernetes使用KEDA通过Prometheus触发HPA</title>
-    <link href="https://phpkoo.com/posts/cl3we9rqj0000n8omesxvgnom.html"/>
-    <id>https://phpkoo.com/posts/cl3we9rqj0000n8omesxvgnom.html</id>
+    <link href="https://phpkoo.com/posts/cl638w6p5003pzwoma02q8x3c.html"/>
+    <id>https://phpkoo.com/posts/cl638w6p5003pzwoma02q8x3c.html</id>
     <published>2022-06-02T00:45:00.000Z</published>
     <updated>2022-06-02T02:25:43.243Z</updated>
     
@@ -119,8 +119,8 @@
   
   <entry>
     <title>使用openssl创建多泛域名及IP的自签名证书</title>
-    <link href="https://phpkoo.com/posts/ckxh5a4yu0000jgomhcgn9vzy.html"/>
-    <id>https://phpkoo.com/posts/ckxh5a4yu0000jgomhcgn9vzy.html</id>
+    <link href="https://phpkoo.com/posts/cl638w6s200a7zwom1mnq9l2o.html"/>
+    <id>https://phpkoo.com/posts/cl638w6s200a7zwom1mnq9l2o.html</id>
     <published>2021-12-22T05:33:35.000Z</published>
     <updated>2021-12-22T06:28:27.884Z</updated>
     
@@ -155,8 +155,8 @@
   
   <entry>
     <title>golang中net.http请求时header中的Content-Length无效坑</title>
-    <link href="https://phpkoo.com/posts/ckx44c3va0000xcom8sk3atz2.html"/>
-    <id>https://phpkoo.com/posts/ckx44c3va0000xcom8sk3atz2.html</id>
+    <link href="https://phpkoo.com/posts/cl638w6r7007yzwomd85s02bv.html"/>
+    <id>https://phpkoo.com/posts/cl638w6r7007yzwomd85s02bv.html</id>
     <published>2021-12-13T02:52:07.000Z</published>
     <updated>2021-12-13T03:30:47.284Z</updated>
     
@@ -185,8 +185,8 @@
   
   <entry>
     <title>luarocks安装lua-mongo模块</title>
-    <link href="https://phpkoo.com/posts/ckq7gq70d0000t0omgiip0bo0.html"/>
-    <id>https://phpkoo.com/posts/ckq7gq70d0000t0omgiip0bo0.html</id>
+    <link href="https://phpkoo.com/posts/cl638w6rc008hzwomdai3epuu.html"/>
+    <id>https://phpkoo.com/posts/cl638w6rc008hzwomdai3epuu.html</id>
     <published>2021-06-22T01:41:59.000Z</published>
     <updated>2021-06-22T03:03:02.116Z</updated>
     
@@ -221,8 +221,8 @@
   
   <entry>
     <title>centos下原生nginx支持openresty功能</title>
-    <link href="https://phpkoo.com/posts/ckn0256mx0000qsom1ao57x3i.html"/>
-    <id>https://phpkoo.com/posts/ckn0256mx0000qsom1ao57x3i.html</id>
+    <link href="https://phpkoo.com/posts/cl638w6qp006ezwomdzrqb7td.html"/>
+    <id>https://phpkoo.com/posts/cl638w6qp006ezwomdzrqb7td.html</id>
     <published>2021-04-02T08:02:03.000Z</published>
     <updated>2021-04-02T08:46:04.979Z</updated>
     
@@ -253,8 +253,8 @@
   
   <entry>
     <title>使用watch实时查看进程的文件句柄信息</title>
-    <link href="https://phpkoo.com/posts/ck8xvytyy00008oom70uuhv82.html"/>
-    <id>https://phpkoo.com/posts/ck8xvytyy00008oom70uuhv82.html</id>
+    <link href="https://phpkoo.com/posts/cl638w6s400aazwom4ijx3uhk.html"/>
+    <id>https://phpkoo.com/posts/cl638w6s400aazwom4ijx3uhk.html</id>
     <published>2020-04-13T02:44:10.000Z</published>
     <updated>2020-04-13T03:20:06.755Z</updated>
     

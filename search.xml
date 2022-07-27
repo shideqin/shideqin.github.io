@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>lua利用metatable实现类的继承和多态</title>
-    <url>/posts/cl638q6pn00008kom477a3hku.html</url>
+    <url>/posts/cl638w6rd008jzwomfill6tra.html</url>
     <content><![CDATA[<p>在lua原生语法特性中是不具备面向对象设计的特性。因此，要想在lua上像其他高级语言一样使用面向对象的设计方法，就需要使用原生的元表(metatable)来模拟面向对象设计。</p>
 <p><strong>一、元表setmetatable</strong><br>对指定 table 设置元表(metatable)，如果元表(metatable)中存在__metatable 键值，setmetatable 会失败。</p>
 <p>以下实例演示了如何对指定的表设置元表：</p>
@@ -29,7 +29,7 @@
   </entry>
   <entry>
     <title>openssl模块安装luaossl（luacrypto）</title>
-    <url>/posts/cl638q6rx00098kombnsob49i.html</url>
+    <url>/posts/cl638w6rp009bzwom3yg1ftm3.html</url>
     <content><![CDATA[<p><a href="https://luarocks.org/modules/daurnimator/luaossl" target="_blank" rel="noopener">luaossl</a> 是<a href="https://luarocks.org/modules/starius/luacrypto" target="_blank" rel="noopener">luacrypto</a>的代替版本，是针对 Lua 5.1、5.2、5.3 和 LuaJIT 的 OpenSSL 综合绑定。是 Lua 世界中最全面的 OpenSSL 绑定。luaosll安装依赖OpenSSL库，所以需要先安装OpenSSL。</p>
 <p><strong>一、安装OpenSSL</strong><br>下载好的OpenSSL源码目录下，编译安装OpenSSL（以下均使用默认路径“/usr/local”进行安装）</p>
 <p>1）生成Makefile文件</p>
@@ -50,15 +50,15 @@
       </categories>
       <tags>
         <tag>lua</tag>
-        <tag>OpenSSL</tag>
         <tag>luaossl</tag>
         <tag>luacrypto</tag>
         <tag>luarocks</tag>
+        <tag>OpenSSL</tag>
       </tags>
   </entry>
   <entry>
     <title>Kubernetes使用KEDA通过Prometheus触发HPA</title>
-    <url>/posts/cl3we9rqj0000n8omesxvgnom.html</url>
+    <url>/posts/cl638w6p5003pzwoma02q8x3c.html</url>
     <content><![CDATA[<p><a href="https://keda.sh/" target="_blank" rel="noopener">KEDA</a> 是一个基于 Kubernetes 的事件驱动自动缩放器。使用 KEDA，您可以根据需要处理的事件数量来驱动 Kubernetes 中任何容器的扩展。KEDA可以支持很多自定义事件源，如：Mysql、MongoDB、Redis、ActiveMQ、Kafka、Prometheus、Metrics API等。本文使用nginx中的stub_status数据 + Prometheus为事件源进行KEDA HPA配置。</p>
 <p><strong>一、开启nginx(stub_status)</strong><br>nginx中的stub_status模块主要用于查看Nginx的一些状态信息。</p>
 <p>1）查看nginx时候有安装该模块。</p>
@@ -105,7 +105,7 @@
   </entry>
   <entry>
     <title>使用openssl创建多泛域名及IP的自签名证书</title>
-    <url>/posts/ckxh5a4yu0000jgomhcgn9vzy.html</url>
+    <url>/posts/cl638w6s200a7zwom1mnq9l2o.html</url>
     <content><![CDATA[<p>在开发环境及私有环境下需要使用SSL，于是使用openssl创建自签发证书，支持多域名、泛域名、直接IP访问。</p>
 <p><strong>一、使用openssl生成证书自签名</strong></p>
 <p>openssl在centos中是标配，所以直接在centos中操作，因为要多个域名和IP，故而需要编辑一个配置文件，如下：</p>
@@ -176,7 +176,7 @@
   </entry>
   <entry>
     <title>golang中net.http请求时header中的Content-Length无效坑</title>
-    <url>/posts/ckx44c3va0000xcom8sk3atz2.html</url>
+    <url>/posts/cl638w6r7007yzwomd85s02bv.html</url>
     <content><![CDATA[<p>在一次和国内某云厂商对接对象存储时，因为他们对象存储服务，是直接使用的是第三方开源服务，开源服务默认并不支持<strong>chunked</strong>编码（而国内其它大厂一般都是支持chunked编码）。导致上传文件一直报<strong>HTTP/1.1 411 Length Required</strong>错误，出现问题的原因是说，我没有传Content-Length。</p>
 <p>而明明我在header里设置了Content-Length，但是抓包发现，实际却变成了chunked<br><img src="https://upload.phpkoo.com/uploads/2021/12/net.http-02.png" alt=""></p>
 <p>经过反复的测试情况都依旧，直到在github上找到了这个<a href="https://github.com/golang/go/issues/16264" target="_blank" rel="noopener">https://github.com/golang/go/issues/16264</a></p>
@@ -198,7 +198,7 @@
   </entry>
   <entry>
     <title>luarocks安装lua-mongo模块</title>
-    <url>/posts/ckq7gq70d0000t0omgiip0bo0.html</url>
+    <url>/posts/cl638w6rc008hzwomdai3epuu.html</url>
     <content><![CDATA[<p>lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：<a href="https://github.com/neoxic/lua-mongo" target="_blank" rel="noopener">https://github.com/neoxic/lua-mongo</a></p>
 <p>通过luarocks方式安装lua模块</p>
 <p>一、安装luarocks工具，官网:<a href="https://luarocks.org/" target="_blank" rel="noopener">https://luarocks.org/</a><br>二、安装lua-mongo模块</p>
@@ -230,7 +230,7 @@
   </entry>
   <entry>
     <title>centos下原生nginx支持openresty功能</title>
-    <url>/posts/ckn0256mx0000qsom1ao57x3i.html</url>
+    <url>/posts/cl638w6qp006ezwomdzrqb7td.html</url>
     <content><![CDATA[<p>nginx想支持openresty的功能，需要安装以下模块及依赖<code>luajit2</code>、<code>lua-resty-core</code>、<code>lua-resty-lrucache</code>、<code>lua-nginx-module</code>、<code>ngx_devel_kit</code>以下5个依赖包必须先下载，另外如果需要同时支持SSL的话，还需要下载<code>openssl</code>依赖包（ssl只需要下载nginx编译时使用）。</p>
 <p>一、安装openresty依赖包<br>1、安装luajit2（下载最新版本）</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/openresty/luajit2/archive/v2.1-20201229.tar.gz</span><br><span class="line">tar -zxvf luajit2-2.1-20201229.tar.gz</span><br><span class="line"><span class="built_in">cd</span> luajit2-2.1-20201229</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line"><span class="comment">#导入环境变量（编译nginx时需要）</span></span><br><span class="line"><span class="built_in">export</span> LUAJIT_LIB=/usr/<span class="built_in">local</span>/lib</span><br><span class="line"><span class="built_in">export</span> LUAJIT_INC=/usr/<span class="built_in">local</span>/include/luajit-2.1</span><br></pre></td></tr></table></figure>
@@ -265,7 +265,7 @@
   </entry>
   <entry>
     <title>使用watch实时查看进程的文件句柄信息</title>
-    <url>/posts/ck8xvytyy00008oom70uuhv82.html</url>
+    <url>/posts/cl638w6s400aazwom4ijx3uhk.html</url>
     <content><![CDATA[<p>一、lsof相关使用<br>1、系统所有进程打开对应的句柄数</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">lsof -n|awk <span class="string">'&#123;print $2&#125;'</span>|sort|uniq -c |sort -nr|more</span><br></pre></td></tr></table></figure>
 
@@ -925,9 +925,9 @@
       </categories>
       <tags>
         <tag>nginx</tag>
+        <tag>openresty</tag>
         <tag>ssl</tag>
         <tag>http/2</tag>
-        <tag>openresty</tag>
       </tags>
   </entry>
   <entry>
@@ -1185,7 +1185,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Centos6.8下mysql启动时出现mysqld_safe: line 707: ulimit: open files: cannot modify limit: Operation not permitted错误</title>
+    <title>Centos6.8下mysql启动时出现mysqld_safe line 707 ulimit open files cannot modify limit Operation not permitted错误</title>
     <url>/posts/319.html</url>
     <content><![CDATA[<p>mysql启动时出现mysqld_safe: line 707: ulimit: open files: cannot modify limit: Operation not permitted错误<br>解决方法：</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">ulimit</span> -n 65535</span><br></pre></td></tr></table></figure>
@@ -2797,7 +2797,7 @@
   <entry>
     <title>博客再次迁移</title>
     <url>/posts/21.html</url>
-    <content><![CDATA[<p>在国内架个个人博客真难，由于国内互联内“反黄”事件，全国各大机房都接连被封机房，本站之前放于广州地界的机房，也同样被封长于半个月的时间，机房也没有相应的补尝，由于主机也将至到期，心想干脆换个机房，换程序移到了杭州机房，本以为此次风波已经过去，没想到经过一周多时间，问题同上的发生，还好，最新数据本地都已存在（经上次的教训），在本地都已经备案了最新的数据和程序。CNNIC 真是太暴力了也没有点时间，直接说封就封。听说1月底还要对CN域名下手，今年刚续完费，不知道能不能撑不撑的过去。一直也想把之前一直用的SABLOG给换了，借此机会，就干脆把它也换成TYPECHO算了，个人认为TYPECHO比较适合做博客程序，较WORDPRESS相比没有其臃肿，在皮肤上跟WORDPRESS较接近，同时在插件的使用和开发都是相对比较简单，最重要的一点同时也是开源程序，而且就连数据库的注释也是非常的清楚，这点各大大博客包括WORDPRESS好像都没做到，TYPECHO还可以直接在GOOGLE的开源项目上直接获取其源码。SABLOG也是比较优秀但更新比较慢，皮肤也少,UI也做的不好。其综合比较个人还是觉得TYPECHO比较好，希望有越来越多的人会去使用它。 发布于，<a href="http://www.phpkoo.com" target="_blank" rel="noopener" title="站长实验室">站长实验室</a></p>
+    <content><![CDATA[<p>在国内架个个人博客真难，由于国内互联内“反黄”事件，全国各大机房都接连被封机房，本站之前放于广州地界的机房，也同样被封长于半个月的时间，机房也没有相应的补尝，由于主机也将至到期，心想干脆换个机房，换程序移到了杭州机房，本以为此次风波已经过去，没想到经过一周多时间，问题同上的发生，还好，最新数据本地都已存在（经上次的教训），在本地都已经备份了最新的数据和程序。CNNIC 真是太暴力了也没有点时间，直接说封就封。听说1月底还要对CN域名下手，今年刚续完费，不知道能不能撑不撑的过去。一直也想把之前一直用的SABLOG给换了，借此机会，就干脆把它也换成TYPECHO算了，个人认为TYPECHO比较适合做博客程序，较WORDPRESS相比没有其臃肿，在皮肤上跟WORDPRESS较接近，同时在插件的使用和开发都是相对比较简单，最重要的一点同时也是开源程序，而且就连数据库的注释也是非常的清楚，这点各大大博客包括WORDPRESS好像都没做到，TYPECHO还可以直接在GOOGLE的开源项目上直接获取其源码。SABLOG也是比较优秀但更新比较慢，皮肤也少,UI也做的不好。其综合比较个人还是觉得TYPECHO比较好，希望有越来越多的人会去使用它。<br>发布于，<a href="http://www.phpkoo.com" target="_blank" rel="noopener">站长实验室</a></p>
 ]]></content>
       <categories>
         <category>本人唠叨</category>
@@ -2810,7 +2810,7 @@
   <entry>
     <title>博客再次迁移</title>
     <url>/posts/21.html</url>
-    <content><![CDATA[<p>在国内架个个人博客真难，由于国内互联内“反黄”事件，全国各大机房都接连被封机房，本站之前放于广州地界的机房，也同样被封长于半个月的时间，机房也没有相应的补尝，由于主机也将至到期，心想干脆换个机房，换程序移到了杭州机房，本以为此次风波已经过去，没想到经过一周多时间，问题同上的发生，还好，最新数据本地都已存在（经上次的教训），在本地都已经备份了最新的数据和程序。CNNIC 真是太暴力了也没有点时间，直接说封就封。听说1月底还要对CN域名下手，今年刚续完费，不知道能不能撑不撑的过去。一直也想把之前一直用的SABLOG给换了，借此机会，就干脆把它也换成TYPECHO算了，个人认为TYPECHO比较适合做博客程序，较WORDPRESS相比没有其臃肿，在皮肤上跟WORDPRESS较接近，同时在插件的使用和开发都是相对比较简单，最重要的一点同时也是开源程序，而且就连数据库的注释也是非常的清楚，这点各大大博客包括WORDPRESS好像都没做到，TYPECHO还可以直接在GOOGLE的开源项目上直接获取其源码。SABLOG也是比较优秀但更新比较慢，皮肤也少,UI也做的不好。其综合比较个人还是觉得TYPECHO比较好，希望有越来越多的人会去使用它。<br>发布于，<a href="http://www.phpkoo.com" target="_blank" rel="noopener">站长实验室</a></p>
+    <content><![CDATA[<p>在国内架个个人博客真难，由于国内互联内“反黄”事件，全国各大机房都接连被封机房，本站之前放于广州地界的机房，也同样被封长于半个月的时间，机房也没有相应的补尝，由于主机也将至到期，心想干脆换个机房，换程序移到了杭州机房，本以为此次风波已经过去，没想到经过一周多时间，问题同上的发生，还好，最新数据本地都已存在（经上次的教训），在本地都已经备案了最新的数据和程序。CNNIC 真是太暴力了也没有点时间，直接说封就封。听说1月底还要对CN域名下手，今年刚续完费，不知道能不能撑不撑的过去。一直也想把之前一直用的SABLOG给换了，借此机会，就干脆把它也换成TYPECHO算了，个人认为TYPECHO比较适合做博客程序，较WORDPRESS相比没有其臃肿，在皮肤上跟WORDPRESS较接近，同时在插件的使用和开发都是相对比较简单，最重要的一点同时也是开源程序，而且就连数据库的注释也是非常的清楚，这点各大大博客包括WORDPRESS好像都没做到，TYPECHO还可以直接在GOOGLE的开源项目上直接获取其源码。SABLOG也是比较优秀但更新比较慢，皮肤也少,UI也做的不好。其综合比较个人还是觉得TYPECHO比较好，希望有越来越多的人会去使用它。 发布于，<a href="http://www.phpkoo.com" target="_blank" rel="noopener" title="站长实验室">站长实验室</a></p>
 ]]></content>
       <categories>
         <category>本人唠叨</category>
@@ -2818,20 +2818,6 @@
       <tags>
         <tag>博客迁移</tag>
         <tag>站长实验室</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网站架构策划方案</title>
-    <url>/posts/9.html</url>
-    <content><![CDATA[<p>这段时间一直都在为网站架构的事情所烦恼，前端，程序，服务器三个方面应该如何协调才能达到一个较为优化的网站架构呢？根据前辈的经验，我总结了以下文档，特分享。<br><strong>1. UIC需要做的</strong><br>采用Css Sprite将背景图片，图标图片集成在一张图片内。<br>优点：减少用户代理对服务器的请求次数；加快用户载入页面时间。 Css &amp;&amp; Js 统一使用YUIcompressor进行代码压缩处理。<br>优点：加快服务器结束线程的时间；加快用户载入页面时间。 单个数据对象小于25K。<br>优点：部分用户代理（如iphone），无法载入25K以上的数据对象。 外部广告图片，宣传图片尽量防止在本站图片缓存服务器上。<br>优点：减少用户的DNS查询，加快页面载入速度。 色彩不超过256色的图片，不采用JPG格式存储。<br>优点：减少文件大小，加快页面载入速度。 使用PNG8格式的PNG图片代替Gif格式图片。<br>优点：具备比Gif更高的压缩比，有利于网络传塑，加快页面载入速度。 JPG图片采用interlaced模式存储。<br>优点：色彩复杂的图片大小更小，可让图片呈渐进状态显示，直至清晰。增强用户体验。<br><strong>2. UI 需要做的</strong><br>设计稿图片尽量减少一些渐变效果的使用<br>优点：减少JPG图片的数量，加快用户载入页面时间。<br><strong>3. 开发需要做的</strong><br>如果出现Ajax 方式，采用Ajax缓存 可考虑<br><strong>4. SA 需要做的</strong><br>负载均衡 优点：减小Web服务器压力。 Gzip压缩输出<br>优点：减小输出的用户数据大小，加快页面载入时间。 图片与Web服务器分离<br>优点：减小Web服务器压力。 增加Squid缓存<br>优点：避免2次刷新带来的重复请求。减少服务器压力。 架构SVN测试服务器并与公网服务器的同步<br>优点：避免公网页面出现错误，增强用户体验。</p>
-]]></content>
-      <categories>
-        <category>本人唠叨</category>
-      </categories>
-      <tags>
-        <tag>方案</tag>
-        <tag>策划</tag>
-        <tag>网站架构</tag>
       </tags>
   </entry>
   <entry>
@@ -2863,17 +2849,17 @@
       </tags>
   </entry>
   <entry>
-    <title>二级域名的完美实现</title>
-    <url>/posts/13.html</url>
-    <content><![CDATA[<p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com 其次，在 httpd.conf 中打开 mod_rewrite 之后，在 httpd.conf 的最后，添加以下内容： <code>RewriteEngine on RewriteMap lowercase int:tolower RewriteMap vhost txt:/wp-content/local/etc/apache/vhost.map RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$ RewriteCond ${vhost:%1} ^(/.*)$ RewriteRule ^/(.*)$ %1/$1</code> 其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。 然后，在这个所在路径的目录下创建一个文件： vhost.map 内容为： <code>www.domain.com /wp-content/local/www/data-dist/domain bbs.domain.com /wp-content/local/www/data-dist/bbs anyname.domain.com /wp-content/local/www/data-dist/anyname</code> 以上部分都是：” 域名+空格+绝对路径” 的形式。 最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录： domain , bbs , anyname 等等，理论上可以无限。 这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以 随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
+    <title>网站架构策划方案</title>
+    <url>/posts/9.html</url>
+    <content><![CDATA[<p>这段时间一直都在为网站架构的事情所烦恼，前端，程序，服务器三个方面应该如何协调才能达到一个较为优化的网站架构呢？根据前辈的经验，我总结了以下文档，特分享。<br><strong>1. UIC需要做的</strong><br>采用Css Sprite将背景图片，图标图片集成在一张图片内。<br>优点：减少用户代理对服务器的请求次数；加快用户载入页面时间。 Css &amp;&amp; Js 统一使用YUIcompressor进行代码压缩处理。<br>优点：加快服务器结束线程的时间；加快用户载入页面时间。 单个数据对象小于25K。<br>优点：部分用户代理（如iphone），无法载入25K以上的数据对象。 外部广告图片，宣传图片尽量防止在本站图片缓存服务器上。<br>优点：减少用户的DNS查询，加快页面载入速度。 色彩不超过256色的图片，不采用JPG格式存储。<br>优点：减少文件大小，加快页面载入速度。 使用PNG8格式的PNG图片代替Gif格式图片。<br>优点：具备比Gif更高的压缩比，有利于网络传塑，加快页面载入速度。 JPG图片采用interlaced模式存储。<br>优点：色彩复杂的图片大小更小，可让图片呈渐进状态显示，直至清晰。增强用户体验。<br><strong>2. UI 需要做的</strong><br>设计稿图片尽量减少一些渐变效果的使用<br>优点：减少JPG图片的数量，加快用户载入页面时间。<br><strong>3. 开发需要做的</strong><br>如果出现Ajax 方式，采用Ajax缓存 可考虑<br><strong>4. SA 需要做的</strong><br>负载均衡 优点：减小Web服务器压力。 Gzip压缩输出<br>优点：减小输出的用户数据大小，加快页面载入时间。 图片与Web服务器分离<br>优点：减小Web服务器压力。 增加Squid缓存<br>优点：避免2次刷新带来的重复请求。减少服务器压力。 架构SVN测试服务器并与公网服务器的同步<br>优点：避免公网页面出现错误，增强用户体验。</p>
 ]]></content>
       <categories>
-        <category>Apache</category>
+        <category>本人唠叨</category>
       </categories>
       <tags>
-        <tag>apache</tag>
-        <tag>二级域名</tag>
-        <tag>泛域名</tag>
+        <tag>方案</tag>
+        <tag>策划</tag>
+        <tag>网站架构</tag>
       </tags>
   </entry>
   <entry>
@@ -2887,6 +2873,20 @@
 <p>以上部分都是：” 域名+空格+绝对路径” 的形式。</p>
 <p>最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录：<br>domain , bbs , anyname 等等，理论上可以无限。</p>
 <p>这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以<br>随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
+]]></content>
+      <categories>
+        <category>Apache</category>
+      </categories>
+      <tags>
+        <tag>apache</tag>
+        <tag>二级域名</tag>
+        <tag>泛域名</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二级域名的完美实现</title>
+    <url>/posts/13.html</url>
+    <content><![CDATA[<p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com 其次，在 httpd.conf 中打开 mod_rewrite 之后，在 httpd.conf 的最后，添加以下内容： <code>RewriteEngine on RewriteMap lowercase int:tolower RewriteMap vhost txt:/wp-content/local/etc/apache/vhost.map RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$ RewriteCond ${vhost:%1} ^(/.*)$ RewriteRule ^/(.*)$ %1/$1</code> 其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。 然后，在这个所在路径的目录下创建一个文件： vhost.map 内容为： <code>www.domain.com /wp-content/local/www/data-dist/domain bbs.domain.com /wp-content/local/www/data-dist/bbs anyname.domain.com /wp-content/local/www/data-dist/anyname</code> 以上部分都是：” 域名+空格+绝对路径” 的形式。 最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录： domain , bbs , anyname 等等，理论上可以无限。 这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以 随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
 ]]></content>
       <categories>
         <category>Apache</category>

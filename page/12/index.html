@@ -225,7 +225,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -248,7 +248,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com 其次，在 httpd.conf 中打开 mod_rewrite 之后，在 httpd.conf 的最后，添加以下内容： <code>RewriteEngine on RewriteMap lowercase int:tolower RewriteMap vhost txt:/wp-content/local/etc/apache/vhost.map RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$ RewriteCond ${vhost:%1} ^(/.*)$ RewriteRule ^/(.*)$ %1/$1</code> 其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。 然后，在这个所在路径的目录下创建一个文件： vhost.map 内容为： <code>www.domain.com /wp-content/local/www/data-dist/domain bbs.domain.com /wp-content/local/www/data-dist/bbs anyname.domain.com /wp-content/local/www/data-dist/anyname</code> 以上部分都是：” 域名+空格+绝对路径” 的形式。 最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录： domain , bbs , anyname 等等，理论上可以无限。 这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以 随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
+          <p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com<br>其次，在 httpd.conf 中打开 mod_rewrite</p>
+<p>之后，在 httpd.conf 的最后，添加以下内容：  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine on  </span><br><span class="line">RewriteMap lowercase int:tolower  </span><br><span class="line">RewriteMap vhost txt:/wp-content/<span class="built_in">local</span>/etc/apache/vhost.map  </span><br><span class="line">RewriteCond <span class="variable">$&#123;lowercase:%&#123;SERVER_NAME&#125;</span>&#125; ^(.+)$  </span><br><span class="line">RewriteCond <span class="variable">$&#123;vhost:%1&#125;</span> ^(/.*)$  </span><br><span class="line">RewriteRule ^/(.*)$ %1/<span class="variable">$1</span></span><br></pre></td></tr></table></figure>
+<p>其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。<br>然后，在这个所在路径的目录下创建一个文件： vhost.map<br>内容为： </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/domain  </span><br><span class="line">bbs.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/bbs  </span><br><span class="line">anyname.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/anyname`</span><br></pre></td></tr></table></figure>
+<p>以上部分都是：” 域名+空格+绝对路径” 的形式。</p>
+<p>最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录：<br>domain , bbs , anyname 等等，理论上可以无限。</p>
+<p>这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以<br>随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
 
       
     </div>
@@ -299,7 +306,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -322,14 +329,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com<br>其次，在 httpd.conf 中打开 mod_rewrite</p>
-<p>之后，在 httpd.conf 的最后，添加以下内容：  </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine on  </span><br><span class="line">RewriteMap lowercase int:tolower  </span><br><span class="line">RewriteMap vhost txt:/wp-content/<span class="built_in">local</span>/etc/apache/vhost.map  </span><br><span class="line">RewriteCond <span class="variable">$&#123;lowercase:%&#123;SERVER_NAME&#125;</span>&#125; ^(.+)$  </span><br><span class="line">RewriteCond <span class="variable">$&#123;vhost:%1&#125;</span> ^(/.*)$  </span><br><span class="line">RewriteRule ^/(.*)$ %1/<span class="variable">$1</span></span><br></pre></td></tr></table></figure>
-<p>其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。<br>然后，在这个所在路径的目录下创建一个文件： vhost.map<br>内容为： </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/domain  </span><br><span class="line">bbs.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/bbs  </span><br><span class="line">anyname.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/anyname`</span><br></pre></td></tr></table></figure>
-<p>以上部分都是：” 域名+空格+绝对路径” 的形式。</p>
-<p>最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录：<br>domain , bbs , anyname 等等，理论上可以无限。</p>
-<p>这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以<br>随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
+          <p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com 其次，在 httpd.conf 中打开 mod_rewrite 之后，在 httpd.conf 的最后，添加以下内容： <code>RewriteEngine on RewriteMap lowercase int:tolower RewriteMap vhost txt:/wp-content/local/etc/apache/vhost.map RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$ RewriteCond ${vhost:%1} ^(/.*)$ RewriteRule ^/(.*)$ %1/$1</code> 其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。 然后，在这个所在路径的目录下创建一个文件： vhost.map 内容为： <code>www.domain.com /wp-content/local/www/data-dist/domain bbs.domain.com /wp-content/local/www/data-dist/bbs anyname.domain.com /wp-content/local/www/data-dist/anyname</code> 以上部分都是：” 域名+空格+绝对路径” 的形式。 最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录： domain , bbs , anyname 等等，理论上可以无限。 这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以 随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
 
       
     </div>

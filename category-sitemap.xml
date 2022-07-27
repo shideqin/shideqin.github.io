@@ -8,15 +8,29 @@
     </url>
 
     <url>
+        <loc>https://phpkoo.com/categories/Linux/Mysql/</loc>
+        <lastmod>2022-07-27T06:50:06.761Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/categories/Linux/</loc>
+        <lastmod>2022-07-27T06:50:06.761Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/categories/LUA/OOP/</loc>
-        <lastmod>2022-07-27T06:46:20.008Z</lastmod>
+        <lastmod>2022-07-27T06:47:27.678Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://phpkoo.com/categories/LUA/</loc>
-        <lastmod>2022-07-27T06:46:20.008Z</lastmod>
+        <lastmod>2022-07-27T06:47:27.678Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -66,13 +80,6 @@
     <url>
         <loc>https://phpkoo.com/categories/OpenSSL/</loc>
         <lastmod>2021-12-22T06:28:27.884Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/categories/Linux/</loc>
-        <lastmod>2021-04-02T08:46:04.979Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -150,13 +157,6 @@
     <url>
         <loc>https://phpkoo.com/categories/Linux/Nginx/</loc>
         <lastmod>2020-02-27T01:02:52.753Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/categories/Linux/Mysql/</loc>
-        <lastmod>2020-02-27T01:02:52.751Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

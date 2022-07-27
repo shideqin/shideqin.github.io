@@ -20,23 +20,24 @@
     var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="nginx想支持openresty的功能，需要安装以下模块及依赖luajit2、lua-resty-core、lua-resty-lrucache、lua-nginx-module、ngx_devel_kit以下5个依赖包必须先下载，另外如果需要同时支持SSL的话，还需要下载openssl依赖包（ssl只需要下载nginx编译时使用）。 一、安装openresty依赖包1、安装luajit2（下载">
+  <meta name="description" content="luaossl 是luacrypto的代替版本，是针对 Lua 5.1、5.2、5.3 和 LuaJIT 的 OpenSSL 综合绑定。是 Lua 世界中最全面的 OpenSSL 绑定。luaosll安装依赖OpenSSL库，所以需要先安装OpenSSL。 一、安装OpenSSL下载好的OpenSSL源码目录下，编译安装OpenSSL（以下均使用默认路径“&#x2F;usr&#x2F;local”进行安装） 1）生成">
 <meta property="og:type" content="article">
-<meta property="og:title" content="centos下原生nginx支持openresty功能">
-<meta property="og:url" content="https://phpkoo.com/posts/ckn0256mx0000qsom1ao57x3i.html">
+<meta property="og:title" content="openssl模块安装luaossl（luacrypto）">
+<meta property="og:url" content="https://phpkoo.com/posts/cl638w6rp009bzwom3yg1ftm3.html">
 <meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="nginx想支持openresty的功能，需要安装以下模块及依赖luajit2、lua-resty-core、lua-resty-lrucache、lua-nginx-module、ngx_devel_kit以下5个依赖包必须先下载，另外如果需要同时支持SSL的话，还需要下载openssl依赖包（ssl只需要下载nginx编译时使用）。 一、安装openresty依赖包1、安装luajit2（下载">
+<meta property="og:description" content="luaossl 是luacrypto的代替版本，是针对 Lua 5.1、5.2、5.3 和 LuaJIT 的 OpenSSL 综合绑定。是 Lua 世界中最全面的 OpenSSL 绑定。luaosll安装依赖OpenSSL库，所以需要先安装OpenSSL。 一、安装OpenSSL下载好的OpenSSL源码目录下，编译安装OpenSSL（以下均使用默认路径“&#x2F;usr&#x2F;local”进行安装） 1）生成">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-04-02T08:02:03.000Z">
-<meta property="article:modified_time" content="2021-04-02T08:46:04.979Z">
+<meta property="article:published_time" content="2022-07-27T01:43:20.000Z">
+<meta property="article:modified_time" content="2022-07-27T06:43:17.560Z">
 <meta property="article:author" content="阿德">
-<meta property="article:tag" content="centos">
-<meta property="article:tag" content="linux">
-<meta property="article:tag" content="nginx">
-<meta property="article:tag" content="openresty">
+<meta property="article:tag" content="lua">
+<meta property="article:tag" content="luaossl">
+<meta property="article:tag" content="luacrypto">
+<meta property="article:tag" content="luarocks">
+<meta property="article:tag" content="OpenSSL">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://phpkoo.com/posts/ckn0256mx0000qsom1ao57x3i.html">
+<link rel="canonical" href="https://phpkoo.com/posts/cl638w6rp009bzwom3yg1ftm3.html">
 
 
 <script id="page-configurations">
@@ -48,7 +49,7 @@
   };
 </script>
 
-  <title>centos下原生nginx支持openresty功能 | 阿德的博客</title>
+  <title>openssl模块安装luaossl（luacrypto） | 阿德的博客</title>
   
 
 
@@ -200,7 +201,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/ckn0256mx0000qsom1ao57x3i.html">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/cl638w6rp009bzwom3yg1ftm3.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -213,7 +214,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          centos下原生nginx支持openresty功能
+          openssl模块安装luaossl（luacrypto）
         </h1>
 
         <div class="post-meta">
@@ -224,7 +225,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-04-02 16:02:03 / 修改时间：16:46:04" itemprop="dateCreated datePublished" datetime="2021-04-02T16:02:03+08:00">2021-04-02</time>
+              <time title="创建时间：2022-07-27 09:43:20 / 修改时间：14:43:17" itemprop="dateCreated datePublished" datetime="2022-07-27T09:43:20+08:00">2022-07-27</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +233,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                  <a href="/categories/LUA/" itemprop="url" rel="index"><span itemprop="name">LUA</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LUA/OpenSSL/" itemprop="url" rel="index"><span itemprop="name">OpenSSL</span></a>
                 </span>
             </span>
 
@@ -247,28 +252,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>nginx想支持openresty的功能，需要安装以下模块及依赖<code>luajit2</code>、<code>lua-resty-core</code>、<code>lua-resty-lrucache</code>、<code>lua-nginx-module</code>、<code>ngx_devel_kit</code>以下5个依赖包必须先下载，另外如果需要同时支持SSL的话，还需要下载<code>openssl</code>依赖包（ssl只需要下载nginx编译时使用）。</p>
-<p>一、安装openresty依赖包<br>1、安装luajit2（下载最新版本）</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/openresty/luajit2/archive/v2.1-20201229.tar.gz</span><br><span class="line">tar -zxvf luajit2-2.1-20201229.tar.gz</span><br><span class="line"><span class="built_in">cd</span> luajit2-2.1-20201229</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line"><span class="comment">#导入环境变量（编译nginx时需要）</span></span><br><span class="line"><span class="built_in">export</span> LUAJIT_LIB=/usr/<span class="built_in">local</span>/lib</span><br><span class="line"><span class="built_in">export</span> LUAJIT_INC=/usr/<span class="built_in">local</span>/include/luajit-2.1</span><br></pre></td></tr></table></figure>
-<p>2、安装lua-resty-core</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/openresty/lua-resty-core/archive/v0.1.21.tar.gz</span><br><span class="line">tar -zxvf lua-resty-core-0.1.21.tar.gz</span><br><span class="line"><span class="built_in">cd</span> lua-resty-core-0.1.21</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<p>3、安装lua-resty-lrucache</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/openresty/lua-resty-lrucache/archive/v0.10.tar.gz</span><br><span class="line">tar -zxvf lua-resty-lrucache-0.10.tar.gz</span><br><span class="line"><span class="built_in">cd</span> lua-resty-lrucache-0.10</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<p>4、解压lua-nginx-module</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/openresty/lua-nginx-module/archive/v0.10.19.tar.gz</span><br><span class="line">tar -zxvf lua-nginx-module-0.10.19.tar.gz</span><br></pre></td></tr></table></figure>
-<p>5、解压ngx_devel_kit</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/vision5/ngx_devel_kit/archive/v0.3.1.tar.gz</span><br><span class="line">tar -zxvf ngx_devel_kit-0.3.1.tar.gz</span><br></pre></td></tr></table></figure>
-<p>6、解压openssl</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.openssl.org/<span class="built_in">source</span>/openssl-1.1.1k.tar.gz</span><br><span class="line">tar -zxvf openssl-1.1.1k.tar.gz</span><br></pre></td></tr></table></figure>
+        <p><a href="https://luarocks.org/modules/daurnimator/luaossl" target="_blank" rel="noopener">luaossl</a> 是<a href="https://luarocks.org/modules/starius/luacrypto" target="_blank" rel="noopener">luacrypto</a>的代替版本，是针对 Lua 5.1、5.2、5.3 和 LuaJIT 的 OpenSSL 综合绑定。是 Lua 世界中最全面的 OpenSSL 绑定。luaosll安装依赖OpenSSL库，所以需要先安装OpenSSL。</p>
+<p><strong>一、安装OpenSSL</strong><br>下载好的OpenSSL源码目录下，编译安装OpenSSL（以下均使用默认路径“/usr/local”进行安装）</p>
+<p>1）生成Makefile文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据编译平台及环境自动生成Makefile文件，可以通过./config --prefix指定安装路径，-Wl,-rpath参数指定OpenSSL运行时依赖libcrypto、libssl库的路径。</span></span><br><span class="line">./config -Wl,-rpath,/usr/<span class="built_in">local</span>/lib</span><br></pre></td></tr></table></figure>
 
-<p>二、编译及安装nginx</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.18.0.tar.gz</span><br><span class="line">tar -zxvf nginx-1.18.0.tar.gz</span><br><span class="line"></span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/nginx \</span><br><span class="line">--with-openssl=/usr/<span class="built_in">local</span>/src/openssl-1.1.1k \</span><br><span class="line">--with-http_ssl_module \</span><br><span class="line">--with-http_stub_status_module \</span><br><span class="line">--with-http_auth_request_module \</span><br><span class="line">--with-http_gzip_static_module \</span><br><span class="line">--with-threads \</span><br><span class="line">--with-stream \</span><br><span class="line">--with-stream_ssl_module \</span><br><span class="line">--with-stream_ssl_preread_module \</span><br><span class="line">--with-http_slice_module \</span><br><span class="line">--with-compat \</span><br><span class="line">--with-file-aio \</span><br><span class="line">--with-http_v2_module \</span><br><span class="line">--with-ld-opt=<span class="string">"-Wl,-rpath,/usr/local/lib"</span> \</span><br><span class="line">--add-module=/usr/<span class="built_in">local</span>/src/ngx_devel_kit-0.3.1 \</span><br><span class="line">--add-module=/usr/<span class="built_in">local</span>/src/lua-nginx-module-0.10.19</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>2）安装OpenSSL</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 
-<p>三、nginx配置</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置openresty模块目录</span></span><br><span class="line">lua_package_path <span class="string">"/usr/local/lib/lua/?.lua;/usr/local/nginx/conf/lua/?.lua;;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定dns解析服务器,实现动态upstream</span></span><br><span class="line">resolver 114.114.114.114 223.5.5.5 1.1.1.1 8.8.8.8 valid=30;</span><br><span class="line">resolver_timeout 5;</span><br></pre></td></tr></table></figure>
+<p>3）查看OpenSSL版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">openssl version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示如下格式内容说明安装成功（本文以安装OpenSSL 1.1.1q为例）</span></span><br><span class="line">OpenSSL 1.1.1q  5 Jul 2022 (Library: OpenSSL 1.1.1k  FIPS 25 Mar 2021)</span><br></pre></td></tr></table></figure>
 
-<p>四、hello openresty(/usr/local/nginx/conf/lua/hello.lua)</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ngx.<span class="built_in">print</span>(<span class="string">"hello openresty!"</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>二、安装luaosll</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">luarocks install luaossl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示如下格式内容说明安装成功</span></span><br><span class="line">Installing https://luarocks.org/luaossl-20220711-0.src.rock</span><br><span class="line"></span><br><span class="line">luaossl 20220711-0 depends on lua (5.1-1 provided by VM)</span><br><span class="line">Applying patch config.h.diff...</span><br><span class="line">Hunk 1 found at offset 2...</span><br><span class="line">gcc -O2 -fPIC -I/usr/<span class="built_in">local</span>/include -c src/openssl.c -o src/openssl.o -D_REENTRANT -D_THREAD_SAFE -DCOMPAT53_PREFIX=luaossl -D_GNU_SOURCE -I/usr/<span class="built_in">local</span>/include -I/usr/<span class="built_in">local</span>/include</span><br><span class="line">gcc -O2 -fPIC -I/usr/<span class="built_in">local</span>/include -c vendor/compat53/c-api/compat-5.3.c -o vendor/compat53/c-api/compat-5.3.o -D_REENTRANT -D_THREAD_SAFE -DCOMPAT53_PREFIX=luaossl -D_GNU_SOURCE -I/usr/<span class="built_in">local</span>/include -I/usr/<span class="built_in">local</span>/include</span><br><span class="line">gcc  -shared -o _openssl.so src/openssl.o vendor/compat53/c-api/compat-5.3.o -L/usr/<span class="built_in">local</span>/lib64 -L/usr/<span class="built_in">local</span>/lib64 -Wl,-rpath,/usr/<span class="built_in">local</span>/lib64 -Wl,-rpath,/usr/<span class="built_in">local</span>/lib64 -lssl -lcrypto -lpthread -lm -ldl</span><br><span class="line">luaossl 20220711-0 is now installed <span class="keyword">in</span> /usr/<span class="built_in">local</span> (license: MIT/X11)</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -277,10 +274,11 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/centos/" rel="tag"># centos</a>
-              <a href="/tags/linux/" rel="tag"># linux</a>
-              <a href="/tags/nginx/" rel="tag"># nginx</a>
-              <a href="/tags/openresty/" rel="tag"># openresty</a>
+              <a href="/tags/lua/" rel="tag"># lua</a>
+              <a href="/tags/luaossl/" rel="tag"># luaossl</a>
+              <a href="/tags/luacrypto/" rel="tag"># luacrypto</a>
+              <a href="/tags/luarocks/" rel="tag"># luarocks</a>
+              <a href="/tags/OpenSSL/" rel="tag"># OpenSSL</a>
           </div>
 
         
@@ -289,12 +287,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/ck8xvytyy00008oom70uuhv82.html" rel="prev" title="使用watch实时查看进程的文件句柄信息">
-      <i class="fa fa-chevron-left"></i> 使用watch实时查看进程的文件句柄信息
+    <a href="/posts/cl638w6p5003pzwoma02q8x3c.html" rel="prev" title="Kubernetes使用KEDA通过Prometheus触发HPA">
+      <i class="fa fa-chevron-left"></i> Kubernetes使用KEDA通过Prometheus触发HPA
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/ckq7gq70d0000t0omgiip0bo0.html" rel="next" title="luarocks安装lua-mongo模块">
-      luarocks安装lua-mongo模块 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/cl638w6rd008jzwomfill6tra.html" rel="next" title="lua利用metatable实现类的继承和多态">
+      lua利用metatable实现类的继承和多态 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
