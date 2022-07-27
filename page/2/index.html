@@ -194,6 +194,205 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/596.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/596.html" class="post-title-link" itemprop="url">怎样增大 Linux 系统的 open file(s) 上限</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-18 08:50:23" itemprop="dateCreated datePublished" datetime="2019-11-18T08:50:23+08:00">2019-11-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近在工作中遇到一个问题，尝试直接将服务运行在高配（40core, 192GB；相比虚拟机来说） 的物理机上，但是发现服务打开的文件句柄达到 80 万左右就不能再开更多了。</p>
+<p>80 万已经是一个不小的值了，通常情况下，Linux 默认的值都很小，例如：Debian 8(jessie) 给普通用户设置的 open file(s) 限制为 65536， 可以通过下面的命令查看当前限制。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n</span><br><span class="line">$ <span class="built_in">ulimit</span> -Sn</span><br><span class="line">$ <span class="built_in">ulimit</span> -Hn</span><br></pre></td></tr></table></figure>
+<p><code>ulimit</code> 是一个 shell（这里使用的是 bash） 内置命令，可以通过 <code>type ulimit</code> 验证。</p>
+<p><code>-n</code> 即表示查看或者设置 open file(s) 的限制，在 ulimit 中，每个限制都有两种类型：</p>
+<ul>
+<li><code>-S</code>, soft limit, 软限制，用户可以上调软限制到硬限制</li>
+<li><code>-H</code>, hard limit, 硬限制，非 root 用户不能修改</li>
+</ul>
+<p>如果没有指明，则同时修改软限制和硬限制。</p>
+<h2 id="修改-ulimit"><a href="#修改-ulimit" class="headerlink" title="修改 ulimit"></a>修改 ulimit</h2><p>修改分为临时修改和永久修改，临时修改只对当前 session 有效，登出和重启后都恢复系统设置。</p>
+<p>临时修改使用 <code>ulimit</code> 命令，以修改 open file(s) 为例。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n 1024000</span><br><span class="line">$ <span class="built_in">ulimit</span> -n</span><br><span class="line">1024000</span><br></pre></td></tr></table></figure>
+<p>永久修改需要修改 <code>/etc/security/limits.conf</code> 或者在 <code>/etc/security/limits.d/</code> 目录下添加一个文件。具体格式参考 <code>/etc/security/limits.conf</code>，里面有详细说明。</p>
+<h2 id="open-file-s-上限"><a href="#open-file-s-上限" class="headerlink" title="open file(s) 上限"></a>open file(s) 上限</h2><p>回到遇到的问题中来：服务打开 80 万个左右的文件句柄就不能再打开了。所以， 尝试将 ulimit 设置为 1000 万，结果提示出错：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n 10000000</span><br><span class="line">-bash: <span class="built_in">ulimit</span>: open files: cannot modify <span class="built_in">limit</span>: Operation not permitted</span><br></pre></td></tr></table></figure>
+<p>注意，使用的可以 root 用户，居然没有权限，然后尝试降低到：</p>
+<ul>
+<li>500 万，依然错误</li>
+<li>300 万，依然错误</li>
+<li>200 万，依然错误</li>
+<li>100 万，成功了</li>
+</ul>
+<p>显然，这里有一个上限，大概在 100-200 万之间。</p>
+<p>所以，解决问题的办法，在于怎样提高这个上限！</p>
+<p>通过一番搜索，发现 open file(s) kernel 级别有 2 个配置，分别是：</p>
+<p>fs.nr_open，进程级别<br>fs.file-max，系统级别</p>
+<p><code>fs.nr_open</code> 默认设置的上限是 1048576，所以用户的 open file(s) 不可能超过这个上限。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sysctl -w fs.nr_open=10000000</span><br><span class="line">$ <span class="built_in">ulimit</span> -n 10000000</span><br><span class="line">$ <span class="built_in">ulimit</span> -n</span><br><span class="line">10000000</span><br></pre></td></tr></table></figure>
+<p>修改后即可设置更大的 open file(s) 了。</p>
+<p>同样，对于 kernel 参数的修改，<code>sysctl</code> 命令修改的是当前运行时，如果需要永久修改， 则将配置添加到 <code>/etc/sysctl.conf</code> 中，例如：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">"fs.nr_open = 10000000"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">"fs.file-max = 11000000"</span> &gt;&gt; /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+<p>注意：<code>fs.nr_open</code> 总是应该小于等于 <code>fs.file-max</code>。</p>
+<p>如果要查看当前打开的文件数，使用下面的命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sysctl fs.file-nr</span><br><span class="line">$ fs.file-nr = 1760       0       11000000</span><br></pre></td></tr></table></figure>
+<p>不过，增大这些值意味着能够打开更多的文件（在 Linux 中，everything is file，包括 socket），但是同时也意味着消耗更多的资源，所以基本上在物理机上才会遇到这种问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/580.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/580.html" class="post-title-link" itemprop="url">golang mod使用私有仓库相关事项</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-12 21:48:57" itemprop="dateCreated datePublished" datetime="2019-10-12T21:48:57+08:00">2019-10-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GoLang/" itemprop="url" rel="index"><span itemprop="name">GoLang</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一、Go get命令出现terminal prompts disabled解决</p>
+<p>原因go get disable “terminal prompt” by default（Go get 命令默认禁用terminal prompt，即终端提示）</p>
+<p>解决方案</p>
+<p>设置环境变量：<code>GIT_TERMINAL_PROMPT=1</code>， 可以把上面的命令写到 <code>.bashrc</code> 或 <code>.bash_profile</code> 文件当中。</p>
+<p>二、一键解决 go get golang.org/x 包失败</p>
+<p>当我们使用 <code>go get</code>、<code>go install</code>、<code>go mod</code> 等命令时，会自动下载相应的包或依赖包。但由于众所周知的原因，类似于 <code>golang.org/x/...</code> 的包会出现下载失败的情况。如下所示：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ go get -u golang.org/x/sys  </span><br><span class="line">  </span><br><span class="line">go get golang.org/x/sys: unrecognized import path <span class="string">"golang.org/x/sys"</span> (https fetch: Get https://golang.org/x/sys?go-get=1: dial tcp 216.239.37.1:443: i/o timeout)</span><br></pre></td></tr></table></figure>
+<p>我们可以通过设置GOPROXY 环境变量来解决，我们知道从 <code>Go 1.11</code> 版本开始，官方支持了 <code>go module</code> 包依赖管理工具。其实还新增了 <code>GOPROXY</code> 环境变量。</p>
+<p>解决方案</p>
+<p>设置环境变量：<code>GOPROXY=https://goproxy.io</code>， 可以把上面的命令写到 <code>.bashrc</code> 或 <code>.bash_profile</code> 文件当中。</p>
+<p>三、总结</p>
+<p>解决 terminal prompts disabled</p>
+<p><code>export GIT_TERMINAL_PROMPT=1</code></p>
+<p>解决 go get golang.org/x 包失败</p>
+<p><code>export GOPROXY=https://goproxy.io</code></p>
+<p>启用 Go Modules 功能</p>
+<p><code>export GO111MODULE=on</code></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/564.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -899,200 +1098,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/454.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/454.html" class="post-title-link" itemprop="url">MySQL: libmysqlclient.so.20: cannot open shared object file解决方法</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-04-28 17:06:00" itemprop="dateCreated datePublished" datetime="2018-04-28T17:06:00+08:00">2018-04-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>import MySQLdb的时候报错“ImportError: libmysqlclient.so.20: cannot open shared object file: No such file or directory”</p>
-<p>解决方法：<br>找到libmysqlclient.so.20,一般都在mysql安装目录/lib库里，做个软链接即可。</p>
-<p>######64为系统</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/mysql/lib/libmysqlclient.so.20 /usr/lib64/libmysqlclient.so.20</span><br></pre></td></tr></table></figure>
-<p>######32位系统</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/mysql/lib/libmysqlclient.so.20 /usr/lib/libmysqlclient.so.20</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/425.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/425.html" class="post-title-link" itemprop="url">nginx配置ssl及优化</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-04-20 18:41:27" itemprop="dateCreated datePublished" datetime="2018-04-20T18:41:27+08:00">2018-04-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>https是一种超文本传输安全协议，主要是用SSL/TLS来加密数据包，以达到数据加密传输的作用，同时也能一定程度达到防劫持的效果。</p>
-<p><strong>隐藏不必要的信息</strong><br>细心的朋友会发现，请求响应头，有这么一行 server: nginx，说明我用的是 Nginx 服务器，但并没有具体的版本号。由于某些 Nginx 漏洞只存在于特定的版本，隐藏版本号可以提高安全性。这只需要在配置里加上这个就可以了：</p>
-<p><code>server_tokens  off;</code></p>
-<p>另外，一些 WEB 语言或框架默认输出的 x-powered-by 也会泄露网站信息，他们一般都提供了修改或移除的方法，可以自行查看手册。如果部署上用到了 Nginx 的反向代理，也可以通过 proxy_hide_header 指令隐藏它：</p>
-<p><code>proxy_hide_header  X-Powered-By;</code></p>
-<p><strong>禁用非必要的方法</strong><br>一般情况下，只需要处理 GET、POST 两种请求方法，而 HTTP/1 协议还规定了 TRACE 这样的方法用于网络诊断，这也可能会暴露一些信息。所以我针对 GET、POST 以及 HEAD 之外的请求，直接返回了 444 状态码（444 是 Nginx 定义的响应状态码，会立即断开连接，没有响应正文）。具体配置是这样的：</p>
-<p>if ($request_method !~ ^(GET|HEAD|POST)$ ) {<br>    return    444;<br>}</p>
-<p><strong>合理配置响应头</strong></p>
-<p>#####减少点击劫持<br>add_header X-Frame-Options DENY;</p>
-<p>#####禁止服务器自动解析资源类型<br>add_header X-Content-Type-Options nosniff;</p>
-<p>#####防XSS攻击<br>add_header X-XSS-Protection “1; mode=block”;</p>
-<p>#####HSTS策略<br>add_header Strict-Transport-Security “max-age=31536000; includeSubDomains; preload” always;</p>
-<p><code>X-Frame-Options</code> 用来指定此网页是否允许被 iframe 嵌套，deny 就是不允许任何嵌套发生。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/X-Frame-Options" target="_blank" rel="noopener">这部分内容更多信息</a>。<br><code>X-Content-Type-Options</code> 用来指定浏览器对未指定或错误指定 Content-Type 资源真正类型的猜测行为，nosniff 表示不允许任何猜测。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Content-Type-Options" target="_blank" rel="noopener">这部分内容更多信息</a>。<br><code>X-XSS-Protection</code> 这个响应头是用来防范XSS的。最早我是在介绍IE8的文章里看到这个，现在主流浏览器都支持，并且默认都开启了XSS保护，用这个header可以关闭它。它有几种配置：<br>0：禁用XSS保护；<br>1：启用XSS保护；<br>1; mode=block：启用XSS保护，并在检查到XSS攻击时，停止渲染页面（例如IE8中，检查到攻击时，整个页面会被一个#替换）；<br>浏览器提供的XSS保护机制并不完美，但是开启后仍然可以提升攻击难度，总之没有特别的理由，不要关闭它。<br><code>Strict-Transport-Security</code>（简称为 HSTS）可以告诉浏览器，在指定的 max-age 内，始终通过 HTTPS 访问我的博客。即使用户自己输入 HTTP 的地址，或者点击了 HTTP 链接，浏览器也会在本地替换为 HTTPS 再发送请求。另外由于我的证书不支持多域名，我没有加上 includeSubDomains。关于 <a href="https://www.nginx.com/blog/http-strict-transport-security-hsts-and-nginx/" target="_blank" rel="noopener">HSTS</a> 更多信息。</p>
-<p><strong>HTTPS 安全配置</strong><br>启用 HTTPS 并正确配置了证书，意味着数据传输过程中无法被第三者解密或修改。有了 HTTPS，也得合理配置好 Web Server，才能发挥最大价值。关于 HTTPS 这一块有以下配置：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">worker_processes auto;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#配置会话超时时间</span></span><br><span class="line">    ssl_session_timeout  10m;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#配置共享会话缓存大小，视站点访问情况设定</span></span><br><span class="line">    ssl_session_cache shared:SSL:10m;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen      443 ssl;</span><br><span class="line">        server_name www.example.com;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#设置长连接</span></span><br><span class="line">        keepalive_timeout 70;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#开启HTTPS协议（推荐使用listen指令的ssl参数来代替这个指令）</span></span><br><span class="line">        <span class="comment">#ssl on;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#证书文件</span></span><br><span class="line">        ssl_certificate www.example.com.crt;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#私钥文件</span></span><br><span class="line">        ssl_certificate_key www.example.com.key;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#使用DH文件</span></span><br><span class="line">        ssl_dhparam /etc/ssl/certs/dhparam.pem;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#版本选择</span></span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#定义算法</span></span><br><span class="line">        ssl_ciphers EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#优先采取服务器算法</span></span><br><span class="line">        ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#减少点击劫持</span></span><br><span class="line">        add_header X-Frame-Options DENY;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#禁止服务器自动解析资源类型</span></span><br><span class="line">        add_header X-Content-Type-Options nosniff;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#防XSS攻击</span></span><br><span class="line">        add_header X-XSS-Protection <span class="string">"1; mode=block"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#HSTS策略</span></span><br><span class="line">        add_header Strict-Transport-Security <span class="string">"max-age=31536000;"</span> always;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="https://upload.phpkoo.com/uploads/2018/04/ssllabs_20180422092149-1.png" target="_blank" rel="noopener"><img src="https://upload.phpkoo.com/uploads/2018/04/ssllabs_20180422092149-1.png" alt=""></a></p>
-<p>最终效果在 <a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="noopener">ssllabs</a> 中测试结果如下。  </p>
-<p>如何配置 ssl_ciphers 可以参考<a href="https://cipherli.st/" target="_blank" rel="noopener">这个网站</a>。需要注意的是，这个网站默认提供的加密方式安全性较高，一些低版本客户端并不支持，例如 IE9-、Android2.2- 和 Java6-。如果需要支持这些老旧的客户端，需要点一下网站上的「Yes, give me a ciphersuite that works with legacy / old software」链接，同时也可以使用 <a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="noopener">Mozilla 基金会</a> 来生成配置。</p>
-<p><img src="https://upload.phpkoo.com/uploads/2018/04/chacha.png.webp_.jpg" alt=""></p>
-<p>另外 ssl_ciphers 还支持 CHACHA20 加密套件，只要 Nginx 编译时增加了 CHACHA20_POLY1305 加密算法即可，这是由 Google 开发的新一代加密方式，它有两方面优势：更好的安全性和更好的性能（尤其是在移动和可穿戴设备上）。下面有一张移动平台上它与 AES-GCM 的加密速度对比图（via）：  </p>
-<p>启用 CHACHA20_POLY1305 最简单的方法是在编译 Nginx 时，使用 LibreSSL 代替 OpenSSL。用 Chrome 访问网站时，点击地址栏小锁显示的信息，可以看到加密方式使用的是不是 CHACHA20_POLY1305。<br>关于 CHACHA20_POLY1305 安全性和性能的详细介绍可以<a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography/" target="_blank" rel="noopener">查看本文</a>。</p>
-<p>补充：<br>1.使用 CHACHA20_POLY1305 的最佳实践是「仅针对不支持 AES-NI 的终端使用 CHACHA20 算法，否则使用 AES-GCM」。</p>
-<p>2.我们通过 openssl 工具看一下 ssl_ciphers 具体包含哪些 Cipher Suites 例如：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">openssl ciphers -V <span class="string">'EECDH+AES128'</span> | column -t</span><br><span class="line"></span><br><span class="line">0xC0,0x2F  -  ECDHE-RSA-AES128-GCM-SHA256    TLSv1.2  Kx=ECDH  Au=RSA    Enc=AESGCM(128)  Mac=AEAD</span><br><span class="line">0xC0,0x2B  -  ECDHE-ECDSA-AES128-GCM-SHA256  TLSv1.2  Kx=ECDH  Au=ECDSA  Enc=AESGCM(128)  Mac=AEAD</span><br><span class="line">0xC0,0x27  -  ECDHE-RSA-AES128-SHA256        TLSv1.2  Kx=ECDH  Au=RSA    Enc=AES(128)     Mac=SHA256</span><br><span class="line">0xC0,0x23  -  ECDHE-ECDSA-AES128-SHA256      TLSv1.2  Kx=ECDH  Au=ECDSA  Enc=AES(128)     Mac=SHA256</span><br><span class="line">0xC0,0x13  -  ECDHE-RSA-AES128-SHA           SSLv3    Kx=ECDH  Au=RSA    Enc=AES(128)     Mac=SHA1</span><br><span class="line">0xC0,0x09  -  ECDHE-ECDSA-AES128-SHA         SSLv3    Kx=ECDH  Au=ECDSA  Enc=AES(128)     Mac=SHA1</span><br></pre></td></tr></table></figure>
-<p><strong>加强 HTTPS 安全性</strong><br>HTTPS 基础配置采取的默认加密算法是 SHA-1，这个算法非常脆弱，安全性在逐年降低，在 2014 年的时候， Google 官方博客就宣布在 Chrome 浏览器中逐渐降低 SHA-1 证书的安全指示，会从 2015 年起使用 SHA-2 签名的证书，可参阅 <a href="http://www.freebuf.com/author/rabbit_run" target="_blank" rel="noopener">Rabbit_Run</a> 在 2014 年发表的文章：<a href="http://www.freebuf.com/news/topnews/44288.html" target="_blank" rel="noopener">《为什么Google急着杀死加密算法SHA-1》</a></p>
-<p>为此，主流的 HTTPS 配置方案应该避免 SHA-1，可以使用 <a href="https://zh.wikipedia.org/wiki/%E8%BF%AA%E8%8F%B2-%E8%B5%AB%E7%88%BE%E6%9B%BC%E5%AF%86%E9%91%B0%E4%BA%A4%E6%8F%9B" target="_blank" rel="noopener">迪菲-赫尔曼密钥交换（D-H，Diffie–Hellman key exchange）</a>方案。</p>
-<p>首先在目录 /etc/ssl/certs 运行以下代码生成 dhparam.pem 文件：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl dhparam -out dhparam.pem 2048</span><br></pre></td></tr></table></figure>
-<p>关于 ssl_dhparam 的配置，可以参考这篇文章：<a href="https://weakdh.org/sysadmin.html" target="_blank" rel="noopener">Guide to Deploying Diffie-Hellman for TLS</a>。</p>
-<p>SSLv3 已被证实不安全，所以在 ssl_protocols 指令中，我并没有包含它。<br>将 ssl_prefer_server_ciphers 配置为 on，可以确保在 TLSv1 握手时，使用服务端的配置项，以增强安全性。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1158,20 +1168,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">121</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">183</span>
+        <span class="site-state-item-count">187</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>lua利用metatable实现类的继承和多态</title>
+    <url>/posts/cl638q6pn00008kom477a3hku.html</url>
+    <content><![CDATA[<p>在lua原生语法特性中是不具备面向对象设计的特性。因此，要想在lua上像其他高级语言一样使用面向对象的设计方法，就需要使用原生的元表(metatable)来模拟面向对象设计。</p>
+<p><strong>一、元表setmetatable</strong><br>对指定 table 设置元表(metatable)，如果元表(metatable)中存在 __metatable 键值，setmetatable 会失败。</p>
+<p>以下实例演示了如何对指定的表设置元表：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">mytable = &#123;&#125;                          <span class="comment">-- 普通表</span></span><br><span class="line">mymetatable = &#123;&#125;                      <span class="comment">-- 元表</span></span><br><span class="line"><span class="built_in">setmetatable</span>(mytable,mymetatable)     <span class="comment">-- 把 mymetatable 设为 mytable 的元表</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>二、元表__index 元方法</strong><br>这是 metatable 最常用的键。<br>当你通过键来访问 table 的时候，如果这个键没有值，那么Lua就会寻找该table的metatable（假定有metatable）中的<strong>index 键。如果</strong>index包含一个表格，Lua会在表格中查找相应的键。</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line">other = &#123; foo = <span class="number">3</span> &#125;</span><br><span class="line">t = <span class="built_in">setmetatable</span>(&#123;&#125;, &#123; <span class="built_in">__index</span> = other &#125;)</span><br><span class="line"><span class="built_in">print</span>(t.foo)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(t.bar)</span><br><span class="line"><span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>三、使用metatable实现继承</strong></p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="keyword">local</span> _M = &#123;</span><br><span class="line">        version = <span class="string">'lua 1.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> parent = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parent.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, parent)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>四、使用metatable实现重载和多态</strong></p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><span class="line"><span class="keyword">local</span> _M = &#123;</span><br><span class="line">        version = <span class="string">'lua 1.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> parent = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parent.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, parent)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> _M2 = parent.new()</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> child = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">child.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, child)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 重载echo方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M2:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M2:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test = parent.new()</span><br><span class="line">test:echo()</span><br><span class="line"></span><br><span class="line">test = child.new()</span><br><span class="line">test:echo()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LUA</category>
+        <category>OOP</category>
+      </categories>
+      <tags>
+        <tag>lua</tag>
+        <tag>面向对象</tag>
+        <tag>metatable</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>openssl模块安装luaossl（luacrypto）</title>
+    <url>/posts/cl638q6rx00098kombnsob49i.html</url>
+    <content><![CDATA[<p><a href="https://luarocks.org/modules/daurnimator/luaossl" target="_blank" rel="noopener">luaossl</a> 是<a href="https://luarocks.org/modules/starius/luacrypto" target="_blank" rel="noopener">luacrypto</a>的代替版本，是针对 Lua 5.1、5.2、5.3 和 LuaJIT 的 OpenSSL 综合绑定。是 Lua 世界中最全面的 OpenSSL 绑定。luaosll安装依赖OpenSSL库，所以需要先安装OpenSSL。</p>
+<p><strong>一、安装OpenSSL</strong><br>下载好的OpenSSL源码目录下，编译安装OpenSSL（以下均使用默认路径“/usr/local”进行安装）</p>
+<p>1）生成Makefile文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 根据编译平台及环境自动生成Makefile文件，可以通过./config --prefix指定安装路径，-Wl,-rpath参数指定OpenSSL运行时依赖libcrypto、libssl库的路径。</span></span><br><span class="line">./config -Wl,-rpath,/usr/<span class="built_in">local</span>/lib</span><br></pre></td></tr></table></figure>
+
+<p>2）安装OpenSSL</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>3）查看OpenSSL版本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示如下格式内容说明安装成功（本文以安装OpenSSL 1.1.1q为例）</span></span><br><span class="line">OpenSSL 1.1.1q  5 Jul 2022 (Library: OpenSSL 1.1.1k  FIPS 25 Mar 2021)</span><br></pre></td></tr></table></figure>
+
+<p><strong>二、安装luaosll</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">luarocks install luaossl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示如下格式内容说明安装成功</span></span><br><span class="line">Installing https://luarocks.org/luaossl-20220711-0.src.rock</span><br><span class="line"></span><br><span class="line">luaossl 20220711-0 depends on lua (5.1-1 provided by VM)</span><br><span class="line">Applying patch config.h.diff...</span><br><span class="line">Hunk 1 found at offset 2...</span><br><span class="line">gcc -O2 -fPIC -I/usr/<span class="built_in">local</span>/include -c src/openssl.c -o src/openssl.o -D_REENTRANT -D_THREAD_SAFE -DCOMPAT53_PREFIX=luaossl -D_GNU_SOURCE -I/usr/<span class="built_in">local</span>/include -I/usr/<span class="built_in">local</span>/include</span><br><span class="line">gcc -O2 -fPIC -I/usr/<span class="built_in">local</span>/include -c vendor/compat53/c-api/compat-5.3.c -o vendor/compat53/c-api/compat-5.3.o -D_REENTRANT -D_THREAD_SAFE -DCOMPAT53_PREFIX=luaossl -D_GNU_SOURCE -I/usr/<span class="built_in">local</span>/include -I/usr/<span class="built_in">local</span>/include</span><br><span class="line">gcc  -shared -o _openssl.so src/openssl.o vendor/compat53/c-api/compat-5.3.o -L/usr/<span class="built_in">local</span>/lib64 -L/usr/<span class="built_in">local</span>/lib64 -Wl,-rpath,/usr/<span class="built_in">local</span>/lib64 -Wl,-rpath,/usr/<span class="built_in">local</span>/lib64 -lssl -lcrypto -lpthread -lm -ldl</span><br><span class="line">luaossl 20220711-0 is now installed <span class="keyword">in</span> /usr/<span class="built_in">local</span> (license: MIT/X11)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>LUA</category>
+        <category>OpenSSL</category>
+      </categories>
+      <tags>
+        <tag>lua</tag>
+        <tag>OpenSSL</tag>
+        <tag>luaossl</tag>
+        <tag>luacrypto</tag>
+        <tag>luarocks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kubernetes使用KEDA通过Prometheus触发HPA</title>
     <url>/posts/cl3we9rqj0000n8omesxvgnom.html</url>
     <content><![CDATA[<p><a href="https://keda.sh/" target="_blank" rel="noopener">KEDA</a> 是一个基于 Kubernetes 的事件驱动自动缩放器。使用 KEDA，您可以根据需要处理的事件数量来驱动 Kubernetes 中任何容器的扩展。KEDA可以支持很多自定义事件源，如：Mysql、MongoDB、Redis、ActiveMQ、Kafka、Prometheus、Metrics API等。本文使用nginx中的stub_status数据 + Prometheus为事件源进行KEDA HPA配置。</p>
@@ -772,7 +828,6 @@
         <tag>golang</tag>
         <tag>go</tag>
         <tag>build</tag>
-        <tag>gola</tag>
       </tags>
   </entry>
   <entry>

@@ -194,6 +194,195 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/154.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/154.html" class="post-title-link" itemprop="url">Centos安装golang环境</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-08-11 22:40:11" itemprop="dateCreated datePublished" datetime="2015-08-11T22:40:11+08:00">2015-08-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GoLang/" itemprop="url" rel="index"><span itemprop="name">GoLang</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在国内镜像下载二进制包  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.golangtc.com/static/go/go1.4.2.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>直接解压到目标目录即可</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -C /usr/<span class="built_in">local</span> -zxvf go1.4.2.linux-amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<p>把golang的bin目录加入全局环境变量  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; /etc/profile &lt;&lt; EOF  </span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/go/bin  </span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>让配置生效  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<p>检查下是否成功  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go version</span><br></pre></td></tr></table></figure>
+<p>在当前用户目录下新建go目录作为项目目录  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p <span class="variable">$HOME</span>/go</span><br></pre></td></tr></table></figure>
+<p>用cat的方法在尾部增加配置配置golang的 GOROOT GOPATH  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; <span class="variable">$HOME</span>/.bash_profile &lt;&lt; EOF  </span><br><span class="line"><span class="built_in">export</span> GOROOT=/usr/<span class="built_in">local</span>/go  </span><br><span class="line"><span class="built_in">export</span> GOPATH=<span class="variable">$HOME</span>/go  </span><br><span class="line"><span class="built_in">export</span> GOBIN=<span class="variable">$HOME</span>/go/bin  </span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOROOT</span>/bin</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>让配置生效  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> <span class="variable">$HOME</span>/.bash_profile</span><br></pre></td></tr></table></figure>
+<p>检查下go的env环境变量  </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go env</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/145.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/145.html" class="post-title-link" itemprop="url">python Image Library安装体验</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2015-08-01 22:55:06" itemprop="dateCreated datePublished" datetime="2015-08-01T22:55:06+08:00">2015-08-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>PIL是python理想的图片处理module，没安装该模块时会提示：ImportError: No module named Image，以下是PIL安装的依赖和步骤</p>
+<p>我的环境：CentOS 6.5 / Python2.7</p>
+<p><strong>第一步：安装zlib png</strong> <strong>freetype</strong> **  jpeg**</p>
+<p>安装zlib：<a href="http://zlib.net/zlib-1.2.8.tar.gz" target="_blank" rel="noopener">http://zlib.net/zlib-1.2.8.tar.gz</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf zlib-1.2.8.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> zlib-1.2.8</span><br><span class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span></span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<p>安装png：<a href="ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng15/libpng-1.5.23.tar.gz" target="_blank" rel="noopener">ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng15/libpng-1.5.23.tar.gz</a> (如果文件不存在就浏览 /src/目录查找一下最新版)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf libpng-1.5.23.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> libpng-1.5.23</span><br><span class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span></span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<p>安装freetype：<a href="http://nchc.dl.sourceforge.net/project/freetype/freetype2/2.4.7/freetype-2.4.7.tar.gz" target="_blank" rel="noopener">http://nchc.dl.sourceforge.net/project/freetype/freetype2/2.4.7/freetype-2.4.7.tar.gz</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf freetype-2.4.7.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> freetype-2.4.7/</span><br><span class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span></span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<p>安装jpeg：<a href="http://www.ijg.org/files/jpegsrc.v8c.tar.gz" target="_blank" rel="noopener">http://www.ijg.org/files/jpegsrc.v8c.tar.gz</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf jpegsrc.v8c.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> jpeg-8c/</span><br><span class="line">$ ./configure --prefix=/usr/<span class="built_in">local</span></span><br><span class="line">$ make</span><br><span class="line">$ make install</span><br></pre></td></tr></table></figure>
+<p><strong>第二步：安装需要的 devel库（该步视情况可忽略）</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ yum install libjpeg8-dev</span><br><span class="line">$ yum install libpng12-dev</span><br><span class="line">$ yum install libfreetype6-dev</span><br><span class="line">$ yum install zlib1g-dev</span><br></pre></td></tr></table></figure>
+<p><strong>第三步：安装 PIL（ Python Imaging Library</strong> <strong>）</strong></p>
+<p>安装Image Library：<a href="http://effbot.org/downloads/Imaging-1.1.7.tar.gz" target="_blank" rel="noopener">http://effbot.org/downloads/Imaging-1.1.7.tar.gz</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ tar -xvzf Imaging-1.1.7.tar.gz</span><br><span class="line">$ <span class="built_in">cd</span> Imaging-1.1.7/</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改setup.py文件</span></span><br><span class="line">vi setup.py</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改如下：</span></span><br><span class="line">JPEG_ROOT = <span class="string">"/usr/local/lib"</span></span><br><span class="line">ZLIB_ROOT = <span class="string">"/usr/local/lib"</span></span><br><span class="line">FREETYPE_ROOT = <span class="string">"/usr/local/lib"</span></span><br></pre></td></tr></table></figure>
+<p>检查是否支持</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ python setup.py build_ext -i</span><br><span class="line"></span><br><span class="line"> running build_ext</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">PIL 1.1.7 SETUP SUMMARY</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">version       1.1.7</span><br><span class="line">platform      linux2 2.7.8 (default, Sep  5 2014, 10:24:17)</span><br><span class="line">              [GCC 4.4.7 20120313 (Red Hat 4.4.7-4)]</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">*** TKINTER support not available</span><br><span class="line">--- JPEG support available</span><br><span class="line">--- ZLIB (PNG/ZIP) support available</span><br><span class="line">--- FREETYPE2 support available</span><br><span class="line">*** LITTLECMS support not available</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">To add a missing option, make sure you have the required</span><br><span class="line">library, and <span class="built_in">set</span> the corresponding ROOT variable <span class="keyword">in</span> the</span><br><span class="line">setup.py script.</span><br><span class="line"></span><br><span class="line">To check the build, run the selftest.py script.</span><br></pre></td></tr></table></figure>
+<p>开始安装Image Library</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python setup.py build</span><br><span class="line">$ python setup.py install</span><br></pre></td></tr></table></figure>
+<p>Python代码验证</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python selftest.py</span><br><span class="line">*** The _imaging C module is not installed</span><br></pre></td></tr></table></figure>
+<p>ps:<br>运行python selftest.py提示The _imaging C module is not installed</p>
+<p>解决方法，实际根据自己的python PIL路径设置</p>
+<p>$ echo ‘/usr/local/lib/python2.7/site-packages/PIL’ &gt;&gt; /etc/ld.so.conf<br>$ ldconfig</p>
+<p>重新python selftest.py，一路安装完成。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/142.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -861,183 +1050,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/108.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/108.html" class="post-title-link" itemprop="url">CentOS6.3升级Python到2.7.3版本</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2013-09-10 17:55:20" itemprop="dateCreated datePublished" datetime="2013-09-10T17:55:20+08:00">2013-09-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>查看python的版本</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python -V</span><br><span class="line">Python 2.6.6</span><br></pre></td></tr></table></figure>
-<p>1.下载Python-2.7.3</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://python.org/ftp/python/2.7.3/Python-2.7.3.tar.bz2</span><br></pre></td></tr></table></figure>
-<p>2.解压Python-2.7.3</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -jxvf Python-2.7.3.tar.bz2</span><br></pre></td></tr></table></figure>
-<p>3.进入刚解压后的文件夹(可使用命令)</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> Python-2.7.3</span><br></pre></td></tr></table></figure>
-<p>4.安装</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make all</span><br><span class="line">make install</span><br><span class="line">make clean</span><br><span class="line">make distclean</span><br></pre></td></tr></table></figure>
-<p>5.查看版本信息</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/wp-content/<span class="built_in">local</span>/bin/python2.7 -V</span><br></pre></td></tr></table></figure>
-<p>6.建立软连接，使系统默认的python指向python2.7<br>正常情况下即使python2.7安装成功后，系统默认指向的python仍然是2.6.6版本，考虑到yum是基于python2.6.6才能正常工作，不敢轻易卸载。</p>
-<p>如何实现将系统默认的python指向到2.7版本呢？</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv /wp-content/bin/python /wp-content/bin/python2.6.6</span><br><span class="line">ln -s /wp-content/<span class="built_in">local</span>/bin/python2.7 /wp-content/bin/python</span><br></pre></td></tr></table></figure>
-<p>检验python指向是否成功</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -V</span><br></pre></td></tr></table></figure>
-<p>7.解决系统python软链接指向python2.7版本后，yum不能正常工作</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /wp-content/bin/yum</span><br><span class="line">将文件头部的</span><br><span class="line"><span class="comment">#!/wp-content/bin/python</span></span><br><span class="line">改成</span><br><span class="line"><span class="comment">#!/wp-content/bin/python2.6.6</span></span><br></pre></td></tr></table></figure>
-<p>整个升级过程完成，可以使用Python2.7.3版本了。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/107.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/107.html" class="post-title-link" itemprop="url">Centos 测试硬盘读写速度</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2013-06-17 14:11:50" itemprop="dateCreated datePublished" datetime="2013-06-17T14:11:50+08:00">2013-06-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>time有计时作用，dd用于复制，从if读出，写到of。if=/dev/zero不产生IO，因此可以用来测试纯写速度。同理of=/dev/null不产生IO，可以用来测试纯读速度。bs是每次读或写的大小，即一个块的大小，count是读写块的数量。</p>
-<p>1.测/目录所在磁盘的纯写速度：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=/dev/zero of=1Gb.file bs=1k count=1000000</span><br><span class="line">time sh -c <span class="string">"dd if=/dev/zero of=1Gb.file bs=1k count=1000000; sync"</span></span><br></pre></td></tr></table></figure>
-<p>2.测/目录所在磁盘的纯读速度：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=1Gb.file bs=64k |dd of=/dev/null</span><br><span class="line">time sh -c <span class="string">"dd if=1Gb.file bs=64k |dd of=/dev/null; sync"</span></span><br></pre></td></tr></table></figure>
-<p>3.测读写速度：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=1Gb.file of=2Gb.file bs=64k</span><br><span class="line">time sh -c <span class="string">"dd if=1Gb.file of=2Gb.file bs=64k; sync"</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1103,20 +1120,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">121</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">183</span>
+        <span class="site-state-item-count">187</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

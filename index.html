@@ -194,6 +194,174 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/cl638q6pn00008kom477a3hku.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/cl638q6pn00008kom477a3hku.html" class="post-title-link" itemprop="url">lua利用metatable实现类的继承和多态</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-27 13:47:09 / 修改时间：14:39:38" itemprop="dateCreated datePublished" datetime="2022-07-27T13:47:09+08:00">2022-07-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LUA/" itemprop="url" rel="index"><span itemprop="name">LUA</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LUA/OOP/" itemprop="url" rel="index"><span itemprop="name">OOP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在lua原生语法特性中是不具备面向对象设计的特性。因此，要想在lua上像其他高级语言一样使用面向对象的设计方法，就需要使用原生的元表(metatable)来模拟面向对象设计。</p>
+<p><strong>一、元表setmetatable</strong><br>对指定 table 设置元表(metatable)，如果元表(metatable)中存在 __metatable 键值，setmetatable 会失败。</p>
+<p>以下实例演示了如何对指定的表设置元表：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mytable = &#123;&#125;                          <span class="comment">-- 普通表</span></span><br><span class="line">mymetatable = &#123;&#125;                      <span class="comment">-- 元表</span></span><br><span class="line"><span class="built_in">setmetatable</span>(mytable,mymetatable)     <span class="comment">-- 把 mymetatable 设为 mytable 的元表</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>二、元表__index 元方法</strong><br>这是 metatable 最常用的键。<br>当你通过键来访问 table 的时候，如果这个键没有值，那么Lua就会寻找该table的metatable（假定有metatable）中的<strong>index 键。如果</strong>index包含一个表格，Lua会在表格中查找相应的键。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">other = &#123; foo = <span class="number">3</span> &#125;</span><br><span class="line">t = <span class="built_in">setmetatable</span>(&#123;&#125;, &#123; <span class="built_in">__index</span> = other &#125;)</span><br><span class="line"><span class="built_in">print</span>(t.foo)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(t.bar)</span><br><span class="line"><span class="literal">nil</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>三、使用metatable实现继承</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> _M = &#123;</span><br><span class="line">        version = <span class="string">'lua 1.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> parent = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parent.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, parent)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>四、使用metatable实现重载和多态</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> _M = &#123;</span><br><span class="line">        version = <span class="string">'lua 1.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> parent = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parent.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, parent)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> _M2 = parent.new()</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> child = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">child.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, child)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 重载echo方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M2:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M2:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test = parent.new()</span><br><span class="line">test:echo()</span><br><span class="line"></span><br><span class="line">test = child.new()</span><br><span class="line">test:echo()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/cl638q6rx00098kombnsob49i.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/cl638q6rx00098kombnsob49i.html" class="post-title-link" itemprop="url">openssl模块安装luaossl（luacrypto）</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-27 09:43:20 / 修改时间：13:47:43" itemprop="dateCreated datePublished" datetime="2022-07-27T09:43:20+08:00">2022-07-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LUA/" itemprop="url" rel="index"><span itemprop="name">LUA</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LUA/OpenSSL/" itemprop="url" rel="index"><span itemprop="name">OpenSSL</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://luarocks.org/modules/daurnimator/luaossl" target="_blank" rel="noopener">luaossl</a> 是<a href="https://luarocks.org/modules/starius/luacrypto" target="_blank" rel="noopener">luacrypto</a>的代替版本，是针对 Lua 5.1、5.2、5.3 和 LuaJIT 的 OpenSSL 综合绑定。是 Lua 世界中最全面的 OpenSSL 绑定。luaosll安装依赖OpenSSL库，所以需要先安装OpenSSL。</p>
+<p><strong>一、安装OpenSSL</strong><br>下载好的OpenSSL源码目录下，编译安装OpenSSL（以下均使用默认路径“/usr/local”进行安装）</p>
+<p>1）生成Makefile文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据编译平台及环境自动生成Makefile文件，可以通过./config --prefix指定安装路径，-Wl,-rpath参数指定OpenSSL运行时依赖libcrypto、libssl库的路径。</span></span><br><span class="line">./config -Wl,-rpath,/usr/<span class="built_in">local</span>/lib</span><br></pre></td></tr></table></figure>
+
+<p>2）安装OpenSSL</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>3）查看OpenSSL版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">openssl version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示如下格式内容说明安装成功（本文以安装OpenSSL 1.1.1q为例）</span></span><br><span class="line">OpenSSL 1.1.1q  5 Jul 2022 (Library: OpenSSL 1.1.1k  FIPS 25 Mar 2021)</span><br></pre></td></tr></table></figure>
+
+<p><strong>二、安装luaosll</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">luarocks install luaossl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示如下格式内容说明安装成功</span></span><br><span class="line">Installing https://luarocks.org/luaossl-20220711-0.src.rock</span><br><span class="line"></span><br><span class="line">luaossl 20220711-0 depends on lua (5.1-1 provided by VM)</span><br><span class="line">Applying patch config.h.diff...</span><br><span class="line">Hunk 1 found at offset 2...</span><br><span class="line">gcc -O2 -fPIC -I/usr/<span class="built_in">local</span>/include -c src/openssl.c -o src/openssl.o -D_REENTRANT -D_THREAD_SAFE -DCOMPAT53_PREFIX=luaossl -D_GNU_SOURCE -I/usr/<span class="built_in">local</span>/include -I/usr/<span class="built_in">local</span>/include</span><br><span class="line">gcc -O2 -fPIC -I/usr/<span class="built_in">local</span>/include -c vendor/compat53/c-api/compat-5.3.c -o vendor/compat53/c-api/compat-5.3.o -D_REENTRANT -D_THREAD_SAFE -DCOMPAT53_PREFIX=luaossl -D_GNU_SOURCE -I/usr/<span class="built_in">local</span>/include -I/usr/<span class="built_in">local</span>/include</span><br><span class="line">gcc  -shared -o _openssl.so src/openssl.o vendor/compat53/c-api/compat-5.3.o -L/usr/<span class="built_in">local</span>/lib64 -L/usr/<span class="built_in">local</span>/lib64 -Wl,-rpath,/usr/<span class="built_in">local</span>/lib64 -Wl,-rpath,/usr/<span class="built_in">local</span>/lib64 -lssl -lcrypto -lpthread -lm -ldl</span><br><span class="line">luaossl 20220711-0 is now installed <span class="keyword">in</span> /usr/<span class="built_in">local</span> (license: MIT/X11)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/cl3we9rqj0000n8omesxvgnom.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -976,210 +1144,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/596.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/596.html" class="post-title-link" itemprop="url">怎样增大 Linux 系统的 open file(s) 上限</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-18 08:50:23" itemprop="dateCreated datePublished" datetime="2019-11-18T08:50:23+08:00">2019-11-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近在工作中遇到一个问题，尝试直接将服务运行在高配（40core, 192GB；相比虚拟机来说） 的物理机上，但是发现服务打开的文件句柄达到 80 万左右就不能再开更多了。</p>
-<p>80 万已经是一个不小的值了，通常情况下，Linux 默认的值都很小，例如：Debian 8(jessie) 给普通用户设置的 open file(s) 限制为 65536， 可以通过下面的命令查看当前限制。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n</span><br><span class="line">$ <span class="built_in">ulimit</span> -Sn</span><br><span class="line">$ <span class="built_in">ulimit</span> -Hn</span><br></pre></td></tr></table></figure>
-<p><code>ulimit</code> 是一个 shell（这里使用的是 bash） 内置命令，可以通过 <code>type ulimit</code> 验证。</p>
-<p><code>-n</code> 即表示查看或者设置 open file(s) 的限制，在 ulimit 中，每个限制都有两种类型：</p>
-<ul>
-<li><code>-S</code>, soft limit, 软限制，用户可以上调软限制到硬限制</li>
-<li><code>-H</code>, hard limit, 硬限制，非 root 用户不能修改</li>
-</ul>
-<p>如果没有指明，则同时修改软限制和硬限制。</p>
-<h2 id="修改-ulimit"><a href="#修改-ulimit" class="headerlink" title="修改 ulimit"></a>修改 ulimit</h2><p>修改分为临时修改和永久修改，临时修改只对当前 session 有效，登出和重启后都恢复系统设置。</p>
-<p>临时修改使用 <code>ulimit</code> 命令，以修改 open file(s) 为例。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n 1024000</span><br><span class="line">$ <span class="built_in">ulimit</span> -n</span><br><span class="line">1024000</span><br></pre></td></tr></table></figure>
-<p>永久修改需要修改 <code>/etc/security/limits.conf</code> 或者在 <code>/etc/security/limits.d/</code> 目录下添加一个文件。具体格式参考 <code>/etc/security/limits.conf</code>，里面有详细说明。</p>
-<h2 id="open-file-s-上限"><a href="#open-file-s-上限" class="headerlink" title="open file(s) 上限"></a>open file(s) 上限</h2><p>回到遇到的问题中来：服务打开 80 万个左右的文件句柄就不能再打开了。所以， 尝试将 ulimit 设置为 1000 万，结果提示出错：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n 10000000</span><br><span class="line">-bash: <span class="built_in">ulimit</span>: open files: cannot modify <span class="built_in">limit</span>: Operation not permitted</span><br></pre></td></tr></table></figure>
-<p>注意，使用的可以 root 用户，居然没有权限，然后尝试降低到：</p>
-<ul>
-<li>500 万，依然错误</li>
-<li>300 万，依然错误</li>
-<li>200 万，依然错误</li>
-<li>100 万，成功了</li>
-</ul>
-<p>显然，这里有一个上限，大概在 100-200 万之间。</p>
-<p>所以，解决问题的办法，在于怎样提高这个上限！</p>
-<p>通过一番搜索，发现 open file(s) kernel 级别有 2 个配置，分别是：</p>
-<p>fs.nr_open，进程级别<br>fs.file-max，系统级别</p>
-<p><code>fs.nr_open</code> 默认设置的上限是 1048576，所以用户的 open file(s) 不可能超过这个上限。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ sysctl -w fs.nr_open=10000000</span><br><span class="line">$ <span class="built_in">ulimit</span> -n 10000000</span><br><span class="line">$ <span class="built_in">ulimit</span> -n</span><br><span class="line">10000000</span><br></pre></td></tr></table></figure>
-<p>修改后即可设置更大的 open file(s) 了。</p>
-<p>同样，对于 kernel 参数的修改，<code>sysctl</code> 命令修改的是当前运行时，如果需要永久修改， 则将配置添加到 <code>/etc/sysctl.conf</code> 中，例如：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">"fs.nr_open = 10000000"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">"fs.file-max = 11000000"</span> &gt;&gt; /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
-<p>注意：<code>fs.nr_open</code> 总是应该小于等于 <code>fs.file-max</code>。</p>
-<p>如果要查看当前打开的文件数，使用下面的命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sysctl fs.file-nr</span><br><span class="line">$ fs.file-nr = 1760       0       11000000</span><br></pre></td></tr></table></figure>
-<p>不过，增大这些值意味着能够打开更多的文件（在 Linux 中，everything is file，包括 socket），但是同时也意味着消耗更多的资源，所以基本上在物理机上才会遇到这种问题。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/580.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/580.html" class="post-title-link" itemprop="url">golang mod使用私有仓库相关事项</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-12 21:48:57" itemprop="dateCreated datePublished" datetime="2019-10-12T21:48:57+08:00">2019-10-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/GoLang/" itemprop="url" rel="index"><span itemprop="name">GoLang</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>一、Go get命令出现terminal prompts disabled解决</p>
-<p>原因go get disable “terminal prompt” by default（Go get 命令默认禁用terminal prompt，即终端提示）</p>
-<p>解决方案</p>
-<p>设置环境变量：<code>GIT_TERMINAL_PROMPT=1</code>， 可以把上面的命令写到 <code>.bashrc</code> 或 <code>.bash_profile</code> 文件当中。</p>
-<p>二、一键解决 go get golang.org/x 包失败</p>
-<p>当我们使用 <code>go get</code>、<code>go install</code>、<code>go mod</code> 等命令时，会自动下载相应的包或依赖包。但由于众所周知的原因，类似于 <code>golang.org/x/...</code> 的包会出现下载失败的情况。如下所示：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ go get -u golang.org/x/sys  </span><br><span class="line">  </span><br><span class="line">go get golang.org/x/sys: unrecognized import path <span class="string">"golang.org/x/sys"</span> (https fetch: Get https://golang.org/x/sys?go-get=1: dial tcp 216.239.37.1:443: i/o timeout)</span><br></pre></td></tr></table></figure>
-<p>我们可以通过设置GOPROXY 环境变量来解决，我们知道从 <code>Go 1.11</code> 版本开始，官方支持了 <code>go module</code> 包依赖管理工具。其实还新增了 <code>GOPROXY</code> 环境变量。</p>
-<p>解决方案</p>
-<p>设置环境变量：<code>GOPROXY=https://goproxy.io</code>， 可以把上面的命令写到 <code>.bashrc</code> 或 <code>.bash_profile</code> 文件当中。</p>
-<p>三、总结</p>
-<p>解决 terminal prompts disabled</p>
-<p><code>export GIT_TERMINAL_PROMPT=1</code></p>
-<p>解决 go get golang.org/x 包失败</p>
-<p><code>export GOPROXY=https://goproxy.io</code></p>
-<p>启用 Go Modules 功能</p>
-<p><code>export GO111MODULE=on</code></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1245,20 +1214,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">121</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">30</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">183</span>
+        <span class="site-state-item-count">187</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

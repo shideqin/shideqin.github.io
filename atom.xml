@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://phpkoo.com/"/>
-  <updated>2022-06-02T02:25:43.243Z</updated>
+  <updated>2022-07-27T06:39:38.086Z</updated>
   <id>https://phpkoo.com/</id>
   
   <author>
@@ -15,6 +15,75 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>lua利用metatable实现类的继承和多态</title>
+    <link href="https://phpkoo.com/posts/cl638q6pn00008kom477a3hku.html"/>
+    <id>https://phpkoo.com/posts/cl638q6pn00008kom477a3hku.html</id>
+    <published>2022-07-27T05:47:09.000Z</published>
+    <updated>2022-07-27T06:39:38.086Z</updated>
+    
+    <content type="html"><![CDATA[<p>在lua原生语法特性中是不具备面向对象设计的特性。因此，要想在lua上像其他高级语言一样使用面向对象的设计方法，就需要使用原生的元表(metatable)来模拟面向对象设计。</p><p><strong>一、元表setmetatable</strong><br>对指定 table 设置元表(metatable)，如果元表(metatable)中存在 __metatable 键值，setmetatable 会失败。</p><p>以下实例演示了如何对指定的表设置元表：</p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mytable = &#123;&#125;                          <span class="comment">-- 普通表</span></span><br><span class="line">mymetatable = &#123;&#125;                      <span class="comment">-- 元表</span></span><br><span class="line"><span class="built_in">setmetatable</span>(mytable,mymetatable)     <span class="comment">-- 把 mymetatable 设为 mytable 的元表</span></span><br></pre></td></tr></table></figure><p><strong>二、元表__index 元方法</strong><br>这是 metatable 最常用的键。<br>当你通过键来访问 table 的时候，如果这个键没有值，那么Lua就会寻找该table的metatable（假定有metatable）中的<strong>index 键。如果</strong>index包含一个表格，Lua会在表格中查找相应的键。</p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">other = &#123; foo = <span class="number">3</span> &#125;</span><br><span class="line">t = <span class="built_in">setmetatable</span>(&#123;&#125;, &#123; <span class="built_in">__index</span> = other &#125;)</span><br><span class="line"><span class="built_in">print</span>(t.foo)</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(t.bar)</span><br><span class="line"><span class="literal">nil</span></span><br></pre></td></tr></table></figure><p><strong>三、使用metatable实现继承</strong></p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> _M = &#123;</span><br><span class="line">        version = <span class="string">'lua 1.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> parent = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parent.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, parent)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure><p><strong>四、使用metatable实现重载和多态</strong></p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> _M = &#123;</span><br><span class="line">        version = <span class="string">'lua 1.0'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> parent = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parent.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, parent)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> _M2 = parent.new()</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> child = &#123;</span><br><span class="line">        <span class="built_in">__index</span> = _M2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">child.new</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- 初始化new，如果没有这句，那么类所建立的对象如果有一个改变，其他对象都会改变</span></span><br><span class="line">        <span class="keyword">local</span> new = &#123;&#125;</span><br><span class="line">        <span class="comment">-- 使用setmetatable来实现继承</span></span><br><span class="line">        <span class="built_in">setmetatable</span>(new, child)</span><br><span class="line">        <span class="keyword">return</span> new</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 重载echo方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_M2:echo</span><span class="params">()</span></span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"M2:echo "</span>..self.version)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test = parent.new()</span><br><span class="line">test:echo()</span><br><span class="line"></span><br><span class="line">test = child.new()</span><br><span class="line">test:echo()</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在lua原生语法特性中是不具备面向对象设计的特性。因此，要想在lua上像其他高级语言一样使用面向对象的设计方法，就需要使用原生的元表(metatable)来模拟面向对象设计。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一、元表setmetatable&lt;/strong&gt;&lt;br&gt;对指定 t
+      
+    
+    </summary>
+    
+    
+      <category term="LUA" scheme="https://phpkoo.com/categories/LUA/"/>
+    
+      <category term="OOP" scheme="https://phpkoo.com/categories/LUA/OOP/"/>
+    
+    
+      <category term="lua" scheme="https://phpkoo.com/tags/lua/"/>
+    
+      <category term="面向对象" scheme="https://phpkoo.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+      <category term="metatable" scheme="https://phpkoo.com/tags/metatable/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>openssl模块安装luaossl（luacrypto）</title>
+    <link href="https://phpkoo.com/posts/cl638q6rx00098kombnsob49i.html"/>
+    <id>https://phpkoo.com/posts/cl638q6rx00098kombnsob49i.html</id>
+    <published>2022-07-27T01:43:20.000Z</published>
+    <updated>2022-07-27T05:47:43.690Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://luarocks.org/modules/daurnimator/luaossl" target="_blank" rel="noopener">luaossl</a> 是<a href="https://luarocks.org/modules/starius/luacrypto" target="_blank" rel="noopener">luacrypto</a>的代替版本，是针对 Lua 5.1、5.2、5.3 和 LuaJIT 的 OpenSSL 综合绑定。是 Lua 世界中最全面的 OpenSSL 绑定。luaosll安装依赖OpenSSL库，所以需要先安装OpenSSL。</p><p><strong>一、安装OpenSSL</strong><br>下载好的OpenSSL源码目录下，编译安装OpenSSL（以下均使用默认路径“/usr/local”进行安装）</p><p>1）生成Makefile文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据编译平台及环境自动生成Makefile文件，可以通过./config --prefix指定安装路径，-Wl,-rpath参数指定OpenSSL运行时依赖libcrypto、libssl库的路径。</span></span><br><span class="line">./config -Wl,-rpath,/usr/<span class="built_in">local</span>/lib</span><br></pre></td></tr></table></figure><p>2）安装OpenSSL</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure><p>3）查看OpenSSL版本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">openssl version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示如下格式内容说明安装成功（本文以安装OpenSSL 1.1.1q为例）</span></span><br><span class="line">OpenSSL 1.1.1q  5 Jul 2022 (Library: OpenSSL 1.1.1k  FIPS 25 Mar 2021)</span><br></pre></td></tr></table></figure><p><strong>二、安装luaosll</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">luarocks install luaossl</span><br><span class="line"></span><br><span class="line"><span class="comment"># 显示如下格式内容说明安装成功</span></span><br><span class="line">Installing https://luarocks.org/luaossl-20220711-0.src.rock</span><br><span class="line"></span><br><span class="line">luaossl 20220711-0 depends on lua (5.1-1 provided by VM)</span><br><span class="line">Applying patch config.h.diff...</span><br><span class="line">Hunk 1 found at offset 2...</span><br><span class="line">gcc -O2 -fPIC -I/usr/<span class="built_in">local</span>/include -c src/openssl.c -o src/openssl.o -D_REENTRANT -D_THREAD_SAFE -DCOMPAT53_PREFIX=luaossl -D_GNU_SOURCE -I/usr/<span class="built_in">local</span>/include -I/usr/<span class="built_in">local</span>/include</span><br><span class="line">gcc -O2 -fPIC -I/usr/<span class="built_in">local</span>/include -c vendor/compat53/c-api/compat-5.3.c -o vendor/compat53/c-api/compat-5.3.o -D_REENTRANT -D_THREAD_SAFE -DCOMPAT53_PREFIX=luaossl -D_GNU_SOURCE -I/usr/<span class="built_in">local</span>/include -I/usr/<span class="built_in">local</span>/include</span><br><span class="line">gcc  -shared -o _openssl.so src/openssl.o vendor/compat53/c-api/compat-5.3.o -L/usr/<span class="built_in">local</span>/lib64 -L/usr/<span class="built_in">local</span>/lib64 -Wl,-rpath,/usr/<span class="built_in">local</span>/lib64 -Wl,-rpath,/usr/<span class="built_in">local</span>/lib64 -lssl -lcrypto -lpthread -lm -ldl</span><br><span class="line">luaossl 20220711-0 is now installed <span class="keyword">in</span> /usr/<span class="built_in">local</span> (license: MIT/X11)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://luarocks.org/modules/daurnimator/luaossl&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;luaossl&lt;/a&gt; 是&lt;a href=&quot;https://luarocks.org/modu
+      
+    
+    </summary>
+    
+    
+      <category term="LUA" scheme="https://phpkoo.com/categories/LUA/"/>
+    
+      <category term="OpenSSL" scheme="https://phpkoo.com/categories/LUA/OpenSSL/"/>
+    
+    
+      <category term="lua" scheme="https://phpkoo.com/tags/lua/"/>
+    
+      <category term="OpenSSL" scheme="https://phpkoo.com/tags/OpenSSL/"/>
+    
+      <category term="luaossl" scheme="https://phpkoo.com/tags/luaossl/"/>
+    
+      <category term="luacrypto" scheme="https://phpkoo.com/tags/luacrypto/"/>
+    
+      <category term="luarocks" scheme="https://phpkoo.com/tags/luarocks/"/>
+    
+  </entry>
   
   <entry>
     <title>Kubernetes使用KEDA通过Prometheus触发HPA</title>
@@ -558,70 +627,6 @@
       <category term="https" scheme="https://phpkoo.com/tags/https/"/>
     
       <category term="证书链" scheme="https://phpkoo.com/tags/%E8%AF%81%E4%B9%A6%E9%93%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL: libmysqlclient.so.20: cannot open shared object file解决方法</title>
-    <link href="https://phpkoo.com/posts/454.html"/>
-    <id>https://phpkoo.com/posts/454.html</id>
-    <published>2018-04-28T09:06:00.000Z</published>
-    <updated>2020-02-27T01:02:52.751Z</updated>
-    
-    <content type="html"><![CDATA[<p>import MySQLdb的时候报错“ImportError: libmysqlclient.so.20: cannot open shared object file: No such file or directory”</p><p>解决方法：<br>找到libmysqlclient.so.20,一般都在mysql安装目录/lib库里，做个软链接即可。</p><p>######64为系统</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/mysql/lib/libmysqlclient.so.20 /usr/lib64/libmysqlclient.so.20</span><br></pre></td></tr></table></figure><p>######32位系统</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/mysql/lib/libmysqlclient.so.20 /usr/lib/libmysqlclient.so.20</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;import MySQLdb的时候报错“ImportError: libmysqlclient.so.20: cannot open shared object file: No such file or directory”&lt;/p&gt;
-&lt;p&gt;解决方法：&lt;br&gt;找到libmy
-      
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
-    
-      <category term="Mysql" scheme="https://phpkoo.com/categories/Linux/Mysql/"/>
-    
-    
-      <category term="mysql" scheme="https://phpkoo.com/tags/mysql/"/>
-    
-      <category term="libmysqlclient" scheme="https://phpkoo.com/tags/libmysqlclient/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx配置ssl及优化</title>
-    <link href="https://phpkoo.com/posts/425.html"/>
-    <id>https://phpkoo.com/posts/425.html</id>
-    <published>2018-04-20T10:41:27.000Z</published>
-    <updated>2020-02-27T01:02:52.752Z</updated>
-    
-    <content type="html"><![CDATA[<p>https是一种超文本传输安全协议，主要是用SSL/TLS来加密数据包，以达到数据加密传输的作用，同时也能一定程度达到防劫持的效果。</p><p><strong>隐藏不必要的信息</strong><br>细心的朋友会发现，请求响应头，有这么一行 server: nginx，说明我用的是 Nginx 服务器，但并没有具体的版本号。由于某些 Nginx 漏洞只存在于特定的版本，隐藏版本号可以提高安全性。这只需要在配置里加上这个就可以了：</p><p><code>server_tokens  off;</code></p><p>另外，一些 WEB 语言或框架默认输出的 x-powered-by 也会泄露网站信息，他们一般都提供了修改或移除的方法，可以自行查看手册。如果部署上用到了 Nginx 的反向代理，也可以通过 proxy_hide_header 指令隐藏它：</p><p><code>proxy_hide_header  X-Powered-By;</code></p><p><strong>禁用非必要的方法</strong><br>一般情况下，只需要处理 GET、POST 两种请求方法，而 HTTP/1 协议还规定了 TRACE 这样的方法用于网络诊断，这也可能会暴露一些信息。所以我针对 GET、POST 以及 HEAD 之外的请求，直接返回了 444 状态码（444 是 Nginx 定义的响应状态码，会立即断开连接，没有响应正文）。具体配置是这样的：</p><p>if ($request_method !~ ^(GET|HEAD|POST)$ ) {<br>    return    444;<br>}</p><p><strong>合理配置响应头</strong></p><p>#####减少点击劫持<br>add_header X-Frame-Options DENY;</p><p>#####禁止服务器自动解析资源类型<br>add_header X-Content-Type-Options nosniff;</p><p>#####防XSS攻击<br>add_header X-XSS-Protection “1; mode=block”;</p><p>#####HSTS策略<br>add_header Strict-Transport-Security “max-age=31536000; includeSubDomains; preload” always;</p><p><code>X-Frame-Options</code> 用来指定此网页是否允许被 iframe 嵌套，deny 就是不允许任何嵌套发生。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/X-Frame-Options" target="_blank" rel="noopener">这部分内容更多信息</a>。<br><code>X-Content-Type-Options</code> 用来指定浏览器对未指定或错误指定 Content-Type 资源真正类型的猜测行为，nosniff 表示不允许任何猜测。<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Content-Type-Options" target="_blank" rel="noopener">这部分内容更多信息</a>。<br><code>X-XSS-Protection</code> 这个响应头是用来防范XSS的。最早我是在介绍IE8的文章里看到这个，现在主流浏览器都支持，并且默认都开启了XSS保护，用这个header可以关闭它。它有几种配置：<br>0：禁用XSS保护；<br>1：启用XSS保护；<br>1; mode=block：启用XSS保护，并在检查到XSS攻击时，停止渲染页面（例如IE8中，检查到攻击时，整个页面会被一个#替换）；<br>浏览器提供的XSS保护机制并不完美，但是开启后仍然可以提升攻击难度，总之没有特别的理由，不要关闭它。<br><code>Strict-Transport-Security</code>（简称为 HSTS）可以告诉浏览器，在指定的 max-age 内，始终通过 HTTPS 访问我的博客。即使用户自己输入 HTTP 的地址，或者点击了 HTTP 链接，浏览器也会在本地替换为 HTTPS 再发送请求。另外由于我的证书不支持多域名，我没有加上 includeSubDomains。关于 <a href="https://www.nginx.com/blog/http-strict-transport-security-hsts-and-nginx/" target="_blank" rel="noopener">HSTS</a> 更多信息。</p><p><strong>HTTPS 安全配置</strong><br>启用 HTTPS 并正确配置了证书，意味着数据传输过程中无法被第三者解密或修改。有了 HTTPS，也得合理配置好 Web Server，才能发挥最大价值。关于 HTTPS 这一块有以下配置：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">worker_processes auto;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#配置会话超时时间</span></span><br><span class="line">    ssl_session_timeout  10m;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#配置共享会话缓存大小，视站点访问情况设定</span></span><br><span class="line">    ssl_session_cache shared:SSL:10m;</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen      443 ssl;</span><br><span class="line">        server_name www.example.com;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#设置长连接</span></span><br><span class="line">        keepalive_timeout 70;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#开启HTTPS协议（推荐使用listen指令的ssl参数来代替这个指令）</span></span><br><span class="line">        <span class="comment">#ssl on;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#证书文件</span></span><br><span class="line">        ssl_certificate www.example.com.crt;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#私钥文件</span></span><br><span class="line">        ssl_certificate_key www.example.com.key;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#使用DH文件</span></span><br><span class="line">        ssl_dhparam /etc/ssl/certs/dhparam.pem;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#版本选择</span></span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#定义算法</span></span><br><span class="line">        ssl_ciphers EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#优先采取服务器算法</span></span><br><span class="line">        ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#减少点击劫持</span></span><br><span class="line">        add_header X-Frame-Options DENY;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#禁止服务器自动解析资源类型</span></span><br><span class="line">        add_header X-Content-Type-Options nosniff;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#防XSS攻击</span></span><br><span class="line">        add_header X-XSS-Protection <span class="string">"1; mode=block"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#HSTS策略</span></span><br><span class="line">        add_header Strict-Transport-Security <span class="string">"max-age=31536000;"</span> always;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><a href="https://upload.phpkoo.com/uploads/2018/04/ssllabs_20180422092149-1.png" target="_blank" rel="noopener"><img src="https://upload.phpkoo.com/uploads/2018/04/ssllabs_20180422092149-1.png" alt=""></a></p><p>最终效果在 <a href="https://www.ssllabs.com/ssltest/index.html" target="_blank" rel="noopener">ssllabs</a> 中测试结果如下。  </p><p>如何配置 ssl_ciphers 可以参考<a href="https://cipherli.st/" target="_blank" rel="noopener">这个网站</a>。需要注意的是，这个网站默认提供的加密方式安全性较高，一些低版本客户端并不支持，例如 IE9-、Android2.2- 和 Java6-。如果需要支持这些老旧的客户端，需要点一下网站上的「Yes, give me a ciphersuite that works with legacy / old software」链接，同时也可以使用 <a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/" target="_blank" rel="noopener">Mozilla 基金会</a> 来生成配置。</p><p><img src="https://upload.phpkoo.com/uploads/2018/04/chacha.png.webp_.jpg" alt=""></p><p>另外 ssl_ciphers 还支持 CHACHA20 加密套件，只要 Nginx 编译时增加了 CHACHA20_POLY1305 加密算法即可，这是由 Google 开发的新一代加密方式，它有两方面优势：更好的安全性和更好的性能（尤其是在移动和可穿戴设备上）。下面有一张移动平台上它与 AES-GCM 的加密速度对比图（via）：  </p><p>启用 CHACHA20_POLY1305 最简单的方法是在编译 Nginx 时，使用 LibreSSL 代替 OpenSSL。用 Chrome 访问网站时，点击地址栏小锁显示的信息，可以看到加密方式使用的是不是 CHACHA20_POLY1305。<br>关于 CHACHA20_POLY1305 安全性和性能的详细介绍可以<a href="https://blog.cloudflare.com/do-the-chacha-better-mobile-performance-with-cryptography/" target="_blank" rel="noopener">查看本文</a>。</p><p>补充：<br>1.使用 CHACHA20_POLY1305 的最佳实践是「仅针对不支持 AES-NI 的终端使用 CHACHA20 算法，否则使用 AES-GCM」。</p><p>2.我们通过 openssl 工具看一下 ssl_ciphers 具体包含哪些 Cipher Suites 例如：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">openssl ciphers -V <span class="string">'EECDH+AES128'</span> | column -t</span><br><span class="line"></span><br><span class="line">0xC0,0x2F  -  ECDHE-RSA-AES128-GCM-SHA256    TLSv1.2  Kx=ECDH  Au=RSA    Enc=AESGCM(128)  Mac=AEAD</span><br><span class="line">0xC0,0x2B  -  ECDHE-ECDSA-AES128-GCM-SHA256  TLSv1.2  Kx=ECDH  Au=ECDSA  Enc=AESGCM(128)  Mac=AEAD</span><br><span class="line">0xC0,0x27  -  ECDHE-RSA-AES128-SHA256        TLSv1.2  Kx=ECDH  Au=RSA    Enc=AES(128)     Mac=SHA256</span><br><span class="line">0xC0,0x23  -  ECDHE-ECDSA-AES128-SHA256      TLSv1.2  Kx=ECDH  Au=ECDSA  Enc=AES(128)     Mac=SHA256</span><br><span class="line">0xC0,0x13  -  ECDHE-RSA-AES128-SHA           SSLv3    Kx=ECDH  Au=RSA    Enc=AES(128)     Mac=SHA1</span><br><span class="line">0xC0,0x09  -  ECDHE-ECDSA-AES128-SHA         SSLv3    Kx=ECDH  Au=ECDSA  Enc=AES(128)     Mac=SHA1</span><br></pre></td></tr></table></figure><p><strong>加强 HTTPS 安全性</strong><br>HTTPS 基础配置采取的默认加密算法是 SHA-1，这个算法非常脆弱，安全性在逐年降低，在 2014 年的时候， Google 官方博客就宣布在 Chrome 浏览器中逐渐降低 SHA-1 证书的安全指示，会从 2015 年起使用 SHA-2 签名的证书，可参阅 <a href="http://www.freebuf.com/author/rabbit_run" target="_blank" rel="noopener">Rabbit_Run</a> 在 2014 年发表的文章：<a href="http://www.freebuf.com/news/topnews/44288.html" target="_blank" rel="noopener">《为什么Google急着杀死加密算法SHA-1》</a></p><p>为此，主流的 HTTPS 配置方案应该避免 SHA-1，可以使用 <a href="https://zh.wikipedia.org/wiki/%E8%BF%AA%E8%8F%B2-%E8%B5%AB%E7%88%BE%E6%9B%BC%E5%AF%86%E9%91%B0%E4%BA%A4%E6%8F%9B" target="_blank" rel="noopener">迪菲-赫尔曼密钥交换（D-H，Diffie–Hellman key exchange）</a>方案。</p><p>首先在目录 /etc/ssl/certs 运行以下代码生成 dhparam.pem 文件：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl dhparam -out dhparam.pem 2048</span><br></pre></td></tr></table></figure><p>关于 ssl_dhparam 的配置，可以参考这篇文章：<a href="https://weakdh.org/sysadmin.html" target="_blank" rel="noopener">Guide to Deploying Diffie-Hellman for TLS</a>。</p><p>SSLv3 已被证实不安全，所以在 ssl_protocols 指令中，我并没有包含它。<br>将 ssl_prefer_server_ciphers 配置为 on，可以确保在 TLSv1 握手时，使用服务端的配置项，以增强安全性。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;https是一种超文本传输安全协议，主要是用SSL/TLS来加密数据包，以达到数据加密传输的作用，同时也能一定程度达到防劫持的效果。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;隐藏不必要的信息&lt;/strong&gt;&lt;br&gt;细心的朋友会发现，请求响应头，有这么一行 server: nginx
-      
-    
-    </summary>
-    
-    
-      <category term="Linux" scheme="https://phpkoo.com/categories/Linux/"/>
-    
-      <category term="Nginx" scheme="https://phpkoo.com/categories/Linux/Nginx/"/>
-    
-    
-      <category term="nginx" scheme="https://phpkoo.com/tags/nginx/"/>
-    
-      <category term="https" scheme="https://phpkoo.com/tags/https/"/>
-    
-      <category term="ssl" scheme="https://phpkoo.com/tags/ssl/"/>
     
   </entry>
   
