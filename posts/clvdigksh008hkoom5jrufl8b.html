@@ -20,22 +20,25 @@
     var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、lsof相关使用1、系统所有进程打开对应的句柄数 1lsof -n|awk &#39;&amp;#123;print $2&amp;#125;&#39;|sort|uniq -c |sort -nr|more  2、查看当前进程实时打开的文件数 1lsof -p 进程ID |wc -l  3、查看被打开某一文件的相关进程信息 1lsof &#x2F;proc  4、查看监听端口25的进程 1lsof -i:25  5、查看活动的连接">
+  <meta name="description" content="lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：https:&#x2F;&#x2F;github.com&#x2F;neoxic&#x2F;lua-mongo 通过luarocks方式安装lua模块 一、安装luarocks工具，官网:https:&#x2F;&#x2F;luarocks.org&#x2F;二、安装lua-mongo模块 1luarocks install lua-mongo 安装">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用watch实时查看进程的文件句柄信息">
-<meta property="og:url" content="https://phpkoo.com/posts/clvdgolw800k7f4omfwu86pq7.html">
+<meta property="og:title" content="luarocks安装lua-mongo模块">
+<meta property="og:url" content="https://phpkoo.com/posts/clvdigksh008hkoom5jrufl8b.html">
 <meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="一、lsof相关使用1、系统所有进程打开对应的句柄数 1lsof -n|awk &#39;&amp;#123;print $2&amp;#125;&#39;|sort|uniq -c |sort -nr|more  2、查看当前进程实时打开的文件数 1lsof -p 进程ID |wc -l  3、查看被打开某一文件的相关进程信息 1lsof &#x2F;proc  4、查看监听端口25的进程 1lsof -i:25  5、查看活动的连接">
+<meta property="og:description" content="lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：https:&#x2F;&#x2F;github.com&#x2F;neoxic&#x2F;lua-mongo 通过luarocks方式安装lua模块 一、安装luarocks工具，官网:https:&#x2F;&#x2F;luarocks.org&#x2F;二、安装lua-mongo模块 1luarocks install lua-mongo 安装">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-13T02:44:10.000Z">
-<meta property="article:modified_time" content="2020-04-13T03:20:06.755Z">
+<meta property="article:published_time" content="2021-06-22T01:41:59.000Z">
+<meta property="article:modified_time" content="2021-06-22T03:03:02.116Z">
 <meta property="article:author" content="阿德">
 <meta property="article:tag" content="centos">
 <meta property="article:tag" content="linux">
-<meta property="article:tag" content="ulimits">
+<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="openresty">
+<meta property="article:tag" content="lua">
+<meta property="article:tag" content="lua-mongo模块">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://phpkoo.com/posts/clvdgolw800k7f4omfwu86pq7.html">
+<link rel="canonical" href="https://phpkoo.com/posts/clvdigksh008hkoom5jrufl8b.html">
 
 
 <script id="page-configurations">
@@ -47,7 +50,7 @@
   };
 </script>
 
-  <title>使用watch实时查看进程的文件句柄信息 | 阿德的博客</title>
+  <title>luarocks安装lua-mongo模块 | 阿德的博客</title>
   
 
 
@@ -199,7 +202,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/clvdgolw800k7f4omfwu86pq7.html">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/clvdigksh008hkoom5jrufl8b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -212,7 +215,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用watch实时查看进程的文件句柄信息
+          luarocks安装lua-mongo模块
         </h1>
 
         <div class="post-meta">
@@ -223,7 +226,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-04-13 10:44:10 / 修改时间：11:20:06" itemprop="dateCreated datePublished" datetime="2020-04-13T10:44:10+08:00">2020-04-13</time>
+              <time title="创建时间：2021-06-22 09:41:59 / 修改时间：11:03:02" itemprop="dateCreated datePublished" datetime="2021-06-22T09:41:59+08:00">2021-06-22</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -231,7 +234,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                  <a href="/categories/LUA/" itemprop="url" rel="index"><span itemprop="name">LUA</span></a>
                 </span>
             </span>
 
@@ -246,47 +249,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>一、lsof相关使用<br>1、系统所有进程打开对应的句柄数</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -n|awk <span class="string">'&#123;print $2&#125;'</span>|sort|uniq -c |sort -nr|more</span><br></pre></td></tr></table></figure>
+        <p>lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：<a href="https://github.com/neoxic/lua-mongo" target="_blank" rel="noopener">https://github.com/neoxic/lua-mongo</a></p>
+<p>通过luarocks方式安装lua模块</p>
+<p>一、安装luarocks工具，官网:<a href="https://luarocks.org/" target="_blank" rel="noopener">https://luarocks.org/</a><br>二、安装lua-mongo模块</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luarocks install lua-mongo</span><br></pre></td></tr></table></figure>
+<p>安装时，报以下错误信息</p>
+<p>Error: Could not find expected file libmongoc-1.0/mongoc.h, or libmongoc-1.0/mongoc.h for LIBMONGOC – you may have to install LIBMONGOC in your system and/or pass LIBMONGOC_DIR or LIBMONGOC_INCDIR to the luarocks command. Example: luarocks install mongorover LIBMONGOC_DIR=/usr/local</p>
+<p>三、安装cmake</p>
+<p>因为mongo-c-driver需要使用cmake进行编译</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc gcc-c++ ncurses-devel</span><br><span class="line">wget wget https://cmake.org/files/v3.3/cmake-3.3.2.tar.gz</span><br><span class="line">tar -xzf cmake-3.3.2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> cmake-3.3.2/</span><br><span class="line">./bootstrap</span><br><span class="line">gmake</span><br><span class="line">gmake install</span><br></pre></td></tr></table></figure>
 
-<p>2、查看当前进程实时打开的文件数</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -p 进程ID |wc -l</span><br></pre></td></tr></table></figure>
+<p>四、安装libmongoc库</p>
+<p>官方安装参照：<a href="http://mongoc.org/" target="_blank" rel="noopener">http://mongoc.org/</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/mongodb/mongo-c-driver/releases/download/1.17.6/mongo-c-driver-1.17.6.tar.gz</span><br><span class="line">tar -xzf mongo-c-driver-1.17.6.tar.gz</span><br><span class="line"><span class="built_in">cd</span> mongo-c-driver-1.17.6/</span><br><span class="line">cmake .</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>再执行,安装lua-mongo模块</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">luarocks install lua-mongo</span><br></pre></td></tr></table></figure>
+<p>安装成功</p>
 
-<p>3、查看被打开某一文件的相关进程信息</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof /proc</span><br></pre></td></tr></table></figure>
-
-<p>4、查看监听端口25的进程</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:25</span><br></pre></td></tr></table></figure>
-
-<p>5、查看活动的连接</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i @192.168.1.2</span><br></pre></td></tr></table></figure>
-
-<p>二、查看当前进程持有文件句柄数量和文件句柄最大限制</p>
-<p>1、查看这个PID持有的句柄数</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /proc/进程ID/fd | wc -l</span><br></pre></td></tr></table></figure>
-
-<p>2、查看当前进程句柄数量限制</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/进程ID/limits | grep <span class="string">"files"</span></span><br></pre></td></tr></table></figure>
-
-<p>三、查看系统总限制</p>
-<p>1、查看系统总限制打开文件的最大数量</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/sys/fs/file-max</span><br></pre></td></tr></table></figure>
-
-<p>四、watch命令<br>watch是一个非常实用的命令，基本所有的Linux发行版都带有这个小工具，如同名字一样，watch可以帮你监测一个命令的运行结果，省得你一遍遍的手动运行。在Linux下，watch是周期性的执行下个程序，并全屏显示执行结果。</p>
-<p>1、每隔一秒高亮显示网络链接数的变化情况</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 1 -d netstat -ant</span><br></pre></td></tr></table></figure>
-
-<p>2、每隔一秒高亮显示http链接数的变化情况</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 1 -d <span class="string">'pstree|grep http'</span></span><br></pre></td></tr></table></figure>
-
-<p>3、实时查看模拟攻击客户机建立起来的连接数</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch <span class="string">'netstat -an | grep:21 | \ grep&lt;模拟攻击客户机的IP&gt;| wc -l'</span></span><br></pre></td></tr></table></figure>
-
-<p>4、10秒一次输出系统的平均负载</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 10 <span class="string">'cat /proc/loadavg'</span></span><br></pre></td></tr></table></figure>
-
-<p>5、监测磁盘inode和block数目变化情况</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -n 1 <span class="string">'df -i;df'</span></span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -297,7 +276,10 @@
           <div class="post-tags">
               <a href="/tags/centos/" rel="tag"># centos</a>
               <a href="/tags/linux/" rel="tag"># linux</a>
-              <a href="/tags/ulimits/" rel="tag"># ulimits</a>
+              <a href="/tags/nginx/" rel="tag"># nginx</a>
+              <a href="/tags/openresty/" rel="tag"># openresty</a>
+              <a href="/tags/lua/" rel="tag"># lua</a>
+              <a href="/tags/lua-mongo%E6%A8%A1%E5%9D%97/" rel="tag"># lua-mongo模块</a>
           </div>
 
         
@@ -306,12 +288,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/635.html" rel="prev" title="Composer 使用记录">
-      <i class="fa fa-chevron-left"></i> Composer 使用记录
+    <a href="/posts/clvdigkro006ckoom0a8gen8s.html" rel="prev" title="centos下原生nginx支持openresty功能">
+      <i class="fa fa-chevron-left"></i> centos下原生nginx支持openresty功能
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/clvdgolrk00axf4om6uz20omn.html" rel="next" title="centos下原生nginx支持openresty功能">
-      centos下原生nginx支持openresty功能 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/clvdigks7007ykoombheg9ung.html" rel="next" title="golang中net.http请求时header中的Content-Length无效坑">
+      golang中net.http请求时header中的Content-Length无效坑 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
