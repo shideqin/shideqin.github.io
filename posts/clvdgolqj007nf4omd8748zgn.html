@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="你有没有在使用k8s过程中遇到过这种情况: 通过kubectl delete指令删除一些资源时，一直处于Terminating状态。 这是为什么呢？ 本文将介绍当你执行kubectl delete语句时，K8s内部都执行了哪些操作。 以及为何有些资源’删除不掉’(具体表现为一直Terminating，删除namespace时很容易遇到这种情况) 接下来，我们聚焦讨论以下四个方面: 1）资源的哪些属">
+<meta property="og:type" content="article">
+<meta property="og:title" content="K8s无法删除状态为terminating的pod解决方法">
+<meta property="og:url" content="https://phpkoo.com/posts/clvdgolqj007nf4omd8748zgn.html">
+<meta property="og:site_name" content="阿德的博客">
+<meta property="og:description" content="你有没有在使用k8s过程中遇到过这种情况: 通过kubectl delete指令删除一些资源时，一直处于Terminating状态。 这是为什么呢？ 本文将介绍当你执行kubectl delete语句时，K8s内部都执行了哪些操作。 以及为何有些资源’删除不掉’(具体表现为一直Terminating，删除namespace时很容易遇到这种情况) 接下来，我们聚焦讨论以下四个方面: 1）资源的哪些属">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload.phpkoo.com/uploads/2024/state-diagram-delete.png">
+<meta property="og:image" content="https://upload.phpkoo.com/uploads/2024/state-diagram-finalize.png">
+<meta property="article:published_time" content="2024-04-24T06:01:27.000Z">
+<meta property="article:modified_time" content="2024-04-24T06:48:30.263Z">
+<meta property="article:author" content="阿德">
+<meta property="article:tag" content="k8s">
+<meta property="article:tag" content="pod">
+<meta property="article:tag" content="delete">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload.phpkoo.com/uploads/2024/state-diagram-delete.png">
+
+<link rel="canonical" href="https://phpkoo.com/posts/clvdgolqj007nf4omd8748zgn.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>K8s无法删除状态为terminating的pod解决方法 | 阿德的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="阿德的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿德的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/clvdgolqj007nf4omd8748zgn.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          K8s无法删除状态为terminating的pod解决方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-24 14:01:27 / 修改时间：14:48:30" itemprop="dateCreated datePublished" datetime="2024-04-24T14:01:27+08:00">2024-04-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/k8s/" itemprop="url" rel="index"><span itemprop="name">k8s</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/k8s/kubernetes/" itemprop="url" rel="index"><span itemprop="name">kubernetes</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>你有没有在使用k8s过程中遇到过这种情况: 通过kubectl delete指令删除一些资源时，一直处于Terminating状态。 这是为什么呢？</p>
+<p>本文将介绍当你执行kubectl delete语句时，K8s内部都执行了哪些操作。 以及为何有些资源’删除不掉’(具体表现为一直Terminating，删除namespace时很容易遇到这种情况)</p>
+<p>接下来，我们聚焦讨论以下四个方面:</p>
+<p>1）资源的哪些属性会对删除操作产生影响？<br>2）finalizers与owner references属性是如何影响删除操作的？<br>3）如何利用Propagation Policy（分发策略）更改删除顺序？<br>4）删除操作的工作原理？</p>
+<p><strong>1. 词汇表</strong></p>
+<p>1）资源: k8s的资源对象（如configmap, secret, pod…）<br>2）finalizers: 终结器，存放键的列表。列表内的键为空时资源才可被删除<br>3）owner references: 所有者引用（归谁管理/父资源对象是谁）<br>4）kubectl: K8s客户端工具</p>
+<p><strong>2. 强制删除pod</strong></p>
+<p>每当删除namespace或pod等一些Kubernetes资源时，有时资源状态会卡在terminating，很长时间无法删除，甚至有时增加–force flag(强制删除)之后还是无法正常删除。这时就需要edit该资源，将字段finalizers设置为null，之后Kubernetes资源就正常删除了。</p>
+<p>当删除pod时有时会卡住，pod状态变为terminating，无法删除pod</p>
+<p>1）强制删除pod</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl delete pod xxx -n xxx --force --grace-period=0</span><br></pre></td></tr></table></figure>
+
+<p>2）如果强制删除还不行，设置finalizers为空<br>如果一个容器已经在运行，这时需要对一些容器属性进行修改，又不想删除容器，或不方便通过replace的方式进行更新。kubernetes还提供了一种在容器运行时，直接对容器进行修改的方式，就是patch命令。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl patch pod xxx -n xxx -p <span class="string">'&#123;"metadata":&#123;"finalizers":null&#125;&#125;'</span></span><br></pre></td></tr></table></figure>
+
+<p>这样pod就可以删除了。</p>
+<p><strong>3. k8s删除流程</strong><br><img src="https://upload.phpkoo.com/uploads/2024/state-diagram-delete.png" alt=""></p>
+<p>删除操作看似简单，但是有很多因素可能会干扰删除，包括finalizers与owner references属性</p>
+<p><strong>4. Finalizers是什么？</strong><br>上面我们提到了两个属性：finalizers与owner references可能会干扰删除操作，导致删除阻塞或失败。 那Finalizers是什么？会对删除有何影响呢？</p>
+<p>当要理解Kubernetes中的资源删除原理时，了解finalizers（以下我们称finalizers为终结器）的工作原理是很有帮助的， 可以帮助您理解为什么有些对象无法被删除。</p>
+<p>终结器是资源发出预删除操作信号的属性， 控制着资源的垃圾收集，并用于提示控制器在删除资源之前执行哪些清理操作。</p>
+<p>finalizers本质是包含键的列表，不具有实际意义。与annotations（注释）类似，finalizers是可以被操作的（增删改）。</p>
+<p>以下终结器您可能遇到过：</p>
+<ul>
+<li>kubernetes.io/pv-protection</li>
+<li>kubernetes.io/pvc-protection</li>
+</ul>
+<p>这两个终结器作用于卷，以防止卷被意外删除。</p>
+<blockquote>
+<p>类似地，一些终结器可用于防止资源被删除，但不由任何控制器管理。 下面是一个自定义的configmap，它没有具体值，但包含一个终结器:</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF | kubectl create -f -</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  name: mymap</span><br><span class="line">  finalizers:</span><br><span class="line">  - kubernetes</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>终结器通常用于名称空间(namespace)，而管理configmap资源的控制器不知道该如何处理finalizers字段。 下面我们尝试删除这个configmap对象:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl delete configmap/mymap &amp;</span><br><span class="line">configmap <span class="string">"mymap"</span> deleted</span><br><span class="line">$ <span class="built_in">jobs</span></span><br><span class="line">[1]+  Running kubectl delete configmap/mymap</span><br></pre></td></tr></table></figure>
+
+<p>Kubernetes返回该对象已被删除，然而它并没有真正意义上被删除，而是在删除的过程中。 当我们试图再次获取该对象时，我们发现该对象多了个deletionTimestamp(删除时间戳)字段。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get cm mymap -o yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  creationTimestamp: <span class="string">"2021-09-29T11:04:40Z"</span></span><br><span class="line">  deletionGracePeriodSeconds: 0</span><br><span class="line">  deletionTimestamp: <span class="string">"2021-09-29T11:04:55Z"</span></span><br><span class="line">  finalizers:</span><br><span class="line">  - kubernetes</span><br><span class="line">  managedFields:</span><br><span class="line">  - apiVersion: v1</span><br><span class="line">    fieldsType: FieldsV1</span><br><span class="line">    fieldsV1:</span><br><span class="line">      f:metadata:</span><br><span class="line">        f:finalizers:</span><br><span class="line">          .: &#123;&#125;</span><br><span class="line">          v:<span class="string">"kubernetes"</span>: &#123;&#125;</span><br><span class="line">    manager: kubectl</span><br><span class="line">    operation: Update</span><br><span class="line">    time: <span class="string">"2021-09-29T11:04:40Z"</span></span><br><span class="line">  name: mymap</span><br><span class="line">  namespace: default</span><br><span class="line">  resourceVersion: <span class="string">"1378430"</span></span><br><span class="line">  selfLink: /api/v1/namespaces/default/configmaps/mymap</span><br><span class="line">  uid: 8d6ca0b1-4840-4597-8164-a63b526dbf5f</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>简而言之，当我们删除带有finalizers字段的对象时，该对象仅仅是被更新了，而不是被删除了。 这是因为Kubernetes获取到该对象包含终结器，通过添加deletionTimestamp（删除时间戳）字段将其置于只读状态（删除终结器键更新除外）。 换句话说，在删除该对象终结器之前，删除都不会完成。</p>
+</blockquote>
+<p>接下来我们尝试通过patch命令删除终结器，并观察configmap/mymap是否会被’真正’删除。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl patch configmap/mymap \</span><br><span class="line">    --<span class="built_in">type</span> json \</span><br><span class="line">    --patch=<span class="string">'[ &#123; "op": "remove", "path": "/metadata/finalizers" &#125; ]'</span></span><br></pre></td></tr></table></figure>
+
+<p>再次检索该对象</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get cm mymap</span><br><span class="line">Error from server (NotFound): configmaps <span class="string">"mymap"</span> not found</span><br></pre></td></tr></table></figure>
+
+<p>发现该对象已被真正删除，下图描述了带有finalizers字段的对象删除流程：<br><img src="https://upload.phpkoo.com/uploads/2024/state-diagram-finalize.png" alt=""></p>
+<blockquote>
+<p>总结：当您试图删除一个带有终结器的对象，它将一直处于预删除只读状态， 直到控制器删除了终结器键或使用Kubectl删除了终结器。一旦终结器列表为空，Kubernetes就可以回收该对象，并将其放入要从注册表中删除的队列中</p>
+</blockquote>
+<p>带有finalizers字段的对象无法删除的原因大致如下：</p>
+<ul>
+<li>对象存在finalizers，关联的控制器故障未能执行或执行finalizer函数hang住: 比如namespace控制器无法删除完空间内所有的对象， 特别是在使用aggregated apiserver时，第三方apiserver服务故障导致无法删除其对象。 此时，需要会恢复第三方apiserver服务或移除该apiserver的聚合，具体选择哪种方案需根据实际情况而定。</li>
+<li>集群内安装的控制器给一些对象增加了自定义finalizers，未删除完fianlizers就下线了该控制器，导致这些fianlizers没有控制器来移除他们。 此时，需要恢复该控制器会手动移除finalizers(多出现于自定义operator)，具体选择哪种方案根据实际情况而定。</li>
+</ul>
+<p><strong>5. Owner References又是什么？</strong><br>上面我们提到了两个属性：finalizers与owner references可能会干扰删除操作，导致删除阻塞或失败。 并介绍了Finalizers，接下来我们聊聊Owner References.</p>
+<p>Owner References（所有者引用或所有者归属）描述了对象组之间的关系。 指定了资源彼此关联的属性，因此可以级联删除整个资源树。</p>
+<blockquote>
+<p>当存在所有者引用时，将处理终结器规则。所有者引用由名称和UID组成</p>
+</blockquote>
+<p>所有者引用相同名称空间内的链接资源，它还需要UID以使该引用生效(确保唯一)。 Pods通常具有对所属副本集的所有者引用。 因此，当Deloyment或有StatefulSet被删除时，子ReplicaSet和Pod将在流程中被删除。</p>
+<p>我们通过下面的例子，来理解Owner References（所有者引用）的工作原理：</p>
+<p>1.创建cm/mymap-parent对象</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF | kubectl create -f -</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">name: mymap-parent</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>2.获取cm/mymap-parent的UID</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CM_UID=$(kubectl get configmap mymap-parent -o jsonpath=<span class="string">"&#123;.metadata.uid&#125;"</span>)</span><br></pre></td></tr></table></figure>
+<p>3.创建cm/mymap-child对象，并设置ownerReferences字段声明所有者引用（通过kind、name、uid字段确保选择器可以匹配到）</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF | kubectl create -f -</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">name: mymap-child</span><br><span class="line">ownerReferences:</span><br><span class="line">- apiVersion: v1</span><br><span class="line"> kind: ConfigMap</span><br><span class="line"> name: mymap-parent</span><br><span class="line"> uid: <span class="variable">$CM_UID</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<p>即cm/mymap-parent为cm/mymap-child的父对象，此时我们删除cm/mymap-parent对象并观察cm/mymap-child对象状态</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get cm</span><br><span class="line">NAME           DATA   AGE</span><br><span class="line">mymap-child    0      2m44s</span><br><span class="line">mymap-parent   0      3m</span><br><span class="line"></span><br><span class="line">$ kubectl delete cm mymap-parent</span><br><span class="line">configmap <span class="string">"mymap-parent"</span> deleted</span><br><span class="line"></span><br><span class="line">$ kubectl get cm</span><br><span class="line">No resources found <span class="keyword">in</span> default namespace.</span><br></pre></td></tr></table></figure>
+
+<p>即我们通过删除父对象，间接删除了父对象下的所有子对象。 这种删除k8s中被称为级联删除。我们可不可以只删除父对象，而不删除子对象呢？</p>
+<blockquote>
+<p>答案是: 可以的，删除时通过添加–cascade=false参数实现，我们通过下面的例子来验证：</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF | kubectl create -f -</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  name: mymap-parent</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">$ CM_UID=$(kubectl get configmap mymap-parent -o jsonpath=<span class="string">"&#123;.metadata.uid&#125;"</span>)</span><br><span class="line"></span><br><span class="line">$ cat &lt;&lt;EOF | kubectl create -f -</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  name: mymap-child</span><br><span class="line">  ownerReferences:</span><br><span class="line">  - apiVersion: v1</span><br><span class="line">    kind: ConfigMap</span><br><span class="line">    name: mymap-parent</span><br><span class="line">    uid: <span class="variable">$CM_UID</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">$ kubectl delete --cascade=<span class="literal">false</span> configmap/mymap-parent</span><br><span class="line">configmap <span class="string">"mymap-parent"</span> deleted</span><br><span class="line"></span><br><span class="line">$ kubectl get cm</span><br><span class="line">NAME          DATA   AGE</span><br><span class="line">mymap-child   0      107s</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>–cascade=false参数实际改变了父-子资源的删除顺序，k8s中关于父-子资源删除策略有以下三种：</p>
+</blockquote>
+<ul>
+<li>Foreground: 子资源在父资源之前被删除(post-order)</li>
+<li>Background: 父资源在子资源之前被删除 (pre-order)</li>
+<li>Orphan: 忽略所有者引用进行删除</li>
+</ul>
+<p><strong>6. 强制删除命名空间</strong><br>有一种情况可能需要强制删除命名空间：</p>
+<p>如果您已经删除了一个命名空间，并删除了它下面的所有对象，但名称空间仍然存在，一般为Terminating状态。 则可以通过更新名称空间的finalize属性来强制删除该名称空间。</p>
+<ol>
+<li><p>会话1</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl proxy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>会话2</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ NAMESPACE_NAME=<span class="built_in">test</span></span><br><span class="line">cat &lt;&lt;EOF | curl -X PUT \</span><br><span class="line">  127.0.0.1:8001/api/v1/namespaces/<span class="variable">$NAMESPACE_NAME</span>/finalize \</span><br><span class="line">  -H <span class="string">"Content-Type: application/json"</span> \</span><br><span class="line">  --data-binary @-</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"kind"</span>: <span class="string">"Namespace"</span>,</span><br><span class="line">  <span class="string">"apiVersion"</span>: <span class="string">"v1"</span>,</span><br><span class="line">  <span class="string">"metadata"</span>: &#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"<span class="variable">$NAMESPACE_NAME</span>"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"spec"</span>: &#123;</span><br><span class="line">    <span class="string">"finalizers"</span>: null</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>我们应该谨慎思考是否强制删除命名空间，因为这样做可能只删除名称空间，命名空间下的其他资源删不完全，最终导致留下孤儿对象。 比如资源对象A存在于ddd命名空间，此时若强制删除ddd命名空间, 且对象A又未被删除，那么对象A便成了孤儿对象。</p>
+<p>当出现孤儿对象时，可以手动重新创建名称空间，随后可以手动清理和恢复该对象。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/k8s/" rel="tag"># k8s</a>
+              <a href="/tags/pod/" rel="tag"># pod</a>
+              <a href="/tags/delete/" rel="tag"># delete</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/clvdgolvi00htf4omfrge1vrt.html" rel="prev" title="lua利用metatable实现类的继承和多态">
+      <i class="fa fa-chevron-left"></i> lua利用metatable实现类的继承和多态
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">阿德</p>
+  <div class="site-description" itemprop="description">关注小众语言，记录、分享技术点滴！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">190</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://beian.miit.gov.cn/" rel="noopener" target="_blank">浙ICP备14025928号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿德</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

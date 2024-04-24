@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="3.2 HLS标签说明 3.2.1 EXT-X-TARGETDURATION 该标签指定了媒体文件持续时间的最大值，播放文件列表中的媒体文件在EXTINF标签中定义的持续时间必须小于或者等于该标签指定的持续时间。该标签在播放列表文件中必须出现一次，其格式为： # EXT-X-TARGETDURATION：&lt;s&gt;  s是一个以秒为单位的整数。 3.2.2 EXT-X-MEDIA-SEQU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="M3U8解析">
+<meta property="og:url" content="https://phpkoo.com/posts/173.html">
+<meta property="og:site_name" content="阿德的博客">
+<meta property="og:description" content="3.2 HLS标签说明 3.2.1 EXT-X-TARGETDURATION 该标签指定了媒体文件持续时间的最大值，播放文件列表中的媒体文件在EXTINF标签中定义的持续时间必须小于或者等于该标签指定的持续时间。该标签在播放列表文件中必须出现一次，其格式为： # EXT-X-TARGETDURATION：&lt;s&gt;  s是一个以秒为单位的整数。 3.2.2 EXT-X-MEDIA-SEQU">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-02-22T02:01:47.000Z">
+<meta property="article:modified_time" content="2020-02-27T02:47:48.285Z">
+<meta property="article:author" content="阿德">
+<meta property="article:tag" content="ffmpeg">
+<meta property="article:tag" content="hls">
+<meta property="article:tag" content="m3u8">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://phpkoo.com/posts/173.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>M3U8解析 | 阿德的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="阿德的博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿德的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/173.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          M3U8解析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-02-22 10:01:47" itemprop="dateCreated datePublished" datetime="2017-02-22T10:01:47+08:00">2017-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 10:47:48" itemprop="dateModified" datetime="2020-02-27T10:47:48+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/FFmpeg/" itemprop="url" rel="index"><span itemprop="name">FFmpeg</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>3.2 HLS标签说明</p>
+<p>3.2.1 EXT-X-TARGETDURATION</p>
+<p>该标签指定了媒体文件持续时间的最大值，播放文件列表中的媒体文件在EXTINF标签中定义的持续时间必须小于或者等于该标签指定的持续时间。该标签在播放列表文件中必须出现一次，其格式为：</p>
+<p><code># EXT-X-TARGETDURATION：&lt;s&gt;</code>  s是一个以秒为单位的整数。</p>
+<p>3.2.2 EXT-X-MEDIA-SEQUENCE</p>
+<p>播放列表文件中每个媒体文件的URI都有一个唯一的序列号。URI的序列号等于它之前那个RUI的序列号加一。EXT-X-MEDIA-SEQUENCE指明了出现在播放列表文件中的第一个URI的序列号。其格式如下：</p>
+<p><code>#EXT-X-MEDIA-SEQUENCE：&lt;Number&gt;</code>  播放列表文件中的EXT-X-MEDIA-SEQUENCE标签不能多于一个。如果播放列表文件中没有EXT-X-MEDIA-SEQUENCE标签，那么将会把播放列表中第一个URI的序列号当成0。</p>
+<p><strong>注：</strong>媒体文件的序列号码不是必须出现在它的URI中的。见6.3.2和6.3.5。</p>
+<p>3.2.3 EXT-X-KEY</p>
+<p>媒体文件可能是被加密的，EXT-X-KEY提供了解密媒体文件的必要信息，它的格式如下：</p>
+<p><code>#EXT-X-KEY：METHOD=&lt;method&gt; [,URI = &quot;&lt;uri&gt;&quot;] [,IV = &lt;iv&gt;]</code></p>
+<p>Method属性指定了加密方法，定义了两种加密方法：NONE和AES-128。<br>加密方法NONE表示媒体文件不被加密，如果加密方法是NONE，那么URI和IV属性不允许存在。<br>加密方法AES-128表示媒体文件使用高级加密标准128位密钥和PKCS7 padding加密。如果加密方法是AES-128，那么对于URI属性，如果存在，则指定获取密钥的方法；对于IV属性，如果存在，则指定使用密钥的初始化向量。<br>IV属性出现在协议版本2中，新的EXT-X-KEY将会取代任何一个先前的EXT-X-KEY。<br>如果播放列表文件没有包含EXT-X-KEY标签，那么媒体文件将不会被加密。</p>
+<p>密钥文件的格式见第五章，媒体文件加密信息见5.2、6.2.3、6.3.6。</p>
+<p>3.2.4 EXT-X-PROGRAM-DATE-TIME</p>
+<p>EXT-X-PROGRAM-DATE-TIME标签将下一个媒体文件的开头和绝对日期关联起来。日期/时间的表示基于ISO/IEC，并且要指明时区。例如：<br><code>#EXT-X-PROGRAM-DATE-TIME:&lt;YYYY–MM–DDThh:mm:ssZ&gt;</code></p>
+<p>详见6.2.1和6.3.3</p>
+<p>3.2.5 EXT-X-ALLOW-CATCH</p>
+<p>EXT-X-ALLOW-CATCH标签指定客户端可以或者不准缓存下载的媒体文件用来重播。它可能会出现在播放列表文件的任何地方，但是不能出现两次或以上。该标签适用于播放列表中的所有分片。其格式如下：<br><code>#EXT-X-ALLOW-CACHE:&lt;YES|NO&gt;</code></p>
+<p>详见6.3.3</p>
+<p>3.2.6 EXT-X-ENDLIST</p>
+<p>EXT-X-ENDLIST标签标示没有更多媒体文件将会加入到播放列表中，它可能会出现在播放列表文件的任何地方，但是不能出现两次或以上。其格式如下：<br><code>#EXT-X-ENDLIST</code></p>
+<p>3.2.7 EXT-X-STREAM-INF</p>
+<p>EXT-X-STREAM-INF标签表示在播放列表中的下一个URI标识另一个播放列表文件。格式如下：<br><code>#EXT-X-STREAM-INF:[attribute=value][,attribute=value]\* &lt;URI&gt;</code></p>
+<p>在一个EXT-X-STREAM-INF标签中attribute不能出现两次或以上。其它属性定义：<br><code>BANDWIDTH = &lt;n&gt;</code><br>n为每秒比特数,它必须是每个媒体文件比特速率的上限，必须经过计算包含那些在播放列表中出现的或者将要出现的容器开销。<br><code>PROGRAM-ID=&lt;i&gt;</code><br>i是一个数字，在播放列表文件的范围内唯一的标识了一个特定的演示文稿。<br>一个播放列表文件可能包含多个具有相同PROGRAM-ID 的EXT-X-STREAM-INF标签来标识某个演示文稿的不同编码。这些变种的的播放列表可能包含额外的EXT-X-STREAM-INF标签。<br><code>CODECS=&quot;[format][,format]*&quot;</code><br>每一种格式都指定了存在于媒体文件中的媒体类型。合法的格式标示符都是那些在ISO文件格式名称空间被RFC4281定义的格式。<br>RESOLUTION=<N>x<M><br>N是流中视频水平编码分辨率的近似，以像素数表示，M是编码垂直分辨率的近似。</p>
+<p>3.2.8 EXT-X-DISCONTINUITY</p>
+<p>EXT-X-DISCONTINUITY标签表示该标签后边的媒体文件和之前的媒体文件之间的编码间断。特性可能改变的一组是：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">file format  </span><br><span class="line">number and type of tracks  </span><br><span class="line">encoding parameters  </span><br><span class="line">encoding sequence</span><br></pre></td></tr></table></figure>
+<p>详见第四章，6.2.1、6.3.3。</p>
+<p>3.2.9 EXT-X-VERSION</p>
+<p>EXT-X-VERSION标签指出了播放列表版本的适应性。播放列表文件、其关联的媒体和服务器必须遵守最新版本的所有规定。</p>
+<p>4 多媒体文件</p>
+<p>每一个媒体文件资源定位符都必须标识一个媒体文件，该文件是整体数据的一个分片。每个媒体文件必须按照MPEG-2的传输流和MPEG-2音频流的格式。[ISO13818]<br>传输流文件必须包含一个MPEG-2节目。在每个文件的开始应该有一个节目关联表和一个节目映射表。包含视频的文件应该有至少一个密钥帧和足够的信息来完全初始化一个视频解码器。<br>播放列表中的媒体文件必须是编码流中媒体文件的末尾与先前的序列号的延续，除非它是播放列表中出现的第一个媒体文件，或者它前边有EXT-X-DISCONTINUITY标签。<br>客户端应该准备好处理一个特定类型（音频或视频等）的多个轨道。一个没有优先级的客户端应该选择它能播放的具有最小数字编号的音轨。<br>客户端应该忽略那些传输流的内部不能识别的流。<br>媒体文件内样本流和相应的多媒体流的编码参数应保持一致。然而客户端应该解决编码的变化问题，例如缩放视频内容以适应分辨率改变。</p>
+<p>URI属性中EXT-X-KEY标签标识一个密钥文件。密钥文件包含解密播放列表中媒体文件的密钥。AES-128加密算法使用16字节的密钥。密钥文件的格式为16字节的二进制数数组。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ffmpeg/" rel="tag"># ffmpeg</a>
+              <a href="/tags/hls/" rel="tag"># hls</a>
+              <a href="/tags/m3u8/" rel="tag"># m3u8</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/282.html" rel="prev" title="一张图掌握Git">
+      <i class="fa fa-chevron-left"></i> 一张图掌握Git
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/290.html" rel="next" title="CentOS6 安装vsftpd">
+      CentOS6 安装vsftpd <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">阿德</p>
+  <div class="site-description" itemprop="description">关注小众语言，记录、分享技术点滴！</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">190</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://beian.miit.gov.cn/" rel="noopener" target="_blank">浙ICP备14025928号-1 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿德</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
