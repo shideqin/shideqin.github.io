@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>K8s无法删除状态为terminating的pod解决方法</title>
-    <url>/posts/clvdigkql003lkoom5lvz8xv8.html</url>
+    <url>/posts/clvdjbvxx001j4oomgdht2u4y.html</url>
     <content><![CDATA[<p>你有没有在使用k8s过程中遇到过这种情况: 通过kubectl delete指令删除一些资源时，一直处于Terminating状态。 这是为什么呢？</p>
 <p>本文将介绍当你执行kubectl delete语句时，K8s内部都执行了哪些操作。 以及为何有些资源’删除不掉’(具体表现为一直Terminating，删除namespace时很容易遇到这种情况)</p>
 <p>接下来，我们聚焦讨论以下四个方面:</p>
@@ -116,7 +116,7 @@
   </entry>
   <entry>
     <title>lua利用metatable实现类的继承和多态</title>
-    <url>/posts/clvdigksh008jkoomcr2oep62.html</url>
+    <url>/posts/clvdjbvzx00604oomcpaw8bl1.html</url>
     <content><![CDATA[<p>在lua原生语法特性中是不具备面向对象设计的特性。因此，要想在lua上像其他高级语言一样使用面向对象的设计方法，就需要使用原生的元表(metatable)来模拟面向对象设计。</p>
 <p><strong>一、元表setmetatable</strong><br>对指定 table 设置元表(metatable)，如果元表(metatable)中存在__metatable键值，setmetatable会失败。</p>
 <p>以下实例演示了如何对指定的表设置元表：</p>
@@ -143,7 +143,7 @@
   </entry>
   <entry>
     <title>openssl模块安装luaossl（luacrypto）</title>
-    <url>/posts/clvdigksu009dkoomf6ed9xf1.html</url>
+    <url>/posts/clvdjbw06006u4oom21p5ehr5.html</url>
     <content><![CDATA[<p><a href="https://luarocks.org/modules/daurnimator/luaossl" target="_blank" rel="noopener">luaossl</a> 是<a href="https://luarocks.org/modules/starius/luacrypto" target="_blank" rel="noopener">luacrypto</a>的代替版本，是针对 Lua 5.1、5.2、5.3 和 LuaJIT 的 OpenSSL 综合绑定。是 Lua 世界中最全面的 OpenSSL 绑定。luaosll安装依赖OpenSSL库，所以需要先安装OpenSSL。</p>
 <p><strong>一、安装OpenSSL</strong><br>下载好的OpenSSL源码目录下，编译安装OpenSSL（以下均使用默认路径“/usr/local”进行安装）</p>
 <p>1）生成Makefile文件</p>
@@ -172,7 +172,7 @@
   </entry>
   <entry>
     <title>Kubernetes使用KEDA通过Prometheus触发HPA</title>
-    <url>/posts/clvdigkqm003okoomcm2xdc8u.html</url>
+    <url>/posts/clvdjbvxx001l4oomcxd573yw.html</url>
     <content><![CDATA[<p><a href="https://keda.sh/" target="_blank" rel="noopener">KEDA</a> 是一个基于 Kubernetes 的事件驱动自动缩放器。使用 KEDA，您可以根据需要处理的事件数量来驱动 Kubernetes 中任何容器的扩展。KEDA可以支持很多自定义事件源，如：Mysql、MongoDB、Redis、ActiveMQ、Kafka、Prometheus、Metrics API等。本文使用nginx中的stub_status数据 + Prometheus为事件源进行KEDA HPA配置。</p>
 <p><strong>一、开启nginx(stub_status)</strong><br>nginx中的stub_status模块主要用于查看Nginx的一些状态信息。</p>
 <p>1）查看nginx时候有安装该模块。</p>
@@ -219,7 +219,7 @@
   </entry>
   <entry>
     <title>使用openssl创建多泛域名及IP的自签名证书</title>
-    <url>/posts/clvdigktc00a9koom659j1b1f.html</url>
+    <url>/posts/clvdjbw0m008c4oom5jz54q57.html</url>
     <content><![CDATA[<p>在开发环境及私有环境下需要使用SSL，于是使用openssl创建自签发证书，支持多域名、泛域名、直接IP访问。</p>
 <p><strong>一、使用openssl生成证书自签名</strong></p>
 <p>openssl在centos中是标配，所以直接在centos中操作，因为要多个域名和IP，故而需要编辑一个配置文件，如下：</p>
@@ -290,7 +290,7 @@
   </entry>
   <entry>
     <title>golang中net.http请求时header中的Content-Length无效坑</title>
-    <url>/posts/clvdigks7007ykoombheg9ung.html</url>
+    <url>/posts/clvdjbvzs005m4oom205sc42u.html</url>
     <content><![CDATA[<p>在一次和国内某云厂商对接对象存储时，因为他们对象存储服务，是直接使用的是第三方开源服务，开源服务默认并不支持<strong>chunked</strong>编码（而国内其它大厂一般都是支持chunked编码）。导致上传文件一直报<strong>HTTP/1.1 411 Length Required</strong>错误，出现问题的原因是说，我没有传Content-Length。</p>
 <p>而明明我在header里设置了Content-Length，但是抓包发现，实际却变成了chunked<br><img src="https://upload.phpkoo.com/uploads/2021/12/net.http-02.png" alt=""></p>
 <p>经过反复的测试情况都依旧，直到在github上找到了这个<a href="https://github.com/golang/go/issues/16264" target="_blank" rel="noopener">https://github.com/golang/go/issues/16264</a></p>
@@ -312,7 +312,7 @@
   </entry>
   <entry>
     <title>luarocks安装lua-mongo模块</title>
-    <url>/posts/clvdigksh008hkoom5jrufl8b.html</url>
+    <url>/posts/clvdjbvzx005w4oomava40s9p.html</url>
     <content><![CDATA[<p>lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：<a href="https://github.com/neoxic/lua-mongo" target="_blank" rel="noopener">https://github.com/neoxic/lua-mongo</a></p>
 <p>通过luarocks方式安装lua模块</p>
 <p>一、安装luarocks工具，官网:<a href="https://luarocks.org/" target="_blank" rel="noopener">https://luarocks.org/</a><br>二、安装lua-mongo模块</p>
@@ -344,7 +344,7 @@
   </entry>
   <entry>
     <title>centos下原生nginx支持openresty功能</title>
-    <url>/posts/clvdigkro006ckoom0a8gen8s.html</url>
+    <url>/posts/clvdjbvz800474oom49hr1hiz.html</url>
     <content><![CDATA[<p>nginx想支持openresty的功能，需要安装以下模块及依赖<code>luajit2</code>、<code>lua-resty-core</code>、<code>lua-resty-lrucache</code>、<code>lua-nginx-module</code>、<code>ngx_devel_kit</code>以下5个依赖包必须先下载，另外如果需要同时支持SSL的话，还需要下载<code>openssl</code>依赖包（ssl只需要下载nginx编译时使用）。</p>
 <p>一、安装openresty依赖包<br>1、安装luajit2（下载最新版本）</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/openresty/luajit2/archive/v2.1-20201229.tar.gz</span><br><span class="line">tar -zxvf luajit2-2.1-20201229.tar.gz</span><br><span class="line"><span class="built_in">cd</span> luajit2-2.1-20201229</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line"><span class="comment">#导入环境变量（编译nginx时需要）</span></span><br><span class="line"><span class="built_in">export</span> LUAJIT_LIB=/usr/<span class="built_in">local</span>/lib</span><br><span class="line"><span class="built_in">export</span> LUAJIT_INC=/usr/<span class="built_in">local</span>/include/luajit-2.1</span><br></pre></td></tr></table></figure>
@@ -379,7 +379,7 @@
   </entry>
   <entry>
     <title>使用watch实时查看进程的文件句柄信息</title>
-    <url>/posts/clvdigktd00adkoomf39qgo6z.html</url>
+    <url>/posts/clvdjbw0w00994oom0lnl1ykg.html</url>
     <content><![CDATA[<p>一、lsof相关使用<br>1、系统所有进程打开对应的句柄数</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">lsof -n|awk <span class="string">'&#123;print $2&#125;'</span>|sort|uniq -c |sort -nr|more</span><br></pre></td></tr></table></figure>
 
@@ -448,8 +448,8 @@
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>php</tag>
         <tag>composer</tag>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -765,8 +765,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>docker</tag>
         <tag>centos7</tag>
+        <tag>docker</tag>
         <tag>docker-ce</tag>
       </tags>
   </entry>
@@ -798,24 +798,6 @@
       <tags>
         <tag>https</tag>
         <tag>证书链</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL: libmysqlclient.so.20: cannot open shared object file解决方法</title>
-    <url>/posts/454.html</url>
-    <content><![CDATA[<p>import MySQLdb的时候报错“ImportError: libmysqlclient.so.20: cannot open shared object file: No such file or directory”</p>
-<p>解决方法：<br>找到libmysqlclient.so.20,一般都在mysql安装目录/lib库里，做个软链接即可。</p>
-<p>######64为系统</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/mysql/lib/libmysqlclient.so.20 /usr/lib64/libmysqlclient.so.20</span><br></pre></td></tr></table></figure>
-<p>######32位系统</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/mysql/lib/libmysqlclient.so.20 /usr/lib/libmysqlclient.so.20</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-        <category>Mysql</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-        <tag>libmysqlclient</tag>
       </tags>
   </entry>
   <entry>
@@ -872,8 +854,8 @@
         <category>GoLang</category>
       </categories>
       <tags>
-        <tag>blockchain</tag>
         <tag>golang</tag>
+        <tag>blockchain</tag>
         <tag>区块链</tag>
       </tags>
   </entry>
@@ -939,8 +921,8 @@
         <category>GoLang</category>
       </categories>
       <tags>
-        <tag>golang</tag>
         <tag>go</tag>
+        <tag>golang</tag>
         <tag>build</tag>
       </tags>
   </entry>
@@ -958,8 +940,8 @@
         <category>GoLang</category>
       </categories>
       <tags>
-        <tag>golang</tag>
         <tag>go</tag>
+        <tag>golang</tag>
         <tag>github</tag>
       </tags>
   </entry>
@@ -1192,8 +1174,8 @@
       </categories>
       <tags>
         <tag>centos</tag>
-        <tag>LUA</tag>
         <tag>imagick</tag>
+        <tag>LUA</tag>
       </tags>
   </entry>
   <entry>
@@ -1319,43 +1301,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Centos6.8下出现bash: scp: command not found lost connection问题解决</title>
-    <url>/posts/316.html</url>
-    <content><![CDATA[<p>在内网，从一台服务器传mysql的源码安装包到另外一台服务器时，发生如下的错误：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ scp mysql-5.1.55.tar.gz root@192.168.3.22:.</span><br><span class="line">root@192.168.3.22<span class="string">'s password:</span></span><br><span class="line"><span class="string">bash: scp: command not found</span></span><br><span class="line"><span class="string">lost connection</span></span><br></pre></td></tr></table></figure>
-<p>提示scp的命令找不到，但是查找发现命令是存在的</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ whereis scp</span><br><span class="line">scp: /usr/bin/scp /usr/share/man/man1/scp.1.gz</span><br></pre></td></tr></table></figure>
-<p>如果本地都没有问题，那是另一端服务器上没有安装scp的命令？</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ whereis scp</span><br><span class="line">scp:</span><br></pre></td></tr></table></figure>
-
-<p>果真是如此，所以是server端没有找到scp的命令，而不是本地<br>安装上scp的依赖包</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ yum install openssh-clients</span><br></pre></td></tr></table></figure>
-<p>安装好之后，重新传输文件OK。</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>scp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装mysql5.7社区版二进制软件包出现 error while loading shared libraries: libaio.so.1:</title>
-    <url>/posts/314.html</url>
-    <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/mysql/bin/mysql_install_db --basedir=/usr/<span class="built_in">local</span>/mysql --datadir=/usr/<span class="built_in">local</span>/mysql/data --user=mysql</span><br></pre></td></tr></table></figure>
-<p>在安装二进制mysql的软件包时（版本mysql5.7社区版），初始化中出现 error while loading shared libraries: libaio.so.1: cannot open shared object file: No such file or directory的错误：</p>
-<p>解决方法：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ yum install -y libaio  <span class="comment">#安装后在初始化就OK了</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Mysql</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-        <tag>libaio</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CentOS下yum安装mcrypt错误：No package php-mcrypt available.解决方法</title>
     <url>/posts/311.html</url>
     <content><![CDATA[<p>错误描述</p>
@@ -1473,8 +1418,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>centos6.8</tag>
         <tag>docker</tag>
+        <tag>centos6.8</tag>
       </tags>
   </entry>
   <entry>
@@ -1641,8 +1586,8 @@
         <category>Linux</category>
       </categories>
       <tags>
-        <tag>php</tag>
         <tag>centos</tag>
+        <tag>php</tag>
         <tag>mongodb</tag>
       </tags>
   </entry>
@@ -1769,8 +1714,8 @@
         <category>FFmpeg</category>
       </categories>
       <tags>
-        <tag>ffmpeg</tag>
         <tag>aac</tag>
+        <tag>ffmpeg</tag>
       </tags>
   </entry>
   <entry>
@@ -1979,8 +1924,8 @@
         <category>GoLang</category>
       </categories>
       <tags>
-        <tag>golang</tag>
         <tag>go</tag>
+        <tag>golang</tag>
         <tag>go安装</tag>
       </tags>
   </entry>
@@ -2088,8 +2033,8 @@
         <category>Nodejs</category>
       </categories>
       <tags>
-        <tag>graceful</tag>
         <tag>nodejs</tag>
+        <tag>graceful</tag>
         <tag>Zero downtime</tag>
       </tags>
   </entry>
@@ -2102,8 +2047,8 @@
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>php</tag>
         <tag>ffmpeg</tag>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -2117,8 +2062,8 @@
         <category>GoLang</category>
       </categories>
       <tags>
-        <tag>golang</tag>
         <tag>go</tag>
+        <tag>golang</tag>
         <tag>协程</tag>
       </tags>
   </entry>
@@ -2201,8 +2146,8 @@
         <category>GoLang</category>
       </categories>
       <tags>
-        <tag>golang</tag>
         <tag>go</tag>
+        <tag>golang</tag>
         <tag>守护进程</tag>
       </tags>
   </entry>
@@ -2267,9 +2212,9 @@
         <category>Nodejs</category>
       </categories>
       <tags>
-        <tag>nodejs</tag>
         <tag>github</tag>
         <tag>mongodb</tag>
+        <tag>nodejs</tag>
         <tag>开源</tag>
       </tags>
   </entry>
@@ -2281,8 +2226,8 @@
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>date</tag>
         <tag>php</tag>
+        <tag>date</tag>
         <tag>时间</tag>
         <tag>本周</tag>
         <tag>本月</tag>
@@ -2705,9 +2650,9 @@
       </categories>
       <tags>
         <tag>js</tag>
-        <tag>函数</tag>
         <tag>javascript</tag>
         <tag>trime()</tag>
+        <tag>函数</tag>
       </tags>
   </entry>
   <entry>
@@ -2781,19 +2726,6 @@
         <tag>国内域名</tag>
         <tag>国际域名</tag>
         <tag>域名续费</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在线Loading图标制作</title>
-    <url>/posts/55.html</url>
-    <content><![CDATA[<p>Load Info在线制作Loading图标的免费网站，目前网站提供了90多种（总有一种适合你）动态图标。 点击图片,可以自定义背景色和前景色，更有三种不同的尺寸可以选择，包括 16×16, 24×24, 48×46，很是方便实用。Ajax Load同样可以在线制作Loading图标, Ajax Load所提供的种类没有Load Info丰富，不是先看到Loading的样式,下拉菜单选择样式,点击生成才能看到具体的样式 点击进入 <a href="http://loadinfo.net/" target="_blank" rel="noopener" title="loadinfo">loadinfo</a> 点击进入 <a href="http://ajaxload.info/" target="_blank" rel="noopener" title="ajaxload">ajaxload</a></p>
-]]></content>
-      <categories>
-        <category>WEB相关</category>
-      </categories>
-      <tags>
-        <tag>ajax</tag>
-        <tag>在线loading图标制作</tag>
       </tags>
   </entry>
   <entry>
@@ -2892,8 +2824,8 @@
       </categories>
       <tags>
         <tag>php</tag>
-        <tag>crypt</tag>
         <tag>函数</tag>
+        <tag>crypt</tag>
       </tags>
   </entry>
   <entry>
@@ -2937,6 +2869,20 @@
   <entry>
     <title>网站架构策划方案</title>
     <url>/posts/9.html</url>
+    <content><![CDATA[<p>这段时间一直都在为网站架构的事情所烦恼，前端，程序，服务器三个方面应该如何协调才能达到一个较为优化的网站架构呢？根据前辈的经验，我总结了以下文档，特分享。<br><strong>1. UIC需要做的</strong><br>采用Css Sprite将背景图片，图标图片集成在一张图片内。<br>优点：减少用户代理对服务器的请求次数；加快用户载入页面时间。 Css &amp;&amp; Js 统一使用YUIcompressor进行代码压缩处理。<br>优点：加快服务器结束线程的时间；加快用户载入页面时间。 单个数据对象小于25K。<br>优点：部分用户代理（如iphone），无法载入25K以上的数据对象。 外部广告图片，宣传图片尽量防止在本站图片缓存服务器上。<br>优点：减少用户的DNS查询，加快页面载入速度。 色彩不超过256色的图片，不采用JPG格式存储。<br>优点：减少文件大小，加快页面载入速度。 使用PNG8格式的PNG图片代替Gif格式图片。<br>优点：具备比Gif更高的压缩比，有利于网络传塑，加快页面载入速度。 JPG图片采用interlaced模式存储。<br>优点：色彩复杂的图片大小更小，可让图片呈渐进状态显示，直至清晰。增强用户体验。<br><strong>2. UI 需要做的</strong><br>设计稿图片尽量减少一些渐变效果的使用<br>优点：减少JPG图片的数量，加快用户载入页面时间。<br><strong>3. 开发需要做的</strong><br>如果出现Ajax 方式，采用Ajax缓存 可考虑<br><strong>4. SA 需要做的</strong><br>负载均衡 优点：减小Web服务器压力。 Gzip压缩输出<br>优点：减小输出的用户数据大小，加快页面载入时间。 图片与Web服务器分离<br>优点：减小Web服务器压力。 增加Squid缓存<br>优点：避免2次刷新带来的重复请求。减少服务器压力。 架构SVN测试服务器并与公网服务器的同步<br>优点：避免公网页面出现错误，增强用户体验。</p>
+]]></content>
+      <categories>
+        <category>本人唠叨</category>
+      </categories>
+      <tags>
+        <tag>方案</tag>
+        <tag>策划</tag>
+        <tag>网站架构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网站架构策划方案</title>
+    <url>/posts/9.html</url>
     <content><![CDATA[<p>这段时间一直都在为网站架构的事情所烦恼，前端，程序，服务器三个方面应该如何协调才能达到一个较为优化的网站架构呢？根据前辈的经验，我总结了以下文档，特分享。  </p>
 <p><strong>1. UIC需要做的</strong><br>采用Css Sprite将背景图片，图标图片集成在一张图片内。<br>优点：减少用户代理对服务器的请求次数；加快用户载入页面时间。</p>
 <p>Css &amp;&amp; Js 统一使用YUIcompressor进行代码压缩处理。<br>优点：加快服务器结束线程的时间；加快用户载入页面时间。</p>
@@ -2963,30 +2909,9 @@
       </tags>
   </entry>
   <entry>
-    <title>网站架构策划方案</title>
-    <url>/posts/9.html</url>
-    <content><![CDATA[<p>这段时间一直都在为网站架构的事情所烦恼，前端，程序，服务器三个方面应该如何协调才能达到一个较为优化的网站架构呢？根据前辈的经验，我总结了以下文档，特分享。<br><strong>1. UIC需要做的</strong><br>采用Css Sprite将背景图片，图标图片集成在一张图片内。<br>优点：减少用户代理对服务器的请求次数；加快用户载入页面时间。 Css &amp;&amp; Js 统一使用YUIcompressor进行代码压缩处理。<br>优点：加快服务器结束线程的时间；加快用户载入页面时间。 单个数据对象小于25K。<br>优点：部分用户代理（如iphone），无法载入25K以上的数据对象。 外部广告图片，宣传图片尽量防止在本站图片缓存服务器上。<br>优点：减少用户的DNS查询，加快页面载入速度。 色彩不超过256色的图片，不采用JPG格式存储。<br>优点：减少文件大小，加快页面载入速度。 使用PNG8格式的PNG图片代替Gif格式图片。<br>优点：具备比Gif更高的压缩比，有利于网络传塑，加快页面载入速度。 JPG图片采用interlaced模式存储。<br>优点：色彩复杂的图片大小更小，可让图片呈渐进状态显示，直至清晰。增强用户体验。<br><strong>2. UI 需要做的</strong><br>设计稿图片尽量减少一些渐变效果的使用<br>优点：减少JPG图片的数量，加快用户载入页面时间。<br><strong>3. 开发需要做的</strong><br>如果出现Ajax 方式，采用Ajax缓存 可考虑<br><strong>4. SA 需要做的</strong><br>负载均衡 优点：减小Web服务器压力。 Gzip压缩输出<br>优点：减小输出的用户数据大小，加快页面载入时间。 图片与Web服务器分离<br>优点：减小Web服务器压力。 增加Squid缓存<br>优点：避免2次刷新带来的重复请求。减少服务器压力。 架构SVN测试服务器并与公网服务器的同步<br>优点：避免公网页面出现错误，增强用户体验。</p>
-]]></content>
-      <categories>
-        <category>本人唠叨</category>
-      </categories>
-      <tags>
-        <tag>方案</tag>
-        <tag>策划</tag>
-        <tag>网站架构</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>二级域名的完美实现</title>
     <url>/posts/13.html</url>
-    <content><![CDATA[<p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com<br>其次，在 httpd.conf 中打开 mod_rewrite</p>
-<p>之后，在 httpd.conf 的最后，添加以下内容：  </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">RewriteEngine on  </span><br><span class="line">RewriteMap lowercase int:tolower  </span><br><span class="line">RewriteMap vhost txt:/wp-content/<span class="built_in">local</span>/etc/apache/vhost.map  </span><br><span class="line">RewriteCond <span class="variable">$&#123;lowercase:%&#123;SERVER_NAME&#125;</span>&#125; ^(.+)$  </span><br><span class="line">RewriteCond <span class="variable">$&#123;vhost:%1&#125;</span> ^(/.*)$  </span><br><span class="line">RewriteRule ^/(.*)$ %1/<span class="variable">$1</span></span><br></pre></td></tr></table></figure>
-<p>其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。<br>然后，在这个所在路径的目录下创建一个文件： vhost.map<br>内容为： </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">www.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/domain  </span><br><span class="line">bbs.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/bbs  </span><br><span class="line">anyname.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/anyname`</span><br></pre></td></tr></table></figure>
-<p>以上部分都是：” 域名+空格+绝对路径” 的形式。</p>
-<p>最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录：<br>domain , bbs , anyname 等等，理论上可以无限。</p>
-<p>这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以<br>随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
+    <content><![CDATA[<p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com 其次，在 httpd.conf 中打开 mod_rewrite 之后，在 httpd.conf 的最后，添加以下内容： <code>RewriteEngine on RewriteMap lowercase int:tolower RewriteMap vhost txt:/wp-content/local/etc/apache/vhost.map RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$ RewriteCond ${vhost:%1} ^(/.*)$ RewriteRule ^/(.*)$ %1/$1</code> 其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。 然后，在这个所在路径的目录下创建一个文件： vhost.map 内容为： <code>www.domain.com /wp-content/local/www/data-dist/domain bbs.domain.com /wp-content/local/www/data-dist/bbs anyname.domain.com /wp-content/local/www/data-dist/anyname</code> 以上部分都是：” 域名+空格+绝对路径” 的形式。 最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录： domain , bbs , anyname 等等，理论上可以无限。 这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以 随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
 ]]></content>
       <categories>
         <category>Apache</category>
@@ -3000,7 +2925,14 @@
   <entry>
     <title>二级域名的完美实现</title>
     <url>/posts/13.html</url>
-    <content><![CDATA[<p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com 其次，在 httpd.conf 中打开 mod_rewrite 之后，在 httpd.conf 的最后，添加以下内容： <code>RewriteEngine on RewriteMap lowercase int:tolower RewriteMap vhost txt:/wp-content/local/etc/apache/vhost.map RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$ RewriteCond ${vhost:%1} ^(/.*)$ RewriteRule ^/(.*)$ %1/$1</code> 其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。 然后，在这个所在路径的目录下创建一个文件： vhost.map 内容为： <code>www.domain.com /wp-content/local/www/data-dist/domain bbs.domain.com /wp-content/local/www/data-dist/bbs anyname.domain.com /wp-content/local/www/data-dist/anyname</code> 以上部分都是：” 域名+空格+绝对路径” 的形式。 最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录： domain , bbs , anyname 等等，理论上可以无限。 这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以 随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
+    <content><![CDATA[<p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com<br>其次，在 httpd.conf 中打开 mod_rewrite</p>
+<p>之后，在 httpd.conf 的最后，添加以下内容：  </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">RewriteEngine on  </span><br><span class="line">RewriteMap lowercase int:tolower  </span><br><span class="line">RewriteMap vhost txt:/wp-content/<span class="built_in">local</span>/etc/apache/vhost.map  </span><br><span class="line">RewriteCond <span class="variable">$&#123;lowercase:%&#123;SERVER_NAME&#125;</span>&#125; ^(.+)$  </span><br><span class="line">RewriteCond <span class="variable">$&#123;vhost:%1&#125;</span> ^(/.*)$  </span><br><span class="line">RewriteRule ^/(.*)$ %1/<span class="variable">$1</span></span><br></pre></td></tr></table></figure>
+<p>其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。<br>然后，在这个所在路径的目录下创建一个文件： vhost.map<br>内容为： </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">www.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/domain  </span><br><span class="line">bbs.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/bbs  </span><br><span class="line">anyname.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/anyname`</span><br></pre></td></tr></table></figure>
+<p>以上部分都是：” 域名+空格+绝对路径” 的形式。</p>
+<p>最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录：<br>domain , bbs , anyname 等等，理论上可以无限。</p>
+<p>这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以<br>随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
 ]]></content>
       <categories>
         <category>Apache</category>

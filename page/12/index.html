@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="关注小众语言，记录、分享技术点滴！">
+  <meta name="description" content="关注小众语言、AI，记录、分享技术点滴！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="阿德的博客">
 <meta property="og:url" content="https://phpkoo.com/page/12/">
 <meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="关注小众语言，记录、分享技术点滴！">
+<meta property="og:description" content="关注小众语言、AI，记录、分享技术点滴！">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="阿德">
 <meta name="twitter:card" content="summary">
@@ -99,7 +99,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
+        <p class="site-subtitle">关注小众语言、AI，记录、分享技术点滴！</p>
   </div>
 
   <div class="site-nav-right">
@@ -194,324 +194,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/9.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/9.html" class="post-title-link" itemprop="url">网站架构策划方案</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2010-01-11 14:15:59" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:59+08:00">2010-01-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 10:17:42" itemprop="dateModified" datetime="2020-02-27T10:17:42+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%AC%E4%BA%BA%E5%94%A0%E5%8F%A8/" itemprop="url" rel="index"><span itemprop="name">本人唠叨</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这段时间一直都在为网站架构的事情所烦恼，前端，程序，服务器三个方面应该如何协调才能达到一个较为优化的网站架构呢？根据前辈的经验，我总结了以下文档，特分享。<br><strong>1. UIC需要做的</strong><br>采用Css Sprite将背景图片，图标图片集成在一张图片内。<br>优点：减少用户代理对服务器的请求次数；加快用户载入页面时间。 Css &amp;&amp; Js 统一使用YUIcompressor进行代码压缩处理。<br>优点：加快服务器结束线程的时间；加快用户载入页面时间。 单个数据对象小于25K。<br>优点：部分用户代理（如iphone），无法载入25K以上的数据对象。 外部广告图片，宣传图片尽量防止在本站图片缓存服务器上。<br>优点：减少用户的DNS查询，加快页面载入速度。 色彩不超过256色的图片，不采用JPG格式存储。<br>优点：减少文件大小，加快页面载入速度。 使用PNG8格式的PNG图片代替Gif格式图片。<br>优点：具备比Gif更高的压缩比，有利于网络传塑，加快页面载入速度。 JPG图片采用interlaced模式存储。<br>优点：色彩复杂的图片大小更小，可让图片呈渐进状态显示，直至清晰。增强用户体验。<br><strong>2. UI 需要做的</strong><br>设计稿图片尽量减少一些渐变效果的使用<br>优点：减少JPG图片的数量，加快用户载入页面时间。<br><strong>3. 开发需要做的</strong><br>如果出现Ajax 方式，采用Ajax缓存 可考虑<br><strong>4. SA 需要做的</strong><br>负载均衡 优点：减小Web服务器压力。 Gzip压缩输出<br>优点：减小输出的用户数据大小，加快页面载入时间。 图片与Web服务器分离<br>优点：减小Web服务器压力。 增加Squid缓存<br>优点：避免2次刷新带来的重复请求。减少服务器压力。 架构SVN测试服务器并与公网服务器的同步<br>优点：避免公网页面出现错误，增强用户体验。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/13.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/13.html" class="post-title-link" itemprop="url">二级域名的完美实现</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2010-01-11 14:15:39" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:39+08:00">2010-01-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Apache/" itemprop="url" rel="index"><span itemprop="name">Apache</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com<br>其次，在 httpd.conf 中打开 mod_rewrite</p>
-<p>之后，在 httpd.conf 的最后，添加以下内容：  </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine on  </span><br><span class="line">RewriteMap lowercase int:tolower  </span><br><span class="line">RewriteMap vhost txt:/wp-content/<span class="built_in">local</span>/etc/apache/vhost.map  </span><br><span class="line">RewriteCond <span class="variable">$&#123;lowercase:%&#123;SERVER_NAME&#125;</span>&#125; ^(.+)$  </span><br><span class="line">RewriteCond <span class="variable">$&#123;vhost:%1&#125;</span> ^(/.*)$  </span><br><span class="line">RewriteRule ^/(.*)$ %1/<span class="variable">$1</span></span><br></pre></td></tr></table></figure>
-<p>其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。<br>然后，在这个所在路径的目录下创建一个文件： vhost.map<br>内容为： </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/domain  </span><br><span class="line">bbs.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/bbs  </span><br><span class="line">anyname.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/anyname`</span><br></pre></td></tr></table></figure>
-<p>以上部分都是：” 域名+空格+绝对路径” 的形式。</p>
-<p>最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录：<br>domain , bbs , anyname 等等，理论上可以无限。</p>
-<p>这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以<br>随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/13.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/13.html" class="post-title-link" itemprop="url">二级域名的完美实现</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2010-01-11 14:15:39" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:39+08:00">2010-01-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-16 14:28:43" itemprop="dateModified" datetime="2020-01-16T14:28:43+08:00">2020-01-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Apache/" itemprop="url" rel="index"><span itemprop="name">Apache</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com 其次，在 httpd.conf 中打开 mod_rewrite 之后，在 httpd.conf 的最后，添加以下内容： <code>RewriteEngine on RewriteMap lowercase int:tolower RewriteMap vhost txt:/wp-content/local/etc/apache/vhost.map RewriteCond ${lowercase:%{SERVER_NAME}} ^(.+)$ RewriteCond ${vhost:%1} ^(/.*)$ RewriteRule ^/(.*)$ %1/$1</code> 其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。 然后，在这个所在路径的目录下创建一个文件： vhost.map 内容为： <code>www.domain.com /wp-content/local/www/data-dist/domain bbs.domain.com /wp-content/local/www/data-dist/bbs anyname.domain.com /wp-content/local/www/data-dist/anyname</code> 以上部分都是：” 域名+空格+绝对路径” 的形式。 最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录： domain , bbs , anyname 等等，理论上可以无限。 这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以 随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/7.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/7.html" class="post-title-link" itemprop="url">PHP各加速利器</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2010-01-11 14:15:29" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:29+08:00">2010-01-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在一些较大项目中如牵涉到要整合用PHP开发的OA办公等系统，可以使用以下PHP的资源，特整理以供大家学习参考<br>加速器/缓存  </p>
-<p><strong>afterBurner Cache</strong><br>早期的 PHP Cache 之一。缓存编译后（第一次执行以后）的PHP 代码。宣称节省40%的运行时间。但是目前开发进度比较慢,兼容PHP 4.1系列。支持操作系统：Linux。<br>国家:意大利<br>网址：<a href="http://afterburner.bware.it/" target="_blank" rel="noopener">http://afterburner.bware.it/</a><br>价格：Free</p>
-<p><strong>APC</strong><br>早期的 PHP Cache 之一。曾经是communityconnect的东西，现在是 PECL 中的一部分。<br>国家:美国<br>网址：<a href="http://pecl.php.net/package/APC" target="_blank" rel="noopener">http://pecl.php.net/package/APC</a><br>价格：Free</p>
-<p><strong>PHP Accelerator</strong><br>Zend 引擎扩展，由ionCube 公司开发 宣称可将脚本运行速度提高5倍。目前兼容PHP 4.3 系列。Yahoo 采用它作为PHP 缓存。支持操作系统：Linux, OpenBSD, FreeBSD, BSDi。Apache 服务器。不兼容Zend Optimizer。<br>国家:英国<br>网址：<a href="http://www.php-accelerator.co.uk/" target="_blank" rel="noopener">http://www.php-accelerator.co.uk/</a><br>价格：Free</p>
-<p><strong>Zend Performance Suite</strong><br>不用我多介绍了 Zend 公司出品。兼容Zend Optimizer。支持最新的PHP和Apache服务器。 服务器吞吐量提高25倍。价格昂贵。众多商业用户包括著名搜索网站alltheweb.com。支持操作系统：Linux，新近推出windows测试版本。<br>国家：美国<br>网址：<a href="http://www.zend.com/store/products/zend-performance-suite.php" target="_blank" rel="noopener">http://www.zend.com/store/products/zend-performance-suite.php</a><br>价格：$1875起</p>
-<p>编码器</p>
-<p><strong>SourceGuardian Pro for PHP</strong><br>为PHP脚本提供基于时间, IP and 域名 限制保护，需要一个Loader才能执行。Loader可以免费下载。和Zend Optimizer， PHPAccelerator 加速器兼容。支持虚拟主机甚至PHP 安全模式，无需服务器特殊设定。<br>国家：美国<br>网址：<a href="http://sourceguardian.com/products/phppro.htm" target="_blank" rel="noopener">http://sourceguardian.com/products/phppro.htm</a><br>价格：$250</p>
-<p><strong>Zend Encoder</strong><br>Zend 公司出品。将PHP 脚本预编译成中间码格式通过Zend Optimizer运行，速度快，但是价格昂贵。<br>国家：美国<br>网址：<a href="http://www.zend.com/store/products/zend-performance-suite.php" target="_blank" rel="noopener">http://www.zend.com/store/products/zend-performance-suite.php</a><br>价格：$960</p>
-<p><strong>ionCube Standalone PHP Encoder 3.0</strong><br>将PHP 脚本预编译成二进制代码， 并提供通过多种方式保护PHP程序， 通过IP加服务器名保护， 时间过期保护， 甚至MAC地址的保护。 经过编码的PHP 程序需要一个Loader才能执行。Loader可以免费下载。支持多种操作系统：Intel Linux, FreeBSD,<br>Windows 同时还提供在线编码服务。<br>国家：美国<br>网址：<a href="http://www.ioncube.com/sa_encoder.php" target="_blank" rel="noopener">http://www.ioncube.com/sa_encoder.php</a><br>价格：$199-$348</p>
-<p>shukebeita的隆重推荐<br><strong>MMCache</strong><br>如果想同时拥有加速和编码功能而且免费？没有问题，MMCache 是你唯一的选择。它功能强大甚至击败Zend 公司的Performance suite<br>而且完全免费。保护php源码。<br>国家：德国/俄罗斯<br>网址：<a href="http://turck-mmcache.sourceforge.net/" target="_blank" rel="noopener">http://turck-mmcache.sourceforge.net/</a><br>价格：free</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/12.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -587,7 +275,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -667,7 +355,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -741,7 +429,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -815,7 +503,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -911,7 +599,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -977,11 +665,171 @@
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4.html" class="post-title-link" itemprop="url">Linux 常用命令</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2009-12-11 14:15:38" itemprop="dateCreated datePublished" datetime="2009-12-11T14:15:38+08:00">2009-12-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Linux 系统常用命令格式：<br>command [option] [argument1] [argument2] …</p>
+<p>其中option以“-”开始，多个option可用一个“-”连起来，如“ls -l -a” 与“ls -la”的效果是一样的。根据命令的不同，参数分为可选</p>
+<p>的或必须的；所有的命令从标准输入接受输入，输出结果显示在标准输出，而错误信息则显示在标准错误输出设备。可使用重定向功能对这些设备进行重定向。</p>
+<p>命令在正常执行结果后返回一个0值，如果命令出错可未完全完成，则返回一个非零值(在shell中可用变量$?查看)。 在shell script中可用此</p>
+<p>返回值作为控制逻辑的一部分。</p>
+<p>帮助命令:<br>man 获取相关命令的帮助信息<br>例如：man dir 可以获取关于dir的使用信息。</p>
+<p>info 获取相关命令的详细使用方法<br>例如：info info 可以获取如何使用info的详细信息。</p>
+<p>文件操作：<br>cat 显示文件内容和合并多个文件<br>clear 清屏<br>chattr 改变文件属性<br>chgrp 改变文件组权<br>chmod 改变文件或目录的权限<br>chown 改变文件的属权<br>comm 比较两个已排过序的文件<br>cp 将文件拷贝至另一文件<br>dd 从指定文件读取数据写到指定文件<br>df 报告磁盘空间使用情况<br>diff 比较两个文本文件，列出行不同之处<br>du 统计目录／文件所占磁盘空间的大小<br>file 辨识文件类型<br>emacs 功能强大的编辑环境<br>find 搜索文件并执行指定操作(find2)<br>grep 按给定模式搜索文件内容<br>head 显示指定文件的前若干行<br>less 按页显示文件<br>ln 创建文件链接<br>locate 查找符合条件的文件<br>more 在终端屏幕按帧显示文本文件<br>mv 文件或目录的移动或更名<br>rm/rmdir 删除文件／目录<br>sed 利用script来处理文本文件<br>sort 对指定文件按行进行排序<br>tail 显示指定文件的最后部分<br>touch 创建文件<br>tr 转换字符<br>vi 全屏编辑器<br>wc 显示指定文件中的行数，词数或字符数<br>which 在环境变量 $PATH 设置的目录里查找符合条件的文件</p>
+<p>压缩与备份:<br>bzip2/bunzip2 .bz2文件的压缩/解压缩程序<br>cpio 备份文件<br>dump 备份文件系统<br>gzip/gunzip .gz文件的压缩/解压缩程序<br>gzexe 压缩可执行文件<br>restore 还原由倾倒(Dump)操作所备份下来的文件或整个文件系统(一个分区)<br>tar 将若干文件存档或读取存档文件<br>unarj 解压缩.arj文件<br>zip/unzip 压缩/解压缩 zip文件<br>zipinfo 列出zip压缩文件的详细信息</p>
+<p>磁盘操作:<br>cd/pwd 切换目录/显示当前工作目录<br>df 显示磁盘的相关信息<br>du 显示目录或文件的大小<br>e2fsck 检查ext2/ext3文件系统的正确性<br>fdisk 对硬盘进行分区<br>fsck 检查文件系统并尝试修复错误<br>losetup 设置循环设备<br>ls 列出目录内容<br>mkdir 创建目录<br>mformat 对MS-DOS文件系统的磁盘进行格式化<br>mkbootdisk 建立目前系统的启动盘<br>mke2fs 建立ext2文件系统<br>mkisofs 制作iso光盘映像文件<br>mount/umount 加载文件系统/卸载文件系统<br>quota 显示磁盘已使用的空间与限制<br>sync 将内存缓冲区内的数据写入磁盘<br>tree 以树状图列出目录的内容</p>
+<p>系统操作:<br>alias 设置指令的别名<br>chkconfig 检查，设置系统的各种服务<br>clock 调整 RTC 时间<br>date 显示或设置系统时间与日期<br>dmesg 显示开机信息<br>eval 重新运算求出参数的内容<br>exit 退出目前的shell<br>export 设置或显示环境变量<br>finger 查找并显示用户信息<br>free 显示内存状态<br>hostid 显示主机标识<br>hostname 显示主机名<br>id 显示用户标识<br>kill 删除执行中的程序或工作<br>last 列出目前与过去登入系统的用户相关信息<br>logout 退出系统<br>lsmod 显示已载入系统的模块<br>modprobe 自动处理可载入模块<br>passwd 设置用户密码<br>ps process status 报告程序状况<br>reboot 重启计算机<br>rhwo 查看系统用户<br>rlogin 远程登入<br>rpm 管理Linux各项套件的程序<br>shutdown 关机<br>su switch user 变更用户身份<br>top 显示，管理执行中的程序<br>uname 显示系统信息<br>useradd/userdel 添加用户 / 删除用户<br>userinfo 图形界面的修改工具<br>usermod 修改用户属性，包括用户的shell类型，用户组等，甚至还能改登录名<br>w 显示目前注册的用户及用户正运行的命令<br>whereis 确定一个命令的二进制执行码，源码及帮助所在的位置<br>who 列出正在使用系统的用户<br>whois 查找并显示用户信息</p>
+<p>网络通信:<br>arp 网地址的显示及控制<br>ftp 文件传输<br>lftp 文件传输<br>mail 发送／接收电子邮件<br>mesg 允许或拒绝其他用户向自己所用的终端发送信息<br>mutt E-mail管理程序<br>ncftp 文件传输<br>netstat 显示网络连接、路由表和网络接口信息<br>pine 收发电子邮件，浏览新闻组<br>ping 向网络上的主机发送 icmp echo request 包<br>ssh 安全模式下的远程登录<br>telnet 远程登录<br>talk 与另一用户对话<br>traceroute 显示到达某一主机所经由的路径及所使用的时间<br>wget 从网络上自动下载文件<br>write 向其他用户的终</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/16.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/16.html" class="post-title-link" itemprop="url">PHP中判断空变量empty(),is_null(),isset()的区别</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2009-11-12 21:38:40" itemprop="dateCreated datePublished" datetime="2009-11-12T21:38:40+08:00">2009-11-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-04-24 15:55:28" itemprop="dateModified" datetime="2024-04-24T15:55:28+08:00">2024-04-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="http://www.php.net" target="_blank" rel="noopener" title="php">PHP</a> 中判断变量类型及是否为空主要涉及到的函数有gettype(),isEmpty(),isset(),is_null(),下表详细说</p>
+<p><img src="https://upload.phpkoo.com/uploads/2020/01/20200115222148-1024x677.png" alt=""></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span>
   </nav>
 
 
@@ -1040,14 +888,14 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">阿德</p>
-  <div class="site-description" itemprop="description">关注小众语言，记录、分享技术点滴！</div>
+  <div class="site-description" itemprop="description">关注小众语言、AI，记录、分享技术点滴！</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1060,7 +908,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">190</span>
+        <span class="site-state-item-count">186</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

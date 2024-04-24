@@ -23,7 +23,7 @@
   <meta name="description" content="你有没有在使用k8s过程中遇到过这种情况: 通过kubectl delete指令删除一些资源时，一直处于Terminating状态。 这是为什么呢？ 本文将介绍当你执行kubectl delete语句时，K8s内部都执行了哪些操作。 以及为何有些资源’删除不掉’(具体表现为一直Terminating，删除namespace时很容易遇到这种情况) 接下来，我们聚焦讨论以下四个方面: 1）资源的哪些属">
 <meta property="og:type" content="article">
 <meta property="og:title" content="K8s无法删除状态为terminating的pod解决方法">
-<meta property="og:url" content="https://phpkoo.com/posts/clvdigkql003lkoom5lvz8xv8.html">
+<meta property="og:url" content="https://phpkoo.com/posts/clvdjbvxx001j4oomgdht2u4y.html">
 <meta property="og:site_name" content="阿德的博客">
 <meta property="og:description" content="你有没有在使用k8s过程中遇到过这种情况: 通过kubectl delete指令删除一些资源时，一直处于Terminating状态。 这是为什么呢？ 本文将介绍当你执行kubectl delete语句时，K8s内部都执行了哪些操作。 以及为何有些资源’删除不掉’(具体表现为一直Terminating，删除namespace时很容易遇到这种情况) 接下来，我们聚焦讨论以下四个方面: 1）资源的哪些属">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +38,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://upload.phpkoo.com/uploads/2024/state-diagram-delete.png">
 
-<link rel="canonical" href="https://phpkoo.com/posts/clvdigkql003lkoom5lvz8xv8.html">
+<link rel="canonical" href="https://phpkoo.com/posts/clvdjbvxx001j4oomgdht2u4y.html">
 
 
 <script id="page-configurations">
@@ -107,7 +107,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">关注小众语言，记录、分享技术点滴！</p>
+        <p class="site-subtitle">关注小众语言、AI，记录、分享技术点滴！</p>
   </div>
 
   <div class="site-nav-right">
@@ -202,12 +202,12 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/clvdigkql003lkoom5lvz8xv8.html">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/clvdjbvxx001j4oomgdht2u4y.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -373,7 +373,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/clvdigksh008jkoomcr2oep62.html" rel="prev" title="lua利用metatable实现类的继承和多态">
+    <a href="/posts/clvdjbvzx00604oomcpaw8bl1.html" rel="prev" title="lua利用metatable实现类的继承和多态">
       <i class="fa fa-chevron-left"></i> lua利用metatable实现类的继承和多态
     </a></div>
       <div class="post-nav-item"></div>
@@ -442,14 +442,14 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">阿德</p>
-  <div class="site-description" itemprop="description">关注小众语言，记录、分享技术点滴！</div>
+  <div class="site-description" itemprop="description">关注小众语言、AI，记录、分享技术点滴！</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">122</span>
+          <span class="site-state-item-count">118</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -462,7 +462,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">190</span>
+        <span class="site-state-item-count">186</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

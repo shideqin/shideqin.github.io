@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>阿德的博客</title>
   
-  <subtitle>关注小众语言，记录、分享技术点滴！</subtitle>
+  <subtitle>关注小众语言、AI，记录、分享技术点滴！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://phpkoo.com/"/>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>K8s无法删除状态为terminating的pod解决方法</title>
-    <link href="https://phpkoo.com/posts/clvdigkql003lkoom5lvz8xv8.html"/>
-    <id>https://phpkoo.com/posts/clvdigkql003lkoom5lvz8xv8.html</id>
+    <link href="https://phpkoo.com/posts/clvdjbvxx001j4oomgdht2u4y.html"/>
+    <id>https://phpkoo.com/posts/clvdjbvxx001j4oomgdht2u4y.html</id>
     <published>2024-04-24T06:01:27.000Z</published>
     <updated>2024-04-24T06:48:30.263Z</updated>
     
@@ -51,8 +51,8 @@
   
   <entry>
     <title>lua利用metatable实现类的继承和多态</title>
-    <link href="https://phpkoo.com/posts/clvdigksh008jkoomcr2oep62.html"/>
-    <id>https://phpkoo.com/posts/clvdigksh008jkoomcr2oep62.html</id>
+    <link href="https://phpkoo.com/posts/clvdjbvzx00604oomcpaw8bl1.html"/>
+    <id>https://phpkoo.com/posts/clvdjbvzx00604oomcpaw8bl1.html</id>
     <published>2022-07-27T05:47:09.000Z</published>
     <updated>2022-07-27T07:30:31.145Z</updated>
     
@@ -84,8 +84,8 @@
   
   <entry>
     <title>openssl模块安装luaossl（luacrypto）</title>
-    <link href="https://phpkoo.com/posts/clvdigksu009dkoomf6ed9xf1.html"/>
-    <id>https://phpkoo.com/posts/clvdigksu009dkoomf6ed9xf1.html</id>
+    <link href="https://phpkoo.com/posts/clvdjbw06006u4oom21p5ehr5.html"/>
+    <id>https://phpkoo.com/posts/clvdjbw06006u4oom21p5ehr5.html</id>
     <published>2022-07-27T01:43:20.000Z</published>
     <updated>2022-07-27T06:43:17.560Z</updated>
     
@@ -120,8 +120,8 @@
   
   <entry>
     <title>Kubernetes使用KEDA通过Prometheus触发HPA</title>
-    <link href="https://phpkoo.com/posts/clvdigkqm003okoomcm2xdc8u.html"/>
-    <id>https://phpkoo.com/posts/clvdigkqm003okoomcm2xdc8u.html</id>
+    <link href="https://phpkoo.com/posts/clvdjbvxx001l4oomcxd573yw.html"/>
+    <id>https://phpkoo.com/posts/clvdjbvxx001l4oomcxd573yw.html</id>
     <published>2022-06-02T00:45:00.000Z</published>
     <updated>2022-06-02T02:25:43.243Z</updated>
     
@@ -152,8 +152,8 @@
   
   <entry>
     <title>使用openssl创建多泛域名及IP的自签名证书</title>
-    <link href="https://phpkoo.com/posts/clvdigktc00a9koom659j1b1f.html"/>
-    <id>https://phpkoo.com/posts/clvdigktc00a9koom659j1b1f.html</id>
+    <link href="https://phpkoo.com/posts/clvdjbw0m008c4oom5jz54q57.html"/>
+    <id>https://phpkoo.com/posts/clvdjbw0m008c4oom5jz54q57.html</id>
     <published>2021-12-22T05:33:35.000Z</published>
     <updated>2021-12-22T06:28:27.884Z</updated>
     
@@ -188,8 +188,8 @@
   
   <entry>
     <title>golang中net.http请求时header中的Content-Length无效坑</title>
-    <link href="https://phpkoo.com/posts/clvdigks7007ykoombheg9ung.html"/>
-    <id>https://phpkoo.com/posts/clvdigks7007ykoombheg9ung.html</id>
+    <link href="https://phpkoo.com/posts/clvdjbvzs005m4oom205sc42u.html"/>
+    <id>https://phpkoo.com/posts/clvdjbvzs005m4oom205sc42u.html</id>
     <published>2021-12-13T02:52:07.000Z</published>
     <updated>2021-12-13T03:30:47.284Z</updated>
     
@@ -218,8 +218,8 @@
   
   <entry>
     <title>luarocks安装lua-mongo模块</title>
-    <link href="https://phpkoo.com/posts/clvdigksh008hkoom5jrufl8b.html"/>
-    <id>https://phpkoo.com/posts/clvdigksh008hkoom5jrufl8b.html</id>
+    <link href="https://phpkoo.com/posts/clvdjbvzx005w4oomava40s9p.html"/>
+    <id>https://phpkoo.com/posts/clvdjbvzx005w4oomava40s9p.html</id>
     <published>2021-06-22T01:41:59.000Z</published>
     <updated>2021-06-22T03:03:02.116Z</updated>
     
@@ -254,8 +254,8 @@
   
   <entry>
     <title>centos下原生nginx支持openresty功能</title>
-    <link href="https://phpkoo.com/posts/clvdigkro006ckoom0a8gen8s.html"/>
-    <id>https://phpkoo.com/posts/clvdigkro006ckoom0a8gen8s.html</id>
+    <link href="https://phpkoo.com/posts/clvdjbvz800474oom49hr1hiz.html"/>
+    <id>https://phpkoo.com/posts/clvdjbvz800474oom49hr1hiz.html</id>
     <published>2021-04-02T08:02:03.000Z</published>
     <updated>2021-04-02T08:46:04.979Z</updated>
     
@@ -286,8 +286,8 @@
   
   <entry>
     <title>使用watch实时查看进程的文件句柄信息</title>
-    <link href="https://phpkoo.com/posts/clvdigktd00adkoomf39qgo6z.html"/>
-    <id>https://phpkoo.com/posts/clvdigktd00adkoomf39qgo6z.html</id>
+    <link href="https://phpkoo.com/posts/clvdjbw0w00994oom0lnl1ykg.html"/>
+    <id>https://phpkoo.com/posts/clvdjbw0w00994oom0lnl1ykg.html</id>
     <published>2020-04-13T02:44:10.000Z</published>
     <updated>2020-04-13T03:20:06.755Z</updated>
     
@@ -338,9 +338,9 @@
       <category term="PHP" scheme="https://phpkoo.com/categories/PHP/"/>
     
     
-      <category term="php" scheme="https://phpkoo.com/tags/php/"/>
-    
       <category term="composer" scheme="https://phpkoo.com/tags/composer/"/>
+    
+      <category term="php" scheme="https://phpkoo.com/tags/php/"/>
     
   </entry>
   
@@ -627,9 +627,9 @@
       <category term="Docker" scheme="https://phpkoo.com/categories/Docker/"/>
     
     
-      <category term="docker" scheme="https://phpkoo.com/tags/docker/"/>
-    
       <category term="centos7" scheme="https://phpkoo.com/tags/centos7/"/>
+    
+      <category term="docker" scheme="https://phpkoo.com/tags/docker/"/>
     
       <category term="docker-ce" scheme="https://phpkoo.com/tags/docker-ce/"/>
     
