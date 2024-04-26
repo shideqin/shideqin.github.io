@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>阿德的博客</title>
   
-  <subtitle>关注小众语言、AI，记录、分享技术点滴！</subtitle>
+  <subtitle>关注小众语言、AI技术，记录、分享技术点滴！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://phpkoo.com/"/>
-  <updated>2024-04-24T06:48:30.263Z</updated>
+  <updated>2024-04-26T14:42:34.100Z</updated>
   <id>https://phpkoo.com/</id>
   
   <author>
@@ -17,11 +17,50 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用gpu加速llama-cpp-python大模型推理</title>
+    <link href="https://phpkoo.com/posts/clvgs91ul008gukomaps2dz4y.html"/>
+    <id>https://phpkoo.com/posts/clvgs91ul008gukomaps2dz4y.html</id>
+    <published>2024-04-26T13:12:27.000Z</published>
+    <updated>2024-04-26T14:42:34.100Z</updated>
+    
+    <content type="html"><![CDATA[<p>llama.cpp是一个基于C++实现的大模型推理工具，通过优化底层计算和内存管理，可以在不牺牲模型性能的前提下提高推理速度。</p><h3 id="方法一（使用python-3-10-bullseye-docker镜像）"><a href="#方法一（使用python-3-10-bullseye-docker镜像）" class="headerlink" title="方法一（使用python:3.10-bullseye docker镜像）"></a>方法一（使用python:3.10-bullseye docker镜像）</h3><p>一、下载python镜像（docker）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载的是python 3.10 Debian 11的版本</span></span><br><span class="line">$ docker pull python:3.10-bullseye</span><br></pre></td></tr></table></figure><p>二、下载CUDA Toolkit</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ mdkir /src/ &amp;&amp; <span class="built_in">cd</span> /src/</span><br><span class="line"><span class="comment"># CUDA 12.0 支持 Debian 11</span></span><br><span class="line">$ wget https://developer.download.nvidia.com/compute/cuda/12.0.0/local_installers/cuda_12.0.0_525.60.13_linux.run</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只安装toolkit</span></span><br><span class="line">$ sh cuda_12.0.0_525.60.13_linux.run --silent --toolkit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除cuda安装文件</span></span><br><span class="line">$ rm -f cuda_12.0.0_525.60.13_linux.run</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 nvcc 添加到环境变量</span></span><br><span class="line">$ <span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/cuda/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 确保已经成功安装了cuda toolkit</span></span><br><span class="line">$ nvcc -V</span><br><span class="line">nvcc: NVIDIA (R) Cuda compiler driver</span><br><span class="line">Copyright (c) 2005-2022 NVIDIA Corporation</span><br><span class="line">Built on Mon_Oct_24_19:12:58_PDT_2022</span><br><span class="line">Cuda compilation tools, release 12.0, V12.0.76</span><br><span class="line">Build cuda_12.0.r12.0/compiler.31968024_0</span><br></pre></td></tr></table></figure><p>三、安装llama-cpp-python库</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># To install with CUDA support, set the `LLAMA_CUDA=on` environment variable before installing:</span></span><br><span class="line"></span><br><span class="line">$ CMAKE_ARGS=<span class="string">"-DLLAMA_CUDA=on"</span> pip install llama-cpp-python</span><br></pre></td></tr></table></figure><p>四、下载GGUF格式模型文件<br>GGUF格式是用于存储大型模型预训练结果的，相较于Hugging Face和torch的bin文件，它采用了紧凑的二进制编码格式、优化的数据结构以及内存映射等技术，提供了更高效的数据存储和访问方式。llama-cpp-python 主要是使用GGUF格式的大模型文件。</p><p>从Hugging Face平台上下载</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://huggingface.co/lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF/resolve/main/Meta-Llama-3-8B-Instruct-Q4_K_M.gguf?download=<span class="literal">true</span></span><br></pre></td></tr></table></figure><p>五、使用llama-cpp-python进行推理</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> llama_cpp <span class="keyword">import</span> Llama</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载模型</span></span><br><span class="line">llm = Llama(</span><br><span class="line">      model_path=<span class="string">"./Meta-Llama-3-8B-Instruct-Q4_K_M.gguf"</span>,</span><br><span class="line">      n_gpu_layers=<span class="number">-1</span>, <span class="comment"># Use GPU acceleration</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用OpenAI接口规范进行推理</span></span><br><span class="line">output = llm.create_chat_completion(</span><br><span class="line">      messages = [</span><br><span class="line">          &#123;<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: <span class="string">"You are an assistant who perfectly describes images."</span>&#125;,</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="string">"role"</span>: <span class="string">"user"</span>,</span><br><span class="line">              <span class="string">"content"</span>: <span class="string">"Describe this image in detail please."</span></span><br><span class="line">          &#125;</span><br><span class="line">      ]</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line">print(output)</span><br></pre></td></tr></table></figure><p>六、查看GPU占用情况（nvidia-smi）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ nvidia-smi </span><br><span class="line">Fri Apr 26 22:17:42 2024       </span><br><span class="line">+-----------------------------------------------------------------------------+</span><br><span class="line">| NVIDIA-SMI 525.105.17   Driver Version: 525.105.17   CUDA Version: 12.0     |</span><br><span class="line">|-------------------------------+----------------------+----------------------+</span><br><span class="line">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span><br><span class="line">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span><br><span class="line">|                               |                      |               MIG M. |</span><br><span class="line">|===============================+======================+======================|</span><br><span class="line">|   0  Tesla T4            On   | 00000000:00:07.0 Off |                    0 |</span><br><span class="line">| N/A   39C    P0    81W /  70W |   5153MiB / 15360MiB |     61%      Default |</span><br><span class="line">|                               |                      |                  N/A |</span><br><span class="line">+-------------------------------+----------------------+----------------------+</span><br><span class="line">                                                                               </span><br><span class="line">+-----------------------------------------------------------------------------+</span><br><span class="line">| Processes:                                                                  |</span><br><span class="line">|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |</span><br><span class="line">|        ID   ID                                                   Usage      |</span><br><span class="line">|=============================================================================|</span><br><span class="line">|    0   N/A  N/A      4788      C   python                           5150MiB |</span><br><span class="line">+-----------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure><p>至此，让llama-cpp-python使用GPU加速推理，大功告成！</p><h3 id="方法二（使用cog方式制作镜像）"><a href="#方法二（使用cog方式制作镜像）" class="headerlink" title="方法二（使用cog方式制作镜像）"></a>方法二（使用cog方式制作镜像）</h3><p>Cog 是一种开源工具，可让您将机器学习模型打包到标准的生产就绪容器中。您可以将打包的模型部署到您自己的基础架构或<a href="https://replicate.com/" target="_blank" rel="noopener">Replicate</a>平台上。</p><p>使用Cog方式进行镜像制作，详情请查看以下github仓库。<br><a href="https://github.com/shideqin/cog-codellama3-cpp" target="_blank" rel="noopener">https://github.com/shideqin/cog-codellama3-cpp</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;llama.cpp是一个基于C++实现的大模型推理工具，通过优化底层计算和内存管理，可以在不牺牲模型性能的前提下提高推理速度。&lt;/p&gt;
+&lt;h3 id=&quot;方法一（使用python-3-10-bullseye-docker镜像）&quot;&gt;&lt;a href=&quot;#方法一（使用python-
+      
+    
+    </summary>
+    
+    
+      <category term="llama" scheme="https://phpkoo.com/categories/llama/"/>
+    
+      <category term="llm" scheme="https://phpkoo.com/categories/llama/llm/"/>
+    
+      <category term="python" scheme="https://phpkoo.com/categories/llama/llm/python/"/>
+    
+      <category term="cuda" scheme="https://phpkoo.com/categories/llama/llm/python/cuda/"/>
+    
+    
+      <category term="llama" scheme="https://phpkoo.com/tags/llama/"/>
+    
+      <category term="cuda" scheme="https://phpkoo.com/tags/cuda/"/>
+    
+      <category term="python" scheme="https://phpkoo.com/tags/python/"/>
+    
+      <category term="llm" scheme="https://phpkoo.com/tags/llm/"/>
+    
+  </entry>
+  
+  <entry>
     <title>K8s无法删除状态为terminating的pod解决方法</title>
-    <link href="https://phpkoo.com/posts/clvdjbvxx001j4oomgdht2u4y.html"/>
-    <id>https://phpkoo.com/posts/clvdjbvxx001j4oomgdht2u4y.html</id>
+    <link href="https://phpkoo.com/posts/clvgs91ow001uukomeltn87w7.html"/>
+    <id>https://phpkoo.com/posts/clvgs91ow001uukomeltn87w7.html</id>
     <published>2024-04-24T06:01:27.000Z</published>
-    <updated>2024-04-24T06:48:30.263Z</updated>
+    <updated>2024-04-26T13:15:18.925Z</updated>
     
     <content type="html"><![CDATA[<p>你有没有在使用k8s过程中遇到过这种情况: 通过kubectl delete指令删除一些资源时，一直处于Terminating状态。 这是为什么呢？</p><p>本文将介绍当你执行kubectl delete语句时，K8s内部都执行了哪些操作。 以及为何有些资源’删除不掉’(具体表现为一直Terminating，删除namespace时很容易遇到这种情况)</p><p>接下来，我们聚焦讨论以下四个方面:</p><p>1）资源的哪些属性会对删除操作产生影响？<br>2）finalizers与owner references属性是如何影响删除操作的？<br>3）如何利用Propagation Policy（分发策略）更改删除顺序？<br>4）删除操作的工作原理？</p><p><strong>1. 词汇表</strong></p><p>1）资源: k8s的资源对象（如configmap, secret, pod…）<br>2）finalizers: 终结器，存放键的列表。列表内的键为空时资源才可被删除<br>3）owner references: 所有者引用（归谁管理/父资源对象是谁）<br>4）kubectl: K8s客户端工具</p><p><strong>2. 强制删除pod</strong></p><p>每当删除namespace或pod等一些Kubernetes资源时，有时资源状态会卡在terminating，很长时间无法删除，甚至有时增加–force flag(强制删除)之后还是无法正常删除。这时就需要edit该资源，将字段finalizers设置为null，之后Kubernetes资源就正常删除了。</p><p>当删除pod时有时会卡住，pod状态变为terminating，无法删除pod</p><p>1）强制删除pod</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl delete pod xxx -n xxx --force --grace-period=0</span><br></pre></td></tr></table></figure><p>2）如果强制删除还不行，设置finalizers为空<br>如果一个容器已经在运行，这时需要对一些容器属性进行修改，又不想删除容器，或不方便通过replace的方式进行更新。kubernetes还提供了一种在容器运行时，直接对容器进行修改的方式，就是patch命令。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl patch pod xxx -n xxx -p <span class="string">'&#123;"metadata":&#123;"finalizers":null&#125;&#125;'</span></span><br></pre></td></tr></table></figure><p>这样pod就可以删除了。</p><p><strong>3. k8s删除流程</strong><br><img src="https://upload.phpkoo.com/uploads/2024/state-diagram-delete.png" alt=""></p><p>删除操作看似简单，但是有很多因素可能会干扰删除，包括finalizers与owner references属性</p><p><strong>4. Finalizers是什么？</strong><br>上面我们提到了两个属性：finalizers与owner references可能会干扰删除操作，导致删除阻塞或失败。 那Finalizers是什么？会对删除有何影响呢？</p><p>当要理解Kubernetes中的资源删除原理时，了解finalizers（以下我们称finalizers为终结器）的工作原理是很有帮助的， 可以帮助您理解为什么有些对象无法被删除。</p><p>终结器是资源发出预删除操作信号的属性， 控制着资源的垃圾收集，并用于提示控制器在删除资源之前执行哪些清理操作。</p><p>finalizers本质是包含键的列表，不具有实际意义。与annotations（注释）类似，finalizers是可以被操作的（增删改）。</p><p>以下终结器您可能遇到过：</p><ul><li>kubernetes.io/pv-protection</li><li>kubernetes.io/pvc-protection</li></ul><p>这两个终结器作用于卷，以防止卷被意外删除。</p><blockquote><p>类似地，一些终结器可用于防止资源被删除，但不由任何控制器管理。 下面是一个自定义的configmap，它没有具体值，但包含一个终结器:</p></blockquote><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF | kubectl create -f -</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  name: mymap</span><br><span class="line">  finalizers:</span><br><span class="line">  - kubernetes</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure><p>终结器通常用于名称空间(namespace)，而管理configmap资源的控制器不知道该如何处理finalizers字段。 下面我们尝试删除这个configmap对象:</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl delete configmap/mymap &amp;</span><br><span class="line">configmap <span class="string">"mymap"</span> deleted</span><br><span class="line">$ <span class="built_in">jobs</span></span><br><span class="line">[1]+  Running kubectl delete configmap/mymap</span><br></pre></td></tr></table></figure><p>Kubernetes返回该对象已被删除，然而它并没有真正意义上被删除，而是在删除的过程中。 当我们试图再次获取该对象时，我们发现该对象多了个deletionTimestamp(删除时间戳)字段。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get cm mymap -o yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  creationTimestamp: <span class="string">"2021-09-29T11:04:40Z"</span></span><br><span class="line">  deletionGracePeriodSeconds: 0</span><br><span class="line">  deletionTimestamp: <span class="string">"2021-09-29T11:04:55Z"</span></span><br><span class="line">  finalizers:</span><br><span class="line">  - kubernetes</span><br><span class="line">  managedFields:</span><br><span class="line">  - apiVersion: v1</span><br><span class="line">    fieldsType: FieldsV1</span><br><span class="line">    fieldsV1:</span><br><span class="line">      f:metadata:</span><br><span class="line">        f:finalizers:</span><br><span class="line">          .: &#123;&#125;</span><br><span class="line">          v:<span class="string">"kubernetes"</span>: &#123;&#125;</span><br><span class="line">    manager: kubectl</span><br><span class="line">    operation: Update</span><br><span class="line">    time: <span class="string">"2021-09-29T11:04:40Z"</span></span><br><span class="line">  name: mymap</span><br><span class="line">  namespace: default</span><br><span class="line">  resourceVersion: <span class="string">"1378430"</span></span><br><span class="line">  selfLink: /api/v1/namespaces/default/configmaps/mymap</span><br><span class="line">  uid: 8d6ca0b1-4840-4597-8164-a63b526dbf5f</span><br></pre></td></tr></table></figure><blockquote><p>简而言之，当我们删除带有finalizers字段的对象时，该对象仅仅是被更新了，而不是被删除了。 这是因为Kubernetes获取到该对象包含终结器，通过添加deletionTimestamp（删除时间戳）字段将其置于只读状态（删除终结器键更新除外）。 换句话说，在删除该对象终结器之前，删除都不会完成。</p></blockquote><p>接下来我们尝试通过patch命令删除终结器，并观察configmap/mymap是否会被’真正’删除。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl patch configmap/mymap \</span><br><span class="line">    --<span class="built_in">type</span> json \</span><br><span class="line">    --patch=<span class="string">'[ &#123; "op": "remove", "path": "/metadata/finalizers" &#125; ]'</span></span><br></pre></td></tr></table></figure><p>再次检索该对象</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get cm mymap</span><br><span class="line">Error from server (NotFound): configmaps <span class="string">"mymap"</span> not found</span><br></pre></td></tr></table></figure><p>发现该对象已被真正删除，下图描述了带有finalizers字段的对象删除流程：<br><img src="https://upload.phpkoo.com/uploads/2024/state-diagram-finalize.png" alt=""></p><blockquote><p>总结：当您试图删除一个带有终结器的对象，它将一直处于预删除只读状态， 直到控制器删除了终结器键或使用Kubectl删除了终结器。一旦终结器列表为空，Kubernetes就可以回收该对象，并将其放入要从注册表中删除的队列中</p></blockquote><p>带有finalizers字段的对象无法删除的原因大致如下：</p><ul><li>对象存在finalizers，关联的控制器故障未能执行或执行finalizer函数hang住: 比如namespace控制器无法删除完空间内所有的对象， 特别是在使用aggregated apiserver时，第三方apiserver服务故障导致无法删除其对象。 此时，需要会恢复第三方apiserver服务或移除该apiserver的聚合，具体选择哪种方案需根据实际情况而定。</li><li>集群内安装的控制器给一些对象增加了自定义finalizers，未删除完fianlizers就下线了该控制器，导致这些fianlizers没有控制器来移除他们。 此时，需要恢复该控制器会手动移除finalizers(多出现于自定义operator)，具体选择哪种方案根据实际情况而定。</li></ul><p><strong>5. Owner References又是什么？</strong><br>上面我们提到了两个属性：finalizers与owner references可能会干扰删除操作，导致删除阻塞或失败。 并介绍了Finalizers，接下来我们聊聊Owner References.</p><p>Owner References（所有者引用或所有者归属）描述了对象组之间的关系。 指定了资源彼此关联的属性，因此可以级联删除整个资源树。</p><blockquote><p>当存在所有者引用时，将处理终结器规则。所有者引用由名称和UID组成</p></blockquote><p>所有者引用相同名称空间内的链接资源，它还需要UID以使该引用生效(确保唯一)。 Pods通常具有对所属副本集的所有者引用。 因此，当Deloyment或有StatefulSet被删除时，子ReplicaSet和Pod将在流程中被删除。</p><p>我们通过下面的例子，来理解Owner References（所有者引用）的工作原理：</p><p>1.创建cm/mymap-parent对象</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF | kubectl create -f -</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">name: mymap-parent</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure><p>2.获取cm/mymap-parent的UID</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CM_UID=$(kubectl get configmap mymap-parent -o jsonpath=<span class="string">"&#123;.metadata.uid&#125;"</span>)</span><br></pre></td></tr></table></figure><p>3.创建cm/mymap-child对象，并设置ownerReferences字段声明所有者引用（通过kind、name、uid字段确保选择器可以匹配到）</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF | kubectl create -f -</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">name: mymap-child</span><br><span class="line">ownerReferences:</span><br><span class="line">- apiVersion: v1</span><br><span class="line"> kind: ConfigMap</span><br><span class="line"> name: mymap-parent</span><br><span class="line"> uid: <span class="variable">$CM_UID</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure><p>即cm/mymap-parent为cm/mymap-child的父对象，此时我们删除cm/mymap-parent对象并观察cm/mymap-child对象状态</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl get cm</span><br><span class="line">NAME           DATA   AGE</span><br><span class="line">mymap-child    0      2m44s</span><br><span class="line">mymap-parent   0      3m</span><br><span class="line"></span><br><span class="line">$ kubectl delete cm mymap-parent</span><br><span class="line">configmap <span class="string">"mymap-parent"</span> deleted</span><br><span class="line"></span><br><span class="line">$ kubectl get cm</span><br><span class="line">No resources found <span class="keyword">in</span> default namespace.</span><br></pre></td></tr></table></figure><p>即我们通过删除父对象，间接删除了父对象下的所有子对象。 这种删除k8s中被称为级联删除。我们可不可以只删除父对象，而不删除子对象呢？</p><blockquote><p>答案是: 可以的，删除时通过添加–cascade=false参数实现，我们通过下面的例子来验证：</p></blockquote><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$ cat &lt;&lt;EOF | kubectl create -f -</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  name: mymap-parent</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">$ CM_UID=$(kubectl get configmap mymap-parent -o jsonpath=<span class="string">"&#123;.metadata.uid&#125;"</span>)</span><br><span class="line"></span><br><span class="line">$ cat &lt;&lt;EOF | kubectl create -f -</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  name: mymap-child</span><br><span class="line">  ownerReferences:</span><br><span class="line">  - apiVersion: v1</span><br><span class="line">    kind: ConfigMap</span><br><span class="line">    name: mymap-parent</span><br><span class="line">    uid: <span class="variable">$CM_UID</span></span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">$ kubectl delete --cascade=<span class="literal">false</span> configmap/mymap-parent</span><br><span class="line">configmap <span class="string">"mymap-parent"</span> deleted</span><br><span class="line"></span><br><span class="line">$ kubectl get cm</span><br><span class="line">NAME          DATA   AGE</span><br><span class="line">mymap-child   0      107s</span><br></pre></td></tr></table></figure><blockquote><p>–cascade=false参数实际改变了父-子资源的删除顺序，k8s中关于父-子资源删除策略有以下三种：</p></blockquote><ul><li>Foreground: 子资源在父资源之前被删除(post-order)</li><li>Background: 父资源在子资源之前被删除 (pre-order)</li><li>Orphan: 忽略所有者引用进行删除</li></ul><p><strong>6. 强制删除命名空间</strong><br>有一种情况可能需要强制删除命名空间：</p><p>如果您已经删除了一个命名空间，并删除了它下面的所有对象，但名称空间仍然存在，一般为Terminating状态。 则可以通过更新名称空间的finalize属性来强制删除该名称空间。</p><ol><li><p>会话1</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ kubectl proxy</span><br></pre></td></tr></table></figure></li><li><p>会话2</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ NAMESPACE_NAME=<span class="built_in">test</span></span><br><span class="line">cat &lt;&lt;EOF | curl -X PUT \</span><br><span class="line">  127.0.0.1:8001/api/v1/namespaces/<span class="variable">$NAMESPACE_NAME</span>/finalize \</span><br><span class="line">  -H <span class="string">"Content-Type: application/json"</span> \</span><br><span class="line">  --data-binary @-</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"kind"</span>: <span class="string">"Namespace"</span>,</span><br><span class="line">  <span class="string">"apiVersion"</span>: <span class="string">"v1"</span>,</span><br><span class="line">  <span class="string">"metadata"</span>: &#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"<span class="variable">$NAMESPACE_NAME</span>"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"spec"</span>: &#123;</span><br><span class="line">    <span class="string">"finalizers"</span>: null</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure></li></ol><p>我们应该谨慎思考是否强制删除命名空间，因为这样做可能只删除名称空间，命名空间下的其他资源删不完全，最终导致留下孤儿对象。 比如资源对象A存在于ddd命名空间，此时若强制删除ddd命名空间, 且对象A又未被删除，那么对象A便成了孤儿对象。</p><p>当出现孤儿对象时，可以手动重新创建名称空间，随后可以手动清理和恢复该对象。</p>]]></content>
     
@@ -51,8 +90,8 @@
   
   <entry>
     <title>lua利用metatable实现类的继承和多态</title>
-    <link href="https://phpkoo.com/posts/clvdjbvzx00604oomcpaw8bl1.html"/>
-    <id>https://phpkoo.com/posts/clvdjbvzx00604oomcpaw8bl1.html</id>
+    <link href="https://phpkoo.com/posts/clvgs91ty006iukom6ghm3bw0.html"/>
+    <id>https://phpkoo.com/posts/clvgs91ty006iukom6ghm3bw0.html</id>
     <published>2022-07-27T05:47:09.000Z</published>
     <updated>2022-07-27T07:30:31.145Z</updated>
     
@@ -74,18 +113,18 @@
       <category term="OOP" scheme="https://phpkoo.com/categories/LUA/OOP/"/>
     
     
-      <category term="lua" scheme="https://phpkoo.com/tags/lua/"/>
-    
       <category term="面向对象" scheme="https://phpkoo.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
       <category term="metatable" scheme="https://phpkoo.com/tags/metatable/"/>
+    
+      <category term="lua" scheme="https://phpkoo.com/tags/lua/"/>
     
   </entry>
   
   <entry>
     <title>openssl模块安装luaossl（luacrypto）</title>
-    <link href="https://phpkoo.com/posts/clvdjbw06006u4oom21p5ehr5.html"/>
-    <id>https://phpkoo.com/posts/clvdjbw06006u4oom21p5ehr5.html</id>
+    <link href="https://phpkoo.com/posts/clvgs91u90077ukomftt278q7.html"/>
+    <id>https://phpkoo.com/posts/clvgs91u90077ukomftt278q7.html</id>
     <published>2022-07-27T01:43:20.000Z</published>
     <updated>2022-07-27T06:43:17.560Z</updated>
     
@@ -120,8 +159,8 @@
   
   <entry>
     <title>Kubernetes使用KEDA通过Prometheus触发HPA</title>
-    <link href="https://phpkoo.com/posts/clvdjbvxx001l4oomcxd573yw.html"/>
-    <id>https://phpkoo.com/posts/clvdjbvxx001l4oomcxd573yw.html</id>
+    <link href="https://phpkoo.com/posts/clvgs91p20025ukomb5atakyg.html"/>
+    <id>https://phpkoo.com/posts/clvgs91p20025ukomb5atakyg.html</id>
     <published>2022-06-02T00:45:00.000Z</published>
     <updated>2022-06-02T02:25:43.243Z</updated>
     
@@ -152,8 +191,8 @@
   
   <entry>
     <title>使用openssl创建多泛域名及IP的自签名证书</title>
-    <link href="https://phpkoo.com/posts/clvdjbw0m008c4oom5jz54q57.html"/>
-    <id>https://phpkoo.com/posts/clvdjbw0m008c4oom5jz54q57.html</id>
+    <link href="https://phpkoo.com/posts/clvgs91uo008oukom1p4s5bzz.html"/>
+    <id>https://phpkoo.com/posts/clvgs91uo008oukom1p4s5bzz.html</id>
     <published>2021-12-22T05:33:35.000Z</published>
     <updated>2021-12-22T06:28:27.884Z</updated>
     
@@ -188,8 +227,8 @@
   
   <entry>
     <title>golang中net.http请求时header中的Content-Length无效坑</title>
-    <link href="https://phpkoo.com/posts/clvdjbvzs005m4oom205sc42u.html"/>
-    <id>https://phpkoo.com/posts/clvdjbvzs005m4oom205sc42u.html</id>
+    <link href="https://phpkoo.com/posts/clvgs91tu0067ukomaic190ny.html"/>
+    <id>https://phpkoo.com/posts/clvgs91tu0067ukomaic190ny.html</id>
     <published>2021-12-13T02:52:07.000Z</published>
     <updated>2021-12-13T03:30:47.284Z</updated>
     
@@ -218,8 +257,8 @@
   
   <entry>
     <title>luarocks安装lua-mongo模块</title>
-    <link href="https://phpkoo.com/posts/clvdjbvzx005w4oomava40s9p.html"/>
-    <id>https://phpkoo.com/posts/clvdjbvzx005w4oomava40s9p.html</id>
+    <link href="https://phpkoo.com/posts/clvgs91u0006kukom0sf02krz.html"/>
+    <id>https://phpkoo.com/posts/clvgs91u0006kukom0sf02krz.html</id>
     <published>2021-06-22T01:41:59.000Z</published>
     <updated>2021-06-22T03:03:02.116Z</updated>
     
@@ -254,8 +293,8 @@
   
   <entry>
     <title>centos下原生nginx支持openresty功能</title>
-    <link href="https://phpkoo.com/posts/clvdjbvz800474oom49hr1hiz.html"/>
-    <id>https://phpkoo.com/posts/clvdjbvz800474oom49hr1hiz.html</id>
+    <link href="https://phpkoo.com/posts/clvgs91sw004rukomf7ur0tnw.html"/>
+    <id>https://phpkoo.com/posts/clvgs91sw004rukomf7ur0tnw.html</id>
     <published>2021-04-02T08:02:03.000Z</published>
     <updated>2021-04-02T08:46:04.979Z</updated>
     
@@ -286,8 +325,8 @@
   
   <entry>
     <title>使用watch实时查看进程的文件句柄信息</title>
-    <link href="https://phpkoo.com/posts/clvdjbw0w00994oom0lnl1ykg.html"/>
-    <id>https://phpkoo.com/posts/clvdjbw0w00994oom0lnl1ykg.html</id>
+    <link href="https://phpkoo.com/posts/clvgs91ux009cukom2flm18eb.html"/>
+    <id>https://phpkoo.com/posts/clvgs91ux009cukom2flm18eb.html</id>
     <published>2020-04-13T02:44:10.000Z</published>
     <updated>2020-04-13T03:20:06.755Z</updated>
     
@@ -601,37 +640,6 @@
       <category term="php" scheme="https://phpkoo.com/tags/php/"/>
     
       <category term="imagick" scheme="https://phpkoo.com/tags/imagick/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS 安装 Docker CE</title>
-    <link href="https://phpkoo.com/posts/468.html"/>
-    <id>https://phpkoo.com/posts/468.html</id>
-    <published>2018-06-07T09:41:29.000Z</published>
-    <updated>2020-04-23T07:36:56.364Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>准备工作</strong></p><p><strong>一、系统要求</strong><br>Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功能（如 overlay2 存储层驱动）无法使用，并且部分功能可能不太稳定。</p><p><strong>二、卸载旧版本</strong><br>旧版本的 Docker 称为 docker 或者 docker-engine，使用以下命令卸载旧版本：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum remove docker \</span><br><span class="line">           docker-client \</span><br><span class="line">           docker-client-latest \</span><br><span class="line">           docker-common \</span><br><span class="line">           docker-latest \</span><br><span class="line">           docker-latest-logrotate \</span><br><span class="line">           docker-logrotate \</span><br><span class="line">           docker-selinux \</span><br><span class="line">           docker-engine-selinux \</span><br><span class="line">           docker-engine</span><br></pre></td></tr></table></figure><p><strong>三、使用 yum 安装</strong><br>执行以下命令安装依赖包：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils \</span><br><span class="line">           device-mapper-persistent-data \</span><br><span class="line">           lvm2</span><br></pre></td></tr></table></figure><p>鉴于国内网络问题，强烈建议使用国内源，官方源请在注释中查看。<br>执行下面的命令添加 yum 软件源：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 官方源</span></span><br><span class="line">$ yum-config-manager \</span><br><span class="line">     --add-repo \</span><br><span class="line">     https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure><p>如果需要最新版本的 Docker CE 请使用以下命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --<span class="built_in">enable</span> docker-ce</span><br></pre></td></tr></table></figure><p>如果需要测试版本的 Docker CE 请使用以下命令：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --<span class="built_in">enable</span> docker-ce-test</span><br></pre></td></tr></table></figure><p><strong>安装 Docker CE</strong><br>更新 yum 软件源缓存，并安装 docker-ce。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum makecache fast</span><br><span class="line">yum install docker-ce</span><br></pre></td></tr></table></figure><p>或者</p><p><strong>使用脚本自动安装</strong><br>在测试或开发环境中 Docker 官方为了简化安装流程，提供了一套便捷的安装脚本，CentOS 系统上可以使用这套脚本安装：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">sh get-docker.sh --mirror Aliyun</span><br></pre></td></tr></table></figure><p>执行这个命令后，脚本就会自动的将一切准备工作做好，并且把 Docker CE 的 Edge 版本安装在系统中。</p><p><strong>启动 Docker CE</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker</span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure><p><strong>建立 docker 用户组（如果使用root用户操作 可忽略）</strong><br>默认情况下，docker 命令会使用 Unix socket 与 Docker 引擎通讯。而只有 root 用户和 docker 组的用户才可以访问 Docker 引擎的 Unix socket。出于安全考虑，一般 Linux 系统上不会直接使用 root 用户。因此，更好地做法是将需要使用 docker 的用户加入 docker 用户组。</p><p>建立 docker 组：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd docker</span><br></pre></td></tr></table></figure><p>将当前用户加入 docker 组：</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></table></figure><p>退出当前终端并重新登录，进行如下测试。</p><p><strong>测试 Docker 是否安装正确</strong></p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure><p><strong>添加内核参数</strong><br>默认配置下，如果在 CentOS 使用 Docker CE 看到下面的这些警告信息：</p><p>WARNING: bridge-nf-call-iptables is disabled<br>WARNING: bridge-nf-call-ip6tables is disabled</p><p>请添加内核配置参数以启用这些功能。</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tee -a /etc/sysctl.conf &lt;&lt;-EOF</span><br><span class="line">net.bridge.bridge-nf-call-ip6tables = 1</span><br><span class="line">net.bridge.bridge-nf-call-iptables = 1</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure><p>然后重新加载 sysctl.conf 即可</p><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;准备工作&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;一、系统要求&lt;/strong&gt;&lt;br&gt;Docker CE 支持 64 位版本 CentOS 7，并且要求内核版本不低于 3.10。 CentOS 7 满足最低内核的要求，但由于内核版本比较低，部分功能
-      
-    
-    </summary>
-    
-    
-      <category term="Docker" scheme="https://phpkoo.com/categories/Docker/"/>
-    
-    
-      <category term="centos7" scheme="https://phpkoo.com/tags/centos7/"/>
-    
-      <category term="docker" scheme="https://phpkoo.com/tags/docker/"/>
-    
-      <category term="docker-ce" scheme="https://phpkoo.com/tags/docker-ce/"/>
     
   </entry>
   

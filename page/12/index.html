@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="关注小众语言、AI，记录、分享技术点滴！">
+  <meta name="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="阿德的博客">
 <meta property="og:url" content="https://phpkoo.com/page/12/">
 <meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="关注小众语言、AI，记录、分享技术点滴！">
+<meta property="og:description" content="关注小众语言、AI技术，记录、分享技术点滴！">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="阿德">
 <meta name="twitter:card" content="summary">
@@ -99,7 +99,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">关注小众语言、AI，记录、分享技术点滴！</p>
+        <p class="site-subtitle">关注小众语言、AI技术，记录、分享技术点滴！</p>
   </div>
 
   <div class="site-nav-right">
@@ -194,12 +194,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/7.html" class="post-title-link" itemprop="url">PHP各加速利器</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-01-11 14:15:29" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:29+08:00">2010-01-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在一些较大项目中如牵涉到要整合用PHP开发的OA办公等系统，可以使用以下PHP的资源，特整理以供大家学习参考<br>加速器/缓存  </p>
+<p><strong>afterBurner Cache</strong><br>早期的 PHP Cache 之一。缓存编译后（第一次执行以后）的PHP 代码。宣称节省40%的运行时间。但是目前开发进度比较慢,兼容PHP 4.1系列。支持操作系统：Linux。<br>国家:意大利<br>网址：<a href="http://afterburner.bware.it/" target="_blank" rel="noopener">http://afterburner.bware.it/</a><br>价格：Free</p>
+<p><strong>APC</strong><br>早期的 PHP Cache 之一。曾经是communityconnect的东西，现在是 PECL 中的一部分。<br>国家:美国<br>网址：<a href="http://pecl.php.net/package/APC" target="_blank" rel="noopener">http://pecl.php.net/package/APC</a><br>价格：Free</p>
+<p><strong>PHP Accelerator</strong><br>Zend 引擎扩展，由ionCube 公司开发 宣称可将脚本运行速度提高5倍。目前兼容PHP 4.3 系列。Yahoo 采用它作为PHP 缓存。支持操作系统：Linux, OpenBSD, FreeBSD, BSDi。Apache 服务器。不兼容Zend Optimizer。<br>国家:英国<br>网址：<a href="http://www.php-accelerator.co.uk/" target="_blank" rel="noopener">http://www.php-accelerator.co.uk/</a><br>价格：Free</p>
+<p><strong>Zend Performance Suite</strong><br>不用我多介绍了 Zend 公司出品。兼容Zend Optimizer。支持最新的PHP和Apache服务器。 服务器吞吐量提高25倍。价格昂贵。众多商业用户包括著名搜索网站alltheweb.com。支持操作系统：Linux，新近推出windows测试版本。<br>国家：美国<br>网址：<a href="http://www.zend.com/store/products/zend-performance-suite.php" target="_blank" rel="noopener">http://www.zend.com/store/products/zend-performance-suite.php</a><br>价格：$1875起</p>
+<p>编码器</p>
+<p><strong>SourceGuardian Pro for PHP</strong><br>为PHP脚本提供基于时间, IP and 域名 限制保护，需要一个Loader才能执行。Loader可以免费下载。和Zend Optimizer， PHPAccelerator 加速器兼容。支持虚拟主机甚至PHP 安全模式，无需服务器特殊设定。<br>国家：美国<br>网址：<a href="http://sourceguardian.com/products/phppro.htm" target="_blank" rel="noopener">http://sourceguardian.com/products/phppro.htm</a><br>价格：$250</p>
+<p><strong>Zend Encoder</strong><br>Zend 公司出品。将PHP 脚本预编译成中间码格式通过Zend Optimizer运行，速度快，但是价格昂贵。<br>国家：美国<br>网址：<a href="http://www.zend.com/store/products/zend-performance-suite.php" target="_blank" rel="noopener">http://www.zend.com/store/products/zend-performance-suite.php</a><br>价格：$960</p>
+<p><strong>ionCube Standalone PHP Encoder 3.0</strong><br>将PHP 脚本预编译成二进制代码， 并提供通过多种方式保护PHP程序， 通过IP加服务器名保护， 时间过期保护， 甚至MAC地址的保护。 经过编码的PHP 程序需要一个Loader才能执行。Loader可以免费下载。支持多种操作系统：Intel Linux, FreeBSD,<br>Windows 同时还提供在线编码服务。<br>国家：美国<br>网址：<a href="http://www.ioncube.com/sa_encoder.php" target="_blank" rel="noopener">http://www.ioncube.com/sa_encoder.php</a><br>价格：$199-$348</p>
+<p>shukebeita的隆重推荐<br><strong>MMCache</strong><br>如果想同时拥有加速和编码功能而且免费？没有问题，MMCache 是你唯一的选择。它功能强大甚至击败Zend 公司的Performance suite<br>而且完全免费。保护php源码。<br>国家：德国/俄罗斯<br>网址：<a href="http://turck-mmcache.sourceforge.net/" target="_blank" rel="noopener">http://turck-mmcache.sourceforge.net/</a><br>价格：free</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/12.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -275,7 +358,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -355,7 +438,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -429,7 +512,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -503,7 +586,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -599,7 +682,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -674,7 +757,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -759,7 +842,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -888,27 +971,27 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">阿德</p>
-  <div class="site-description" itemprop="description">关注小众语言、AI，记录、分享技术点滴！</div>
+  <div class="site-description" itemprop="description">关注小众语言、AI技术，记录、分享技术点滴！</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">186</span>
+        <span class="site-state-item-count">190</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

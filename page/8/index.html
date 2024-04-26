@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"phpkoo.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="关注小众语言、AI，记录、分享技术点滴！">
+  <meta name="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="阿德的博客">
 <meta property="og:url" content="https://phpkoo.com/page/8/">
 <meta property="og:site_name" content="阿德的博客">
-<meta property="og:description" content="关注小众语言、AI，记录、分享技术点滴！">
+<meta property="og:description" content="关注小众语言、AI技术，记录、分享技术点滴！">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="阿德">
 <meta name="twitter:card" content="summary">
@@ -99,7 +99,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">关注小众语言、AI，记录、分享技术点滴！</p>
+        <p class="site-subtitle">关注小众语言、AI技术，记录、分享技术点滴！</p>
   </div>
 
   <div class="site-nav-right">
@@ -194,12 +194,91 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/107.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/107.html" class="post-title-link" itemprop="url">Centos 测试硬盘读写速度</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-06-17 14:11:50" itemprop="dateCreated datePublished" datetime="2013-06-17T14:11:50+08:00">2013-06-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>time有计时作用，dd用于复制，从if读出，写到of。if=/dev/zero不产生IO，因此可以用来测试纯写速度。同理of=/dev/null不产生IO，可以用来测试纯读速度。bs是每次读或写的大小，即一个块的大小，count是读写块的数量。</p>
+<p>1.测/目录所在磁盘的纯写速度：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=/dev/zero of=1Gb.file bs=1k count=1000000</span><br><span class="line">time sh -c <span class="string">"dd if=/dev/zero of=1Gb.file bs=1k count=1000000; sync"</span></span><br></pre></td></tr></table></figure>
+<p>2.测/目录所在磁盘的纯读速度：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=1Gb.file bs=64k |dd of=/dev/null</span><br><span class="line">time sh -c <span class="string">"dd if=1Gb.file bs=64k |dd of=/dev/null; sync"</span></span><br></pre></td></tr></table></figure>
+<p>3.测读写速度：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd <span class="keyword">if</span>=1Gb.file of=2Gb.file bs=64k</span><br><span class="line">time sh -c <span class="string">"dd if=1Gb.file of=2Gb.file bs=64k; sync"</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/106.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -274,7 +353,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -347,7 +426,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -429,7 +508,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -503,7 +582,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -632,7 +711,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -706,7 +785,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -793,7 +872,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -873,7 +952,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -925,86 +1004,6 @@
           <p>SQLite 是个使用档案方式存储的 Database,不需要另外安装如 MySQL 之类的 Server,而且 PHP 5 已经將 SQLite 內建了,相当好用,在某些方面效能比起其他 Database 系统有过之而无不及.目前国內很少人知道.<br>SQLite 在 windows 的安裝方式:<br>PHP 4 版本<br>1.下載 php_sqlite.dll(注意版本号),复制到 php/exetensions/ 下<br>2.php.ini 加上 extension=php_sqlite.dll<br>3.重新启动 Web Server 即可<br>PHP 5 版本<br>PHP 5 已经包含 SQLite 模组了,所以只需要载入模组即可<br>修改 php.ini 找到 ;extension=php_sqlite.dll 将前面的分号去掉<br>目前测试结果在 PHP 5.1.1 和 5.1.2 只有这样是运行不起來的,必須连 pdo 一起启动,所以在前<br>面增加兩行:</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">extension</span>=php_pdo.dll  </span><br><span class="line"><span class="attr">extension</span>=php_pdo_sqlite.dll  </span><br><span class="line"><span class="attr">extension</span>=php_sqlite.dll</span><br></pre></td></tr></table></figure>
 <p>重新启动 Web Server 即可<br>注明:PHP Version 5.1.6也有这样的问题.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/81.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/81.html" class="post-title-link" itemprop="url">PHP 中 error_reporting(0) 详解</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2010-09-27 13:41:30" itemprop="dateCreated datePublished" datetime="2010-09-27T13:41:30+08:00">2010-09-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index"><span itemprop="name">PHP</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>error_reporting(255);</p>
-<p>是列出所以提示</p>
-<p>error_reporting(0);</p>
-<p>是不显示所以提示<br>建议使用</p>
-<p>error_reporting(7);</p>
-<p>只显示严重错误，显示1，2，4 错误</p>
-<p>1 E_ERROR 致命的运行时错误<br>2 E_WARNING 运行时警告(非致命性错误)<br>4 E_PARSE 编译时解析错误<br>8 E_NOTICE 运行时提醒(经常是bug，也可能是有意的)<br>16 E_CORE_ERROR PHP启动时初始化过程中的致命错误<br>32 E_CORE_WARNING PHP启动时初始化过程中的警告(非致命性错)<br>64 E_COMPILE_ERROR 编译时致命性错<br>128 E_COMPILE_WARNING 编译时警告(非致命性错)<br>256 E_USER_ERROR 用户自定义的致命错误<br>512 E_USER_WARNING 用户自定义的警告(非致命性错误)<br>1024 E_USER_NOTICE 用户自定义的提醒(经常是bug，也可能是有意的)<br>2048 E_STRICT 编码标准化警告(建议如何修改以向前兼容)<br>4096 E_RECOVERABLE_ERROR 接近致命的运行时错误，若未被捕获则视同E_ERROR<br>6143 E_ALL 除E_STRICT外的所有错误(PHP6中为8191,即包含所有)</p>
 
       
     </div>
@@ -1083,27 +1082,27 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">阿德</p>
-  <div class="site-description" itemprop="description">关注小众语言、AI，记录、分享技术点滴！</div>
+  <div class="site-description" itemprop="description">关注小众语言、AI技术，记录、分享技术点滴！</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">186</span>
+        <span class="site-state-item-count">190</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

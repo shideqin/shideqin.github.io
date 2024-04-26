@@ -1,8 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>使用gpu加速llama-cpp-python大模型推理</title>
+    <url>/posts/clvgs91ul008gukomaps2dz4y.html</url>
+    <content><![CDATA[<p>llama.cpp是一个基于C++实现的大模型推理工具，通过优化底层计算和内存管理，可以在不牺牲模型性能的前提下提高推理速度。</p>
+<h3 id="方法一（使用python-3-10-bullseye-docker镜像）"><a href="#方法一（使用python-3-10-bullseye-docker镜像）" class="headerlink" title="方法一（使用python:3.10-bullseye docker镜像）"></a>方法一（使用python:3.10-bullseye docker镜像）</h3><p>一、下载python镜像（docker）</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 下载的是python 3.10 Debian 11的版本</span></span><br><span class="line">$ docker pull python:3.10-bullseye</span><br></pre></td></tr></table></figure>
+<p>二、下载CUDA Toolkit</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ mdkir /src/ &amp;&amp; <span class="built_in">cd</span> /src/</span><br><span class="line"><span class="comment"># CUDA 12.0 支持 Debian 11</span></span><br><span class="line">$ wget https://developer.download.nvidia.com/compute/cuda/12.0.0/local_installers/cuda_12.0.0_525.60.13_linux.run</span><br><span class="line"></span><br><span class="line"><span class="comment"># 只安装toolkit</span></span><br><span class="line">$ sh cuda_12.0.0_525.60.13_linux.run --silent --toolkit</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除cuda安装文件</span></span><br><span class="line">$ rm -f cuda_12.0.0_525.60.13_linux.run</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 nvcc 添加到环境变量</span></span><br><span class="line">$ <span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/cuda/bin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 确保已经成功安装了cuda toolkit</span></span><br><span class="line">$ nvcc -V</span><br><span class="line">nvcc: NVIDIA (R) Cuda compiler driver</span><br><span class="line">Copyright (c) 2005-2022 NVIDIA Corporation</span><br><span class="line">Built on Mon_Oct_24_19:12:58_PDT_2022</span><br><span class="line">Cuda compilation tools, release 12.0, V12.0.76</span><br><span class="line">Build cuda_12.0.r12.0/compiler.31968024_0</span><br></pre></td></tr></table></figure>
+
+<p>三、安装llama-cpp-python库</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># To install with CUDA support, set the `LLAMA_CUDA=on` environment variable before installing:</span></span><br><span class="line"></span><br><span class="line">$ CMAKE_ARGS=<span class="string">"-DLLAMA_CUDA=on"</span> pip install llama-cpp-python</span><br></pre></td></tr></table></figure>
+
+<p>四、下载GGUF格式模型文件<br>GGUF格式是用于存储大型模型预训练结果的，相较于Hugging Face和torch的bin文件，它采用了紧凑的二进制编码格式、优化的数据结构以及内存映射等技术，提供了更高效的数据存储和访问方式。llama-cpp-python 主要是使用GGUF格式的大模型文件。</p>
+<p>从Hugging Face平台上下载</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ wget https://huggingface.co/lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF/resolve/main/Meta-Llama-3-8B-Instruct-Q4_K_M.gguf?download=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>五、使用llama-cpp-python进行推理</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> llama_cpp <span class="keyword">import</span> Llama</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载模型</span></span><br><span class="line">llm = Llama(</span><br><span class="line">      model_path=<span class="string">"./Meta-Llama-3-8B-Instruct-Q4_K_M.gguf"</span>,</span><br><span class="line">      n_gpu_layers=<span class="number">-1</span>, <span class="comment"># Use GPU acceleration</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用OpenAI接口规范进行推理</span></span><br><span class="line">output = llm.create_chat_completion(</span><br><span class="line">      messages = [</span><br><span class="line">          &#123;<span class="string">"role"</span>: <span class="string">"system"</span>, <span class="string">"content"</span>: <span class="string">"You are an assistant who perfectly describes images."</span>&#125;,</span><br><span class="line">          &#123;</span><br><span class="line">              <span class="string">"role"</span>: <span class="string">"user"</span>,</span><br><span class="line">              <span class="string">"content"</span>: <span class="string">"Describe this image in detail please."</span></span><br><span class="line">          &#125;</span><br><span class="line">      ]</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 输出结果</span></span><br><span class="line">print(output)</span><br></pre></td></tr></table></figure>
+
+<p>六、查看GPU占用情况（nvidia-smi）</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ nvidia-smi </span><br><span class="line">Fri Apr 26 22:17:42 2024       </span><br><span class="line">+-----------------------------------------------------------------------------+</span><br><span class="line">| NVIDIA-SMI 525.105.17   Driver Version: 525.105.17   CUDA Version: 12.0     |</span><br><span class="line">|-------------------------------+----------------------+----------------------+</span><br><span class="line">| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |</span><br><span class="line">| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |</span><br><span class="line">|                               |                      |               MIG M. |</span><br><span class="line">|===============================+======================+======================|</span><br><span class="line">|   0  Tesla T4            On   | 00000000:00:07.0 Off |                    0 |</span><br><span class="line">| N/A   39C    P0    81W /  70W |   5153MiB / 15360MiB |     61%      Default |</span><br><span class="line">|                               |                      |                  N/A |</span><br><span class="line">+-------------------------------+----------------------+----------------------+</span><br><span class="line">                                                                               </span><br><span class="line">+-----------------------------------------------------------------------------+</span><br><span class="line">| Processes:                                                                  |</span><br><span class="line">|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |</span><br><span class="line">|        ID   ID                                                   Usage      |</span><br><span class="line">|=============================================================================|</span><br><span class="line">|    0   N/A  N/A      4788      C   python                           5150MiB |</span><br><span class="line">+-----------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+<p>至此，让llama-cpp-python使用GPU加速推理，大功告成！</p>
+<h3 id="方法二（使用cog方式制作镜像）"><a href="#方法二（使用cog方式制作镜像）" class="headerlink" title="方法二（使用cog方式制作镜像）"></a>方法二（使用cog方式制作镜像）</h3><p>Cog 是一种开源工具，可让您将机器学习模型打包到标准的生产就绪容器中。您可以将打包的模型部署到您自己的基础架构或<a href="https://replicate.com/" target="_blank" rel="noopener">Replicate</a>平台上。</p>
+<p>使用Cog方式进行镜像制作，详情请查看以下github仓库。<br><a href="https://github.com/shideqin/cog-codellama3-cpp" target="_blank" rel="noopener">https://github.com/shideqin/cog-codellama3-cpp</a></p>
+]]></content>
+      <categories>
+        <category>llama</category>
+        <category>llm</category>
+        <category>python</category>
+        <category>cuda</category>
+      </categories>
+      <tags>
+        <tag>llama</tag>
+        <tag>cuda</tag>
+        <tag>python</tag>
+        <tag>llm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>K8s无法删除状态为terminating的pod解决方法</title>
-    <url>/posts/clvdjbvxx001j4oomgdht2u4y.html</url>
+    <url>/posts/clvgs91ow001uukomeltn87w7.html</url>
     <content><![CDATA[<p>你有没有在使用k8s过程中遇到过这种情况: 通过kubectl delete指令删除一些资源时，一直处于Terminating状态。 这是为什么呢？</p>
 <p>本文将介绍当你执行kubectl delete语句时，K8s内部都执行了哪些操作。 以及为何有些资源’删除不掉’(具体表现为一直Terminating，删除namespace时很容易遇到这种情况)</p>
 <p>接下来，我们聚焦讨论以下四个方面:</p>
@@ -116,7 +153,7 @@
   </entry>
   <entry>
     <title>lua利用metatable实现类的继承和多态</title>
-    <url>/posts/clvdjbvzx00604oomcpaw8bl1.html</url>
+    <url>/posts/clvgs91ty006iukom6ghm3bw0.html</url>
     <content><![CDATA[<p>在lua原生语法特性中是不具备面向对象设计的特性。因此，要想在lua上像其他高级语言一样使用面向对象的设计方法，就需要使用原生的元表(metatable)来模拟面向对象设计。</p>
 <p><strong>一、元表setmetatable</strong><br>对指定 table 设置元表(metatable)，如果元表(metatable)中存在__metatable键值，setmetatable会失败。</p>
 <p>以下实例演示了如何对指定的表设置元表：</p>
@@ -136,14 +173,14 @@
         <category>OOP</category>
       </categories>
       <tags>
-        <tag>lua</tag>
         <tag>面向对象</tag>
         <tag>metatable</tag>
+        <tag>lua</tag>
       </tags>
   </entry>
   <entry>
     <title>openssl模块安装luaossl（luacrypto）</title>
-    <url>/posts/clvdjbw06006u4oom21p5ehr5.html</url>
+    <url>/posts/clvgs91u90077ukomftt278q7.html</url>
     <content><![CDATA[<p><a href="https://luarocks.org/modules/daurnimator/luaossl" target="_blank" rel="noopener">luaossl</a> 是<a href="https://luarocks.org/modules/starius/luacrypto" target="_blank" rel="noopener">luacrypto</a>的代替版本，是针对 Lua 5.1、5.2、5.3 和 LuaJIT 的 OpenSSL 综合绑定。是 Lua 世界中最全面的 OpenSSL 绑定。luaosll安装依赖OpenSSL库，所以需要先安装OpenSSL。</p>
 <p><strong>一、安装OpenSSL</strong><br>下载好的OpenSSL源码目录下，编译安装OpenSSL（以下均使用默认路径“/usr/local”进行安装）</p>
 <p>1）生成Makefile文件</p>
@@ -172,7 +209,7 @@
   </entry>
   <entry>
     <title>Kubernetes使用KEDA通过Prometheus触发HPA</title>
-    <url>/posts/clvdjbvxx001l4oomcxd573yw.html</url>
+    <url>/posts/clvgs91p20025ukomb5atakyg.html</url>
     <content><![CDATA[<p><a href="https://keda.sh/" target="_blank" rel="noopener">KEDA</a> 是一个基于 Kubernetes 的事件驱动自动缩放器。使用 KEDA，您可以根据需要处理的事件数量来驱动 Kubernetes 中任何容器的扩展。KEDA可以支持很多自定义事件源，如：Mysql、MongoDB、Redis、ActiveMQ、Kafka、Prometheus、Metrics API等。本文使用nginx中的stub_status数据 + Prometheus为事件源进行KEDA HPA配置。</p>
 <p><strong>一、开启nginx(stub_status)</strong><br>nginx中的stub_status模块主要用于查看Nginx的一些状态信息。</p>
 <p>1）查看nginx时候有安装该模块。</p>
@@ -219,7 +256,7 @@
   </entry>
   <entry>
     <title>使用openssl创建多泛域名及IP的自签名证书</title>
-    <url>/posts/clvdjbw0m008c4oom5jz54q57.html</url>
+    <url>/posts/clvgs91uo008oukom1p4s5bzz.html</url>
     <content><![CDATA[<p>在开发环境及私有环境下需要使用SSL，于是使用openssl创建自签发证书，支持多域名、泛域名、直接IP访问。</p>
 <p><strong>一、使用openssl生成证书自签名</strong></p>
 <p>openssl在centos中是标配，所以直接在centos中操作，因为要多个域名和IP，故而需要编辑一个配置文件，如下：</p>
@@ -290,7 +327,7 @@
   </entry>
   <entry>
     <title>golang中net.http请求时header中的Content-Length无效坑</title>
-    <url>/posts/clvdjbvzs005m4oom205sc42u.html</url>
+    <url>/posts/clvgs91tu0067ukomaic190ny.html</url>
     <content><![CDATA[<p>在一次和国内某云厂商对接对象存储时，因为他们对象存储服务，是直接使用的是第三方开源服务，开源服务默认并不支持<strong>chunked</strong>编码（而国内其它大厂一般都是支持chunked编码）。导致上传文件一直报<strong>HTTP/1.1 411 Length Required</strong>错误，出现问题的原因是说，我没有传Content-Length。</p>
 <p>而明明我在header里设置了Content-Length，但是抓包发现，实际却变成了chunked<br><img src="https://upload.phpkoo.com/uploads/2021/12/net.http-02.png" alt=""></p>
 <p>经过反复的测试情况都依旧，直到在github上找到了这个<a href="https://github.com/golang/go/issues/16264" target="_blank" rel="noopener">https://github.com/golang/go/issues/16264</a></p>
@@ -312,7 +349,7 @@
   </entry>
   <entry>
     <title>luarocks安装lua-mongo模块</title>
-    <url>/posts/clvdjbvzx005w4oomava40s9p.html</url>
+    <url>/posts/clvgs91u0006kukom0sf02krz.html</url>
     <content><![CDATA[<p>lua-mongo 是对 MongoDB C Driver 1.16 或更高版本的 Lua 的绑定，githup仓库：<a href="https://github.com/neoxic/lua-mongo" target="_blank" rel="noopener">https://github.com/neoxic/lua-mongo</a></p>
 <p>通过luarocks方式安装lua模块</p>
 <p>一、安装luarocks工具，官网:<a href="https://luarocks.org/" target="_blank" rel="noopener">https://luarocks.org/</a><br>二、安装lua-mongo模块</p>
@@ -344,7 +381,7 @@
   </entry>
   <entry>
     <title>centos下原生nginx支持openresty功能</title>
-    <url>/posts/clvdjbvz800474oom49hr1hiz.html</url>
+    <url>/posts/clvgs91sw004rukomf7ur0tnw.html</url>
     <content><![CDATA[<p>nginx想支持openresty的功能，需要安装以下模块及依赖<code>luajit2</code>、<code>lua-resty-core</code>、<code>lua-resty-lrucache</code>、<code>lua-nginx-module</code>、<code>ngx_devel_kit</code>以下5个依赖包必须先下载，另外如果需要同时支持SSL的话，还需要下载<code>openssl</code>依赖包（ssl只需要下载nginx编译时使用）。</p>
 <p>一、安装openresty依赖包<br>1、安装luajit2（下载最新版本）</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://github.com/openresty/luajit2/archive/v2.1-20201229.tar.gz</span><br><span class="line">tar -zxvf luajit2-2.1-20201229.tar.gz</span><br><span class="line"><span class="built_in">cd</span> luajit2-2.1-20201229</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"></span><br><span class="line"><span class="comment">#导入环境变量（编译nginx时需要）</span></span><br><span class="line"><span class="built_in">export</span> LUAJIT_LIB=/usr/<span class="built_in">local</span>/lib</span><br><span class="line"><span class="built_in">export</span> LUAJIT_INC=/usr/<span class="built_in">local</span>/include/luajit-2.1</span><br></pre></td></tr></table></figure>
@@ -379,7 +416,7 @@
   </entry>
   <entry>
     <title>使用watch实时查看进程的文件句柄信息</title>
-    <url>/posts/clvdjbw0w00994oom0lnl1ykg.html</url>
+    <url>/posts/clvgs91ux009cukom2flm18eb.html</url>
     <content><![CDATA[<p>一、lsof相关使用<br>1、系统所有进程打开对应的句柄数</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">lsof -n|awk <span class="string">'&#123;print $2&#125;'</span>|sort|uniq -c |sort -nr|more</span><br></pre></td></tr></table></figure>
 
@@ -1587,8 +1624,8 @@
       </categories>
       <tags>
         <tag>centos</tag>
-        <tag>php</tag>
         <tag>mongodb</tag>
+        <tag>php</tag>
       </tags>
   </entry>
   <entry>

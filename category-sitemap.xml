@@ -8,6 +8,48 @@
     </url>
 
     <url>
+        <loc>https://phpkoo.com/categories/llama/llm/python/cuda/</loc>
+        <lastmod>2024-04-26T14:42:34.100Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/categories/llama/llm/python/</loc>
+        <lastmod>2024-04-26T14:42:34.100Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/categories/llama/llm/</loc>
+        <lastmod>2024-04-26T14:42:34.100Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/categories/llama/</loc>
+        <lastmod>2024-04-26T14:42:34.100Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/categories/k8s/kubernetes/</loc>
+        <lastmod>2024-04-26T13:15:18.925Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/categories/k8s/</loc>
+        <lastmod>2024-04-26T13:15:18.925Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/categories/Docker/</loc>
         <lastmod>2024-04-24T08:05:13.079Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -24,20 +66,6 @@
     <url>
         <loc>https://phpkoo.com/categories/JavaScript/</loc>
         <lastmod>2024-04-24T07:54:20.398Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/categories/k8s/kubernetes/</loc>
-        <lastmod>2024-04-24T06:48:30.263Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/categories/k8s/</loc>
-        <lastmod>2024-04-24T06:48:30.263Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

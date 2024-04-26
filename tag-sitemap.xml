@@ -3,6 +3,55 @@
 
 
     <url>
+        <loc>https://phpkoo.com/tags/llm/</loc>
+        <lastmod>2024-04-26T14:42:34.100Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/python/</loc>
+        <lastmod>2024-04-26T14:42:34.100Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/cuda/</loc>
+        <lastmod>2024-04-26T14:42:34.100Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/llama/</loc>
+        <lastmod>2024-04-26T14:42:34.100Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/delete/</loc>
+        <lastmod>2024-04-26T13:15:18.925Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/pod/</loc>
+        <lastmod>2024-04-26T13:15:18.925Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://phpkoo.com/tags/k8s/</loc>
+        <lastmod>2024-04-26T13:15:18.925Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/tags/docker/</loc>
         <lastmod>2024-04-24T08:05:13.079Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -80,22 +129,8 @@
     </url>
 
     <url>
-        <loc>https://phpkoo.com/tags/delete/</loc>
-        <lastmod>2024-04-24T06:48:30.263Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/pod/</loc>
-        <lastmod>2024-04-24T06:48:30.263Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/k8s/</loc>
-        <lastmod>2024-04-24T06:48:30.263Z</lastmod>
+        <loc>https://phpkoo.com/tags/lua/</loc>
+        <lastmod>2022-07-27T07:30:31.145Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -109,13 +144,6 @@
 
     <url>
         <loc>https://phpkoo.com/tags/%25E9%259D%25A2%25E5%2590%2591%25E5%25AF%25B9%25E8%25B1%25A1/</loc>
-        <lastmod>2022-07-27T07:30:31.145Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/lua/</loc>
         <lastmod>2022-07-27T07:30:31.145Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -724,14 +752,14 @@
     </url>
 
     <url>
-        <loc>https://phpkoo.com/tags/docker1-9-1/</loc>
+        <loc>https://phpkoo.com/tags/composer/</loc>
         <lastmod>2020-02-27T01:02:52.738Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://phpkoo.com/tags/composer/</loc>
+        <loc>https://phpkoo.com/tags/docker1-9-1/</loc>
         <lastmod>2020-02-27T01:02:52.738Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1109,6 +1137,13 @@
     </url>
 
     <url>
+        <loc>https://phpkoo.com/tags/%25E8%2587%25AA%25E5%25AE%259A%25E4%25B9%2589%25E5%258F%2598%25E9%2587%258F/</loc>
+        <lastmod>2020-02-27T01:02:52.707Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://phpkoo.com/tags/%25E8%2587%25AA%25E5%258A%25A8%25E7%25BC%2596%25E5%258F%25B7/</loc>
         <lastmod>2020-02-27T01:02:52.707Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1117,13 +1152,6 @@
 
     <url>
         <loc>https://phpkoo.com/tags/%25E6%258E%2592%25E5%25BA%258F/</loc>
-        <lastmod>2020-02-27T01:02:52.707Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://phpkoo.com/tags/%25E8%2587%25AA%25E5%25AE%259A%25E4%25B9%2589%25E5%258F%2598%25E9%2587%258F/</loc>
         <lastmod>2020-02-27T01:02:52.707Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
