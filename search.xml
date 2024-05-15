@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>GPU驱动</title>
+    <title>kubernetes安装nvidia-gpu驱动</title>
     <url>/posts/clw7zy59j0000g4om1vl4dyg7.html</url>
     <content><![CDATA[<p>k8s-device-plugin用于是Kubernetes调用GPU的插件。</p>
 <p>nvidia的k8s插件安装之后作为daemonset在每个节点上运行，插件运行之后会向master汇报每个节点的GPU数量，运行需要GPU的POD。</p>
