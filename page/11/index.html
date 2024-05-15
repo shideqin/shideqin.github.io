@@ -194,6 +194,82 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/50.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="阿德">
+      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿德的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/50.html" class="post-title-link" itemprop="url">MySql自定义变量</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2010-01-29 13:10:58" itemprop="dateCreated datePublished" datetime="2010-01-29T13:10:58+08:00">2010-01-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mysql/" itemprop="url" rel="index"><span itemprop="name">Mysql</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>SQL代码</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SET</span> @<span class="keyword">name</span>=<span class="string">"abc"</span>; <span class="comment">/* 赋值 */</span></span><br><span class="line"><span class="keyword">SET</span> @<span class="keyword">name</span>:=<span class="string">"abc"</span>; <span class="comment">/* 赋值 */</span></span><br><span class="line"><span class="comment">/* 以上两句结果相同 */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> @<span class="keyword">name</span>=<span class="string">"abc"</span>; <span class="comment">/* 比较操作符 */</span></span><br><span class="line"><span class="keyword">SELECT</span> @<span class="keyword">name</span>:=<span class="string">"abc"</span>; <span class="comment">/* 赋值 */</span></span><br><span class="line"><span class="comment">/* 以上两句结果不同 */</span></span><br></pre></td></tr></table></figure>
+<p>这里定义了两个变量，@name和@id，后面进行相应的替换就可以了。以后，直接修改变量的值即可。其中，用“=”等号或者用“:=”冒号加等号，在SET命令里面都是一样的。<br>但不同的是，要在非SET命令中定义变量时，必须使用“:=”，因为“=”会被认为是比较操作符（这个是比较高级的内容了，暂时不深究）。<br>自定义变量可以用数字，字母，“.”点符号，“_”下划线，“$”美元符号。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/49.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -885,87 +961,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://phpkoo.com/posts/13.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="阿德">
-      <meta itemprop="description" content="关注小众语言、AI技术，记录、分享技术点滴！">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿德的博客">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/13.html" class="post-title-link" itemprop="url">二级域名的完美实现</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2010-01-11 14:15:39" itemprop="dateCreated datePublished" datetime="2010-01-11T14:15:39+08:00">2010-01-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-27 09:02:52" itemprop="dateModified" datetime="2020-02-27T09:02:52+08:00">2020-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Apache/" itemprop="url" rel="index"><span itemprop="name">Apache</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先，你的拥有一个有泛域名解析的顶级域名，例如： domain.com<br>其次，在 httpd.conf 中打开 mod_rewrite</p>
-<p>之后，在 httpd.conf 的最后，添加以下内容：  </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">RewriteEngine on  </span><br><span class="line">RewriteMap lowercase int:tolower  </span><br><span class="line">RewriteMap vhost txt:/wp-content/<span class="built_in">local</span>/etc/apache/vhost.map  </span><br><span class="line">RewriteCond <span class="variable">$&#123;lowercase:%&#123;SERVER_NAME&#125;</span>&#125; ^(.+)$  </span><br><span class="line">RewriteCond <span class="variable">$&#123;vhost:%1&#125;</span> ^(/.*)$  </span><br><span class="line">RewriteRule ^/(.*)$ %1/<span class="variable">$1</span></span><br></pre></td></tr></table></figure>
-<p>其中的 /wp-content/local/etc/apache 是你的 apache 服务器配置文件所在路径，根据实际情况更改。<br>然后，在这个所在路径的目录下创建一个文件： vhost.map<br>内容为： </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">www.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/domain  </span><br><span class="line">bbs.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/bbs  </span><br><span class="line">anyname.domain.com /wp-content/<span class="built_in">local</span>/www/data-dist/anyname`</span><br></pre></td></tr></table></figure>
-<p>以上部分都是：” 域名+空格+绝对路径” 的形式。</p>
-<p>最后，在你的网站根目录 /wp-content/local/www/data-dist 下，创建对应目录：<br>domain , bbs , anyname 等等，理论上可以无限。</p>
-<p>这样，通过浏览器，访问 <a href="http://www.domain.com" target="_blank" rel="noopener">www.domain.com</a> 时，实际上访问的就是 /wp-content/local/www/data-dist/domain目录下的文件。同理，访问 bbs.domain.com 实际上访问的就是 /wp-content/local/www/data-dist/bbs 目录下的文件。而且，你可以<br>随时更改 vhost.map 来增加、删除、修改你的二级域名和所指向的实际路径，不用重启 apache。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1036,20 +1031,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-count">120</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">190</span>
+        <span class="site-state-item-count">193</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
